@@ -2,7 +2,7 @@
 
 **P**erturbation-**R**esilient **O**bstacle-awareness — a bimanual manipulation benchmark for policy robustness evaluation.
 
-**Project page:** https://anonymous.4open.science/w/RoboPRO-EDE0/index.html
+**Project page:** https://robopro-bench.github.io/RoboPRO/
 
 RoboPRO extends the RoboTwin simulation framework with:
 - **Realistic scenes** across office, study, kitchen (small & large) domains
@@ -14,7 +14,7 @@ RoboPRO extends the RoboTwin simulation framework with:
 System prereqs (one-time): `libvulkan1 mesa-vulkan-drivers vulkan-tools` (apt), `ffmpeg`, and an NVIDIA driver with CUDA 12.x.
 
 ```bash
-git clone https://anonymous.4open.science/r/RoboPRO-EDE0
+git clone https://github.com/robopro-bench/RoboPRO.git
 cd RoboPRO
 ```
 
