@@ -93,6 +93,41 @@ h1.title .title-logo {
 .byline a { color: var(--ink); }
 .byline strong { color: var(--ink); font-weight: 600; }
 
+/* Prominent hero action buttons (Install / Code / Dataset) on their own line */
+.hero-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  font-family: var(--sans);
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: var(--shadow-1);
+}
+.btn-primary:hover { background: var(--accent-2); color: #fff; }
+.btn-ghost {
+  background: var(--bg);
+  color: var(--ink);
+  border-color: var(--rule-2);
+}
+.btn-ghost:hover { background: var(--bg-soft); border-color: var(--ink); }
+.btn:active { transform: translateY(1px); }
+
 /* ============ Abstract ============ */
 
 .abstract {
