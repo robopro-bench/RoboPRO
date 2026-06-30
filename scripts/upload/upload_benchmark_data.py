@@ -8,7 +8,7 @@ print(f"[upload] user={api.whoami()['name']}", flush=True)
 
 api.upload_large_folder(
     folder_path=str(REPO_ROOT / "benchmark_data"),
-    repo_id="Hoshipu/roboreal_data",
+    repo_id="RoboPRO/RoboPRO_data_raw",
     repo_type="dataset",
     print_report=True,
     print_report_every=30,

@@ -5,7 +5,7 @@ Upload generated instruction sidecars to HuggingFace, one folder per
 
   <staging>/{scene}/{task}/{split}/instructions/episode{N}.json
 
-Each dir is uploaded to the matching path on `Hoshipu/roboreal_data`.
+Each dir is uploaded to the matching path on `RoboPRO/RoboPRO_data_raw`.
 """
 
 import argparse
@@ -16,7 +16,7 @@ from pathlib import Path
 
 from huggingface_hub import HfApi
 
-REPO = "Hoshipu/roboreal_data"
+REPO = "RoboPRO/RoboPRO_data_raw"
 
 
 def upload_with_retry(api, local, repo_path, max_attempts=8, base_sleep=30):
