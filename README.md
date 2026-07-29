@@ -228,6 +228,20 @@ Full list in `benchmark/bench_envs/`.
 
 Naming tip: never reuse an existing RoboTwin task name. Start from an analogous sibling task (`kitchenl/`, `office/`, `study/`) — copying a proven recipe is faster than inventing from scratch.
 
+## Citation
+
+If you use RoboPRO, please cite our RSS 2026 Workshop (RoboData) paper *Data and Evaluation Protocols for Robust Robotic Manipulation*:
+
+```bibtex
+@inproceedings{li2026robopro,
+  title     = {Data and Evaluation Protocols for Robust Robotic Manipulation},
+  author    = {Li, Zhiyuan and Eret, Charles and Zhao, Xuan and Wu, Yangzheng and Rasouli, Amir},
+  booktitle = {Robotics: Science and Systems (RSS) 2026 Workshop on RoboData},
+  year      = {2026},
+  url       = {https://robopro-bench.github.io/RoboPRO/}
+}
+```
+
 ## License
 
 See `LICENSE`.
