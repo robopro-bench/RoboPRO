@@ -230,13 +230,13 @@ Naming tip: never reuse an existing RoboTwin task name. Start from an analogous 
 
 ## Citation
 
-If you use RoboPRO, please cite our RSS 2026 Workshop (RoboData) paper *Data and Evaluation Protocols for Robust Robotic Manipulation*:
+If you use RoboPRO, please cite our RSS 2026 Data-Centric Robotics Workshop paper *Data and Evaluation Protocols for Robust Robotic Manipulation*:
 
 ```bibtex
 @inproceedings{li2026robopro,
   title     = {Data and Evaluation Protocols for Robust Robotic Manipulation},
   author    = {Li, Zhiyuan and Eret, Charles and Zhao, Xuan and Wu, Yangzheng and Rasouli, Amir},
-  booktitle = {Robotics: Science and Systems (RSS) 2026 Workshop on RoboData},
+  booktitle = {Data-Centric Robotics Workshop at Robotics: Science and Systems (RSS)},
   year      = {2026},
   url       = {https://robopro-bench.github.io/RoboPRO/}
 }
