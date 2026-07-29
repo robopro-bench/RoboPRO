@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Fetch RoboPRO benchmark assets from HuggingFace into benchmark/assets/.
 
-Pulls four zip bundles (~15 GB total) from Hoshipu/RoboPRO_assets and
+Pulls four zip bundles (~15 GB total) from RoboPRO/RoboPRO_assets and
 extracts them in place:
 
     benchmark/assets/objects/              (~3 GB)
@@ -19,7 +19,7 @@ from pathlib import Path
 
 from huggingface_hub import hf_hub_download
 
-REPO_ID = "Hoshipu/RoboPRO_assets"
+REPO_ID = "RoboPRO/RoboPRO_assets"
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_DEST = REPO_ROOT / "benchmark" / "assets"
 BUNDLES = ["backgrounds.zip", "embodiments.zip", "objects.zip", "background_texture.zip"]

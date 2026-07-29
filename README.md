@@ -47,7 +47,7 @@ cd ..                                # back to repo root
 python scripts/install/download_assets.py
 ```
 
-This fetches the HuggingFace bundle (`Hoshipu/RoboPRO_assets`) into `benchmark/assets/` (objects, embodiments, background_texture, backgrounds). The bundle already includes the large `aloha-agilex/.../meshes/box2_Link.dae` mesh — no separate fetch needed.
+This fetches the HuggingFace bundle (`RoboPRO/RoboPRO_assets`) into `benchmark/assets/` (objects, embodiments, background_texture, backgrounds). The bundle already includes the large `aloha-agilex/.../meshes/box2_Link.dae` mesh — no separate fetch needed.
 
 The shipped `task_config/_embodiment_config.yml` uses upstream-relative paths (`./assets/embodiments/...`). RoboPRO keeps assets under `benchmark/assets/`, so add a one-line symlink so the upstream paths resolve:
 

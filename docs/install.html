@@ -96,7 +96,7 @@ bash script/_install.sh</code></pre>
     <h2>Fetch the asset bundle (~15&nbsp;GB).</h2>
 <pre><code>cd ..
 python scripts/install/download_assets.py</code></pre>
-    <p>Pulls from <a href="https://huggingface.co/datasets/Hoshipu/RoboPRO_assets">Hoshipu/RoboPRO_assets</a> into <code>benchmark/assets/</code> (objects, embodiments, background_texture, backgrounds). The bundle already includes <code>aloha-agilex/.../meshes/box2_Link.dae</code> (~206&nbsp;MB) &mdash; no separate fetch needed.</p>
+    <p>Pulls from <a href="https://huggingface.co/datasets/RoboPRO/RoboPRO_assets">RoboPRO/RoboPRO_assets</a> into <code>benchmark/assets/</code> (objects, embodiments, background_texture, backgrounds). The bundle already includes <code>aloha-agilex/.../meshes/box2_Link.dae</code> (~206&nbsp;MB) &mdash; no separate fetch needed.</p>
     <p>The shipped <code>task_config/_embodiment_config.yml</code> uses upstream-relative paths (<code>./assets/embodiments/...</code>). RoboPRO keeps assets under <code>benchmark/assets/</code>, so add a one-line symlink so the upstream paths resolve:</p>
 <pre><code>ln -sfn ../benchmark/assets customized_robotwin/assets</code></pre>
     <p>Generate the local-path curobo configs from the shipped templates, and patch them so CuRobo can attach grasped objects (the shipped configs lack the <code>attached_object</code> link entries):</p>
