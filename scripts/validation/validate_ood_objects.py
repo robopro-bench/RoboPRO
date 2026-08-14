@@ -10,9 +10,9 @@ For each object_ood obstacle entry, checks:
   5. No seen/OOD variant ID overlaps
 
 Usage:
+    source set_env.sh  # repo root
     cd sim
-    source set_env.sh
-    python ../scripts/validate_ood_objects.py
+    python ../scripts/validation/validate_ood_objects.py
 
     # Validate a single scene:
     python ../scripts/validate_ood_objects.py --scene office
@@ -215,7 +215,7 @@ def main():
     else:
         bench_root = Path(__file__).resolve().parent.parent / "benchmark"
         if not bench_root.exists():
-            print("ERROR: Set BENCH_ROOT or run from sim/ with set_env.sh")
+            print("ERROR: Set BENCH_ROOT or source set_env.sh from the repo root")
             sys.exit(1)
 
     objects_dir = bench_root / "assets" / "objects"

@@ -80,7 +80,13 @@ REACH_ARMS ?= both
 PICKUP_SEEDS ?= 1,2,3,4,5
 
 define RUN_IN_SIM
+	source "$(ROOT_DIR)/set_env.sh"
 	cd "$(SIM_ROOT)"
+	$(1)
+endef
+
+define RUN_IN_ROOT
+	cd "$(ROOT_DIR)"
 	source set_env.sh
 	$(1)
 endef
@@ -126,13 +132,13 @@ help:
 	'    Vars: PICKUP_SEEDS=1,2,3 OFFSET=0.2 REACH_Z=0.90' \
 	'' \
 	'Data collection:' \
-	'  make collect-data             Run collect_data.sh for one task/config.' \
+	'  make collect-data             Run collect/collect_data.sh for one task/config.' \
 	'  make collect-rollout-pi05     Dual-env pi05 rollout collection.' \
 	'' \
 	'Policy eval:' \
-	'  make eval-direct              Direct eval via script/eval_policy.py.' \
-	'  make policy-server            Start script/policy_model_server.py.' \
-	'  make eval-client              Start script/eval_policy_client.py.' \
+	'  make eval-direct              Direct eval via eval/eval_policy.py.' \
+	'  make policy-server            Start eval/policy_model_server.py.' \
+	'  make eval-client              Start eval/eval_policy_client.py.' \
 	'  make eval-pi05-single         Use policy/pi05/eval.sh (single-process).' \
 	'  make eval-pi05-double         Use policy/pi05/eval_double_env.sh.' \
 	'' \
@@ -239,17 +245,17 @@ verify-rollout:
 		eval "$$cmd")
 
 collect-data:
-	$(call RUN_IN_SIM,bash collect_data.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(GPU_ID)")
+	$(call RUN_IN_ROOT,bash collect/collect_data.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(GPU_ID)")
 
 precollect-seeds:
-	$(call RUN_IN_SIM,$(PYTHON) script/precollect_eval_seeds.py "$(TASK_NAME)" "$(TASK_CONFIG)")
+	$(call RUN_IN_ROOT,$(PYTHON) collect/precollect_eval_seeds.py "$(TASK_NAME)" "$(TASK_CONFIG)")
 
 precollect-envs:
-	$(call RUN_IN_CUSTOMIZED,$(PYTHON) script/precollect_eval_envs.py "$(TASK_NAME)" "$(TASK_CONFIG)" $(if $(EVAL_ENV_TARGET),--target $(EVAL_ENV_TARGET),) $(if $(EVAL_ENV_START_SEED),--start-seed $(EVAL_ENV_START_SEED),))
+	$(call RUN_IN_ROOT,$(PYTHON) collect/precollect_eval_envs.py "$(TASK_NAME)" "$(TASK_CONFIG)" $(if $(EVAL_ENV_TARGET),--target $(EVAL_ENV_TARGET),) $(if $(EVAL_ENV_START_SEED),--start-seed $(EVAL_ENV_START_SEED),))
 
 eval-direct:
-	$(call RUN_IN_SIM,\
-		$(PYTHON) script/eval_policy.py \
+	$(call RUN_IN_ROOT,\
+		$(PYTHON) eval/eval_policy.py \
 			--config "$(POLICY_CONFIG)" \
 			--overrides \
 			--task_name "$(TASK_NAME)" \
@@ -264,8 +270,8 @@ eval-direct:
 			--test_num "$(TEST_NUM)")
 
 policy-server:
-	$(call RUN_IN_SIM,\
-		$(PYTHON) script/policy_model_server.py \
+	$(call RUN_IN_ROOT,\
+		$(PYTHON) eval/policy_model_server.py \
 			--port "$(PORT)" \
 			--config "$(POLICY_CONFIG)" \
 			--overrides \
@@ -279,8 +285,8 @@ policy-server:
 			--seed "$(SEED)")
 
 eval-client:
-	$(call RUN_IN_SIM,\
-		$(PYTHON) script/eval_policy_client.py \
+	$(call RUN_IN_ROOT,\
+		$(PYTHON) eval/eval_policy_client.py \
 			--port "$(PORT)" \
 			--config "$(POLICY_CONFIG)" \
 			--overrides \
@@ -296,13 +302,13 @@ eval-client:
 			--test_num "$(TEST_NUM)")
 
 eval-pi05-single:
-	$(call RUN_IN_SIM,bash policy/pi05/eval.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(TRAIN_CONFIG_NAME)" "$(MODEL_NAME)" "$(CHECKPOINT_ID)" "$(CKPT_SETTING)" "$(SEED)" "$(GPU_ID)")
+	$(call RUN_IN_ROOT,bash policy/pi05/eval.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(TRAIN_CONFIG_NAME)" "$(MODEL_NAME)" "$(CHECKPOINT_ID)" "$(CKPT_SETTING)" "$(SEED)" "$(GPU_ID)")
 
 eval-pi05-double:
-	$(call RUN_IN_SIM,bash policy/pi05/eval_double_env.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(TRAIN_CONFIG_NAME)" "$(MODEL_NAME)" "$(CHECKPOINT_ID)" "$(SEED)" "$(GPU_SPEC)")
+	$(call RUN_IN_ROOT,bash policy/pi05/eval_double_env.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(TRAIN_CONFIG_NAME)" "$(MODEL_NAME)" "$(CHECKPOINT_ID)" "$(SEED)" "$(GPU_SPEC)")
 
 collect-rollout-pi05:
-	$(call RUN_IN_SIM,\
+	$(call RUN_IN_ROOT,\
 		export COLLECT_NUM="$(COLLECT_NUM)"; \
 		if [[ -n "$(COLLECT_START_SEED)" ]]; then export COLLECT_START_SEED="$(COLLECT_START_SEED)"; fi; \
 		export COLLECT_BRANCH_NUM="$(COLLECT_BRANCH_NUM)"; \
@@ -310,7 +316,7 @@ collect-rollout-pi05:
 		export COLLECT_BRANCH_NOISE_STEPS="$(COLLECT_BRANCH_NOISE_STEPS)"; \
 		export ACTION_NOISE_VAR="$(ACTION_NOISE_VAR)"; \
 		if [[ "$(COLLECT_FIXED_SEED)" == "1" ]]; then export COLLECT_FIXED_SEED=1; fi; \
-		bash policy/pi05/collect_rollout.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(TRAIN_CONFIG_NAME)" "$(MODEL_NAME)" "$(CHECKPOINT_ID)" "$(SEED)" "$(GPU_SPEC)")
+		bash "$(ROOT_DIR)/policy/pi05/collect_rollout.sh" "$(TASK_NAME)" "$(TASK_CONFIG)" "$(TRAIN_CONFIG_NAME)" "$(MODEL_NAME)" "$(CHECKPOINT_ID)" "$(SEED)" "$(GPU_SPEC)")
 
 diag-kitchen-curobo:
 	$(call RUN_IN_SIM,$(PYTHON) script/bench_script/diag_kitchen_curobo.py)

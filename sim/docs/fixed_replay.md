@@ -87,7 +87,7 @@ Callers select the stream with `model.set_noise_episode(key)`.
 | `script/collect_qeval_pairs.py` | Q-eval pair collection built on the protocol |
 | `qeval_collect.sh` | launcher (model server + sim client) |
 | `policy/pi05/pi_model.py` | `set_noise_episode` / noise recording |
-| `script/collect_rollout_client.py` | opts existing collection into noise recording |
+| `collect/collect_rollout_client.py` | opts existing collection into noise recording |
 
 ## Reproducing the measurements
 

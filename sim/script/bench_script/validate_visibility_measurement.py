@@ -13,9 +13,9 @@ Builds a known office scene (default: put_mouse_on_pad) headlessly, then exercis
   3. No truncation       - report the max raw actor id present; if it exceeds 255
                            the old uint8 path would have aliased it.
 
-USAGE (run from the benchmark folder):
-    cd benchmark
+USAGE (from the repo root):
     source set_env.sh
+    cd sim
     python script/bench_script/validate_visibility_measurement.py \
         put_mouse_on_pad bench_demo_office_clean --bench-subdir office --seed 0 \
         --out-dir ./visibility_validation

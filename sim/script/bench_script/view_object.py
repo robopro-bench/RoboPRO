@@ -3,9 +3,9 @@ Standalone object viewer: pick an object (and optionally a model id) and render
 it close-up in an EMPTY scene (no robot, no table) so you can clearly see what it
 looks like and how big it is.
 
-USAGE (run from the benchmark folder):
-    cd benchmark
+USAGE (from the repo root):
     source set_env.sh
+    cd sim
 
     # list available objects + the office obstacle pool with heights/widths
     python script/bench_script/view_object.py --list

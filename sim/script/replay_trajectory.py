@@ -44,7 +44,11 @@ try:
 except Exception:
     pass  # already provided by `from envs import *`
 
-from script.collect_data import class_decorator, get_embodiment_config
+_collect = Path(os.environ.get("WORKSPACE_ROOT", Path(__file__).resolve().parents[2])) / "collect"
+if str(_collect) not in sys.path:
+    sys.path.insert(0, str(_collect))
+from collect_data import class_decorator, get_embodiment_config
+from _env import resolve_save_path
 
 bench_root = Path(os.environ["BENCH_ROOT"])
 
@@ -196,7 +200,7 @@ def main(task_name, task_config, replay_config=None, out_subdir="replay"):
     task = class_decorator(task_name)
     args = build_collection_args(task_name, task_config)
 
-    collection_base = args["save_path"]
+    collection_base = resolve_save_path(args["save_path"])
     replay_base = collection_base
 
     # Overlay replay-only overrides (extra modalities + output location).
@@ -207,7 +211,7 @@ def main(task_name, task_config, replay_config=None, out_subdir="replay"):
         for k, v in (rcfg.get("data_type") or {}).items():
             args.setdefault("data_type", {})[k] = v
         if rcfg.get("save_path"):
-            replay_base = rcfg["save_path"]
+            replay_base = resolve_save_path(rcfg["save_path"])
         if rcfg.get("out_subdir"):
             out_subdir = rcfg["out_subdir"]
         if rcfg.get("save_freq") is not None:

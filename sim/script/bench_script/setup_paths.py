@@ -19,10 +19,17 @@ def setup_paths():
     if "BENCH_ROOT" not in os.environ:
         os.environ["BENCH_ROOT"] = str(Path(os.environ["SIM_ROOT"]).parent / "benchmark")
         print(f"[setup_paths] BENCH_ROOT not set; derived {os.environ['BENCH_ROOT']}")
+    if "WORKSPACE_ROOT" not in os.environ:
+        os.environ["WORKSPACE_ROOT"] = str(Path(os.environ["SIM_ROOT"]).parent)
+    if "DATA_ROOT" not in os.environ:
+        os.environ["DATA_ROOT"] = str(Path(os.environ["WORKSPACE_ROOT"]) / "data")
+    if "POLICY_ROOT" not in os.environ:
+        os.environ["POLICY_ROOT"] = str(Path(os.environ["WORKSPACE_ROOT"]) / "policy")
 
     sim_root = Path(os.environ["SIM_ROOT"])
     bench_root = Path(os.environ["BENCH_ROOT"])
-    for p in [sim_root, bench_root]:
+    policy_root = Path(os.environ["POLICY_ROOT"])
+    for p in [sim_root, bench_root, policy_root]:
         sp = str(p)
         if sp not in sys.path:
             sys.path.insert(0, sp)

@@ -3,8 +3,8 @@ Test script for collision metrics: load a bench env (office or study), run play_
 save video + collision log.
 
 USAGE:
+    source set_env.sh  # repo root
     cd sim
-    source set_env.sh
     python $BENCH_ROOT/bench_script/test_collision_metrics.py <task_name> <task_config> [options]
 
     (Ensure your conda/venv with PyYAML, numpy, imageio/cv2 is activated.)

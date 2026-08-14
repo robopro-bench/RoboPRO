@@ -5,8 +5,8 @@
 # seen-obstacle configs (no OOD), so you can compare pass rates.
 #
 # Usage:
+#   source set_env.sh  # repo root
 #   cd sim
-#   source set_env.sh
 #   bash ../scripts/validation/baseline_test_ood.sh
 
 SEEDS="${SEEDS:-0 1 2}"

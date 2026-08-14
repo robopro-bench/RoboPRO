@@ -9,8 +9,8 @@ Generate 4 comparison videos for the same task using 4 perturbation configs:
 All runs use the same seed and clutter settings for fair comparison.
 
 USAGE:
+    source set_env.sh  # repo root
     cd sim
-    source set_env.sh
     conda activate RoboTwin
     python $BENCH_ROOT/bench_script/generate_comparison_videos.py \
         --task put_cup_on_coaster --bench-subdir study --seed 42

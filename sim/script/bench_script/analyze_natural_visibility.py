@@ -20,9 +20,9 @@ DENOMINATOR CHOICE (documented):
   includes any static-furniture / gripper occlusion present at t=0, so the
   fraction isolates the marginal effect of table clutter.
 
-USAGE (run from the benchmark folder):
-    cd benchmark
+USAGE (from the repo root):
     source set_env.sh
+    cd sim
     python script/bench_script/analyze_natural_visibility.py \
         put_mouse_on_pad --bench-subdir office \
         --base-config bench_demo_office_d8 \

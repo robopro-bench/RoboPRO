@@ -5,8 +5,8 @@
 # per scene family, across multiple seeds. Saves videos for review.
 #
 # Usage:
+#   source set_env.sh  # repo root
 #   cd sim
-#   source set_env.sh
 #   bash ../scripts/validation/integration_test_ood.sh
 #
 # Options (env vars):

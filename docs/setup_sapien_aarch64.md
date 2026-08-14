@@ -1,7 +1,7 @@
 # Building SAPIEN 3.0.0b1 from source on aarch64 (GB10 / DGX Spark)
 
 PyPI ships no aarch64 wheel for `sapien==3.0.0b1`, so on ARM machines the
-`pip install -r script/requirements.txt` step fails to resolve sapien. Build the wheel
+`pip install -r sim/script/requirements.txt` step fails to resolve sapien. Build the wheel
 from source with the script below, then re-run the requirements install.
 
 Set these two variables before running:

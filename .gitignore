@@ -68,6 +68,13 @@ outputs/
 benchmark/assets
 benchmark/assets/
 
+# Collected episodes (repo-root data/)
+data/*
+
+# Policy eval outputs
+eval_result/
+eval_result_smoke/
+
 # Runtime outputs and cloned deps (under sim/)
 sim/assets
 sim/data/*

@@ -5,8 +5,8 @@
 # no loading errors or crashes.
 #
 # Usage:
+#   source set_env.sh  # repo root
 #   cd sim
-#   source set_env.sh
 #   bash ../scripts/validation/smoke_test_compositional.sh
 
 SEED="${SEED:-0}"

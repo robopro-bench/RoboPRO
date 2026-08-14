@@ -104,7 +104,7 @@ Use this for focused debugging of CuRobo behavior in the kitchen benchmark envir
 make collect-data TASK_NAME=put_mouse_on_pad TASK_CONFIG=bench_demo_office_clean GPU_ID=0
 ```
 
-Use this to run the dataset collection pipeline for one task/config setting. This is the main entry point for producing benchmark training-style episodes, videos, and scene metadata for a task configuration.
+Use this to run the dataset collection pipeline (`collect/collect_data.sh`) for one task/config setting. This is the main entry point for producing benchmark training-style episodes, videos, and scene metadata for a task configuration. Episodes land under repo-root `data/`.
 
 ### `make precollect-seeds`
 
@@ -130,7 +130,7 @@ Use this to collect policy rollouts from the `pi05` model using the dual-environ
 make eval-direct POLICY_NAME=pi05 TASK_NAME=put_mouse_on_pad TASK_CONFIG=bench_demo_office_clean TRAIN_CONFIG_NAME=my_office_train MODEL_NAME=pi05_ckpt CHECKPOINT_ID=30000
 ```
 
-Use this for direct single-process evaluation through `script/eval_policy.py`. It is the most straightforward entry point when you want to evaluate a checkpoint against a task/config pair.
+Use this for direct single-process evaluation through `eval/eval_policy.py`. It is the most straightforward entry point when you want to evaluate a checkpoint against a task/config pair. Results land under repo-root `eval_result/`.
 
 ### `make policy-server`
 

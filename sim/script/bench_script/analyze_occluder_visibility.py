@@ -10,9 +10,9 @@ distribution across seeds, reusing the Phase 1 harness (measurement + plotting).
 visible_fraction = visible_target_px(with occluder) / full_target_px(no occluder),
 same seed (target pose is fixed before the occluder is added).
 
-USAGE (from the benchmark folder):
-    cd benchmark
+USAGE (from the repo root):
     source set_env.sh
+    cd sim
     python script/bench_script/analyze_occluder_visibility.py \
         --seed-start 0 --num-seeds 50 --occluding-object-distance 10,10 --bins 20 \
         --out-dir ../scripts/validation/results/phase2_occluder

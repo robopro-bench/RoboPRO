@@ -868,7 +868,7 @@ class Base_Task(gym.Env):
                 roles["target_object_names"] = sorted(self._get_target_object_names())
             except Exception:
                 pass
-        # Full task-role picture for offline tooling (e.g. flag_timeline skips
+        # Full task-role picture for offline tooling (e.g. grounding skips
         # these when picking which pair member's motion to trace): destination
         # boxes (des_obj* scan, lazily resolved during check_collisions) and
         # intended-contact bodies (grasp_actor-marked: grasp targets, drawer /

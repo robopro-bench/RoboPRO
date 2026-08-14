@@ -3,8 +3,8 @@ Batch runner: runs test_collision_metrics.py for every office/study/kitchenl/kit
 saves video + collision data under <output_dir>/<subdir>/tasks/<task_name>/<instance_N>/.
 
 USAGE:
+    source set_env.sh  # repo root
     cd sim
-    source set_env.sh
     python $BENCH_ROOT/bench_script/run_collision_metrics_all.py [options]
 
 EXAMPLES:

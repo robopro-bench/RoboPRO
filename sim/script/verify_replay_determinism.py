@@ -33,7 +33,6 @@ import sys
 import numpy as np
 
 sys.path.append("./")
-sys.path.append("./policy")
 sys.path.append("./description/utils")
 from script.bench_script.setup_paths import setup_paths  # noqa: E402
 

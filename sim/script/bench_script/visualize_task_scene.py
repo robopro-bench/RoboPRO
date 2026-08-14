@@ -5,8 +5,8 @@ Uses environments from bench_envs and the same config layout as collect_data.
 USAGE:
     Run this script from the benchmark folder:
 
-    cd benchmark
-    source set_env.sh  # or set SIM_ROOT and BENCH_ROOT manually
+    source set_env.sh  # repo root; or set SIM_ROOT and BENCH_ROOT manually
+    cd sim
     python bench_script/visualize_task_scene.py <task_name> <task_config> [options]
 
 EXAMPLES:

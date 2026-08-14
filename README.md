@@ -114,7 +114,7 @@ def clear_cache(self):
 
 ```bash
 cd sim
-source set_env.sh
+source ../set_env.sh
 python script/bench_script/visualize_task_scene.py \
     put_mouse_on_pad bench_demo_office_clean \
     --bench-subdir office --rollout --no-render --seed 0 --save_data
@@ -124,22 +124,21 @@ Expected on success: a `Success: True` line and an MP4 at `sim/data/bench_data/v
 
 ## Usage
 
-All commands run from `sim/` after sourcing the env:
+Collection and eval run from the repo root. Scene smoke tests still run from `sim/`.
 
 ```bash
-cd sim
-source set_env.sh                  # exports BENCH_ROOT + SIM_ROOT
+source set_env.sh                  # exports WORKSPACE_ROOT, SIM_ROOT, BENCH_ROOT, DATA_ROOT, POLICY_ROOT
 ```
 
 ### Collect demonstrations
 
 ```bash
-bash collect_data.sh <task_name> <task_config> <gpu_id>
+bash collect/collect_data.sh <task_name> <task_config> <gpu_id>
 # Example:
-bash collect_data.sh put_mouse_on_pad bench_demo_office_clean 0
+bash collect/collect_data.sh put_mouse_on_pad bench_demo_office_clean 0
 ```
 
-Episodes land in `sim/data/<task_name>/<task_config>/`.
+Episodes land in `data/<save_path>/<task_name>/<task_config>/` (YAML `./data/dataset` → `data/dataset/...`). Schema and grounding: [`collect/README.md`](collect/README.md).
 
 ### Convert HDF5 to LeRobot
 
@@ -156,7 +155,7 @@ PYTHONPATH=sim/script python -m lerobot_convert.convert_scenes \
 
 ### Run inference (policy eval)
 
-Eval rolls a trained checkpoint out against a `(task, config)` pair and writes a per-rollout success log. Two modes depending on whether your policy fits in the same Python env as the simulator.
+From the repo root after `source set_env.sh`. Eval rolls a trained checkpoint out against a `(task, config)` pair and writes a per-rollout success log under `eval_result/`. Two modes depending on whether your policy fits in the same Python env as the simulator.
 
 **Pretrained checkpoints:**
 
@@ -199,7 +198,7 @@ bash policy/pi05/eval_double_env.sh put_mouse_on_pad bench_demo_office_clean my_
 
 The script spawns a `policy_model_server.py` in the pi05 venv and an `eval_policy_client.py` in the RoboPRO sim env, communicating over a free socket port.
 
-**Eval seeds.** When `BENCH_ROOT` is set and `benchmark/eval_seeds/<task>/<task_config>.txt` exists, eval loads that fixed seed list (skips live expert scanning). Override with `--eval_seed_file /path/to.txt`, or fall back to scanning other seeds with `--use_eval_seeds false`. Cap episodes with `--test_num N` (capped by the file length). Precollect seeds via `python script/precollect_eval_seeds.py <task> <task_config>` (also used by `scripts/slurm/slurm_precollect_then_eval.sh`).
+**Eval seeds.** When `BENCH_ROOT` is set and `benchmark/eval_seeds/<task>/<task_config>.txt` exists, eval loads that fixed seed list (skips live expert scanning). Override with `--eval_seed_file /path/to.txt`, or fall back to scanning other seeds with `--use_eval_seeds false`. Cap episodes with `--test_num N` (capped by the file length). Precollect seeds via `python collect/precollect_eval_seeds.py <task> <task_config>` (also used by `scripts/slurm/slurm_precollect_then_eval.sh`).
 
 **Faster evaluation (optional).** Two opt-in settings cut the time per episode. Neither changes the scene a seed builds, the RNG streams, or the result. Leave them unset and eval behaves exactly as before.
 
@@ -213,7 +212,7 @@ List every static camera your policy reads in `render_static_cameras`. A camera 
 **Direct Python invocation** (bypassing the shell wrappers):
 
 ```bash
-python script/eval_policy.py \
+python eval/eval_policy.py \
     --config policy/pi05/deploy_policy.yml \
     --overrides \
     --task_name put_mouse_on_pad \
@@ -275,7 +274,7 @@ See the YAMLs in `benchmark/bench_task_config/` for parameter-level details, and
 | Kitchen (Small) | `put_dish_in_rack`, `place_in_sink`, ... |
 | Kitchen (Large) | `microwave_heat`, `fridge_store`, ... |
 
-Full list in [`TASKS.md`](TASKS.md) and `benchmark/bench_envs/`.
+Full list in [`benchmark/TASKS.md`](benchmark/TASKS.md) and `benchmark/bench_envs/`. Grounding and episode schema: [`collect/README.md`](collect/README.md).
 
 ## New tasks
 
@@ -291,7 +290,7 @@ Common setup problems and where their fixes live:
 
 | Symptom | Fix |
 |---|---|
-| `pip install -r script/requirements.txt` can't find a `sapien==3.0.0b1` wheel (aarch64 / ARM machines) | Build SAPIEN from source: [docs/setup_sapien_aarch64.md](docs/setup_sapien_aarch64.md) |
+| `pip install -r sim/script/requirements.txt` can't find a `sapien==3.0.0b1` wheel (aarch64 / ARM machines) | Build SAPIEN from source: [docs/setup_sapien_aarch64.md](docs/setup_sapien_aarch64.md) |
 | Eval success rates differ unexpectedly from reported numbers | Check `sapien.__version__` — must be `3.0.0b1`; other versions change physics/rendering and skew results (Installation step 2) |
 | `ModuleNotFoundError: pkg_resources` when importing sapien | `pip install setuptools==69.5.1` (Installation step 2) |
 | CuRobo fails to attach grasped objects during planning | The shipped curobo configs lack the `attached_object` link entries — run `python scripts/install/patch_aloha_curobo.py` (Installation step 3) |
@@ -299,7 +298,7 @@ Common setup problems and where their fixes live:
 
 ## License
 
-This repository is released under the MIT license. See [`LICENSE`](LICENSE). The simulation runtime is derived from RoboTwin 2.0 (MIT, Copyright (c) 2025 Tianxing Chen).
+This repository is a modified fork of RoboTwin 2.0, released under the MIT license. See [`LICENSE`](LICENSE) (Copyright 2025 Tianxing Chen; Copyright 2025–2026 RoboPRO authors). `sim/`, `eval/`, `collect/`, and the policy wrappers are RoboTwin-derived; the 80-task benchmark and grounding extras are RoboPRO. Vendored openpi (`policy/pi0/src`, `policy/pi05/src`) is [Apache 2.0](https://github.com/Physical-Intelligence/openpi/blob/main/LICENSE) (Physical Intelligence). Details: [`THIRD_PARTY.md`](THIRD_PARTY.md).
 
 ## Citation
 

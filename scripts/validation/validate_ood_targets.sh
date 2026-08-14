@@ -5,8 +5,8 @@
 # and runs an expert rollout to confirm grasp + place + check_success().
 #
 # Usage:
+#   source set_env.sh  # repo root
 #   cd sim
-#   source set_env.sh
 #   bash ../scripts/validation/validate_ood_targets.sh
 #
 # Options:
