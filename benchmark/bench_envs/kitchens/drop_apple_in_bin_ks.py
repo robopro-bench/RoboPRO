@@ -139,7 +139,7 @@ class drop_apple_in_bin_ks(KitchenS_base_task):
 
         self.attach_object(
             self.target_obj,
-            f"{os.environ['BENCH_ROOT']}/assets/objects/035_apple/collision/base{self.apple_id}.glb",
+            f"{os.environ['ASSETS_ROOT']}/objects/035_apple/collision/base{self.apple_id}.glb",
             str(arm_tag),
         )
         self.enable_table(enable=True)

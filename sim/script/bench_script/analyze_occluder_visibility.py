@@ -435,7 +435,7 @@ def _model_footprint_half_extents(modelname, model_id, scale_override=None):
     key = (modelname, model_id)
     model_data = _MODEL_DATA_CACHE.get(key)
     if model_data is None:
-        path = Path(os.environ["BENCH_ROOT"]) / "assets" / "objects" / modelname / f"model_data{model_id}.json"
+        path = Path(os.environ["ASSETS_ROOT"]) / "objects" / modelname / f"model_data{model_id}.json"
         with open(path) as f:
             model_data = json.load(f)
         _MODEL_DATA_CACHE[key] = model_data
@@ -659,7 +659,7 @@ def make_occluder_task():
                 # is_obstacle=True procedural clutter.
                 self.collision_list.append({
                     "actor": self.occluder,
-                    "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/038_milk-box/collision/base2.glb",
+                    "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/038_milk-box/collision/base2.glb",
                 })
 
         def play_once(self):
@@ -836,7 +836,7 @@ def make_occluder_task():
                 return
             self.attach_object(
                 self.target_obj,
-                f"{os.environ['BENCH_ROOT']}/assets/objects/{self.target_model}/collision/base{self.target_id}.glb",
+                f"{os.environ['ASSETS_ROOT']}/objects/{self.target_model}/collision/base{self.target_id}.glb",
                 str(arm_tag),
             )
             checkpoint("attach_object")
@@ -2440,7 +2440,7 @@ def make_occluder_task():
             object_dict = {
                 "name": self.target_obj.get_name(),
                 "pose": list(lift_pose),
-                "file_path": f"{os.environ['BENCH_ROOT']}/assets/objects/{self.target_model}/collision/base{self.target_id}.glb",
+                "file_path": f"{os.environ['ASSETS_ROOT']}/objects/{self.target_model}/collision/base{self.target_id}.glb",
                 "scale": self.target_obj.scale,
             }
             placement_poses = [pose for _, pose in placement_subgoals]

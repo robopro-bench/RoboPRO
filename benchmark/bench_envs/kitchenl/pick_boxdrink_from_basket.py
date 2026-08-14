@@ -175,7 +175,7 @@ class pick_boxdrink_from_basket(Kitchen_base_large):
                 gripper_pos=self.GRASP_CLOSE_POS,
             )
         )
-        self.attach_object(self.boxdrink, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.boxdrink_modelname}/collision/base{self.boxdrink_model_id}.glb", str(arm_tag))
+        self.attach_object(self.boxdrink, f"{os.environ['ASSETS_ROOT']}/objects/{self.boxdrink_modelname}/collision/base{self.boxdrink_model_id}.glb", str(arm_tag))
 
         self.move(self.move_by_displacement(arm_tag=arm_tag, z=0.15))
         self.move(self.back_to_origin(arm_tag=arm_tag))

@@ -1,18 +1,13 @@
-cd assets
-python _download.py
-
-# background_texture
-unzip background_texture.zip
-rm -rf background_texture.zip
-
-# embodiments
-unzip embodiments.zip
-rm -rf embodiments.zip
-
-# objects
-unzip objects.zip
-rm -rf objects.zip
-
-cd ..
-echo "Configuring Path ..."
-python ./script/update_embodiment_config_path.py
+#!/usr/bin/env bash
+# Forwards to the repo-root downloader (assets/ at the workspace root).
+set -euo pipefail
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+if [[ -x "${PYTHON:-}" ]]; then
+    PY="$PYTHON"
+elif [[ -x "$ROOT/.venv/bin/python" ]]; then
+    PY="$ROOT/.venv/bin/python"
+else
+    PY="$(command -v python3 || command -v python || true)"
+fi
+[[ -n "${PY}" ]] || { echo "ERROR: python not found" >&2; exit 1; }
+exec "$PY" "$ROOT/scripts/install/download_assets.py" "$@"

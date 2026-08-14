@@ -144,7 +144,7 @@ class pick_sauce_can_from_cabinet(Kitchen_base_large):
                 contact_point_id=self.GRASP_CONTACT_POINT_ID,
             )
         )
-        self.attach_object(self.sauce_can, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.sauce_can_modelname}/collision/base{self.sauce_can_model_id}.glb", str(arm_tag))
+        self.attach_object(self.sauce_can, f"{os.environ['ASSETS_ROOT']}/objects/{self.sauce_can_modelname}/collision/base{self.sauce_can_model_id}.glb", str(arm_tag))
 
         self.move(self.move_by_displacement(arm_tag=arm_tag, **self.RETREAT_DELTA))
         # self.move(self.back_to_origin(arm_tag=arm_tag))

@@ -16,11 +16,6 @@ eval_result/
 # rollout data
 rollout_data/
 
-# Code Generation
-assets/*
-!assets/_download.py
-!assets/files
-
 policy/weights/*
 
 envs/curobo/*

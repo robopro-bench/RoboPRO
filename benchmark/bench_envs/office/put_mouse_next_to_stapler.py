@@ -93,7 +93,7 @@ class put_mouse_next_to_stapler(Office_base_task):
         arm_tag = ArmTag(self.side)
 
         self.move(self.grasp_actor(self.target_obj, arm_tag=arm_tag, pre_grasp_dis=0.05,grasp_dis=0.02))
-        self.attach_object(self.target_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/047_mouse/collision/base{self.mouse_id}.glb", str(arm_tag))
+        self.attach_object(self.target_obj, f"{os.environ['ASSETS_ROOT']}/objects/047_mouse/collision/base{self.mouse_id}.glb", str(arm_tag))
 
         self.move(
             self.place_actor(

@@ -1,104 +1,67 @@
 #!/usr/bin/env python3
+"""Render curobo_{left,right}.yml from the shipped *_tmp.yml templates.
+
+CuRobo templates use ${ASSETS_PATH}/assets/embodiments/..., so ASSETS_PATH is
+the parent of the assets/ directory (normally the repo root). Mesh files are
+read from $ASSETS_ROOT (default: <repo>/assets).
+"""
+from __future__ import annotations
+
 import os
 import sys
-import glob
+from pathlib import Path
 
-def print_color(message, color_code):
-    NC = '\033[0m'
-    print(f"{color_code}{message}{NC}")
-
-BLUE = '\033[0;34m'
-YELLOW = '\033[0;33m'
-GREEN = '\033[0;32m'
+REPO_ROOT = Path(__file__).resolve().parents[2]
+BLUE, YELLOW, GREEN, NC = "\033[0;34m", "\033[0;33m", "\033[0;32m", "\033[0m"
 
 
-def prompt_path():
-    answer = input("Do you want to manually specify the absolute path to the assets directory? (y/n): ")
-    if answer.lower() != 'y':
-        sys.exit(1)
-    return input("Please enter the absolute path: ")
+def c(msg: str, color: str) -> None:
+    print(f"{color}{msg}{NC}")
 
 
-def main():
-    # Get current directory
-    assets_path = os.getcwd()
-    print_color(f"Current path: {assets_path}", BLUE)
+def resolve_roots() -> tuple[Path, Path]:
+    assets_root = Path(os.environ.get("ASSETS_ROOT") or (REPO_ROOT / "assets")).resolve()
+    # Templates expand ${ASSETS_PATH}/assets/embodiments/...
+    assets_path = Path(os.environ.get("ASSETS_PATH") or assets_root.parent).resolve()
+    return assets_root, assets_path
 
-    # Check ./assets/embodiments
-    if not os.path.isdir(os.path.join(assets_path, 'assets', 'embodiments')):
-        print_color("Warning: ./assets/embodiments directory not found", YELLOW)
-        parent = os.path.abspath(os.path.join(assets_path, '..'))
-        if os.path.isdir(os.path.join(parent, 'assets', 'embodiments')):
-            print("Found assets/embodiments in parent directory, switching...")
-            assets_path = parent
-            os.chdir(assets_path)
-            print_color(f"Updated path: {assets_path}", BLUE)
-        else:
-            print_color("Please ensure you're running this script in the correct directory", YELLOW)
-            print("Script should be run in the repository root directory containing assets/embodiments")
-            assets_path = prompt_path()
-            if not os.path.isdir(os.path.join(assets_path, 'assets', 'embodiments')):
-                print_color("Error: Cannot find assets/embodiments directory at the specified path", YELLOW)
-                sys.exit(1)
-            os.chdir(assets_path)
-            print_color(f"Switched to: {assets_path}", BLUE)
 
-    # Export environment variable
-    os.environ['ASSETS_PATH'] = assets_path
-    print_color(f"Setting environment variable: ASSETS_PATH={assets_path}", BLUE)
-
-    # Counters
-    count_total = count_updated = count_error = 0
-
-    # Find *_tmp.yml files
-    print_color("Searching for configuration template files...", BLUE)
-    pattern = os.path.join(assets_path, 'assets', 'embodiments', '**', '*_tmp.yml')
-    config_files = glob.glob(pattern, recursive=True)
-
-    if not config_files:
-        print_color("No *_tmp.yml files found", YELLOW)
+def main() -> None:
+    assets_root, assets_path = resolve_roots()
+    emb_dir = assets_root / "embodiments"
+    if not emb_dir.is_dir():
+        c(f"Error: {emb_dir} not found — run scripts/install/download_assets.py first", YELLOW)
         sys.exit(1)
 
-    print_color("Starting to process configuration files...", BLUE)
-    for tmp_file in config_files:
-        count_total += 1
-        target_file = tmp_file.replace('_tmp.yml', '.yml')
-        print(f"Processing [{count_total}]: {tmp_file} -> {target_file}")
+    c(f"ASSETS_ROOT={assets_root}", BLUE)
+    c(f"ASSETS_PATH={assets_path}  (used as ${{ASSETS_PATH}}/assets/embodiments/...)", BLUE)
 
+    templates = sorted(emb_dir.rglob("*_tmp.yml"))
+    if not templates:
+        c(f"No *_tmp.yml files under {emb_dir}", YELLOW)
+        sys.exit(1)
+
+    n_ok = n_err = 0
+    for tmp_file in templates:
+        target = tmp_file.with_name(tmp_file.name.replace("_tmp.yml", ".yml"))
+        print(f"Processing: {tmp_file} -> {target}")
         try:
-            with open(tmp_file, 'r') as f:
-                content = f.read()
-
-            new_content = content.replace('${ASSETS_PATH}', assets_path)
-            new_content = new_content.replace('$ASSETS_PATH', assets_path)
-
-            with open(target_file, 'w') as f:
-                f.write(new_content)
-
-            print_color(f"  ✓ Successfully replaced ${{ASSETS_PATH}} -> {assets_path}", GREEN)
-            count_updated += 1
-
-            if '${ASSETS_PATH}' in content and assets_path in new_content:
-                print_color("  ✓ Confirmed path was correctly replaced", GREEN)
-            elif '${ASSETS_PATH}' in content:
-                print_color("  ! Warning: Could not confirm if path was correctly replaced", YELLOW)
-
-        except Exception as e:
-            print_color(f"  ✗ Replacement failed: {e}", YELLOW)
-            count_error += 1
-
-    # Summary
-    print()
-    print_color("Processing complete!", BLUE)
-    print(f"Total processed: {count_total} files")
-    print_color(f"Successfully updated: {count_updated} files", GREEN)
-    if count_error > 0:
-        print_color(f"Failed to process: {count_error} files", YELLOW)
+            content = tmp_file.read_text(encoding="utf-8")
+            new_content = content.replace("${ASSETS_PATH}", str(assets_path))
+            new_content = new_content.replace("$ASSETS_PATH", str(assets_path))
+            target.write_text(new_content, encoding="utf-8")
+            c(f"  replaced ${{ASSETS_PATH}} -> {assets_path}", GREEN)
+            n_ok += 1
+        except OSError as exc:
+            c(f"  failed: {exc}", YELLOW)
+            n_err += 1
 
     print()
-    print_color("All template files have been processed!", GREEN)
-    print("To use in a new environment, run this script again")
+    c(f"Updated {n_ok} file(s)", GREEN)
+    if n_err:
+        c(f"Failed {n_err} file(s)", YELLOW)
+        sys.exit(1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

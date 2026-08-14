@@ -5,7 +5,7 @@ Uses environments from bench_envs and the same config layout as collect_data.
 USAGE:
     Run this script from the benchmark folder:
 
-    source set_env.sh  # repo root; or set SIM_ROOT and BENCH_ROOT manually
+    source set_env.sh  # repo root; or set SIM_ROOT, BENCH_ROOT, ASSETS_ROOT manually
     cd sim
     python bench_script/visualize_task_scene.py <task_name> <task_config> [options]
 
@@ -78,7 +78,7 @@ sim_root = Path(os.environ["SIM_ROOT"])
 
 os.chdir(sim_root)  # Change to sim for proper path resolution
 
-from envs import CONFIGS_PATH  # from sim
+from envs import CONFIGS_PATH, resolve_embodiment_path  # from sim
 
 
 def _to_jsonable(value):
@@ -313,7 +313,7 @@ def main():
         _embodiment_types = yaml.load(f.read(), Loader=yaml.FullLoader)
 
     def get_embodiment_file(embodiment_type_name):
-        robot_file = _embodiment_types[embodiment_type_name]["file_path"]
+        robot_file = resolve_embodiment_path(_embodiment_types[embodiment_type_name]["file_path"])
         if robot_file is None:
             raise SystemExit("missing embodiment files")
         return robot_file

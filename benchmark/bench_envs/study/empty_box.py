@@ -115,7 +115,7 @@ class empty_box(Study_base_task):
         # self.move(self.move_by_displacement(arm_tag=arm_tag,x=z if self.side_to_place == "left" else -z, z=z,
         #                                     constraint_pose=None))
         self.move(self.move_by_displacement(arm_tag=arm_tag, z=z+pre_dis))
-        self.attach_object(self.seal_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.seal_name}/collision/base{self.seal_obj_id}.glb", str(arm_tag))
+        self.attach_object(self.seal_obj, f"{os.environ['ASSETS_ROOT']}/objects/{self.seal_name}/collision/base{self.seal_obj_id}.glb", str(arm_tag))
         self.move(
             self.place_actor(
                 self.seal_obj,
@@ -139,7 +139,7 @@ class empty_box(Study_base_task):
         # self.move(self.move_by_displacement(arm_tag=arm_tag, x=z if self.side_to_place == "left" else -z, z=z,
         #                                     constraint_pose=None))
         self.move(self.move_by_displacement(arm_tag=arm_tag, z=z+pre_dis))
-        self.attach_object(self.cup_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.cup_name}/collision/base{self.cup_obj_id}.glb", str(arm_tag))
+        self.attach_object(self.cup_obj, f"{os.environ['ASSETS_ROOT']}/objects/{self.cup_name}/collision/base{self.cup_obj_id}.glb", str(arm_tag))
         self.move(
             self.place_actor(
                 self.cup_obj,

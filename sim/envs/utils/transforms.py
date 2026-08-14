@@ -98,7 +98,7 @@ class Point:
 
         builder = scene.create_actor_builder()
         builder.set_physx_body_type("static")
-        builder.add_visual_from_file(filename=f"{os.environ['BENCH_ROOT']}/assets/objects/cube/textured.obj", scale=[size, size, size])
+        builder.add_visual_from_file(filename=f"{os.environ['ASSETS_ROOT']}/objects/cube/textured.obj", scale=[size, size, size])
         self.point = builder.build(name=name)
         self.point.set_pose(self.pose)
         Point.points.append(self)
@@ -355,7 +355,7 @@ def choose_dirct(block_mat, base_pose: sapien.Pose):
 
 
 def add_robot_visual_box(task, pose: sapien.Pose | list, name: str = "box"):
-    box_path = Path(f"{os.environ['BENCH_ROOT']}/assets/objects/cube/textured.obj")
+    box_path = Path(f"{os.environ['ASSETS_ROOT']}/objects/cube/textured.obj")
     if not box_path.exists():
         print("[WARNNING] cube not exists!")
         return

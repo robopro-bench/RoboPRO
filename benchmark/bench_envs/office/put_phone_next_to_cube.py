@@ -103,7 +103,7 @@ class put_phone_next_to_cube(Office_base_task):
 
         # Lift the target_obj upward by 0.1 meters in z-direction
         self.move(self.move_by_displacement(arm_tag=arm_tag, z=0.02))
-        self.attach_object(self.target_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/077_phone/collision/base{self.phone_id}.glb", str(arm_tag))
+        self.attach_object(self.target_obj, f"{os.environ['ASSETS_ROOT']}/objects/077_phone/collision/base{self.phone_id}.glb", str(arm_tag))
         self.enable_table(enable=True)
 
         # Place the target_obj at the des_obj location with alignment constraint

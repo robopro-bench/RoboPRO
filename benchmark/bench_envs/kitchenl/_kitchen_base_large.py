@@ -72,7 +72,7 @@ class Kitchen_base_large(Bench_base_task):
         The kitchen env historically used `*_left_scale` as a multiplier, so we
         multiply by this intrinsic scale to preserve the intended sizes.
         """
-        modeldir = Path(os.environ["BENCH_ROOT"]) / "assets" / "objects" / modelname
+        modeldir = Path(os.environ["ASSETS_ROOT"]) / "objects" / modelname
         json_file = modeldir / f"model_data{model_id}.json"
         try:
             with open(json_file, "r", encoding="utf-8") as f:
@@ -88,7 +88,7 @@ class Kitchen_base_large(Bench_base_task):
 
         Matches the variant selection logic in `create_sapien_urdf_obj`.
         """
-        modeldir = Path(os.environ["BENCH_ROOT"]) / "assets" / "objects" / modelname
+        modeldir = Path(os.environ["ASSETS_ROOT"]) / "objects" / modelname
         try:
             model_list = [m for m in modeldir.iterdir() if m.is_dir() and m.name != "visual"]
             def _variant_sort_key(p: Path) -> int:
@@ -443,7 +443,7 @@ class Kitchen_base_large(Bench_base_task):
 
         if self.random_background:
             texture_type = "seen" if not self.eval_mode else "unseen"
-            directory_path = f"{os.environ['BENCH_ROOT']}/assets/background_texture/{texture_type}"
+            directory_path = f"{os.environ['ASSETS_ROOT']}/background_texture/{texture_type}"
             file_count = len(
                 [name for name in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, name))])
 
@@ -532,7 +532,7 @@ class Kitchen_base_large(Bench_base_task):
                 material=self.scene.default_physical_material,
             )
         if self.table_texture is not None:
-            texturepath = f"{os.environ['BENCH_ROOT']}/assets/background_texture/{self.table_texture}.png"
+            texturepath = f"{os.environ['ASSETS_ROOT']}/background_texture/{self.table_texture}.png"
             texture2d = sapien.render.RenderTexture2D(texturepath)
             material = sapien.render.RenderMaterial()
             material.set_base_color_texture(texture2d)
@@ -652,7 +652,7 @@ class Kitchen_base_large(Bench_base_task):
             self.add_prohibit_area(self.microwave_left, padding=[0.2, 0.05], area="table")
             self.collision_list.append({
                 "actor": self.microwave_left,
-                "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/044_microwave/visual/base0.glb",
+                "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/044_microwave/visual/base0.glb",
             })
     def _load_basket_on_table(self, table_height: float, table_xy_bias):
         """Place the static table-side container (`063_tabletrashbin`) on the left front edge of the table."""
@@ -700,19 +700,19 @@ class Kitchen_base_large(Bench_base_task):
         if "basket" in objects:
             self.collision_list.append({
                 "actor": self.basket_right,
-                "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/063_tabletrashbin/collision/base6.glb",
+                "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/063_tabletrashbin/collision/base6.glb",
             })
         if "fridge" in objects:
             self.collision_list.append({
                     "actor": self.fridge_left,
-                    "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/124_fridge_hivvdf/blender_public/links/",
+                    "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/124_fridge_hivvdf/blender_public/links/",
                     "pose": self.fridge_left.get_link_pose("base_link"), 
                     "files": ["base_link_collision.glb", "link_0_collision.glb"],
                 })
         if "cabinet" in objects:
             self.collision_list.append({
                     "actor": self.cabinet,
-                    "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/125_cabinet_tynnnw/blender_public/links/",
+                    "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/125_cabinet_tynnnw/blender_public/links/",
                     "pose": self.cabinet.get_link_pose("base_link"),
                     "files": ["base_link_collision.glb", "left_door_collision.glb", "right_door_collision.glb"],
                 })
@@ -1063,7 +1063,7 @@ class Kitchen_base_large(Bench_base_task):
         Generic helper to load an articulated cabinet defined under assets/objects/<asset_dir_name>
         as an ArticulationActor, using its local model_data.json for scale and transform.
         """
-        modeldir = Path(os.environ["BENCH_ROOT"]) / "assets" / "objects" / asset_dir_name
+        modeldir = Path(os.environ["ASSETS_ROOT"]) / "objects" / asset_dir_name
         # Prefer mobility.urdf if present, otherwise fall back to a SAPIEN-exported URDF name.
         urdf_path = modeldir / "mobility.urdf"
         if not urdf_path.exists():
@@ -1272,4 +1272,4 @@ class Kitchen_base_large(Bench_base_task):
         self.clutter_surface_split(xlim, ylim, zlim, self.prohibited_area["table"], self.obstacle_density, cluttered_item_info, obj_names_short, obj_names_tall)
 
     def add_extra_cameras(self):
-        self.cameras.add_extra_cameras(f"{os.environ['BENCH_ROOT']}/assets/embodiments/kitchen_l_config.yml")
+        self.cameras.add_extra_cameras(f"{os.environ['ASSETS_ROOT']}/embodiments/kitchen_l_config.yml")

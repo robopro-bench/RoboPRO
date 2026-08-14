@@ -49,7 +49,7 @@ def create_entity_box(
     if texture_id is not None:
 
         # test for both .png and .jpg
-        texturepath = f"{os.environ['BENCH_ROOT']}/assets/background_texture/{texture_id}.png"
+        texturepath = f"{os.environ['ASSETS_ROOT']}/background_texture/{texture_id}.png"
         # create texture from file
         texture2d = sapien.render.RenderTexture2D(texturepath)
         material = sapien.render.RenderMaterial()
@@ -212,7 +212,7 @@ def create_visual_entity_box(
 
     # ----- Material -----
     if texture_id is not None:
-        texturepath = f"{os.environ['BENCH_ROOT']}/assets/background_texture/{texture_id}.png"
+        texturepath = f"{os.environ['ASSETS_ROOT']}/background_texture/{texture_id}.png"
         texture2d = sapien.render.RenderTexture2D(texturepath)
 
         material = sapien.render.RenderMaterial()
@@ -379,7 +379,7 @@ def create_sphere(
     if texture_id is not None:
 
         # test for both .png and .jpg
-        texturepath = f"{os.environ['BENCH_ROOT']}/assets/textures/{texture_id}.png"
+        texturepath = f"{os.environ['ASSETS_ROOT']}/textures/{texture_id}.png"
         # create texture from file
         texture2d = sapien.render.RenderTexture2D(texturepath)
         material = sapien.render.RenderMaterial()
@@ -512,7 +512,7 @@ def create_table(
     if texture_id is not None:
 
         # test for both .png and .jpg
-        texturepath = f"{os.environ['BENCH_ROOT']}/assets/background_texture/{texture_id}.png"
+        texturepath = f"{os.environ['ASSETS_ROOT']}/background_texture/{texture_id}.png"
         # create texture from file
         texture2d = sapien.render.RenderTexture2D(texturepath)
         material = sapien.render.RenderMaterial()
@@ -559,7 +559,7 @@ def create_obj(
 ) -> Actor:
     scene, pose = preprocess(scene, pose)
 
-    modeldir = Path(os.environ["BENCH_ROOT"]) / "assets" / "objects" / modelname
+    modeldir = Path(os.environ["ASSETS_ROOT"]) / "objects" / modelname
     if model_id is None:
         file_name = modeldir / "textured.obj"
         json_file_path = modeldir / "model_data.json"
@@ -613,7 +613,7 @@ def create_glb(
 ) -> Actor:
     scene, pose = preprocess(scene, pose)
 
-    modeldir = Path(os.environ["BENCH_ROOT"]) / "assets" / "objects" / modelname
+    modeldir = Path(os.environ["ASSETS_ROOT"]) / "objects" / modelname
     if model_id is None:
         file_name = modeldir / "base.glb"
         json_file_path = modeldir / "model_data.json"
@@ -682,7 +682,7 @@ def create_actor(
         model_id=0,
 ) -> Actor:
     scene, pose = preprocess(scene, pose)
-    modeldir = Path(os.environ["BENCH_ROOT"]) / "assets" / "objects" / modelname
+    modeldir = Path(os.environ["ASSETS_ROOT"]) / "objects" / modelname
 
     if model_id is None:
         json_file_path = modeldir / "model_data.json"
@@ -747,7 +747,7 @@ def create_actor(
 def create_urdf_obj(scene, pose: sapien.Pose, modelname: str, scale: float | int = None, fix_root_link=True) -> ArticulationActor:
     scene, pose = preprocess(scene, pose)
 
-    modeldir = Path(os.environ["BENCH_ROOT"]) / "assets" / "objects" / modelname
+    modeldir = Path(os.environ["ASSETS_ROOT"]) / "objects" / modelname
     json_file_path = modeldir / "model_data.json"
     loader: sapien.URDFLoader = scene.create_urdf_loader()
 
@@ -783,7 +783,7 @@ def create_sapien_urdf_obj(
 ) -> ArticulationActor:
     scene, pose = preprocess(scene, pose)
 
-    modeldir = Path(os.environ["BENCH_ROOT"]) / "assets" / "objects" / modelname
+    modeldir = Path(os.environ["ASSETS_ROOT"]) / "objects" / modelname
     if modelid is not None:
         model_list = [model for model in modeldir.iterdir() if model.is_dir() and model.name != "visual"]
 

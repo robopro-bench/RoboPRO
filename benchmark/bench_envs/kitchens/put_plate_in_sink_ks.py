@@ -87,7 +87,7 @@ class put_plate_in_sink_ks(KitchenS_base_task):
 
         self.attach_object(
             self.target_obj,
-            f"{os.environ['BENCH_ROOT']}/assets/objects/003_plate/collision/base{self.plate_id}.glb",
+            f"{os.environ['ASSETS_ROOT']}/objects/003_plate/collision/base{self.plate_id}.glb",
             str(arm_tag),
         )
         self.collision_list = [

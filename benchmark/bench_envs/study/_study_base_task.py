@@ -107,7 +107,7 @@ class Study_base_task(Bench_base_task):
 
         self._parse_perturbations(random_setting)
 
-        self.col_temp = os.environ['BENCH_ROOT'] + "/assets/objects/{object}/collision/base{object_id}.glb"
+        self.col_temp = os.environ['ASSETS_ROOT'] + "/objects/{object}/collision/base{object_id}.glb"
         self.file_path = []
         self.plan_success = True
         self.step_lim = None
@@ -233,7 +233,7 @@ class Study_base_task(Bench_base_task):
         # Setup textures 
         if self.random_background:
             texture_type = "seen" if not self.eval_mode else "unseen"
-            directory_path = f"{os.environ['BENCH_ROOT']}/assets/background_texture/{texture_type}"
+            directory_path = f"{os.environ['ASSETS_ROOT']}/background_texture/{texture_type}"
             file_count = len(
                 [name for name in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, name))])
 
@@ -362,4 +362,4 @@ class Study_base_task(Bench_base_task):
         self.clutter_surface_split(xlim, ylim, zlim, self.prohibited_area["table"], self.obstacle_density, cluttered_item_info, obj_names_short, obj_names_tall)
 
     def add_extra_cameras(self):
-        self.cameras.add_extra_cameras(f"{os.environ['BENCH_ROOT']}/assets/embodiments/office_config.yml")
+        self.cameras.add_extra_cameras(f"{os.environ['ASSETS_ROOT']}/embodiments/office_config.yml")

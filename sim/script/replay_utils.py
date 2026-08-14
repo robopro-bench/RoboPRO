@@ -31,7 +31,7 @@ import os
 import numpy as np
 import yaml
 
-from envs import CONFIGS_PATH
+from envs import CONFIGS_PATH, resolve_embodiment_path
 
 
 def build_args(task_name, task_config):
@@ -56,7 +56,7 @@ def build_args(task_name, task_config):
     et = args.get("embodiment")
 
     def robot_file(t):
-        p = emb[t]["file_path"]
+        p = resolve_embodiment_path(emb[t]["file_path"])
         if p is None:
             raise ValueError(f"no embodiment file for {t}")
         return p

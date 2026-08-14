@@ -75,7 +75,7 @@ class put_bottle_in_fridge(Kitchen_base_large):
                 gripper_pos=0.01,
             )
         )
-        self.attach_object(self.bottle, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.bottle_modelname}/collision/base{self.bottle_model_id}.glb", str(arm_tag))
+        self.attach_object(self.bottle, f"{os.environ['ASSETS_ROOT']}/objects/{self.bottle_modelname}/collision/base{self.bottle_model_id}.glb", str(arm_tag))
 
         self.move(self.move_by_displacement(arm_tag=arm_tag, x=0.1, z=0.05))
         self.move(self.back_to_origin(arm_tag=arm_tag))

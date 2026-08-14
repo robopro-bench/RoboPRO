@@ -1,18 +1,18 @@
-# Asset paths are relative to sim/ (the cwd for all eval/collect
-# entry points). Assets live in the sibling benchmark/assets/ tree.
+# Paths are relative to ASSETS_ROOT (repo-root assets/). Loaders resolve
+# them with resolve_embodiment_path() so cwd does not matter.
 # Only aloha-agilex is shipped; the other embodiments were pruned from the
 # RoboPRO asset set and their paths are kept for reference only.
 aloha-agilex:
-  file_path: "../benchmark/assets/embodiments/aloha-agilex/"
+  file_path: embodiments/aloha-agilex/
 
 piper:
-  file_path: "../benchmark/assets/embodiments/piper"
+  file_path: embodiments/piper
 
 franka-panda:
-  file_path: "../benchmark/assets/embodiments/franka-panda/"
+  file_path: embodiments/franka-panda/
 
 ARX-X5:
-  file_path: "../benchmark/assets/embodiments/ARX-X5"
+  file_path: embodiments/ARX-X5
 
 ur5-wsg:
-  file_path: "../benchmark/assets/embodiments/ur5-wsg"
+  file_path: embodiments/ur5-wsg

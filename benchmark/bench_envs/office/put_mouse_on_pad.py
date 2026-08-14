@@ -107,7 +107,7 @@ class put_mouse_on_pad(Office_base_task):
             self.add_prohibit_area(self.milk_box, padding=0.01, area="table")
             self.collision_list.append({
                 "actor": self.milk_box,
-                "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/038_milk-box/collision/base{self.milk_box_id}.glb",
+                "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/038_milk-box/collision/base{self.milk_box_id}.glb",
             })
 
     def play_once(self):
@@ -120,7 +120,7 @@ class put_mouse_on_pad(Office_base_task):
         # Lift the target_obj upward by 0.1 meters in z-direction
         self.move(self.move_by_displacement(arm_tag=arm_tag, z=0.1))
 
-        self.attach_object(self.target_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/047_mouse/collision/base{self.mouse_id}.glb", str(arm_tag))
+        self.attach_object(self.target_obj, f"{os.environ['ASSETS_ROOT']}/objects/047_mouse/collision/base{self.mouse_id}.glb", str(arm_tag))
         self.enable_table(enable=True)
         
         # Place the target_obj at the des_obj location with alignment constraint

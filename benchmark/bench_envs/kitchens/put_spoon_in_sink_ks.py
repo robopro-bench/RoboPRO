@@ -55,7 +55,7 @@ class put_spoon_in_sink_ks(KitchenS_base_task):
 
         self.attach_object(
             self.target_obj,
-            f"{os.environ.get('BENCH_ROOT', os.environ['SIM_ROOT'] + '/../benchmark')}/assets/objects/134_spoon/collision/base{self.spoon_id}.glb",
+            f"{os.environ['ASSETS_ROOT']}/objects/134_spoon/collision/base{self.spoon_id}.glb",
             str(arm_tag),
         )
 

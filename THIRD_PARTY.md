@@ -38,7 +38,7 @@ What this fork adds, rather than relocates:
 |---|---|---|
 | [`policy/pi0/src/`](policy/pi0/src/), [`policy/pi0/packages/`](policy/pi0/packages/) | Apache 2.0 | Official [openpi](https://github.com/Physical-Intelligence/openpi) (Physical Intelligence). Upstream license: [Physical-Intelligence/openpi LICENSE](https://github.com/Physical-Intelligence/openpi/blob/main/LICENSE). Copy in-tree: [`policy/pi0/LICENSE`](policy/pi0/LICENSE). |
 | [`policy/pi05/src/`](policy/pi05/src/), [`policy/pi05/packages/`](policy/pi05/packages/) | Apache 2.0 | Same upstream. In-tree: [`policy/pi05/LICENSE`](policy/pi05/LICENSE). |
-| `benchmark/assets/` (downloaded) | Dataset terms | Not covered by the code MIT. Follow the HuggingFace bundle and any RoboTwin-OD / Objaverse / PartNet-Mobility terms. |
+| `assets/` (downloaded) | Dataset terms | Not covered by the code MIT. Follow the HuggingFace bundle and any RoboTwin-OD / Objaverse / PartNet-Mobility terms. |
 | `sim/envs/curobo/` (cloned at install) | NVIDIA CuRobo | Their license, not this repo’s. |
 
 Do not treat all of `policy/pi0` or `policy/pi05` as Apache. The openpi **library** (`src/`, `packages/`) is Apache 2.0 per Physical Intelligence. The **RoboTwin glue** next to it (`deploy_policy.py`, `eval.sh`, …) is MIT / RoboTwin-derived.

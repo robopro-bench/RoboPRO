@@ -80,7 +80,7 @@ class put_milktea_on_shelf(Office_base_task):
         # Lift the mouse upward by 0.1 meters in z-direction
         self.move(self.move_by_displacement(arm_tag=arm_tag, z=0.01))
 
-        self.attach_object(self.target_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/101_milk-tea/collision/base{self.milktea_id}.glb", str(arm_tag))
+        self.attach_object(self.target_obj, f"{os.environ['ASSETS_ROOT']}/objects/101_milk-tea/collision/base{self.milktea_id}.glb", str(arm_tag))
 
         # Place the mouse at the des_obj location with alignment constraint
         action = self.place_actor(

@@ -73,7 +73,7 @@ class put_phone_on_holder(Office_base_task):
         self.des_obj.set_mass(2)
         self.collision_list.append({
             "actor": self.des_obj,
-            "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/078_phonestand/collision/base{self.stand_id}.glb",
+            "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/078_phonestand/collision/base{self.stand_id}.glb",
         })
         self.add_prohibit_area(self.target_obj, padding=0.02, area="table")
         self.add_prohibit_area(self.des_obj, padding=0.01, area=f"table")
@@ -101,7 +101,7 @@ class put_phone_on_holder(Office_base_task):
             self.add_prohibit_area(self.bottle, padding=-0.02, area="table")
             self.collision_list.append({
                 "actor": self.bottle,
-                "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/001_bottle/collision/base{self.bottle_id}.glb",
+                "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/001_bottle/collision/base{self.bottle_id}.glb",
             })
 
     def capture_task_spec(self) -> dict:
@@ -144,7 +144,7 @@ class put_phone_on_holder(Office_base_task):
         self.des_obj.set_mass(2)
         self.collision_list.append({
             "actor": self.des_obj,
-            "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/078_phonestand/collision/base{self.stand_id}.glb",
+            "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/078_phonestand/collision/base{self.stand_id}.glb",
         })
         self.add_prohibit_area(self.target_obj, padding=0.02, area="table")
         self.add_prohibit_area(self.des_obj, padding=0.01, area="table")
@@ -167,7 +167,7 @@ class put_phone_on_holder(Office_base_task):
             self.add_prohibit_area(self.bottle, padding=-0.02, area="table")
             self.collision_list.append({
                 "actor": self.bottle,
-                "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/001_bottle/collision/base{self.bottle_id}.glb",
+                "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/001_bottle/collision/base{self.bottle_id}.glb",
             })
 
     def play_once(self):
@@ -178,7 +178,7 @@ class put_phone_on_holder(Office_base_task):
         self.grasp_actor_from_table(self.target_obj, arm_tag=arm_tag, pre_grasp_dis=0.08)
         self.move(self.move_by_displacement(arm_tag=arm_tag, z=0.02))
         
-        self.attach_object(self.target_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/077_phone/collision/base{self.phone_id}.glb", str(arm_tag))
+        self.attach_object(self.target_obj, f"{os.environ['ASSETS_ROOT']}/objects/077_phone/collision/base{self.phone_id}.glb", str(arm_tag))
         self.enable_table(enable=True)
 
         # Get des_obj's functional point as target for placement

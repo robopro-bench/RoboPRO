@@ -64,9 +64,8 @@ outputs/
 
 # RoboPRO-specific
 # Asset binaries (objects/embodiments/textures) are not tracked in git;
-# they're fetched separately at install time. See docs/install.html Step 3.
-benchmark/assets
-benchmark/assets/
+# they're fetched separately at install time. See docs/install.html Step 5.
+assets/
 
 # Collected episodes (repo-root data/)
 data/*
@@ -76,7 +75,6 @@ eval_result/
 eval_result_smoke/
 
 # Runtime outputs and cloned deps (under sim/)
-sim/assets
 sim/data/*
 !sim/data/process_stuck.py
 sim/eval_result/

@@ -142,7 +142,7 @@ class set_up_table(Office_base_task):
         # target_obj_1 ------------------------------------------------------------
         self.move(self.grasp_actor(self.target_obj_1, arm_tag=arm_tag1, pre_grasp_dis=0.05,grasp_dis=0.02))
         # self.move(self.move_by_displacement(arm_tag=arm_tag1, z=0.1))
-        self.attach_object(self.target_obj_1, f"{os.environ['BENCH_ROOT']}/assets/objects/047_mouse/collision/base{self.mouse_id}.glb", str(arm_tag1))
+        self.attach_object(self.target_obj_1, f"{os.environ['ASSETS_ROOT']}/objects/047_mouse/collision/base{self.mouse_id}.glb", str(arm_tag1))
         self.move(
             self.place_actor(
                 self.target_obj_1,
@@ -175,7 +175,7 @@ class set_up_table(Office_base_task):
         self.move(self.grasp_actor(self.target_obj_2, arm_tag=arm_tag2, pre_grasp_dis=0.04, grasp_dis=0.02))
 
         self.move(self.move_by_displacement(arm_tag=arm_tag2, z=0.015, y=-0.04))
-        self.attach_object(self.target_obj_2, f"{os.environ['BENCH_ROOT']}/assets/objects/043_book/collision/base0.glb", str(arm_tag2))
+        self.attach_object(self.target_obj_2, f"{os.environ['ASSETS_ROOT']}/objects/043_book/collision/base0.glb", str(arm_tag2))
 
         self.move(
             self.place_actor(

@@ -51,7 +51,7 @@ def get_all_cluttered_objects():
     cluttered_objects_name = []
 
     # load from cluttered_objects
-    cluttered_objects_config = json.load(open(Path(os.environ["BENCH_ROOT"]) / "assets" / "objects" / "objaverse" / "list.json", "r", encoding="utf-8"))
+    cluttered_objects_config = json.load(open(Path(os.environ["ASSETS_ROOT"]) / "objects" / "objaverse" / "list.json", "r", encoding="utf-8"))
     cluttered_objects_name += cluttered_objects_config["item_names"]
     for model_name, model_ids in cluttered_objects_config["list_of_items"].items():
         cluttered_objects_info[model_name] = {
@@ -70,7 +70,7 @@ def get_all_cluttered_objects():
         cluttered_objects_info[model_name]["params"] = params
 
     # load from objects
-    objects_dir = Path(os.environ["BENCH_ROOT"]) / "assets" / "objects"
+    objects_dir = Path(os.environ["ASSETS_ROOT"]) / "objects"
     for model_dir in objects_dir.iterdir():
         if not model_dir.is_dir():
             continue
@@ -118,7 +118,7 @@ def get_all_cluttered_objects():
             "params": params,
         }
 
-    same_obj = json.load(open(Path(os.environ["BENCH_ROOT"]) / "assets" / "objects" / "same.json", "r", encoding="utf-8"))
+    same_obj = json.load(open(Path(os.environ["ASSETS_ROOT"]) / "objects" / "same.json", "r", encoding="utf-8"))
     cluttered_objects_name = list(cluttered_objects_name)
     cluttered_objects_name.sort()
     return cluttered_objects_info, cluttered_objects_name, same_obj
@@ -167,7 +167,7 @@ def get_obstacle_objects_subset(env_name: str, distribution: str, entities_on_sc
     cluttered_objects_info = {}
     cluttered_objects_name_short = []
     cluttered_objects_name_tall = []
-    objects_dir = Path(os.environ["BENCH_ROOT"]) / "assets" / "objects"
+    objects_dir = Path(os.environ["ASSETS_ROOT"]) / "objects"
 
     def _process_group(group_cfg, group_name_list):
         nonlocal cluttered_objects_info
@@ -258,7 +258,7 @@ def get_target_objects_subset(env_name: str, distribution: str):
         return {}
 
     target_objects_info = {}
-    objects_dir = Path(os.environ["BENCH_ROOT"]) / "assets" / "objects"
+    objects_dir = Path(os.environ["ASSETS_ROOT"]) / "objects"
 
     # target name -> allowed model id strings
     allowed_ids_by_obj = {
@@ -603,7 +603,7 @@ def rand_create_cluttered_actor(
 
 def create_cluttered_urdf_obj(scene, pose: sapien.Pose, modelname: str, scale=1.0, fix_root_link=True) -> Actor:
     scene, pose = preprocess(scene, pose)
-    modeldir = Path(os.environ["BENCH_ROOT"]) / "assets" / modelname
+    modeldir = Path(os.environ["ASSETS_ROOT"]) / modelname
 
     loader: sapien.URDFLoader = scene.create_urdf_loader()
     loader.scale = scale

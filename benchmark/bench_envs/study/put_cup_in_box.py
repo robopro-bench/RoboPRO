@@ -77,7 +77,7 @@ class put_cup_in_box(Study_base_task):
         self.move(self.grasp_actor(self.target_obj, arm_tag=arm_tag, pre_grasp_dis=pre_grasp_dist))
 
         # Lift the mouse upward by 0.1 meters in z-direction
-        self.attach_object(self.target_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.target_name}/collision/base{self.target_id}.glb", str(arm_tag))
+        self.attach_object(self.target_obj, f"{os.environ['ASSETS_ROOT']}/objects/{self.target_name}/collision/base{self.target_id}.glb", str(arm_tag))
         # x_move = z if self.side_to_place == "right" else -z
         # self.move(self.move_by_displacement(arm_tag=arm_tag,x=x_move, z=z))
         # Place the mouse at the target location with alignment constraint

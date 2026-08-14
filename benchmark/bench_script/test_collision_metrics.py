@@ -94,7 +94,7 @@ for p in [sim_root, bench_root]:
 
 os.chdir(sim_root)
 
-from envs import CONFIGS_PATH
+from envs import CONFIGS_PATH, resolve_embodiment_path
 
 
 def _extract_task_class(envs_module, task_name):
@@ -322,7 +322,7 @@ def main():
         _embodiment_types = yaml.load(f.read(), Loader=yaml.FullLoader)
 
     def get_embodiment_file(name):
-        robot_file = _embodiment_types[name]["file_path"]
+        robot_file = resolve_embodiment_path(_embodiment_types[name]["file_path"])
         if robot_file is None:
             raise SystemExit("missing embodiment files")
         return robot_file

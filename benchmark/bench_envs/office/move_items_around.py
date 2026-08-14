@@ -191,7 +191,7 @@ class move_items_around(Office_base_task):
         # Lift the mouse upward by 0.1 meters in z-direction
         self.move(self.move_by_displacement(arm_tag=arms[0], z=0.01, y=-0.08))
 
-        self.attach_object(self.target_obj_1, f"{os.environ['BENCH_ROOT']}/assets/objects/101_milk-tea/collision/base{self.milktea_id}.glb", str(arms[0]))
+        self.attach_object(self.target_obj_1, f"{os.environ['ASSETS_ROOT']}/objects/101_milk-tea/collision/base{self.milktea_id}.glb", str(arms[0]))
 
         # Place the mouse at the target location with alignment constraint
         action = self.place_actor(
@@ -210,7 +210,7 @@ class move_items_around(Office_base_task):
         self.move(self.move_by_displacement(arm_tag=arms[0], y=-0.02, z = 0.05))
         self.collision_list.append({
             "actor": self.target_obj_1,
-            "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/101_milk-tea/collision/base{self.milktea_id}.glb",
+            "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/101_milk-tea/collision/base{self.milktea_id}.glb",
         })
         self.update_world()
 
@@ -226,7 +226,7 @@ class move_items_around(Office_base_task):
         # Lift the box upward by 0.1 meters in z-direction
         self.move(self.move_by_displacement(arm_tag=arms[1], z=0.03))
 
-        self.attach_object(self.target_obj_2, f"{os.environ['BENCH_ROOT']}/assets/objects/073_rubikscube/collision/base{self.rubikscube_id}.glb", str(arms[1]))
+        self.attach_object(self.target_obj_2, f"{os.environ['ASSETS_ROOT']}/objects/073_rubikscube/collision/base{self.rubikscube_id}.glb", str(arms[1]))
 
         self.move(
             self.place_actor(
@@ -247,7 +247,7 @@ class move_items_around(Office_base_task):
         # target_obj_3 --------------------------------------------------
         self.move(self.grasp_actor(self.target_obj_3, arm_tag=arms[2], pre_grasp_dis=0.04, grasp_dis=0.01))
         self.move(self.move_by_displacement(arm_tag=arms[2], y=-0.01, z=0.01))
-        self.attach_object(self.target_obj_3, f"{os.environ['BENCH_ROOT']}/assets/objects/043_book/collision/base0.glb", str(arms[2]))
+        self.attach_object(self.target_obj_3, f"{os.environ['ASSETS_ROOT']}/objects/043_book/collision/base0.glb", str(arms[2]))
         self.enable_table(enable=False)
 
         self.move(

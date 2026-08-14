@@ -442,7 +442,7 @@ class Base_Task(gym.Env):
 
         if self.random_background:
             texture_type = "seen" if not self.eval_mode else "unseen"
-            directory_path = f"{os.environ['BENCH_ROOT']}/assets/background_texture/{texture_type}"
+            directory_path = f"{os.environ['ASSETS_ROOT']}/background_texture/{texture_type}"
             file_count = len(
                 [name for name in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, name))])
 

@@ -36,7 +36,7 @@ Use this after dependency changes when you only want to resync the uv environmen
 make download-assets
 ```
 
-Use this to fetch the benchmark asset bundle into the configured asset destination.
+Use this to fetch the asset bundle into repo-root `assets/` (or `ASSETS_DEST`).
 
 ### `make link-assets`
 
@@ -44,7 +44,7 @@ Use this to fetch the benchmark asset bundle into the configured asset destinati
 make link-assets
 ```
 
-Use this to wire the benchmark asset directory and the `sim/assets` path to the destination you want to use locally.
+Use this only when assets live somewhere other than repo-root `assets/`. It points `assets` at `ASSETS_DEST`.
 
 ### `make configure-curobo-assets`
 

@@ -73,7 +73,7 @@ def build_collection_args(task_name, task_config):
     _embodiment_types = _load_yaml(embodiment_config_path)
 
     def get_embodiment_file(embodiment_type_name):
-        robot_file = _embodiment_types[embodiment_type_name]["file_path"]
+        robot_file = resolve_embodiment_path(_embodiment_types[embodiment_type_name]["file_path"])
         if robot_file is None:
             raise SystemExit("missing embodiment files")
         return robot_file

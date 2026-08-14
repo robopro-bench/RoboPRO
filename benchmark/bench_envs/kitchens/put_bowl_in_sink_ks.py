@@ -105,7 +105,7 @@ class put_bowl_in_sink_ks(KitchenS_base_task):
 
         self.attach_object(
             self.target_obj,
-            f"{os.environ['BENCH_ROOT']}/assets/objects/002_bowl/collision/base{self.bowl_id}.glb",
+            f"{os.environ['ASSETS_ROOT']}/objects/002_bowl/collision/base{self.bowl_id}.glb",
             str(arm_tag),
         )
         self.enable_table(enable=True)

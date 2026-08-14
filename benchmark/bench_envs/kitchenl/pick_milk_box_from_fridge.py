@@ -183,7 +183,7 @@ class pick_milk_box_from_fridge(Kitchen_base_large):
                 gripper_pos=self.GRASP_CLOSE_POS,
             )
         )
-        self.attach_object(self.milk_box, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.milk_box_modelname}/collision/base{self.milk_box_model_id}.glb", str(arm_tag))
+        self.attach_object(self.milk_box, f"{os.environ['ASSETS_ROOT']}/objects/{self.milk_box_modelname}/collision/base{self.milk_box_model_id}.glb", str(arm_tag))
 
         self.move(self.move_by_displacement(arm_tag=arm_tag, **self.LIFT_DELTA))
         self.move(self.move_by_displacement(arm_tag=arm_tag, **self.RETREAT_DELTA))

@@ -83,7 +83,7 @@ class move_seal_onto_table(Study_base_task):
         self.move(self.grasp_actor(self.target_obj, arm_tag=arm_tag, pre_grasp_dis=pre_grasp_dist))
         self.move(self.move_by_displacement(arm_tag=arm_tag,x=z if self.side_to_place == "left" else -z, z=z,
                                             constraint_pose=None))
-        self.attach_object(self.target_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.target_name}/collision/base{self.target_id}.glb", str(arm_tag))
+        self.attach_object(self.target_obj, f"{os.environ['ASSETS_ROOT']}/objects/{self.target_name}/collision/base{self.target_id}.glb", str(arm_tag))
         self.move(
             self.place_actor(
                 self.target_obj,

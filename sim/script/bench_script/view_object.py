@@ -48,7 +48,7 @@ from envs.utils.rand_create_cluttered_actor import (
     get_obstacle_objects_subset, _scale_vec3_from_task_yaml,
 )
 
-OBJECTS_DIR = bench_root / "assets" / "objects"
+OBJECTS_DIR = Path(os.environ["ASSETS_ROOT"]) / "objects"
 
 
 def available_ids(name):

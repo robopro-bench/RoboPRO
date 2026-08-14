@@ -60,7 +60,7 @@ def load_args(task_name, task_config):
         _embodiment_types = yaml.load(f.read(), Loader=yaml.FullLoader)
 
     def get_embodiment_file(et):
-        rf = _embodiment_types[et]["file_path"]
+        rf = resolve_embodiment_path(_embodiment_types[et]["file_path"])
         if rf is None:
             raise RuntimeError("missing embodiment files")
         return rf

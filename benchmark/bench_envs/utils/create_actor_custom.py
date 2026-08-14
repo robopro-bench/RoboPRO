@@ -29,8 +29,8 @@ def create_glb_actor(
     Returns:
         Simple_Actor wrapping the built SAPIEN actor.
     """
-    root = Path(os.environ.get("BENCH_ROOT", "."))
-    model_dir = root / "assets" / "objects" / model_name
+    root = Path(os.environ.get("ASSETS_ROOT", "."))
+    model_dir = root / "objects" / model_name
     model_dir = Path(model_dir)
 
     # Prefer base.glb at the root, otherwise fall back to the first GLB found

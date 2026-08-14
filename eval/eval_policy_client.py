@@ -7,7 +7,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import _env  # noqa: F401
 from _env import eval_result_root
 
-from envs import CONFIGS_PATH
+from envs import CONFIGS_PATH, resolve_embodiment_path
 from envs.utils.create_actor import UnStableError
 
 from generate_episode_instructions import *
@@ -290,7 +290,7 @@ def main(usr_args):
         _embodiment_types = yaml.load(f.read(), Loader=yaml.FullLoader)
 
     def get_embodiment_file(embodiment_type):
-        robot_file = _embodiment_types[embodiment_type]["file_path"]
+        robot_file = resolve_embodiment_path(_embodiment_types[embodiment_type]["file_path"])
         if robot_file is None:
             raise "No embodiment files"
         return robot_file

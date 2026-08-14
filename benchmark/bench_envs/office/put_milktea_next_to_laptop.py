@@ -51,7 +51,7 @@ class put_milktea_next_to_laptop(Office_base_task):
         self.add_prohibit_area(self.laptop, padding=0.01)
         self.collision_list.append({
                 "actor": self.laptop,
-                "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/015_laptop/9912/textured_objs/",
+                "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/015_laptop/9912/textured_objs/",
                 "link": ["link_0", "link_1"],
                 "files": ["original-5.obj"],
             })
@@ -128,7 +128,7 @@ class put_milktea_next_to_laptop(Office_base_task):
         # Lift the mouse upward by 0.1 meters in z-direction
         self.move(self.move_by_displacement(arm_tag=arm_tag, z=0.01))
 
-        self.attach_object(self.target_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/101_milk-tea/collision/base{self.target_obj_id}.glb", str(arm_tag))
+        self.attach_object(self.target_obj, f"{os.environ['ASSETS_ROOT']}/objects/101_milk-tea/collision/base{self.target_obj_id}.glb", str(arm_tag))
 
         # Place the mouse at the des_obj location with alignment constraint
         action = self.place_actor(

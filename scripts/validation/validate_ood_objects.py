@@ -218,7 +218,8 @@ def main():
             print("ERROR: Set BENCH_ROOT or source set_env.sh from the repo root")
             sys.exit(1)
 
-    objects_dir = bench_root / "assets" / "objects"
+    assets_root = Path(os.environ.get("ASSETS_ROOT") or Path(__file__).resolve().parents[2] / "assets")
+    objects_dir = assets_root / "objects"
     task_objects_path = Path(args.task_objects) if args.task_objects else bench_root / "bench_task_config" / "task_objects.yml"
 
     with open(task_objects_path) as f:

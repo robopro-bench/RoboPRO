@@ -41,10 +41,11 @@ PLAN_FAIL_CAMERA ?= demo_camera
 
 # Asset / install flags
 PYTHON_VERSION ?= 3.10
-ASSETS_DEST ?= $(ROOT_DIR)/benchmark/assets
+ASSETS_DEST ?= $(ROOT_DIR)/assets
 KEEP_ZIPS ?= 0
 ASSETS_DATASET_NAME ?= RoboPRO_assets
-ASSETS_PATH ?= $(ROOT_DIR)/benchmark
+# CuRobo templates expand ${ASSETS_PATH}/assets/embodiments/...
+ASSETS_PATH ?= $(ROOT_DIR)
 
 # Eval / policy flags
 POLICY_NAME ?= pi05
@@ -105,9 +106,9 @@ help:
 	'  make check-prereqs            Verify system tools (uv, nvcc, ffmpeg, etc.).' \
 	'  make bootstrap                Create/sync .venv via uv and run post-install patches.' \
 	'    Vars: PYTHON_VERSION=3.10' \
-	'  make download-assets          Download benchmark bundles.' \
-	'    Vars: ASSETS_DEST=benchmark/assets KEEP_ZIPS=0|1' \
-	'  make link-assets              Wire benchmark/assets and sim/assets to ASSETS_DEST.' \
+	'  make download-assets          Download asset bundles into assets/.' \
+	'    Vars: ASSETS_DEST=assets KEEP_ZIPS=0|1' \
+	'  make link-assets              Point repo-root assets/ at ASSETS_DEST if it differs.' \
 	'  make configure-curobo-assets  Render curobo_{left,right}.yml from curobo_*_tmp.yml' \
 	'    Vars: ASSETS_PATH=$(ASSETS_PATH)' \
 	'  make patch-curobo-config      Run scripts/install/patch_aloha_curobo.py' \
@@ -200,22 +201,21 @@ download-assets:
 link-assets:
 	cd "$(ROOT_DIR)"
 	mkdir -p "$(ASSETS_DEST)"
-	if [[ "$(ASSETS_DEST)" != "$(ROOT_DIR)/benchmark/assets" ]]; then
-		if [[ -e "$(ROOT_DIR)/benchmark/assets" && ! -L "$(ROOT_DIR)/benchmark/assets" ]]; then
-			printf 'benchmark/assets already exists as a real directory.\n' >&2
+	if [[ "$(ASSETS_DEST)" != "$(ROOT_DIR)/assets" ]]; then
+		if [[ -e "$(ROOT_DIR)/assets" && ! -L "$(ROOT_DIR)/assets" ]]; then
+			printf 'assets/ already exists as a real directory.\n' >&2
 			printf 'Move or remove it first, then re-run make link-assets ASSETS_DEST=%s\n' "$(ASSETS_DEST)" >&2
 			exit 1
 		fi
-		ln -sfn "$(ASSETS_DEST)" "$(ROOT_DIR)/benchmark/assets"
-		printf 'linked benchmark/assets -> %s\n' "$(ASSETS_DEST)"
+		ln -sfn "$(ASSETS_DEST)" "$(ROOT_DIR)/assets"
+		printf 'linked assets -> %s\n' "$(ASSETS_DEST)"
+	else
+		printf 'assets already at %s\n' "$(ASSETS_DEST)"
 	fi
-	ln -sfn ../benchmark/assets sim/assets
-	printf 'linked sim/assets -> ../benchmark/assets\n'
 
 configure-curobo-assets:
-	cd "$(ROOT_DIR)/benchmark/assets/embodiments/aloha-agilex"
-	ASSETS_PATH="$(ASSETS_PATH)" "$(PYTHON)" -c 'from pathlib import Path; import os; assets_path = os.environ["ASSETS_PATH"]; [Path(f"curobo_{side}.yml").write_text(Path(f"curobo_{side}_tmp.yml").read_text(encoding="utf-8").replace("$${ASSETS_PATH}", assets_path), encoding="utf-8") for side in ("left", "right")]'
-	printf 'generated curobo_left.yml and curobo_right.yml with ASSETS_PATH=$(ASSETS_PATH)\n'
+	cd "$(ROOT_DIR)"
+	ASSETS_ROOT="$(ASSETS_DEST)" ASSETS_PATH="$(ASSETS_PATH)" "$(PYTHON)" sim/script/update_embodiment_config_path.py
 
 patch-curobo-config:
 	cd "$(ROOT_DIR)"

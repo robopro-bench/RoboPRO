@@ -165,7 +165,7 @@ class pick_bottle_from_fridge(Kitchen_base_large):
                 contact_point_id=self.GRASP_CONTACT_POINT_ID,
             )
         )
-        self.attach_object(self.bottle, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.bottle_modelname}/collision/base{self.bottle_model_id}.glb", str(arm_tag))
+        self.attach_object(self.bottle, f"{os.environ['ASSETS_ROOT']}/objects/{self.bottle_modelname}/collision/base{self.bottle_model_id}.glb", str(arm_tag))
 
         self.move(self.move_by_displacement(arm_tag=arm_tag, **self.LIFT_DELTA))
         self.move(self.move_by_displacement(arm_tag=arm_tag, **self.RETREAT_DELTA))

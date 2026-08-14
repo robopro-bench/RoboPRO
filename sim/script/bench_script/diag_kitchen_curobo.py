@@ -13,7 +13,7 @@ bench_root = Path(os.environ["BENCH_ROOT"])
 sim_root = Path(os.environ["SIM_ROOT"])
 os.chdir(sim_root)
 
-from envs import CONFIGS_PATH
+from envs import CONFIGS_PATH, resolve_embodiment_path
 
 def get_embodiment_config(robot_file):
     with open(os.path.join(robot_file, "config.yml"), "r") as f:
@@ -33,7 +33,7 @@ def build_cfg(seed):
     embodiment_type = cfg.get("embodiment", ["aloha-agilex"])
     with open(os.path.join(CONFIGS_PATH, "_embodiment_config.yml"), "r") as f:
         etypes = yaml.load(f.read(), Loader=yaml.FullLoader)
-    rf = etypes[embodiment_type[0]]["file_path"]
+    rf = resolve_embodiment_path(etypes[embodiment_type[0]]["file_path"])
     cfg["left_robot_file"] = rf
     cfg["right_robot_file"] = rf
     cfg["dual_arm_embodied"] = True

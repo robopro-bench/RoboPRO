@@ -95,7 +95,7 @@ class move_cup_put_pen_in_cup(Study_base_task):
         self.move(self.grasp_actor(self.cup_obj, arm_tag=arm_tag, pre_grasp_dis=pre_grasp_dist))
 
         self.move(self.move_by_displacement(arm_tag=arm_tag,x=-z if self.scene_id else z, z=z))
-        self.attach_object(self.cup_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.cup_name}/collision/base{self.cup_obj_id}.glb", str(arm_tag))
+        self.attach_object(self.cup_obj, f"{os.environ['ASSETS_ROOT']}/objects/{self.cup_name}/collision/base{self.cup_obj_id}.glb", str(arm_tag))
         self.move(
             self.place_actor(
                 self.cup_obj,
@@ -118,7 +118,7 @@ class move_cup_put_pen_in_cup(Study_base_task):
         des_obj_pose[2] = self.pen_dist_threshold
         # Grasp the mouse with the selected arm
         self.move(self.grasp_actor(self.target_obj, arm_tag=arm_tag, pre_grasp_dis=pre_grasp_dist))
-        self.attach_object(self.target_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.target_name}/collision/base{self.target_id}.glb", str(arm_tag))
+        self.attach_object(self.target_obj, f"{os.environ['ASSETS_ROOT']}/objects/{self.target_name}/collision/base{self.target_id}.glb", str(arm_tag))
 
         self.move(self.move_by_displacement(arm_tag=arm_tag, y=-z, z=z))
         self.move(

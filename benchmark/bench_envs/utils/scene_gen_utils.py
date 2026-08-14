@@ -8,7 +8,7 @@ from transforms3d.euler import euler2quat
 from envs.utils.create_actor import create_actor
 from envs.utils.rand_create_actor import rand_pose
 
-_BACKGROUND_TEXTURE_ROOT = Path(__file__).resolve().parents[2] / "assets" / "backgrounds"
+_BACKGROUND_TEXTURE_ROOT = Path(os.environ.get("ASSETS_ROOT") or Path(__file__).resolve().parents[3] / "assets") / "backgrounds"
 _BACKGROUND_TEXTURE_EXTENSIONS = (".png", ".jpg", ".jpeg")
 
 

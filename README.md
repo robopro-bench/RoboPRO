@@ -74,21 +74,12 @@ This bootstraps `.venv` from the root `pyproject.toml` and `uv.lock`, then runs 
 python scripts/install/download_assets.py
 ```
 
-This fetches the HuggingFace asset bundle (repo id in `scripts/install/download_assets.py`) into `benchmark/assets/` (objects, embodiments, background_texture, backgrounds). The bundle already includes the large `aloha-agilex/.../meshes/box2_Link.dae` mesh — no separate fetch needed.
-
-The shipped `task_config/_embodiment_config.yml` uses relative paths. RoboPRO keeps assets under `benchmark/assets/`, so add a one-line symlink so those paths resolve:
-
-```bash
-ln -sfn ../benchmark/assets sim/assets
-```
+This fetches the HuggingFace asset bundle (repo id in `scripts/install/download_assets.py`) into `assets/` (objects, embodiments, background_texture, backgrounds). The bundle already includes the large `aloha-agilex/.../meshes/box2_Link.dae` mesh — no separate fetch needed.
 
 Generate the local-path curobo configs from the shipped templates, and patch them so CuRobo can attach grasped objects (the shipped configs lack the `attached_object` link entries):
 
 ```bash
-ASSETS_PATH="$(pwd)/benchmark"
-cd benchmark/assets/embodiments/aloha-agilex
-ASSETS_PATH="$ASSETS_PATH" python -c 'from pathlib import Path; import os; assets_path = os.environ["ASSETS_PATH"]; [Path(f"curobo_{side}.yml").write_text(Path(f"curobo_{side}_tmp.yml").read_text(encoding="utf-8").replace("${ASSETS_PATH}", assets_path), encoding="utf-8") for side in ("left", "right")]'
-cd -
+make configure-curobo-assets
 python scripts/install/patch_aloha_curobo.py
 ```
 
@@ -127,7 +118,7 @@ Expected on success: a `Success: True` line and an MP4 at `sim/data/bench_data/v
 Collection and eval run from the repo root. Scene smoke tests still run from `sim/`.
 
 ```bash
-source set_env.sh                  # exports WORKSPACE_ROOT, SIM_ROOT, BENCH_ROOT, DATA_ROOT, POLICY_ROOT
+source set_env.sh                  # exports WORKSPACE_ROOT, SIM_ROOT, BENCH_ROOT, ASSETS_ROOT, DATA_ROOT, POLICY_ROOT
 ```
 
 ### Collect demonstrations

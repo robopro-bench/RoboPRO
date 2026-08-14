@@ -90,14 +90,9 @@ export PYTHONNOUSERSITE=1</code></pre>
     <p class="step-num">Step 5 · Assets</p>
     <h2>Fetch the asset bundle (~15&nbsp;GB).</h2>
 <pre><code>python scripts/install/download_assets.py</code></pre>
-    <p>Pulls the HuggingFace asset bundle (repo id in <code>scripts/install/download_assets.py</code>) into <code>benchmark/assets/</code> (objects, embodiments, background_texture, backgrounds). The bundle already includes <code>aloha-agilex/.../meshes/box2_Link.dae</code> (~206&nbsp;MB) &mdash; no separate fetch needed.</p>
-    <p>The shipped <code>task_config/_embodiment_config.yml</code> uses upstream-relative paths (<code>./assets/embodiments/...</code>). RoboPRO keeps assets under <code>benchmark/assets/</code>, so add a one-line symlink so the upstream paths resolve:</p>
-<pre><code>ln -sfn ../benchmark/assets sim/assets</code></pre>
+    <p>Pulls the HuggingFace asset bundle (repo id in <code>scripts/install/download_assets.py</code>) into <code>assets/</code> (objects, embodiments, background_texture, backgrounds). The bundle already includes <code>aloha-agilex/.../meshes/box2_Link.dae</code> (~206&nbsp;MB) &mdash; no separate fetch needed.</p>
     <p>Generate the local-path curobo configs from the shipped templates, and patch them so CuRobo can attach grasped objects (the shipped configs lack the <code>attached_object</code> link entries):</p>
-<pre><code>ASSETS_PATH="$(pwd)/benchmark"
-cd benchmark/assets/embodiments/aloha-agilex
-ASSETS_PATH="$ASSETS_PATH" python -c 'from pathlib import Path; import os; assets_path = os.environ["ASSETS_PATH"]; [Path(f"curobo_{side}.yml").write_text(Path(f"curobo_{side}_tmp.yml").read_text(encoding="utf-8").replace("${ASSETS_PATH}", assets_path), encoding="utf-8") for side in ("left", "right")]'
-cd -
+<pre><code>make configure-curobo-assets
 python scripts/install/patch_aloha_curobo.py</code></pre>
   </div>
 </section>

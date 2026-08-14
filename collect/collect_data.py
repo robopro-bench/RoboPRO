@@ -61,7 +61,7 @@ def build_task_and_args(task_name, task_config):
         _embodiment_types = yaml.load(f.read(), Loader=yaml.FullLoader)
 
     def get_embodiment_file(embodiment_type):
-        robot_file = _embodiment_types[embodiment_type]["file_path"]
+        robot_file = resolve_embodiment_path(_embodiment_types[embodiment_type]["file_path"])
         if robot_file is None:
             raise "missing embodiment files"
         return robot_file

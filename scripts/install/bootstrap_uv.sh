@@ -69,7 +69,7 @@ uv bootstrap complete.  CUDA_HOME=${CUDA_HOME}
 
 Next steps:
   make download-assets          # ~15 GB from HuggingFace (skip if you already have them)
-  make link-assets              # create asset symlinks
+  make link-assets              # only if assets are not already at assets/
   make configure-curobo-assets  # render CuRobo YAML configs
   make patch-curobo-config      # patch CuRobo attached_object entries
   make verify-rollout           # smoke test

@@ -97,7 +97,7 @@ class store_rubikscube_on_shelf(Office_base_task):
         # Lift the box upward by 0.1 meters in z-direction
         self.move(self.move_by_displacement(arm_tag=arm_tag, z=0.03))
 
-        self.attach_object(self.target_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/073_rubikscube/collision/base{self.cube_id}.glb", str(arm_tag))
+        self.attach_object(self.target_obj, f"{os.environ['ASSETS_ROOT']}/objects/073_rubikscube/collision/base{self.cube_id}.glb", str(arm_tag))
 
         self.move(
             self.place_actor(

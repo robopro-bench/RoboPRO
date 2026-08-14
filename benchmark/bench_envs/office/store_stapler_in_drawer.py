@@ -76,7 +76,7 @@ class store_stapler_in_drawer(Office_base_task):
 
         self.grasp_actor_from_table(self.target_obj, arm_tag=arm_tag, pre_grasp_dis=0.07, contact_point_id=[0,1])
         self.move(self.move_by_displacement(arm_tag=arm_tag, z=0.03))
-        self.attach_object(self.target_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/048_stapler/collision/base{self.stapler_id}.glb", str(arm_tag))
+        self.attach_object(self.target_obj, f"{os.environ['ASSETS_ROOT']}/objects/048_stapler/collision/base{self.stapler_id}.glb", str(arm_tag))
         self.enable_table(enable=True)
 
         des_obj_pose = self.cabinet.get_functional_point(0)

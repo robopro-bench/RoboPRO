@@ -10,6 +10,7 @@ import time
 import random
 
 _OBJ_DESC = Path(os.environ.get("BENCH_ROOT", ".")) / "bench_description" / "objects_description"
+_ASSETS_OBJECTS = Path(os.environ.get("ASSETS_ROOT", ".")) / "objects"
 
 
 class subPart(BaseModel):
@@ -114,7 +115,7 @@ def make_prompt_generate(imgStr, object_name):
 
 def generate_obj_description(object_name, glb_file_name):
     time_start = time.time()
-    object_file_path = f"../assets/objects/{object_name}/visual/{glb_file_name}"
+    object_file_path = str(_ASSETS_OBJECTS / object_name / "visual" / glb_file_name)
     save_dir = str(_OBJ_DESC / object_name)
     result_img_path = f"{save_dir}/{glb_file_name}.png"
     if not os.path.exists(result_img_path):
@@ -150,7 +151,7 @@ if __name__ == "__main__":
     clear_png = not usr_args.store_png
 
     if object_name is None:  # process all objects
-        objects_dir = "../assets/objects"
+        objects_dir = str(_ASSETS_OBJECTS)
         results_dir = str(_OBJ_DESC)
         for object_name in sorted(os.listdir(objects_dir)):
             parts = object_name.split("_")
@@ -176,7 +177,7 @@ if __name__ == "__main__":
                                 os.remove(png_path)
                                 print(f"Deleted: {png_path}")
     elif object_index is None:  # all type for specific object
-        folder_path = f"../assets/objects/{object_name}/visual"
+        folder_path = str(_ASSETS_OBJECTS / object_name / "visual")
         files_and_folders = os.listdir(folder_path)
         glb_files = [file for file in files_and_folders if file.endswith(".glb")]
         for glb_file in glb_files:

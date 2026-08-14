@@ -1,5 +1,6 @@
 import trimesh
 import os
+from pathlib import Path
 import numpy as np
 import argparse
 import traceback
@@ -87,7 +88,7 @@ if __name__ == "__main__":
 
     total_conversions = 0
 
-    assets_path = "../assets/objects"
+    assets_path = str(Path(os.environ.get("ASSETS_ROOT", ".")) / "objects")
     # Process each object directory in assets/objects
     for obj_dir in os.listdir(assets_path):
         obj_path = os.path.join(assets_path, obj_dir)

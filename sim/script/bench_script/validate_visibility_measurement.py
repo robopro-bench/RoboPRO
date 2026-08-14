@@ -36,7 +36,7 @@ sim_root = Path(os.environ["SIM_ROOT"])
 os.chdir(sim_root)  # match path resolution used by collect_data / visualize
 
 import yaml
-from envs import CONFIGS_PATH
+from envs import CONFIGS_PATH, resolve_embodiment_path
 from visualize_task_scene import get_env_class, get_embodiment_config
 
 
@@ -64,7 +64,7 @@ def build_env(task_name, task_config, seed, bench_subdir):
         _embodiment_types = yaml.load(f.read(), Loader=yaml.FullLoader)
 
     def emb_file(name):
-        robot_file = _embodiment_types[name]["file_path"]
+        robot_file = resolve_embodiment_path(_embodiment_types[name]["file_path"])
         if robot_file is None:
             raise SystemExit("missing embodiment files")
         return robot_file

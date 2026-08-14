@@ -16,7 +16,7 @@ Idempotent: re-running is a no-op.
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-EMB_DIR = REPO_ROOT / "benchmark" / "assets" / "embodiments" / "aloha-agilex"
+EMB_DIR = REPO_ROOT / "assets" / "embodiments" / "aloha-agilex"
 
 EXTRA_LINKS_BLOCK = """    extra_links:
       attached_object:

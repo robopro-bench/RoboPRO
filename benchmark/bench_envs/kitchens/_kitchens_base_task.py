@@ -379,7 +379,7 @@ class KitchenS_base_task(Bench_base_task):
             pass
         elif self.random_background:
             texture_type = "seen" if not self.eval_mode else "unseen"
-            directory_path = f"{os.environ['BENCH_ROOT']}/assets/background_texture/{texture_type}"
+            directory_path = f"{os.environ['ASSETS_ROOT']}/background_texture/{texture_type}"
             file_count = len(
                 [name for name in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, name))])
 
@@ -516,7 +516,7 @@ class KitchenS_base_task(Bench_base_task):
         hb = sink_rel_y + sink_hy
 
         if self.table_texture is not None:
-            texture_path = f"{os.environ['BENCH_ROOT']}/assets/background_texture/{self.table_texture}.png"
+            texture_path = f"{os.environ['ASSETS_ROOT']}/background_texture/{self.table_texture}.png"
             texture2d = sapien.render.RenderTexture2D(texture_path)
             counter_mat = sapien.render.RenderMaterial()
             counter_mat.set_base_color_texture(texture2d)
@@ -726,7 +726,7 @@ class KitchenS_base_task(Bench_base_task):
         self.add_prohibit_area(self.microwave, padding=0.02, area="table")
         self.collision_list.append({
             "actor": self.microwave,
-            "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/044_microwave/visual/base0.glb",
+            "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/044_microwave/visual/base0.glb",
         })
 
         # Tasks that close the microwave door (close_microwave_ks and the
@@ -759,10 +759,10 @@ class KitchenS_base_task(Bench_base_task):
         # not match the glb). After the +90° x-rotation, the mesh's original
         # +y axis becomes world +z, so world bottom = origin_z + y_min * scale.
         # 135_dish-rack is a benchmark-custom asset under assets/objects/
-        # (lives under benchmark/assets/objects/). create_actor is hardcoded to
+        # (lives under assets/objects/). create_actor is hardcoded to
         # assets/objects/, so the actor is built inline here.
-        # rack_asset_dir = f"{os.environ['BENCH_ROOT']}/assets/objects/135_dish-rack"
-        rack_asset_dir = f"{os.environ['BENCH_ROOT']}/assets/objects/135_dish-rack"
+        # rack_asset_dir = f"{os.environ['ASSETS_ROOT']}/objects/135_dish-rack"
+        rack_asset_dir = f"{os.environ['ASSETS_ROOT']}/objects/135_dish-rack"
         with open(f"{rack_asset_dir}/model_data0.json") as _f:
             _rd = json.load(_f)
         # Default JSON scale (0.6435) puts the rack top at z ≈ 0.89, putting
@@ -821,7 +821,7 @@ class KitchenS_base_task(Bench_base_task):
         ])
         self.collision_list.append({
             "actor": self.dishrack,
-            "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/135_dish-rack/base0.glb",
+            "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/135_dish-rack/base0.glb",
         })
         # NOTE: the old invisible box "containment tray" was removed. It sat a
         # solid floor at rack_top_z, so objects landed on top of the rack
@@ -942,7 +942,7 @@ class KitchenS_base_task(Bench_base_task):
     # ------------------------------------------------------------------
 
     def add_extra_cameras(self):
-        self.cameras.add_extra_cameras(f"{os.environ['BENCH_ROOT']}/assets/embodiments/kitchen_s_config.yml")
+        self.cameras.add_extra_cameras(f"{os.environ['ASSETS_ROOT']}/embodiments/kitchen_s_config.yml")
 
     # ------------------------------------------------------------------
     # Clutter
