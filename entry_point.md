@@ -44,7 +44,7 @@ Use this to fetch the benchmark asset bundle into the configured asset destinati
 make link-assets
 ```
 
-Use this to wire the benchmark asset directory and the `customized_robotwin/assets` path to the destination you want to use locally.
+Use this to wire the benchmark asset directory and the `sim/assets` path to the destination you want to use locally.
 
 ### `make configure-curobo-assets`
 

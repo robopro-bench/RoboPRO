@@ -9,9 +9,8 @@ Generate 4 comparison videos for the same task using 4 perturbation configs:
 All runs use the same seed and clutter settings for fair comparison.
 
 USAGE:
-    cd customized_robotwin
+    cd sim
     source set_env.sh
-    export ROBOTWIN_BENCH_TASK=bench
     conda activate RoboTwin
     python $BENCH_ROOT/bench_script/generate_comparison_videos.py \
         --task put_cup_on_coaster --bench-subdir study --seed 42
@@ -64,15 +63,15 @@ def main():
     args = parser.parse_args()
 
     bench_root = os.environ.get("BENCH_ROOT")
-    robotwin_root = os.environ.get("ROBOTWIN_ROOT")
-    if not bench_root or not robotwin_root:
-        print("Error: BENCH_ROOT and ROBOTWIN_ROOT must be set. Run: source set_env.sh")
+    sim_root = os.environ.get("SIM_ROOT")
+    if not bench_root or not sim_root:
+        print("Error: BENCH_ROOT and SIM_ROOT must be set. Run: source set_env.sh")
         sys.exit(1)
 
     output_dir = Path(args.output_dir) if args.output_dir else Path(f"./comparison_videos/{args.task}")
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    script_path = Path(robotwin_root) / "script" / "bench_script" / "visualize_task_scene.py"
+    script_path = Path(sim_root) / "script" / "bench_script" / "visualize_task_scene.py"
     if not script_path.exists():
         print(f"Error: {script_path} not found")
         sys.exit(1)
@@ -111,7 +110,6 @@ def main():
             cmd += ["--bench-subdir", args.bench_subdir]
 
         env = os.environ.copy()
-        env["ROBOTWIN_BENCH_TASK"] = "bench"
 
         print(f"  Running: {' '.join(cmd)}")
         try:

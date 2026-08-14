@@ -6,7 +6,7 @@
 # Copy → rename → tune episode_num / obstacle_density / the collision block
 # at the bottom. Full dataset spec + label semantics: DATA_GEN.md at repo root.
 #
-# Run (from customized_robotwin/, env `robopro`, ROBOTWIN_BENCH_TASK=bench):
+# Run (from sim/, env `robopro`):
 #   bash collect_data.sh <task_name> <this_config_name> <gpu_id>     # single GPU
 #   bash collect_data.sh <task_name> <this_config_name> 0,1          # multi-GPU
 # Forgot a modality? Episodes are replayable bit-exact (DATA_GEN.md §5.3):

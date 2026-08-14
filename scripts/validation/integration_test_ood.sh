@@ -5,9 +5,8 @@
 # per scene family, across multiple seeds. Saves videos for review.
 #
 # Usage:
-#   cd customized_robotwin
+#   cd sim
 #   source set_env.sh
-#   export ROBOTWIN_BENCH_TASK=bench
 #   bash ../scripts/validation/integration_test_ood.sh
 #
 # Options (env vars):

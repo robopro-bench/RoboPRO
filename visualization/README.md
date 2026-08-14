@@ -9,7 +9,7 @@ freely (`data/<save>/<task>/<config>/export/` and `/viz/` are throwaway).
 `data/dataset/put_cup_on_coaster/datagen_template`. Role colors everywhere:
 **target = red, destination = green, obstacles = orange, robot = blue.**
 
-Run from the repo root (or `customized_robotwin/` with `../visualization/...`).
+Run from the repo root (or `sim/` with `../visualization/...`).
 
 ---
 
@@ -128,9 +128,9 @@ light touches. Full label semantics: DATA_GEN.md §5.2.
 
 ## Timing a collection run
 
-`customized_robotwin/time_run.sh` (bash, lives next to `collect_data.sh`):
+`sim/time_run.sh` (bash, lives next to `collect_data.sh`):
 
 ```bash
-cd customized_robotwin
+cd sim
 bash time_run.sh <task> <config> [gpu]      # wall time, sec/episode, full-dataset projection
 ```

@@ -2,9 +2,11 @@
 
 **P**erturbation-**R**esilient **O**bstacle-awareness — a bimanual manipulation benchmark for policy robustness evaluation.
 
+RoboPRO is a modified fork of [RoboTwin 2.0](https://github.com/RoboTwin-Platform/RoboTwin). The simulation runtime (SAPIEN + CuRobo, Aloha-AgileX) is based on their stack; the 80 tasks, realistic scenes, and perturbation suite are ours.
+
 **Project page:** https://anonymous.4open.science/w/RoboPRO-EDE0/index.html
 
-RoboPRO extends the RoboTwin simulation framework with:
+RoboPRO adds:
 - **Realistic scenes** across office, study, kitchen (small & large) domains
 - **Systematic perturbation suite** — Language, Vision, and Object axes for evaluating policy robustness
 - **Aloha-Agilex** bimanual embodiment with CuRobo motion planning
@@ -44,7 +46,7 @@ export PYTHONNOUSERSITE=1
 #### Option A. Conda workflow
 
 ```bash
-cd customized_robotwin
+cd sim
 pip install -r script/requirements.txt
 pip install setuptools==69.5.1       # provides pkg_resources for sapien
 pip install "git+https://github.com/facebookresearch/pytorch3d.git@stable" --no-build-isolation
@@ -54,7 +56,7 @@ cd ..
 
 > **aarch64 (GB10 / DGX Spark):** PyPI has no aarch64 wheel for `sapien==3.0.0b1`, so `requirements.txt` will fail to resolve it. Build the SAPIEN wheel from source first — see [docs/setup_sapien_aarch64.md](docs/setup_sapien_aarch64.md) — then re-run the requirements install (pip will treat sapien as satisfied).
 
-> ⚠️ **SAPIEN version matters:** the benchmark is pinned to `sapien==3.0.0b1`. A different SAPIEN version can change physics and rendering behavior, which shifts evaluation results — success rates from mismatched versions are not comparable. Verify with `python -c "import sapien; print(sapien.__version__)"` before collecting data or running evals.
+> **SAPIEN version matters:** the benchmark is pinned to `sapien==3.0.0b1`. A different SAPIEN version can change physics and rendering behavior, which shifts evaluation results — success rates from mismatched versions are not comparable. Verify with `python -c "import sapien; print(sapien.__version__)"` before collecting data or running evals.
 
 `script/_install.sh` also clones CuRobo v0.7.8 into `envs/curobo/` and pip-installs it editable, then re-pins `warp-lang==1.12.0` and `setuptools==69.5.1`. If you keep `scipy==1.10.1` from `requirements.txt`, `scikit-image` will print a version-conflict warning — harmless.
 
@@ -64,7 +66,7 @@ cd ..
 bash scripts/install/bootstrap_uv.sh
 ```
 
-This bootstraps `.venv` from the root `pyproject.toml` and `uv.lock`, then runs the post-install patches and clones CuRobo v0.7.8 into `customized_robotwin/envs/curobo/` as an editable install. The uv path does not install `customized_robotwin/script/requirements.txt` directly, so any dependency added there must also be mirrored in `pyproject.toml`. If you keep `scipy==1.10.1`, `scikit-image` may print a version-conflict warning during install — harmless.
+This bootstraps `.venv` from the root `pyproject.toml` and `uv.lock`, then runs the post-install patches and clones CuRobo v0.7.8 into `sim/envs/curobo/` as an editable install. The uv path does not install `sim/script/requirements.txt` directly, so any dependency added there must also be mirrored in `pyproject.toml`. If you keep `scipy==1.10.1`, `scikit-image` may print a version-conflict warning during install — harmless.
 
 ### 3. Assets (~15 GB)
 
@@ -72,12 +74,12 @@ This bootstraps `.venv` from the root `pyproject.toml` and `uv.lock`, then runs 
 python scripts/install/download_assets.py
 ```
 
-This fetches the HuggingFace bundle (`Hoshipu/RoboPRO_assets`) into `benchmark/assets/` (objects, embodiments, background_texture, backgrounds). The bundle already includes the large `aloha-agilex/.../meshes/box2_Link.dae` mesh — no separate fetch needed.
+This fetches the HuggingFace asset bundle (repo id in `scripts/install/download_assets.py`) into `benchmark/assets/` (objects, embodiments, background_texture, backgrounds). The bundle already includes the large `aloha-agilex/.../meshes/box2_Link.dae` mesh — no separate fetch needed.
 
-The shipped `task_config/_embodiment_config.yml` uses upstream-relative paths (`./assets/embodiments/...`). RoboPRO keeps assets under `benchmark/assets/`, so add a one-line symlink so the upstream paths resolve:
+The shipped `task_config/_embodiment_config.yml` uses relative paths. RoboPRO keeps assets under `benchmark/assets/`, so add a one-line symlink so those paths resolve:
 
 ```bash
-ln -sfn ../benchmark/assets customized_robotwin/assets
+ln -sfn ../benchmark/assets sim/assets
 ```
 
 Generate the local-path curobo configs from the shipped templates, and patch them so CuRobo can attach grasped objects (the shipped configs lack the `attached_object` link entries):
@@ -92,7 +94,7 @@ python scripts/install/patch_aloha_curobo.py
 
 ### 4. CuRobo cache patch
 
-In `customized_robotwin/envs/curobo/src/curobo/geom/sdf/world_mesh.py`, replace `clear_cache` with:
+In `sim/envs/curobo/src/curobo/geom/sdf/world_mesh.py`, replace `clear_cache` with:
 
 ```python
 def clear_cache(self):
@@ -111,24 +113,22 @@ def clear_cache(self):
 ### 5. Verify (headless rollout)
 
 ```bash
-cd customized_robotwin
+cd sim
 source set_env.sh
-export ROBOTWIN_BENCH_TASK=bench
 python script/bench_script/visualize_task_scene.py \
     put_mouse_on_pad bench_demo_office_clean \
     --bench-subdir office --rollout --no-render --seed 0 --save_data
 ```
 
-Expected on success: a `Success: True` line and an MP4 at `customized_robotwin/data/bench_data/video/episode_put_mouse_on_pad_0.mp4` (~176 frames @ 320×240).
+Expected on success: a `Success: True` line and an MP4 at `sim/data/bench_data/video/episode_put_mouse_on_pad_0.mp4` (~176 frames @ 320×240).
 
 ## Usage
 
-All commands run from `customized_robotwin/` with the bench env exported:
+All commands run from `sim/` after sourcing the env:
 
 ```bash
-cd customized_robotwin
-source set_env.sh                  # exports BENCH_ROOT + ROBOTWIN_ROOT
-export ROBOTWIN_BENCH_TASK=bench   # routes loaders to BENCH_ROOT/{bench_task_config, bench_envs}
+cd sim
+source set_env.sh                  # exports BENCH_ROOT + SIM_ROOT
 ```
 
 ### Collect demonstrations
@@ -139,16 +139,16 @@ bash collect_data.sh <task_name> <task_config> <gpu_id>
 bash collect_data.sh put_mouse_on_pad bench_demo_office_clean 0
 ```
 
-Episodes land in `customized_robotwin/data/<task_name>/<task_config>/`.
+Episodes land in `sim/data/<task_name>/<task_config>/`.
 
 ### Convert HDF5 to LeRobot
 
-[`customized_robotwin/script/lerobot_convert/`](customized_robotwin/script/lerobot_convert/) turns a scene-organised RoboPRO / RoboTwin dump (`<tier>/seedN/data/episode*.hdf5`) into a LeRobot v2.1 dataset (parquet + `countertop`/`left`/`right` videos, 1:1 at 30 fps). The task prompt is the HDF5 `task_name` looked up in `benchmark/bench_description/plain_instructions.json` (or `--task-text`).
+[`sim/script/lerobot_convert/`](sim/script/lerobot_convert/) turns a scene-organised RoboPRO dump (`<tier>/seedN/data/episode*.hdf5`) into a LeRobot v2.1 dataset (parquet + `countertop`/`left`/`right` videos, 1:1 at 30 fps). The task prompt is the HDF5 `task_name` looked up in `benchmark/bench_description/plain_instructions.json` (or `--task-text`).
 
 From the repo root (env with `cv2`, `av`, `h5py`, `pandas`, `numpy`):
 
 ```bash
-PYTHONPATH=customized_robotwin/script python -m lerobot_convert.convert_scenes \
+PYTHONPATH=sim/script python -m lerobot_convert.convert_scenes \
     --src /path/to/<task>_38scene_... \
     --out /path/to/lerobot_out \
     --limit 2 --overwrite
@@ -162,8 +162,8 @@ Eval rolls a trained checkpoint out against a `(task, config)` pair and writes a
 
 | Policy | Weights |
 |---|---|
-| pi05 | [mzxuan/robopro_jax_30000](https://huggingface.co/mzxuan/robopro_jax_30000/tree/main) |
-| X-VLA | [mzxuan/x-vla-robopro-100k](https://huggingface.co/mzxuan/x-vla-robopro-100k) |
+| pi05 | TODO: HuggingFace checkpoint |
+| X-VLA | TODO: HuggingFace checkpoint |
 
 For pi05, symlink the downloaded `jax_30000/` dir to `policy/pi05/checkpoints/<train_config_name>/<model_name>/30000/`.
 
@@ -197,7 +197,7 @@ bash policy/pi05/eval_double_env.sh put_mouse_on_pad bench_demo_office_clean my_
 bash policy/pi05/eval_double_env.sh put_mouse_on_pad bench_demo_office_clean my_office_train pi05_ckpt 30000 0 0:1
 ```
 
-The script spawns a `policy_model_server.py` in the pi05 venv and an `eval_policy_client.py` in the RoboTwin conda env, communicating over a free socket port.
+The script spawns a `policy_model_server.py` in the pi05 venv and an `eval_policy_client.py` in the RoboPRO sim env, communicating over a free socket port.
 
 **Eval seeds.** When `BENCH_ROOT` is set and `benchmark/eval_seeds/<task>/<task_config>.txt` exists, eval loads that fixed seed list (skips live expert scanning). Override with `--eval_seed_file /path/to.txt`, or fall back to scanning other seeds with `--use_eval_seeds false`. Cap episodes with `--test_num N` (capped by the file length). Precollect seeds via `python script/precollect_eval_seeds.py <task> <task_config>` (also used by `scripts/slurm/slurm_precollect_then_eval.sh`).
 
@@ -231,7 +231,7 @@ python script/eval_policy.py \
 **Where results land:**
 
 ```
-customized_robotwin/eval_result/bench_eval_result/<task_name>/<policy_name>/<task_config>/<ckpt_setting>/<timestamp>/
+sim/eval_result/<task_name>/<policy_name>/<task_config>/<ckpt_setting>/<timestamp>/
     _result.txt        # success count, per-seed pass/fail
     *.mp4              # rollout videos (if eval_video_save is enabled)
 ```
@@ -246,8 +246,6 @@ sbatch scripts/slurm/slurm_eval_bench.sh \
 ```
 
 Set `--chdir` and `--output` in the sbatch header to your local checkout (see comments at the top of `scripts/slurm/slurm_eval_bench.sh`). Pin a specific Python with `export PI05_PYTHON=/path/to/miniconda3/envs/pi05/bin/python`.
-
-For arrayed sweeps over a `(tasks × configs)` grid, see `customized_robotwin/robotwin_*.sbatch` for templates.
 
 ## Perturbation configs
 
@@ -277,7 +275,7 @@ See the YAMLs in `benchmark/bench_task_config/` for parameter-level details, and
 | Kitchen (Small) | `put_dish_in_rack`, `place_in_sink`, ... |
 | Kitchen (Large) | `microwave_heat`, `fridge_store`, ... |
 
-Full list in `benchmark/bench_envs/`.
+Full list in [`TASKS.md`](TASKS.md) and `benchmark/bench_envs/`.
 
 ## New tasks
 
@@ -285,7 +283,7 @@ Full list in `benchmark/bench_envs/`.
 2. Add `_eval_step_lim.yml` entry under `benchmark/bench_task_config/`.
 3. Add a description template under `benchmark/bench_description/task_instructions/`.
 
-Naming tip: never reuse an existing RoboTwin task name. Start from an analogous sibling task (`kitchenl/`, `office/`, `study/`) — copying a proven recipe is faster than inventing from scratch.
+Start from an analogous sibling task (`kitchenl/`, `office/`, `study/`) — copying a proven recipe is faster than inventing from scratch.
 
 ## Troubleshooting
 
@@ -301,4 +299,24 @@ Common setup problems and where their fixes live:
 
 ## License
 
-See `LICENSE`.
+This repository is released under the MIT license. See [`LICENSE`](LICENSE). The simulation runtime is derived from RoboTwin 2.0 (MIT, Copyright (c) 2025 Tianxing Chen).
+
+## Citation
+
+If you use RoboPRO, please cite RoboTwin (the simulation platform this work is based on) and this project:
+
+```
+@article{chen2025robotwin,
+  title={Robotwin 2.0: A scalable data generator and benchmark with strong domain randomization for robust bimanual robotic manipulation},
+  author={Chen, Tianxing and Chen, Zanxin and Chen, Baijun and Cai, Zijian and Liu, Yibin and others},
+  journal={arXiv preprint arXiv:2506.18088},
+  year={2025}
+}
+
+@article{TODO_robopro,
+  title={TODO: RoboPRO paper title},
+  author={TODO},
+  journal={TODO},
+  year={2026}
+}
+```

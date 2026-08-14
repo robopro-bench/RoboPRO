@@ -5,9 +5,8 @@
 # no loading errors or crashes.
 #
 # Usage:
-#   cd customized_robotwin
+#   cd sim
 #   source set_env.sh
-#   export ROBOTWIN_BENCH_TASK=bench
 #   bash ../scripts/validation/smoke_test_compositional.sh
 
 SEED="${SEED:-0}"

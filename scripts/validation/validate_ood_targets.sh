@@ -5,9 +5,8 @@
 # and runs an expert rollout to confirm grasp + place + check_success().
 #
 # Usage:
-#   cd customized_robotwin
+#   cd sim
 #   source set_env.sh
-#   export ROBOTWIN_BENCH_TASK=bench
 #   bash ../scripts/validation/validate_ood_targets.sh
 #
 # Options:

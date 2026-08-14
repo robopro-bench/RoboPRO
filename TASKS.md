@@ -114,7 +114,7 @@ Total per task: 200 episodes (100 clean + 100 cluttered)
 
 ## HuggingFace Dataset
 
-Repository: [Hoshipu/roboreal_data](https://huggingface.co/datasets/Hoshipu/roboreal_data)
+Repository: TODO: HuggingFace dataset
 
 Layout (same shape for all four domains — `study/`, `office/`, `kitchenl/`, `kitchens/`):
 

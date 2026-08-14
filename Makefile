@@ -3,12 +3,11 @@ SHELL := /bin/bash
 .ONESHELL:
 
 ROOT_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
-CUSTOMIZED_ROOT := $(ROOT_DIR)/customized_robotwin
+SIM_ROOT := $(ROOT_DIR)/sim
 PYTHON ?= $(ROOT_DIR)/.venv/bin/python
 UV ?= uv
 
 # Common benchmark settings
-ROBOTWIN_BENCH_TASK ?= bench
 TASK_NAME ?= put_mouse_on_pad
 TASK_CONFIG ?= bench_demo_office_clean
 BENCH_SUBDIR ?= office
@@ -80,10 +79,9 @@ REACH_Z ?= 0.90
 REACH_ARMS ?= both
 PICKUP_SEEDS ?= 1,2,3,4,5
 
-define RUN_IN_CUSTOMIZED
-	cd "$(CUSTOMIZED_ROOT)"
+define RUN_IN_SIM
+	cd "$(SIM_ROOT)"
 	source set_env.sh
-	export ROBOTWIN_BENCH_TASK="$(ROBOTWIN_BENCH_TASK)"
 	$(1)
 endef
 
@@ -103,7 +101,7 @@ help:
 	'    Vars: PYTHON_VERSION=3.10' \
 	'  make download-assets          Download benchmark bundles.' \
 	'    Vars: ASSETS_DEST=benchmark/assets KEEP_ZIPS=0|1' \
-	'  make link-assets              Wire benchmark/assets and customized_robotwin/assets to ASSETS_DEST.' \
+	'  make link-assets              Wire benchmark/assets and sim/assets to ASSETS_DEST.' \
 	'  make configure-curobo-assets  Render curobo_{left,right}.yml from curobo_*_tmp.yml' \
 	'    Vars: ASSETS_PATH=$(ASSETS_PATH)' \
 	'  make patch-curobo-config      Run scripts/install/patch_aloha_curobo.py' \
@@ -205,8 +203,8 @@ link-assets:
 		ln -sfn "$(ASSETS_DEST)" "$(ROOT_DIR)/benchmark/assets"
 		printf 'linked benchmark/assets -> %s\n' "$(ASSETS_DEST)"
 	fi
-	ln -sfn ../benchmark/assets customized_robotwin/assets
-	printf 'linked customized_robotwin/assets -> ../benchmark/assets\n'
+	ln -sfn ../benchmark/assets sim/assets
+	printf 'linked sim/assets -> ../benchmark/assets\n'
 
 configure-curobo-assets:
 	cd "$(ROOT_DIR)/benchmark/assets/embodiments/aloha-agilex"
@@ -220,10 +218,10 @@ patch-curobo-config:
 setup: link-assets configure-curobo-assets patch-curobo-config
 
 render-test:
-	$(call RUN_IN_CUSTOMIZED,$(PYTHON) script/test_render.py)
+	$(call RUN_IN_SIM,$(PYTHON) script/test_render.py)
 
 verify-scene:
-	$(call RUN_IN_CUSTOMIZED,\
+	$(call RUN_IN_SIM,\
 		cmd='$(PYTHON) script/bench_script/visualize_task_scene.py "$(TASK_NAME)" "$(TASK_CONFIG)" --seed "$(SEED)" --render-freq "$(RENDER_FREQ)" --viewer-camera "$(VIEWER_CAMERA)"'; \
 		if [[ -n "$(BENCH_SUBDIR)" ]]; then cmd+=" --bench-subdir $(BENCH_SUBDIR)"; fi; \
 		if [[ "$(NO_RENDER)" == "1" ]]; then cmd+=" --no-render"; fi; \
@@ -231,7 +229,7 @@ verify-scene:
 		eval "$$cmd")
 
 verify-rollout:
-	$(call RUN_IN_CUSTOMIZED,\
+	$(call RUN_IN_SIM,\
 		cmd='$(PYTHON) script/bench_script/visualize_task_scene.py "$(TASK_NAME)" "$(TASK_CONFIG)" --seed "$(SEED)" --render-freq "$(RENDER_FREQ)" --viewer-camera "$(VIEWER_CAMERA)"'; \
 		if [[ -n "$(BENCH_SUBDIR)" ]]; then cmd+=" --bench-subdir $(BENCH_SUBDIR)"; fi; \
 		if [[ "$(ROLLOUT)" == "1" ]]; then cmd+=" --rollout"; fi; \
@@ -241,16 +239,16 @@ verify-rollout:
 		eval "$$cmd")
 
 collect-data:
-	$(call RUN_IN_CUSTOMIZED,bash collect_data.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(GPU_ID)")
+	$(call RUN_IN_SIM,bash collect_data.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(GPU_ID)")
 
 precollect-seeds:
-	$(call RUN_IN_CUSTOMIZED,$(PYTHON) script/precollect_eval_seeds.py "$(TASK_NAME)" "$(TASK_CONFIG)")
+	$(call RUN_IN_SIM,$(PYTHON) script/precollect_eval_seeds.py "$(TASK_NAME)" "$(TASK_CONFIG)")
 
 precollect-envs:
 	$(call RUN_IN_CUSTOMIZED,$(PYTHON) script/precollect_eval_envs.py "$(TASK_NAME)" "$(TASK_CONFIG)" $(if $(EVAL_ENV_TARGET),--target $(EVAL_ENV_TARGET),) $(if $(EVAL_ENV_START_SEED),--start-seed $(EVAL_ENV_START_SEED),))
 
 eval-direct:
-	$(call RUN_IN_CUSTOMIZED,\
+	$(call RUN_IN_SIM,\
 		$(PYTHON) script/eval_policy.py \
 			--config "$(POLICY_CONFIG)" \
 			--overrides \
@@ -266,7 +264,7 @@ eval-direct:
 			--test_num "$(TEST_NUM)")
 
 policy-server:
-	$(call RUN_IN_CUSTOMIZED,\
+	$(call RUN_IN_SIM,\
 		$(PYTHON) script/policy_model_server.py \
 			--port "$(PORT)" \
 			--config "$(POLICY_CONFIG)" \
@@ -281,7 +279,7 @@ policy-server:
 			--seed "$(SEED)")
 
 eval-client:
-	$(call RUN_IN_CUSTOMIZED,\
+	$(call RUN_IN_SIM,\
 		$(PYTHON) script/eval_policy_client.py \
 			--port "$(PORT)" \
 			--config "$(POLICY_CONFIG)" \
@@ -298,13 +296,13 @@ eval-client:
 			--test_num "$(TEST_NUM)")
 
 eval-pi05-single:
-	$(call RUN_IN_CUSTOMIZED,bash policy/pi05/eval.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(TRAIN_CONFIG_NAME)" "$(MODEL_NAME)" "$(CHECKPOINT_ID)" "$(CKPT_SETTING)" "$(SEED)" "$(GPU_ID)")
+	$(call RUN_IN_SIM,bash policy/pi05/eval.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(TRAIN_CONFIG_NAME)" "$(MODEL_NAME)" "$(CHECKPOINT_ID)" "$(CKPT_SETTING)" "$(SEED)" "$(GPU_ID)")
 
 eval-pi05-double:
-	$(call RUN_IN_CUSTOMIZED,bash policy/pi05/eval_double_env.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(TRAIN_CONFIG_NAME)" "$(MODEL_NAME)" "$(CHECKPOINT_ID)" "$(SEED)" "$(GPU_SPEC)")
+	$(call RUN_IN_SIM,bash policy/pi05/eval_double_env.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(TRAIN_CONFIG_NAME)" "$(MODEL_NAME)" "$(CHECKPOINT_ID)" "$(SEED)" "$(GPU_SPEC)")
 
 collect-rollout-pi05:
-	$(call RUN_IN_CUSTOMIZED,\
+	$(call RUN_IN_SIM,\
 		export COLLECT_NUM="$(COLLECT_NUM)"; \
 		if [[ -n "$(COLLECT_START_SEED)" ]]; then export COLLECT_START_SEED="$(COLLECT_START_SEED)"; fi; \
 		export COLLECT_BRANCH_NUM="$(COLLECT_BRANCH_NUM)"; \
@@ -315,10 +313,10 @@ collect-rollout-pi05:
 		bash policy/pi05/collect_rollout.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(TRAIN_CONFIG_NAME)" "$(MODEL_NAME)" "$(CHECKPOINT_ID)" "$(SEED)" "$(GPU_SPEC)")
 
 diag-kitchen-curobo:
-	$(call RUN_IN_CUSTOMIZED,$(PYTHON) script/bench_script/diag_kitchen_curobo.py)
+	$(call RUN_IN_SIM,$(PYTHON) script/bench_script/diag_kitchen_curobo.py)
 
 occluder-visibility:
-	$(call RUN_IN_CUSTOMIZED,\
+	$(call RUN_IN_SIM,\
 		export CUROBO_TRAJOPT_SEEDS="$(CUROBO_TRAJOPT_SEEDS)"; \
 		export CUROBO_MAX_ATTEMPTS="$(CUROBO_MAX_ATTEMPTS)"; \
 		export CUROBO_BATCH_GRAPH_SEEDS="$(CUROBO_BATCH_GRAPH_SEEDS)"; \
@@ -336,12 +334,12 @@ occluder-visibility:
 		eval "$$cmd")
 
 reachability-map:
-	$(call RUN_IN_CUSTOMIZED,\
+	$(call RUN_IN_SIM,\
 		$(PYTHON) script/bench_script/reachability_map.py --base-config "$(TASK_CONFIG)" \
 			--seed "$(REACH_SEED)" --offset "$(OFFSET)" --arms "$(REACH_ARMS)" --z "$(REACH_Z)")
 
 pickup-reachability:
-	$(call RUN_IN_CUSTOMIZED,\
+	$(call RUN_IN_SIM,\
 		$(PYTHON) script/bench_script/pickup_reachability_map.py --base-config "$(TASK_CONFIG)" \
 			--seeds "$(PICKUP_SEEDS)" --offset "$(OFFSET)" --z "$(REACH_Z)")
 

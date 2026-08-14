@@ -67,6 +67,15 @@ outputs/
 # they're fetched separately at install time. See docs/install.html Step 3.
 benchmark/assets
 benchmark/assets/
+
+# Runtime outputs and cloned deps (under sim/)
+sim/assets
+sim/data/*
+!sim/data/process_stuck.py
+sim/eval_result/
+sim/eval_result_smoke/
+sim/visibility_validation/
+sim/envs/curobo/
 benchmark_data/*
 !benchmark_data/.gitkeep
 benchmark/collision_test/

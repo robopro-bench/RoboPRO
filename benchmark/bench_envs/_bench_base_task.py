@@ -609,8 +609,8 @@ class Bench_base_task(Base_Task):
         if not bank_path:
             return None
         if not os.path.isabs(bank_path):
-            # Try BENCH_ROOT (where bench_task_config lives) then ROBOTWIN_ROOT.
-            for root in (os.environ.get("BENCH_ROOT"), os.environ.get("ROBOTWIN_ROOT"), "."):
+            # Try BENCH_ROOT (where bench_task_config lives) then SIM_ROOT.
+            for root in (os.environ.get("BENCH_ROOT"), os.environ.get("SIM_ROOT"), "."):
                 if not root:
                     continue
                 # Config path may already start with 'benchmark/…' when BENCH_ROOT

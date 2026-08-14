@@ -37,7 +37,7 @@ pcd_crop: true
 save_path: ./data/bench_data
 clear_cache_freq: 1
 collect_data: False
-eval_video_log: Truemohexport ROBOTWIN_BENCH_TASK="bench" # bench if you want to work with benchmark tasks, anything else if you are working with the original robotwin tasks
+eval_video_log: True
 
 # Data collection: no collision metrics. Set true for evaluation.
 enable_collision_metrics: true

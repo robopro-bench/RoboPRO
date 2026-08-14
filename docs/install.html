@@ -81,7 +81,7 @@ export PYTHONNOUSERSITE=1</code></pre>
     <p class="step-num">Step 4 · Python deps</p>
     <h2>Install RoboTwin deps + CuRobo.</h2>
 <pre><code>bash scripts/install/bootstrap_uv.sh</code></pre>
-    <p><code>bootstrap_uv.sh</code> creates <code>.venv</code>, syncs the root <code>pyproject.toml</code>, patches <code>sapien/wrapper/urdf_loader.py</code> (utf-8 encoding) and <code>mplib/planner.py</code> (drops a too-strict collision check), then clones CuRobo v0.7.8 into <code>customized_robotwin/envs/curobo/</code> and installs it editable. It re-pins <code>warp-lang==1.12.0</code> and <code>setuptools==69.5.1</code> at the end. A <code>scikit-image vs scipy</code> version warning is harmless &mdash; the simulator needs <code>scipy==1.10.1</code>.</p>
+    <p><code>bootstrap_uv.sh</code> creates <code>.venv</code>, syncs the root <code>pyproject.toml</code>, patches <code>sapien/wrapper/urdf_loader.py</code> (utf-8 encoding) and <code>mplib/planner.py</code> (drops a too-strict collision check), then clones CuRobo v0.7.8 into <code>sim/envs/curobo/</code> and installs it editable. It re-pins <code>warp-lang==1.12.0</code> and <code>setuptools==69.5.1</code> at the end. A <code>scikit-image vs scipy</code> version warning is harmless &mdash; the simulator needs <code>scipy==1.10.1</code>.</p>
   </div>
 </section>
 
@@ -90,9 +90,9 @@ export PYTHONNOUSERSITE=1</code></pre>
     <p class="step-num">Step 5 · Assets</p>
     <h2>Fetch the asset bundle (~15&nbsp;GB).</h2>
 <pre><code>python scripts/install/download_assets.py</code></pre>
-    <p>Pulls from <a href="https://huggingface.co/datasets/Hoshipu/RoboPRO_assets">Hoshipu/RoboPRO_assets</a> into <code>benchmark/assets/</code> (objects, embodiments, background_texture, backgrounds). The bundle already includes <code>aloha-agilex/.../meshes/box2_Link.dae</code> (~206&nbsp;MB) &mdash; no separate fetch needed.</p>
+    <p>Pulls the HuggingFace asset bundle (repo id in <code>scripts/install/download_assets.py</code>) into <code>benchmark/assets/</code> (objects, embodiments, background_texture, backgrounds). The bundle already includes <code>aloha-agilex/.../meshes/box2_Link.dae</code> (~206&nbsp;MB) &mdash; no separate fetch needed.</p>
     <p>The shipped <code>task_config/_embodiment_config.yml</code> uses upstream-relative paths (<code>./assets/embodiments/...</code>). RoboPRO keeps assets under <code>benchmark/assets/</code>, so add a one-line symlink so the upstream paths resolve:</p>
-<pre><code>ln -sfn ../benchmark/assets customized_robotwin/assets</code></pre>
+<pre><code>ln -sfn ../benchmark/assets sim/assets</code></pre>
     <p>Generate the local-path curobo configs from the shipped templates, and patch them so CuRobo can attach grasped objects (the shipped configs lack the <code>attached_object</code> link entries):</p>
 <pre><code>ASSETS_PATH="$(pwd)/benchmark"
 cd benchmark/assets/embodiments/aloha-agilex
@@ -106,7 +106,7 @@ python scripts/install/patch_aloha_curobo.py</code></pre>
   <div class="container">
     <p class="step-num">Step 6 · CuRobo cache patch</p>
     <h2>Replace <code>clear_cache</code>.</h2>
-    <p>In <code>customized_robotwin/envs/curobo/src/curobo/geom/sdf/world_mesh.py</code>, replace the <code>clear_cache</code> method with:</p>
+    <p>In <code>sim/envs/curobo/src/curobo/geom/sdf/world_mesh.py</code>, replace the <code>clear_cache</code> method with:</p>
 <pre><code>def clear_cache(self):
     self._wp_mesh_cache = {}
     if self._mesh_tensor_list is not None:
@@ -125,14 +125,13 @@ python scripts/install/patch_aloha_curobo.py</code></pre>
   <div class="container">
     <p class="step-num">Step 7 · Verify (headless)</p>
     <h2>Run one rollout.</h2>
-<pre><code>cd customized_robotwin
+<pre><code>cd sim
 source set_env.sh
-export ROBOTWIN_BENCH_TASK="bench"
 
 python script/bench_script/visualize_task_scene.py \
     put_mouse_on_pad bench_demo_office_clean \
     --bench-subdir office --rollout --no-render --seed 0 --save_data</code></pre>
-    <p>On success you'll see <code>Success: True</code> and an MP4 at <code>customized_robotwin/data/bench_data/video/episode_put_mouse_on_pad_0.mp4</code> (~176 frames @ 320×240, ~6&nbsp;s). Drop <code>--no-render --save_data</code> to use the interactive SAPIEN viewer instead.</p>
+    <p>On success you'll see <code>Success: True</code> and an MP4 at <code>sim/data/bench_data/video/episode_put_mouse_on_pad_0.mp4</code> (~176 frames @ 320×240, ~6&nbsp;s). Drop <code>--no-render --save_data</code> to use the interactive SAPIEN viewer instead.</p>
   </div>
 </section>
 

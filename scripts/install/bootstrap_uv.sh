@@ -60,7 +60,7 @@ uv pip install pip wheel ninja
 # ---------------------------------------------------------------------------
 echo "Running RoboPRO post-install patches ..."
 source .venv/bin/activate
-cd customized_robotwin
+cd sim
 SKIP_BASE_DEPS=1 bash script/_install.sh
 
 cat <<EOF

@@ -2,7 +2,7 @@
 
 
 This branch adds a grounding **data-generation pipeline** on top of RoboPRO's
-`customized_robotwin/` collector: per-object masks + depth + role annotations in every
+`sim/` collector: per-object masks + depth + role annotations in every
 episode, ready for large-scale collection.
 
 **Going forward:**
@@ -24,12 +24,12 @@ Quick start for tools/collection commands: `visualization/README.md`.
 
 | File | What changed |
 |---|---|
-| `customized_robotwin/envs/camera/camera.py` | segmentation returns **raw uint16 ids** (was palette-colorized RGB) |
-| `customized_robotwin/envs/_base_task.py` | + `get_actor_id_map()`, + `get_role_names()`; + optional `data_type.actor_bbox` recording (exact per-frame 3D boxes from physx) |
-| `customized_robotwin/envs/utils/pkl2hdf5.py` | + `seg_encoding()` — PNG-compresses uint16 masks into HDF5 |
-| `customized_robotwin/script/collect_data.py` | writes id-map/role sidecar into `scene_info.json`; organized per-episode output + end-of-run summary; per-episode crash guards (one bad episode no longer kills a run) |
+| `sim/envs/camera/camera.py` | segmentation returns **raw uint16 ids** (was palette-colorized RGB) |
+| `sim/envs/_base_task.py` | + `get_actor_id_map()`, + `get_role_names()`; + optional `data_type.actor_bbox` recording (exact per-frame 3D boxes from physx) |
+| `sim/envs/utils/pkl2hdf5.py` | + `seg_encoding()` — PNG-compresses uint16 masks into HDF5 |
+| `sim/script/collect_data.py` | writes id-map/role sidecar into `scene_info.json`; organized per-episode output + end-of-run summary; per-episode crash guards (one bad episode no longer kills a run) |
 | `visualization/` (viz_episode, export, inspect_hdf5, README) | standalone inspect / viz / **on-demand export** (point clouds, 2D/3D boxes, masks, overlays) tools |
-| `customized_robotwin/time_run.sh` | timing helper (wall time → sec/episode → dataset projection) |
+| `sim/time_run.sh` | timing helper (wall time → sec/episode → dataset projection) |
 | `benchmark/bench_task_config/datagen_template.yml` | single commented example config |
 
 Nothing outside these files is modified — the `benchmark/bench_envs/` scene classes and
@@ -89,7 +89,7 @@ Per-episode try/except (a CuRobo/mesh crash is logged, cleaned up, and the run
 continues) + a no-frames guard (a plan that produces no executable motion yields no
 HDF5 instead of crashing the pkl→HDF5 merge). Generic safety — worth keeping under any
 labeling scheme. Also: per-episode banners + an end-of-run `COLLECTION SUMMARY`
-(`customized_robotwin/time_run.sh` parses those summary lines).
+(`sim/time_run.sh` parses those summary lines).
 
 ### 2.6 Tools (`visualization/`)
 `inspect_hdf5.py` (HDF5 tree/shapes/attrs) · `viz_episode.py` (panel: RGB | depth |
@@ -98,7 +98,7 @@ target=red, dest=green, obstacle=orange, robot=blue) · `export.py` (on-demand:
 role-colored .ply point clouds, 2D boxes, visible-surface 3D boxes, **exact
 full-extent 3D boxes** from the `actor_bbox` HDF5 group, and a 6-row quick-look
 panel grid). Standalone; no engine imports.
-Timing helper: `customized_robotwin/time_run.sh`.
+Timing helper: `sim/time_run.sh`.
 
 ---
 
@@ -117,7 +117,7 @@ generalize across teams). The full working implementation is preserved in git hi
 commit **`e248b2d`**:
 
 ```bash
-git diff e248b2d^..e248b2d -- customized_robotwin/script/collect_data.py benchmark/bench_envs/
+git diff e248b2d^..e248b2d -- sim/script/collect_data.py benchmark/bench_envs/
 ```
 
 **Recommendation from what worked:** make the new design a **config knob + filter
@@ -143,8 +143,7 @@ episodes, the metrics blob names **which objects were actually hit** — free ca
 
 ## 4. Practical notes
 
-- Routing: run from `customized_robotwin/` with `ROBOTWIN_BENCH_TASK=bench` +
-  `source set_env.sh`; configs resolve by *name* from `benchmark/bench_task_config/`.
+- Routing: run from `sim/` with `source set_env.sh`; configs resolve by *name* from `benchmark/bench_task_config/`.
 - ARM / aarch64 hosts (GB10 / DGX Spark): SAPIEN 3.0.0b1 has no aarch64 wheel and must be
   built from source — see `docs/setup_sapien_aarch64.md`. This is purely an environment
   build step; it does not affect the data schema, grounding, or 3D boxes produced here.
@@ -159,7 +158,7 @@ episodes, the metrics blob names **which objects were actually hit** — free ca
   anchor. Destination semantics for such tasks are still an open question.
 - Throughput anchor (1× RTX 4080, d10 clutter, put_cup_on_coaster): ≈ **82 s/kept
   episode** including seed-search rejects; seed replay without search ≈ 37 s/episode.
-  Episode ≈ 37 MB. `customized_robotwin/time_run.sh` re-measures and projects.
+  Episode ≈ 37 MB. `sim/time_run.sh` re-measures and projects.
 
 ---
 

@@ -5,9 +5,8 @@
 # seen-obstacle configs (no OOD), so you can compare pass rates.
 #
 # Usage:
-#   cd customized_robotwin
+#   cd sim
 #   source set_env.sh
-#   export ROBOTWIN_BENCH_TASK=bench
 #   bash ../scripts/validation/baseline_test_ood.sh
 
 SEEDS="${SEEDS:-0 1 2}"

@@ -63,7 +63,7 @@ class put_spoon_in_dishrack_ks(KitchenS_base_task):
         self.move(self.move_by_displacement(arm_tag=arm_tag, z=0.10))
         self.attach_object(
             self.target_obj,
-            f"{os.environ.get('BENCH_ROOT', os.environ['ROBOTWIN_ROOT'] + '/../benchmark')}/assets/objects/134_spoon/collision/base{self.spoon_id}.glb",
+            f"{os.environ.get('BENCH_ROOT', os.environ['SIM_ROOT'] + '/../benchmark')}/assets/objects/134_spoon/collision/base{self.spoon_id}.glb",
             str(arm_tag),
         )
 
