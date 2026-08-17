@@ -88,8 +88,9 @@ class drop_apple_in_bin_ks(KitchenS_base_task):
         # [0.5,0.5,0.5,0.5] rotates mesh-y (height) → world-z so the opening
         # faces up. IDs 0 and 6 are straight-walled bins used elsewhere in the
         # benchmark; they keep the drop footprint rectangular and predictable.
-        # Static bin may sit over the middle sink; keep the original center
-        # band so either arm can place into it.
+        # Scenes 0/2 keep the original center band; allow_sink lets a static
+        # bin sit over the basin. Scene 1 keeps its left-front window so the
+        # apple and bin stay on one arm.
         target_rand_pose = self.rand_pose_on_counter(
             xlim=self.SCENE1_BIN_XLIM if scene1 else [-0.12, 0.12],
             ylim=self.SCENE1_BIN_YLIM if scene1 else [-0.23, 0.05],
