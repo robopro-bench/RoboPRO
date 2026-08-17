@@ -190,6 +190,8 @@ def collect(args, task, config, gpu_ids, run_dir, index_path):
             env["WORKSPACE_ROOT"] = str(REPO_ROOT)
             env["BENCH_ROOT"] = str(BENCH_ROOT)
             env["DATA_ROOT"] = os.environ["DATA_ROOT"]
+            env["ASSETS_ROOT"] = os.environ.get("ASSETS_ROOT", str(REPO_ROOT / "assets"))
+            env["POLICY_ROOT"] = os.environ.get("POLICY_ROOT", str(REPO_ROOT / "policy"))
             env["PYTHONWARNINGS"] = "ignore::UserWarning"
             env["PYTHONUNBUFFERED"] = "1"
             env["CUDA_VISIBLE_DEVICES"] = str(gpu)
