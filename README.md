@@ -2,7 +2,7 @@
 
 **P**erturbation-**R**esilient **O**bstacle-awareness — a bimanual manipulation benchmark for policy robustness evaluation.
 
-RoboPRO is a modified fork of [RoboTwin 2.0](https://github.com/RoboTwin-Platform/RoboTwin). The simulation runtime (SAPIEN + CuRobo, Aloha-AgileX) is based on their stack; the 80 tasks, realistic scenes, and perturbation suite are ours.
+RoboPRO is a bimanual manipulation benchmark for policy robustness. The simulation runtime (SAPIEN + CuRobo, Aloha-AgileX) is based on [RoboTwin 2.0](https://github.com/RoboTwin-Platform/RoboTwin); the 80 tasks, realistic scenes, metrics, and perturbation suite are ours.
 
 **Project page:** https://anonymous.4open.science/w/RoboPRO-EDE0/index.html
 
@@ -170,8 +170,8 @@ From the repo root after `source set_env.sh`. Eval rolls a trained checkpoint ou
 
 | Policy | Weights |
 |---|---|
-| pi05 | TODO: HuggingFace checkpoint |
-| X-VLA | TODO: HuggingFace checkpoint |
+| pi05 | [mzxuan/robopro_jax_30000](https://huggingface.co/mzxuan/robopro_jax_30000/tree/main) |
+| X-VLA | [mzxuan/x-vla-robopro-100k](https://huggingface.co/mzxuan/x-vla-robopro-100k) |
 
 For pi05, symlink the downloaded `jax_30000/` dir to `policy/pi05/checkpoints/<train_config_name>/<model_name>/30000/`.
 
@@ -325,20 +325,24 @@ The simulation runtime in [`sim/`](sim/) is a modified [RoboTwin 2.0](https://gi
 
 ## Citation
 
-If you use RoboPRO, please cite RoboTwin (the simulation platform this work is based on) and this project:
+If you use RoboPRO, please cite this work:
 
 ```
-@article{chen2025robotwin,
-  title={Robotwin 2.0: A scalable data generator and benchmark with strong domain randomization for robust bimanual robotic manipulation},
-  author={Chen, Tianxing and Chen, Zanxin and Chen, Baijun and Cai, Zijian and Liu, Yibin and others},
-  journal={arXiv preprint arXiv:2506.18088},
-  year={2025}
-}
-
 @article{TODO_robopro,
   title={TODO: RoboPRO paper title},
   author={TODO},
   journal={TODO},
   year={2026}
+}
+```
+
+The simulation runtime in `sim/` is based on RoboTwin 2.0. Please also cite:
+
+```
+@article{chen2025robotwin,
+  title={RoboTwin 2.0: A Scalable Data Generator and Benchmark with Strong Domain Randomization for Robust Bimanual Robotic Manipulation},
+  author={Chen, Tianxing and Chen, Zanxin and Chen, Baijun and Cai, Zijian and Liu, Yibin and others},
+  journal={arXiv preprint arXiv:2506.18088},
+  year={2025}
 }
 ```
