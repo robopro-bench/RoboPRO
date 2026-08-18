@@ -16,8 +16,26 @@ RoboPRO adds:
 System prereqs (one-time): `libvulkan1 mesa-vulkan-drivers vulkan-tools` (apt), `ffmpeg`, and an NVIDIA driver with CUDA 12.x.
 
 ```bash
-git clone https://anonymous.4open.science/r/RoboPRO-EDE0
+git clone --recurse-submodules https://anonymous.4open.science/r/RoboPRO-EDE0
 cd RoboPRO
+```
+
+### OpenPI submodules (π0 / π0.5)
+
+`policy/pi0/openpi` and `policy/pi05/openpi` are git submodules of [openpi](https://github.com/Physical-Intelligence/openpi). They are not part of this repo’s MIT tree. `--recurse-submodules` on clone is required for those policies.
+
+If you already cloned without it:
+
+```bash
+git submodule update --init policy/pi0/openpi policy/pi05/openpi
+```
+
+Then build the isolated policy venv from the submodule (not the glue dir):
+
+```bash
+cd policy/pi05/openpi && uv sync && cd -
+# same for π0 if you use it:
+# cd policy/pi0/openpi && uv sync && cd -
 ```
 
 ### 1. Choose an environment manager
@@ -177,14 +195,15 @@ bash policy/pi05/eval.sh <task_name> <task_config> <train_config_name> <model_na
 bash policy/pi05/eval.sh put_mouse_on_pad bench_demo_office_clean my_office_train pi05_ckpt 30000 pi05_ckpt_30000 0 0
 ```
 
-**Mode B — dual-env / dual-process** (recommended for pi05 since openpi+jax need an isolated uv venv at `policy/pi05/.venv/`).
+**Mode B — dual-env / dual-process** (recommended for pi05 since openpi+jax need an isolated uv venv at `policy/pi05/openpi/.venv/`).
 Create that venv once with:
 
 ```bash
-cd policy/pi05 && uv sync && cd -
+git submodule update --init policy/pi05/openpi
+cd policy/pi05/openpi && uv sync && cd -
 ```
 
-`openpi` and `openpi-client` are installed editable, so re-run `uv sync` if `policy/pi05/` ever moves
+`openpi` and `openpi-client` are installed editable, so re-run `uv sync` if the submodule path ever moves
 (a stale editable path shows up as `ModuleNotFoundError: No module named 'openpi'` on the server side).
 The sim-side client uses the repo-root `.venv`; override with `SIM_PYTHON=/path/to/python` if yours lives elsewhere.
 
@@ -298,7 +317,11 @@ Common setup problems and where their fixes live:
 
 ## License
 
-This repository is a modified fork of RoboTwin 2.0, released under the MIT license. See [`LICENSE`](LICENSE) (Copyright 2025 Tianxing Chen; Copyright 2025–2026 RoboPRO authors). `sim/`, `eval/`, `collect/`, and the policy wrappers are RoboTwin-derived; the 80-task benchmark and grounding extras are RoboPRO. Vendored openpi (`policy/pi0/src`, `policy/pi05/src`) is [Apache 2.0](https://github.com/Physical-Intelligence/openpi/blob/main/LICENSE) (Physical Intelligence). Details: [`THIRD_PARTY.md`](THIRD_PARTY.md).
+This repository is released under the MIT license, Copyright 2025–2026 RoboPRO authors. See [`LICENSE`](LICENSE).
+
+The simulation runtime in [`sim/`](sim/) is a modified [RoboTwin 2.0](https://github.com/RoboTwin-Platform/RoboTwin) tree (MIT, Copyright 2025 Tianxing Chen; Copyright 2025–2026 RoboPRO authors). See [`sim/LICENSE`](sim/LICENSE).
+
+π0 / π0.5 library code comes from the [openpi](https://github.com/Physical-Intelligence/openpi) git submodule (Apache-2.0) and is not covered by this MIT grant. RoboPRO glue next to the submodule (`deploy_policy.py`, `pi_model.py`, `train.py`, …) is ours. Downloaded `assets/` and cloned CuRobo keep their own terms; see the appendix in [`LICENSE`](LICENSE).
 
 ## Citation
 

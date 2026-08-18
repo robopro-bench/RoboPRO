@@ -15,4 +15,4 @@ bash policy/pi05/eval.sh put_mouse_on_pad bench_demo_office_clean ...
 Scene smoke tests (`script/bench_script/visualize_task_scene.py`) still run from
 this directory after `source ../set_env.sh`.
 
-See the [root README](../README.md) for install, eval, and citation.
+License: [`LICENSE`](LICENSE) (RoboTwin 2.0 MIT, plus RoboPRO modifications). See the [root README](../README.md) for install, eval, and citation.
