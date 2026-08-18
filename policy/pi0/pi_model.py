@@ -4,6 +4,7 @@
 #!/usr/bin/python3
 """
 import json
+import os
 import sys
 import jax
 import numpy as np
@@ -31,15 +32,28 @@ class PI0:
         self.model_name = model_name
         self.checkpoint_id = checkpoint_id
 
-        config = _config.get_config(self.train_config_name)
+        policy_root = os.environ.get(
+            "POLICY_ROOT",
+            os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+        )
+        ckpt_dir = os.path.join(policy_root, "pi0", "checkpoints", str(self.train_config_name),
+                                str(self.model_name), str(self.checkpoint_id))
+        if not os.path.isdir(ckpt_dir):
+            raise FileNotFoundError(
+                f"checkpoint dir not found: {ckpt_dir}\n"
+                f"expected layout: $POLICY_ROOT/pi0/checkpoints/<train_config_name>/<model_name>/<checkpoint_id>"
+            )
 
-        specified_path = f"policy/pi0/checkpoints/{self.train_config_name}/{self.model_name}/{self.checkpoint_id}/assets/"
-        entries = os.listdir(specified_path)
+        specified_path = os.path.join(ckpt_dir, "assets")
+        entries = sorted(e for e in os.listdir(specified_path) if not e.startswith("."))
+        if not entries:
+            raise FileNotFoundError(f"no norm-stats asset dir under {specified_path}")
         assets_id = entries[0]
 
+        config = _config.get_config(self.train_config_name)
         self.policy = _policy_config.create_trained_policy(
             config,
-            f"policy/pi0/checkpoints/{self.train_config_name}/{self.model_name}/{self.checkpoint_id}",
+            ckpt_dir,
             robotwin_repo_id=assets_id)
         print("loading model success!")
         self.img_size = (224, 224)

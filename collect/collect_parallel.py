@@ -202,7 +202,7 @@ def collect(args, task, config, gpu_ids, run_dir, index_path):
             t0 = time.time()
             try:
                 with open(log_path, "w", encoding="utf-8") as log:
-                    proc = subprocess.run(cmd, cwd=str(SIM_ROOT), env=env,
+                    proc = subprocess.run(cmd, cwd=str(REPO_ROOT), env=env,
                                           stdout=log, stderr=subprocess.STDOUT,
                                           timeout=args.timeout, check=False)
                 rc = proc.returncode

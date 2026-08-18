@@ -32,11 +32,30 @@ class PI0:
         self.model_name = model_name
         self.checkpoint_id = checkpoint_id
 
-        specified_path = f"policy/pi05/checkpoints/{self.train_config_name}/{self.model_name}/{self.checkpoint_id}/assets/"
-        entries = os.listdir(specified_path)
+        # Resolve against POLICY_ROOT so the server works from any cwd (the eval
+        # wrappers cd to the repo root, but slurm/direct invocations may not).
+        policy_root = os.environ.get(
+            "POLICY_ROOT",
+            os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+        )
+        ckpt_dir = os.path.join(policy_root, "pi05", "checkpoints", str(self.train_config_name),
+                                str(self.model_name), str(self.checkpoint_id))
+        if not os.path.isdir(ckpt_dir):
+            raise FileNotFoundError(
+                f"checkpoint dir not found: {ckpt_dir}\n"
+                f"expected layout: $POLICY_ROOT/pi05/checkpoints/<train_config_name>/<model_name>/<checkpoint_id>"
+            )
+
+        specified_path = os.path.join(ckpt_dir, "assets")
+        # The assets dir holds one subdir per norm-stats asset id. Ignore stray
+        # dotfiles and pick deterministically instead of relying on listdir order.
+        entries = sorted(e for e in os.listdir(specified_path) if not e.startswith("."))
+        if not entries:
+            raise FileNotFoundError(f"no norm-stats asset dir under {specified_path}")
+        if len(entries) > 1:
+            print(f"[pi_model] multiple asset ids in {specified_path}: {entries}; using {entries[0]!r}")
         assets_id = entries[0]
 
-        ckpt_dir = f"policy/pi05/checkpoints/{self.train_config_name}/{self.model_name}/{self.checkpoint_id}"
         is_pytorch_ckpt = os.path.exists(os.path.join(ckpt_dir, "model.safetensors"))
 
         config = _config.get_config(self.train_config_name)

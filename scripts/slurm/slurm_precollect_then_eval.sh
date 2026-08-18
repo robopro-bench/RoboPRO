@@ -1,11 +1,11 @@
 #!/bin/bash
-#SBATCH --partition=h100-private
+#SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --qos=high
 #SBATCH --time=3-00:00:00
 #SBATCH --mem=64G
 #SBATCH --cpus-per-task=8
-# NOTE: set --chdir and --output to your local checkout, e.g.
+# NOTE: set --partition/--chdir/--output to your cluster and checkout, e.g.
 #   #SBATCH --chdir=/path/to/RoboPRO
 #   #SBATCH --output=/path/to/RoboPRO/logs/%x_%j.out
 

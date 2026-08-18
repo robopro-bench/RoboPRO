@@ -69,14 +69,17 @@ import numpy as np
 
 from setup_paths import setup_paths
 setup_paths()
-# Paths: script is run from benchmark folder, but changes to sim
-current_file_path = os.path.abspath(__file__)
-script_dir = os.path.dirname(current_file_path)
-# bench_root is the parent of bench_script directory
 bench_root = Path(os.environ["BENCH_ROOT"])
 sim_root = Path(os.environ["SIM_ROOT"])
 
-os.chdir(sim_root)  # Change to sim for proper path resolution
+os.chdir(sim_root)
+
+# collect/_env.resolve_save_path maps YAML `./data/...` onto DATA_ROOT. Without
+# this, cwd=sim would write smoke-test videos under sim/data/.
+_collect = Path(os.environ.get("WORKSPACE_ROOT", sim_root.parent)) / "collect"
+if str(_collect) not in sys.path:
+    sys.path.insert(0, str(_collect))
+from _env import resolve_save_path  # noqa: E402
 
 from envs import CONFIGS_PATH, resolve_embodiment_path  # from sim
 
@@ -332,6 +335,7 @@ def main():
 
     cfg["left_embodiment_config"] = get_embodiment_config(cfg["left_robot_file"])
     cfg["right_embodiment_config"] = get_embodiment_config(cfg["right_robot_file"])
+    cfg["save_path"] = resolve_save_path(cfg.get("save_path", "./data/bench_data"))
 
     # Build env and setup scene with viewer
     env = env_class()

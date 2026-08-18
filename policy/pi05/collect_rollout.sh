@@ -1,7 +1,7 @@
 #!/bin/bash
 # Dual-env rollout data collection for pi05:
 #   - server: pi05/.venv (uv-managed, openpi+jax)  → server_gpu
-#   - client: RoboTwin conda env (sapien sim)      → client_gpu
+#   - client: RoboPRO sim env (sapien)             → client_gpu
 # Usage:
 #   bash policy/pi05/collect_rollout.sh <task> <task_config> <train_config> <model_name> <checkpoint_id> <seed> <server_gpu>[:<client_gpu>]
 # If client_gpu is omitted, both processes share server_gpu.

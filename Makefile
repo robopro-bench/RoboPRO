@@ -5,6 +5,9 @@ SHELL := /bin/bash
 ROOT_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 SIM_ROOT := $(ROOT_DIR)/sim
 PYTHON ?= $(ROOT_DIR)/.venv/bin/python
+# Policy-side interpreter: policies like pi05 ship their own uv venv (openpi+jax)
+# which the sim .venv does not have. Falls back to $(PYTHON) when absent.
+POLICY_PYTHON ?= $(firstword $(wildcard $(ROOT_DIR)/policy/$(POLICY_NAME)/.venv/bin/python) $(PYTHON))
 UV ?= uv
 
 # Common benchmark settings
@@ -271,7 +274,7 @@ eval-direct:
 
 policy-server:
 	$(call RUN_IN_ROOT,\
-		$(PYTHON) eval/policy_model_server.py \
+		$(POLICY_PYTHON) eval/policy_model_server.py \
 			--port "$(PORT)" \
 			--config "$(POLICY_CONFIG)" \
 			--overrides \

@@ -111,7 +111,7 @@ python script/bench_script/visualize_task_scene.py \
     --bench-subdir office --rollout --no-render --seed 0 --save_data
 ```
 
-Expected on success: a `Success: True` line and an MP4 at `sim/data/bench_data/video/episode_put_mouse_on_pad_0.mp4` (~176 frames @ 320×240).
+Expected on success: a `Success: True` line and an MP4 at `data/bench_data/video/episode_put_mouse_on_pad_0.mp4` (~176 frames @ 320×240).
 
 ## Usage
 
@@ -177,7 +177,16 @@ bash policy/pi05/eval.sh <task_name> <task_config> <train_config_name> <model_na
 bash policy/pi05/eval.sh put_mouse_on_pad bench_demo_office_clean my_office_train pi05_ckpt 30000 pi05_ckpt_30000 0 0
 ```
 
-**Mode B — dual-env / dual-process** (recommended for pi05 since openpi+jax need an isolated uv venv at `policy/pi05/.venv/`):
+**Mode B — dual-env / dual-process** (recommended for pi05 since openpi+jax need an isolated uv venv at `policy/pi05/.venv/`).
+Create that venv once with:
+
+```bash
+cd policy/pi05 && uv sync && cd -
+```
+
+`openpi` and `openpi-client` are installed editable, so re-run `uv sync` if `policy/pi05/` ever moves
+(a stale editable path shows up as `ModuleNotFoundError: No module named 'openpi'` on the server side).
+The sim-side client uses the repo-root `.venv`; override with `SIM_PYTHON=/path/to/python` if yours lives elsewhere.
 
 ```bash
 bash policy/pi05/eval_double_env.sh <task_name> <task_config> <train_config_name> <model_name> <checkpoint_id> <seed> <gpu_spec>
@@ -221,7 +230,7 @@ python eval/eval_policy.py \
 **Where results land:**
 
 ```
-sim/eval_result/<task_name>/<policy_name>/<task_config>/<ckpt_setting>/<timestamp>/
+eval_result/<task_name>/<policy_name>/<task_config>/<ckpt_setting>/<timestamp>/
     _result.txt        # success count, per-seed pass/fail
     *.mp4              # rollout videos (if eval_video_save is enabled)
 ```
