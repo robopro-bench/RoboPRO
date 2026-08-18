@@ -29,7 +29,6 @@ Grounding lives in `collect/masking_resolve.py` (called from the collector).
 | `sim/envs/utils/pkl2hdf5.py` | + `seg_encoding()` — PNG-compresses uint16 masks into HDF5 |
 | `collect/collect_data.py` | writes id-map/role sidecar into `scene_info.json`; organized per-episode output + end-of-run summary; per-episode crash guards (one bad episode no longer kills a run) |
 | `collect/masking_resolve.py` | offline grounding: stage target/bin roles + bake masks into HDF5 |
-| `collect/time_run.sh` | timing helper (wall time → sec/episode → dataset projection) |
 | `benchmark/bench_task_config/datagen_template.yml` | single commented example config |
 
 Nothing outside these files is modified — the `benchmark/bench_envs/` scene classes and
@@ -88,8 +87,7 @@ Decode on read with any PNG decoder (`cv2.imdecode` → uint16).
 Per-episode try/except (a CuRobo/mesh crash is logged, cleaned up, and the run
 continues) + a no-frames guard (a plan that produces no executable motion yields no
 HDF5 instead of crashing the pkl→HDF5 merge). Generic safety — worth keeping under any
-labeling scheme. Also: per-episode banners + an end-of-run `COLLECTION SUMMARY`
-(`collect/time_run.sh` parses those summary lines).
+labeling scheme. Also: per-episode banners + an end-of-run `COLLECTION SUMMARY`.
 
 ### 2.6 Grounding (`collect/masking_resolve.py`)
 Called automatically at collection time (`finalize_grounding`) when
@@ -101,8 +99,6 @@ Standalone re-run from the repo root:
 ```
 python collect/masking_resolve.py <run_dir> [ep] [--write] [--panel]
 ```
-
-Timing helper: `collect/time_run.sh`.
 
 ---
 
@@ -162,7 +158,7 @@ episodes, the metrics blob names **which objects were actually hit** — free ca
   anchor. Destination semantics for such tasks are still an open question.
 - Throughput anchor (1× RTX 4080, d10 clutter, put_cup_on_coaster): ≈ **82 s/kept
   episode** including seed-search rejects; seed replay without search ≈ 37 s/episode.
-  Episode ≈ 37 MB. `collect/time_run.sh` re-measures and projects.
+  Episode ≈ 37 MB.
 
 ---
 

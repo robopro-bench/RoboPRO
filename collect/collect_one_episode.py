@@ -1,8 +1,8 @@
 """Run ONE seed of the grounding-data collector (single-episode subprocess).
 
 The per-seed unit behind collect/collect_parallel.py's dynamic GPU dispatch
-(targetted-failures style: workers pull seeds from a shared stream, all writing
-into ONE run dir). Mirrors exactly one search-iteration + one collect-iteration
+(workers pull seeds from a shared stream, all writing into ONE run dir).
+Mirrors exactly one search-iteration + one collect-iteration
 of collect_data.run(); concurrent-safe via an flock'd slot file:
 
   phase 1  qualify the seed (setup_demo + play_once, need_plan=True)

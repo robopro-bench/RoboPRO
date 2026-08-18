@@ -1,8 +1,7 @@
-"""Per-episode scene geometry export for OFFLINE robot-proximity relabeling.
+"""Per-episode scene geometry export for offline robot-proximity relabeling.
 
-Ported from the collison_free_data_gen triplet pipeline
-(script/differentiable_proximity.py:export_scene). Writes, once per collected
-episode (after setup_demo, post-settle), the STATIC scene geometry:
+Writes, once per collected episode (after setup_demo, post-settle), the STATIC
+scene geometry:
 
     scene.npz       samples (N,3) f32, normals (N,3) f32, obj_id (N,) i32
     objects.json    per object: per_scene_id, name, tags, pose_p, pose_q, n_samples

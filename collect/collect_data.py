@@ -5,13 +5,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import _env  # noqa: F401  — SIM_ROOT / BENCH_ROOT / DATA_ROOT + sys.path
 from _env import resolve_save_path, run_gen_instructions
 
-import sapien.core as sapien
-from sapien.render import clear_cache
-from collections import OrderedDict
-import pdb
+import sapien.core as sapien  # noqa: F401  — import order matters for envs
 from envs import *
 import yaml
-import importlib
 import json
 import traceback
 import os
@@ -21,10 +17,6 @@ from argparse import ArgumentParser
 
 from export_scene import export_scene
 from masking_resolve import finalize_grounding
-
-current_file_path = os.path.abspath(__file__)
-parent_directory = os.path.dirname(current_file_path)
-bench_root = Path(os.environ["BENCH_ROOT"])
 
 
 def class_decorator(task_name):
@@ -63,7 +55,7 @@ def build_task_and_args(task_name, task_config):
     def get_embodiment_file(embodiment_type):
         robot_file = resolve_embodiment_path(_embodiment_types[embodiment_type]["file_path"])
         if robot_file is None:
-            raise "missing embodiment files"
+            raise RuntimeError("missing embodiment files")
         return robot_file
 
     if len(embodiment_type) == 1:
@@ -76,7 +68,7 @@ def build_task_and_args(task_name, task_config):
         args["embodiment_dis"] = embodiment_type[2]
         args["dual_arm_embodied"] = False
     else:
-        raise "number of embodiment config parameters should be 1 or 3"
+        raise RuntimeError("number of embodiment config parameters should be 1 or 3")
 
     args["left_embodiment_config"] = get_embodiment_config(args["left_robot_file"])
     args["right_embodiment_config"] = get_embodiment_config(args["right_robot_file"])
@@ -436,8 +428,6 @@ def run(TASK_ENV, args):
 
 
 if __name__ == "__main__":
-    pass  # Skip Sapien_TEST — ray tracing uses too much VRAM for CuRobo
-
     import torch.multiprocessing as mp
     mp.set_start_method("spawn", force=True)
 

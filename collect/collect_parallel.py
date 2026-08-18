@@ -2,10 +2,10 @@
 """Multi-GPU dispatcher for the data collector — invoked by collect/collect_data.sh when
 its GPU argument is a comma list (e.g. `bash collect/collect_data.sh <task> <config> 0,1`).
 
-Dynamic per-seed dispatch (targetted-failures style): workers pull candidate
-seeds from ONE shared stream and run each as its own subprocess
-(collect_one_episode.py) pinned to a free GPU from a pool — no static per-GPU
-split, no disjoint seed bands. All workers write into ONE run dir; the episode
+Dynamic per-seed dispatch: workers pull candidate seeds from ONE shared stream
+and run each as its own subprocess (collect_one_episode.py) pinned to a free
+GPU from a pool — no static per-GPU split, no disjoint seed bands. All workers
+write into ONE run dir; the episode
 index is claimed atomically (flock'd slots.json) the moment a seed qualifies, so
 episodes come out contiguous (episode0..N-1) exactly like a sequential run.
 `episode_num` is read from the task config, so single- and multi-GPU runs collect

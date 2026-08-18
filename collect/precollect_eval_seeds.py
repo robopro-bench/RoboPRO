@@ -1,4 +1,4 @@
-"""Pre-collect evaluation seeds for the RoboTwin benchmark.
+"""Pre-collect evaluation seeds for the RoboPRO benchmark.
 
 Mirrors the first-pass loop of collect/collect_data.py but writes ONLY a seed
 file — no pkl, no hdf5, no mp4. Output:
@@ -13,7 +13,6 @@ import sys
 import os
 import time
 import traceback
-import importlib
 import tempfile
 from argparse import ArgumentParser
 from pathlib import Path
