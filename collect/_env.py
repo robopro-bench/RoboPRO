@@ -1,8 +1,9 @@
 """Bootstrap collect/ scripts so they can run from any cwd.
 
-Puts SIM_ROOT / BENCH_ROOT / collect/ on sys.path and exports
-WORKSPACE_ROOT, SIM_ROOT, BENCH_ROOT, ASSETS_ROOT, DATA_ROOT. Relative YAML
-save_path values (./data/dataset, ./data/bench_data) resolve under DATA_ROOT.
+Puts SIM_ROOT / SIM_ROOT/script / SIM_ROOT/description/utils / BENCH_ROOT /
+policy/ / collect/ on sys.path and exports WORKSPACE_ROOT, SIM_ROOT,
+BENCH_ROOT, ASSETS_ROOT, DATA_ROOT, POLICY_ROOT. Relative YAML save_path
+values (./data/dataset, ./data/bench_data) resolve under DATA_ROOT.
 """
 from __future__ import annotations
 
@@ -22,11 +23,16 @@ def bootstrap() -> None:
     os.environ.setdefault("ASSETS_ROOT", str(WORKSPACE / "assets"))
     os.environ.setdefault("DATA_ROOT", str(WORKSPACE / "data"))
     os.environ.setdefault("POLICY_ROOT", str(WORKSPACE / "policy"))
+    sim = os.environ["SIM_ROOT"]
     for p in (
-        os.environ["SIM_ROOT"],
+        sim,
         os.environ["BENCH_ROOT"],
         os.environ["POLICY_ROOT"],
         str(COLLECT_DIR),
+        # sim/script holds modules imported bare (e.g. `from test_render import
+        # Sapien_TEST`), not via the `script.` package prefix.
+        os.path.join(sim, "script"),
+        os.path.join(sim, "description", "utils"),
     ):
         if p not in sys.path:
             sys.path.insert(0, p)
@@ -55,12 +61,16 @@ def resolve_save_path(save_path: str) -> str:
 
 def run_gen_instructions(task_name, task_config, language_num) -> None:
     desc = Path(os.environ["SIM_ROOT"]) / "description"
-    script = desc / "gen_episode_instructions.sh"
-    if not script.exists():
-        print(f"[collect] skip instructions: {script} missing")
+    gen = desc / "utils" / "generate_episode_instructions.py"
+    if not gen.exists():
+        print(f"[collect] skip instructions: {gen} missing")
         return
+    # Invoke with sys.executable rather than the gen_episode_instructions.sh
+    # wrapper: that wrapper calls a bare `python`, which resolves to whatever is
+    # first on PATH (often an unrelated conda env without pyyaml) instead of the
+    # sim env we are already running in.
     subprocess.run(
-        ["bash", str(script), str(task_name), str(task_config), str(language_num)],
+        [sys.executable, str(gen), str(task_name), str(task_config), str(language_num)],
         cwd=str(desc),
         check=False,
     )

@@ -48,10 +48,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import _env  # noqa: F401
 from _env import run_gen_instructions
 
-_sim = os.environ["SIM_ROOT"]
-sys.path.insert(0, os.environ.get("POLICY_ROOT", os.path.join(os.environ["WORKSPACE_ROOT"], "policy")))
-sys.path.insert(0, os.path.join(_sim, "description", "utils"))
-
 from envs.utils.create_actor import UnStableError  # noqa: F401
 
 import socket
@@ -175,7 +171,7 @@ def _get_camera_wh(camera_type):
     """W,H for the raw video stream (task_config/_camera_config.yml)."""
     import yaml as _yaml
     from pathlib import Path as _Path
-    cfg = _Path(__file__).resolve().parents[1] / "task_config" / "_camera_config.yml"
+    cfg = _Path(os.environ["SIM_ROOT"]) / "task_config" / "_camera_config.yml"
     with open(cfg, "r", encoding="utf-8") as f:
         c = _yaml.load(f.read(), Loader=_yaml.FullLoader)[camera_type]
     return c["w"], c["h"]

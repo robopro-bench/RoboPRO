@@ -13,6 +13,24 @@ bench_root = Path(os.environ["BENCH_ROOT"])
 OBJECTS_DESCRIPTION_DIR = bench_root / "bench_description" / "objects_description"
 
 
+def _resolve_save_path(save_path: str) -> Path:
+    """Map a task-config save_path (e.g. `./data/bench_data`) onto DATA_ROOT.
+
+    Mirrors collect/_env.py:resolve_save_path. Resolving these relative to this
+    file instead lands under sim/, where the collectors never write.
+    """
+    data_root = Path(os.environ.get("DATA_ROOT") or (bench_root.parent / "data"))
+    p = Path(save_path)
+    if p.is_absolute():
+        return p
+    parts = list(p.parts)
+    if parts[:1] == ["."]:
+        parts = parts[1:]
+    if parts[:1] == ["data"]:
+        parts = parts[1:]
+    return data_root.joinpath(*parts) if parts else data_root
+
+
 def extract_placeholders(instruction: str) -> List[str]:
     """Extract all placeholders of the form {X} from an instruction."""
     placeholders = re.findall(r"{([^}]+)}", instruction)
@@ -159,7 +177,7 @@ def load_task_instructions(task_name: str) -> Dict[str, Any]:
 
 def load_scene_info(task_name: str, setting: str, scene_info_path: str) -> Dict[str, Dict]:
     """Load the scene info from the JSON file in the data directory."""
-    file_path = os.path.join(parent_directory, f"../../{scene_info_path}/{task_name}/{setting}/scene_info.json")
+    file_path = _resolve_save_path(scene_info_path) / task_name / setting / "scene_info.json"
     try:
         with open(file_path, "r") as f:
             scene_data = json.load(f)
@@ -185,7 +203,7 @@ def extract_episodes_from_scene_info(scene_info: Dict) -> List[Dict[str, str]]:
 
 def save_episode_descriptions(task_name: str, setting: str, generated_descriptions: List[Dict], save_path: str):
     """Save generated descriptions to output files."""
-    output_dir = os.path.join(parent_directory, f"../../{save_path}/{task_name}/{setting}/instructions")
+    output_dir = _resolve_save_path(save_path) / task_name / setting / "instructions"
     os.makedirs(output_dir, exist_ok=True)
 
     for episode_desc in generated_descriptions:

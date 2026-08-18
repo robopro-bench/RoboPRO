@@ -39,6 +39,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 export WORKSPACE_ROOT="${WORKSPACE_ROOT:-$(cd "${SCRIPT_DIR}/../.." && pwd)}"
 export SIM_ROOT="${SIM_ROOT:-${WORKSPACE_ROOT}/sim}"
 export BENCH_ROOT="${BENCH_ROOT:-${WORKSPACE_ROOT}/benchmark}"
+export ASSETS_ROOT="${ASSETS_ROOT:-${WORKSPACE_ROOT}/assets}"
 export DATA_ROOT="${DATA_ROOT:-${WORKSPACE_ROOT}/data}"
 export POLICY_ROOT="${POLICY_ROOT:-${WORKSPACE_ROOT}/policy}"
 
@@ -80,10 +81,19 @@ PI05_VENV="$(pwd)/policy/pi05/.venv"
 SERVER_PID=$!
 trap "echo -e '\033[31m[cleanup] Killing server PID=${SERVER_PID}\033[0m'; kill ${SERVER_PID} 2>/dev/null || true" EXIT
 
-# --- Client (RoboTwin conda env, current process) ---
+# Resolve the simulator-side interpreter. The RoboPRO sim env is the uv-managed
+# repo-root .venv; a bare `python` may resolve to an unrelated conda env that has
+# no sapien. Override with SIM_PYTHON if the sim env lives elsewhere.
+SIM_PYTHON="${SIM_PYTHON:-${WORKSPACE_ROOT}/.venv/bin/python}"
+if [[ ! -x "${SIM_PYTHON}" ]]; then
+    SIM_PYTHON="$(command -v python)"
+fi
+echo -e "\033[34m[client] sim python: ${SIM_PYTHON}\033[0m"
+
+# --- Client (RoboPRO sim env, current process) ---
 echo -e "\033[34m[client] Starting collect_rollout_client on port ${FREE_PORT}\033[0m"
 PYTHONWARNINGS=ignore::UserWarning \
-python "${WORKSPACE_ROOT}/collect/collect_rollout_client.py" \
+"${SIM_PYTHON}" "${WORKSPACE_ROOT}/collect/collect_rollout_client.py" \
     --port ${FREE_PORT} \
     --config policy/${policy_name}/deploy_policy.yml \
     --overrides \

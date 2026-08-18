@@ -80,10 +80,19 @@ PI05_VENV="$(pwd)/policy/pi05/.venv"
 SERVER_PID=$!
 trap "echo -e '\033[31m[cleanup] Killing server PID=${SERVER_PID}\033[0m'; kill ${SERVER_PID} 2>/dev/null || true" EXIT
 
-# --- Client (RoboTwin conda env, current process) ---
+# Resolve the simulator-side interpreter. The RoboPRO sim env is the uv-managed
+# repo-root .venv; a bare `python` may resolve to an unrelated conda env that has
+# no sapien. Override with SIM_PYTHON if the sim env lives elsewhere.
+SIM_PYTHON="${SIM_PYTHON:-${REPO_ROOT}/.venv/bin/python}"
+if [[ ! -x "${SIM_PYTHON}" ]]; then
+    SIM_PYTHON="$(command -v python)"
+fi
+echo -e "\033[34m[client] sim python: ${SIM_PYTHON}\033[0m"
+
+# --- Client (RoboPRO sim env, current process) ---
 echo -e "\033[34m[client] Starting eval_policy_client on port ${FREE_PORT}\033[0m"
 PYTHONWARNINGS=ignore::UserWarning \
-python eval/eval_policy_client.py \
+"${SIM_PYTHON}" eval/eval_policy_client.py \
     --port ${FREE_PORT} \
     --config policy/${policy_name}/deploy_policy.yml \
     --overrides \
