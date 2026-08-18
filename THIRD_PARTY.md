@@ -18,7 +18,7 @@ These directories are still substantially RoboTwin 2.0, even after the rename an
 | [`sim/`](sim/) | SAPIEN + CuRobo runtime: `Base_Task`, robot, camera, planner, `task_config/`, description scripts |
 | [`eval/`](eval/) | `eval_policy.py`, `eval_policy_client.py`, `policy_model_server.py` (their `script/` eval harness) |
 | [`collect/`](collect/) | `collect_data.py` / `collect_data.sh` and the collector loop (their `collect_data` pipeline) |
-| [`policy/`](policy/) wrappers | `deploy_policy.py`, `eval.sh`, `eval_double_env.sh`, `collect_rollout.sh`, `Your_Policy/` template |
+| [`policy/`](policy/) wrappers | `deploy_policy.py`, `eval.sh`, `eval_double_env.sh`, `collect_rollout.sh` |
 
 RoboPRO changes in those paths (path bootstraps, grounding hooks, raw-id masks, etc.) are modifications of that Software. The Chen line in [`LICENSE`](LICENSE) still covers them.
 

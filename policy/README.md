@@ -4,7 +4,6 @@
 |---|---|---|
 | `pi0/` | OpenPI π0 library + RoboTwin `deploy_policy` / `eval.sh` glue | Library: [Apache 2.0](https://github.com/Physical-Intelligence/openpi/blob/main/LICENSE) ([`pi0/LICENSE`](pi0/LICENSE)). Wrappers: MIT / RoboTwin-derived. |
 | `pi05/` | OpenPI π0.5 + the same glue | Same split. [`pi05/LICENSE`](pi05/LICENSE) is the official Apache text for the library only. |
-| `Your_Policy/` | RoboTwin policy template | MIT / RoboTwin-derived |
 
 Run from the repo root after `source set_env.sh`.
 
