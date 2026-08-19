@@ -5,9 +5,9 @@ SHELL := /bin/bash
 ROOT_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 SIM_ROOT := $(ROOT_DIR)/sim
 PYTHON ?= $(ROOT_DIR)/.venv/bin/python
-# Policy-side interpreter: policies like pi05 ship their own uv venv (openpi+jax)
-# which the sim .venv does not have. Falls back to $(PYTHON) when absent.
-POLICY_PYTHON ?= $(firstword $(wildcard $(ROOT_DIR)/policy/$(POLICY_NAME)/.venv/bin/python) $(PYTHON))
+# Policy-side interpreter: policies like pi05 use the openpi submodule uv venv
+# (openpi+jax) which the sim .venv does not have. Falls back to $(PYTHON) when absent.
+POLICY_PYTHON ?= $(firstword $(wildcard $(ROOT_DIR)/policy/$(POLICY_NAME)/openpi/.venv/bin/python) $(PYTHON))
 UV ?= uv
 
 # Common benchmark settings
@@ -98,6 +98,7 @@ endef
 .PHONY: help check-prereqs bootstrap sync download-assets link-assets configure-curobo-assets \
 	patch-curobo-config setup render-test verify-scene verify-rollout collect-data \
 	precollect-seeds eval-direct eval-client policy-server eval-pi05-single eval-pi05-double \
+	check-env-split \
 	collect-rollout-pi05 diag-kitchen-curobo occluder-visibility reachability-map \
 	pickup-reachability analyze-occluder-rollout show-config
 
@@ -119,6 +120,7 @@ help:
 	'' \
 	'Smoke tests:' \
 	'  make render-test              Minimal Sapien renderer smoke test.' \
+	'  make check-env-split          Verify the dual-env eval import split (server has no sapien dep).' \
 	'  make verify-scene             Load a benchmark task scene only.' \
 	'  make verify-rollout           Headless rollout smoke test; saves video by default.' \
 	'  make precollect-seeds         Generate eval seeds without saving demos.' \
@@ -225,6 +227,9 @@ patch-curobo-config:
 	"$(PYTHON)" scripts/install/patch_aloha_curobo.py
 
 setup: link-assets configure-curobo-assets patch-curobo-config
+
+check-env-split:
+	"$(PYTHON)" scripts/check_eval_env_split.py
 
 render-test:
 	$(call RUN_IN_SIM,$(PYTHON) script/test_render.py)
