@@ -4,12 +4,12 @@
 # Purpose: one working reference for collecting grounding data (per-object
 # masks + depth + role sidecar + per-frame contact/collision labels).
 # Copy → rename → tune episode_num / obstacle_density / the collision block
-# at the bottom. Full dataset spec + label semantics: DATA_GEN.md at repo root.
+# at the bottom. Full dataset spec + label semantics: collect/README.md.
 #
-# Run (from sim/, env `robopro`):
-#   bash collect_data.sh <task_name> <this_config_name> <gpu_id>     # single GPU
-#   bash collect_data.sh <task_name> <this_config_name> 0,1          # multi-GPU
-# Forgot a modality? Episodes are replayable bit-exact (DATA_GEN.md §5.3):
+# Run (from repo root, after `source set_env.sh`):
+#   bash collect/collect_data.sh <task_name> <this_config_name> <gpu_id>  # single GPU
+#   bash collect/collect_data.sh <task_name> <this_config_name> 0,1       # multi-GPU
+# Forgot a modality? Episodes are replayable bit-exact (collect/README.md):
 #   python collect/replay_trajectory.py <task> <this_config_name> --replay-config replay_rich
 # ============================================================================
 
@@ -91,11 +91,10 @@ eval_video_log: true
 #   (link) or via the held target or an actuated body (drawer) — grasps, targets,
 #   destinations, wheels excluded; collision = impulse-gated furniture hits +
 #   displacement-evidenced static hits (1cm/0.1rad from episode start), and
-#   (b) the episode-level collision metrics. See DATA_GEN.md §5.2.
+#   (b) the episode-level collision metrics. See collect/README.md.
 #   With this off the per-timestep arrays still exist but are all zeros.
 #
-# planner_exclude_obstacles: decouples CuRobo clutter-awareness from the metrics
-#   (restored from the e248b2d prototype):
+# planner_exclude_obstacles: decouples CuRobo clutter-awareness from the metrics:
 #     omitted/null -> legacy behavior (planner blind iff metrics on)
 #     false        -> planner SEES clutter  = collision-AWARE   (collisions rare-but-real)
 #     true         -> planner BLIND to clutter = collision-UNAWARE (frequent collisions,

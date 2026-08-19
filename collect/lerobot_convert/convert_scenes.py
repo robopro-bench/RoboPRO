@@ -1,8 +1,7 @@
 """Convert a scene-organised RoboTwin HDF5 dataset into ONE flat LeRobot v2.1
 dataset that preserves the scene structure via per-episode metadata.
 
-Source layout (unlike ``convert_rollouts.list_rollout_episodes``'s one-level
-``config_dir/data``) is two levels deep::
+Source layout is two levels deep::
 
     <root>/<tier>/seed<N>/data/episode<M>.hdf5   # tier in {clean, d6..d15}
     <root>/<tier>/seed<N>/video/episode<M>.mp4   # ignored (single view, native fps)

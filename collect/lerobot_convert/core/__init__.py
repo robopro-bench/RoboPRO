@@ -1,6 +1,6 @@
 """Core convert utilities (stable across data layouts).
 
-Keep wrappers (``convert_rollouts``, ``convert_scenes``, uploads, pipelines)
+Keep wrappers (``convert_scenes``, uploads, pipelines)
 outside this package. Adapt wrappers for new sources; change ``core`` only when
 the RoboTwin episode → parquet/video contract changes.
 """

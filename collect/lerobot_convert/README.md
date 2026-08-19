@@ -7,8 +7,6 @@ Layout
   *episode convert contract* changes.
 * ``convert_scenes.py`` — scene-organised layout
   ``<root>/<tier>/seedN/data/episode*.hdf5``.
-* ``convert_rollouts.py`` — one-level ``<config_dir>/data/episode*.hdf5``
-  (same layout as ``collect_data.py`` output under ``data/<task>/<config>/``).
 
 Entry points (from RoboPRO repo root)
 -------------------------------------
