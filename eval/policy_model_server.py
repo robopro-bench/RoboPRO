@@ -17,7 +17,9 @@ from collections import deque
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import _env  # noqa: F401
 
-from envs._GLOBAL_CONFIGS import CONFIGS_PATH
+# NOTE: do not import from `envs` here. This server runs in the policy venv
+# (policy/pi05/openpi/.venv), which has jax but no sapien; `envs/__init__.py`
+# imports sapien and would break dual-env mode.
 
 import numpy as np
 from typing import Any

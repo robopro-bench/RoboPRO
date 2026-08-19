@@ -65,9 +65,11 @@ export PYTHONNOUSERSITE=1
 
 ```bash
 cd sim
-pip install -r script/requirements.txt
-pip install setuptools==69.5.1       # provides pkg_resources for sapien
-pip install "git+https://github.com/facebookresearch/pytorch3d.git@stable" --no-build-isolation
+# Use `python -m pip`, not a bare `pip`: with a conda env active, `pip` can still
+# resolve to ~/.local/bin/pip, which may be broken or bound to another interpreter.
+python -m pip install -r script/requirements.txt
+python -m pip install setuptools==69.5.1       # provides pkg_resources for sapien
+python -m pip install "git+https://github.com/facebookresearch/pytorch3d.git@stable" --no-build-isolation
 bash script/_install.sh              # patches sapien urdf_loader + mplib planner
 cd ..
 ```
@@ -76,7 +78,7 @@ cd ..
 
 > **SAPIEN version matters:** the benchmark is pinned to `sapien==3.0.0b1`. A different SAPIEN version can change physics and rendering behavior, which shifts evaluation results — success rates from mismatched versions are not comparable. Verify with `python -c "import sapien; print(sapien.__version__)"` before collecting data or running evals.
 
-`script/_install.sh` also clones CuRobo v0.7.8 into `envs/curobo/` and pip-installs it editable, then re-pins `warp-lang==1.12.0` and `setuptools==69.5.1`. If you keep `scipy==1.10.1` from `requirements.txt`, `scikit-image` will print a version-conflict warning — harmless.
+`script/_install.sh` also clones CuRobo v0.7.8 into `envs/curobo/` and pip-installs it editable, then re-pins `warp-lang==1.12.0` and `setuptools==69.5.1`. Installing CuRobo pulls in `scikit-image`, which **upgrades** `scipy` from the `requirements.txt` pin of 1.10.1 to 1.15.x. That is expected — the resulting env runs on the upgraded scipy, so do not re-pin 1.10.1 afterwards.
 
 #### Option B. uv workflow
 
@@ -84,7 +86,7 @@ cd ..
 bash scripts/install/bootstrap_uv.sh
 ```
 
-This bootstraps `.venv` from the root `pyproject.toml` and `uv.lock`, then runs the post-install patches and clones CuRobo v0.7.8 into `sim/envs/curobo/` as an editable install. The uv path does not install `sim/script/requirements.txt` directly, so any dependency added there must also be mirrored in `pyproject.toml`. If you keep `scipy==1.10.1`, `scikit-image` may print a version-conflict warning during install — harmless.
+This bootstraps `.venv` from the root `pyproject.toml` and `uv.lock`, then runs the post-install patches and clones CuRobo v0.7.8 into `sim/envs/curobo/` as an editable install. The uv path does not install `sim/script/requirements.txt` directly, so any dependency added there must also be mirrored in `pyproject.toml`. As with the conda path, CuRobo/`scikit-image` upgrade `scipy` past the 1.10.1 pin; that is expected.
 
 ### 3. Assets (~15 GB)
 
@@ -101,9 +103,20 @@ make configure-curobo-assets
 python scripts/install/patch_aloha_curobo.py
 ```
 
-### 4. CuRobo cache patch
+### 4. CuRobo cache patch (not needed on v0.7.8)
 
-In `sim/envs/curobo/src/curobo/geom/sdf/world_mesh.py`, replace `clear_cache` with:
+`WorldMeshCollision.clear_cache` in `sim/envs/curobo/src/curobo/geom/sdf/world_mesh.py`
+must reset `_env_mesh_names` between episodes, or stale collision meshes leak across
+rollouts. **CuRobo v0.7.8 — the version `script/_install.sh` pins — already does this
+upstream**, so no edit is required; verify with:
+
+```bash
+sed -n '/def clear_cache/,/super().clear_cache()/p' \
+    sim/envs/curobo/src/curobo/geom/sdf/world_mesh.py
+```
+
+Expect to see `self._env_mesh_names` rebuilt as a list of `None` entries. If you pin a
+different CuRobo version whose `clear_cache` lacks that reset, patch it in:
 
 ```python
 def clear_cache(self):
@@ -113,9 +126,9 @@ def clear_cache(self):
     if self._env_n_mesh is not None:
         self._env_n_mesh[:] = 0
     if self._env_mesh_names is not None:
-        for i in range(self.n_envs):
-            for j in range(len(self._env_mesh_names)):
-                self._env_mesh_names[i][j] = None
+        self._env_mesh_names = [
+            [None for _ in range(self.cache["mesh"])] for _ in range(self.n_envs)
+        ]
     super().clear_cache()
 ```
 
@@ -313,7 +326,7 @@ Common setup problems and where their fixes live:
 | Eval success rates differ unexpectedly from reported numbers | Check `sapien.__version__` — must be `3.0.0b1`; other versions change physics/rendering and skew results (Installation step 2) |
 | `ModuleNotFoundError: pkg_resources` when importing sapien | `pip install setuptools==69.5.1` (Installation step 2) |
 | CuRobo fails to attach grasped objects during planning | The shipped curobo configs lack the `attached_object` link entries — run `python scripts/install/patch_aloha_curobo.py` (Installation step 3) |
-| CuRobo keeps stale collision meshes across episodes | Apply the `clear_cache` patch to `world_mesh.py` (Installation step 4) |
+| CuRobo keeps stale collision meshes across episodes | Already fixed upstream in the pinned v0.7.8; only patch `world_mesh.py` if you changed CuRobo versions (Installation step 4) |
 
 ## License
 
