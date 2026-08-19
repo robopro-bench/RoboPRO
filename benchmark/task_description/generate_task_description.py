@@ -1,13 +1,20 @@
 import json
-from agent import *
-from argparse import ArgumentParser
 import os
+import sys
+from argparse import ArgumentParser
 from pathlib import Path
 
-bench_root = Path(os.environ["BENCH_ROOT"])
+_DIR = Path(__file__).resolve().parent
+_WORKSPACE = _DIR.parent.parent
+os.environ.setdefault("WORKSPACE_ROOT", str(_WORKSPACE))
+os.environ.setdefault("BENCH_ROOT", str(_WORKSPACE / "benchmark"))
+if str(_DIR) not in sys.path:
+    sys.path.insert(0, str(_DIR))
 
-with open("./_generate_task_prompt.txt", "r") as f:
-    system_prompt = f.read()
+from agent import *
+
+bench_root = Path(os.environ["BENCH_ROOT"])
+system_prompt = (_DIR / "_generate_task_prompt.txt").read_text()
 
 
 class Instruction(BaseModel):
@@ -29,8 +36,7 @@ class InstructionFormat(BaseModel):
 def make_prompt_generate(detailed_task, preferences, schema, instruction_num):
     system_prompt_schema = ""
     if schema:
-        with open("./_generate_task_prompt_schema.txt", "r") as f:
-            system_prompt_schema = f.read()
+        system_prompt_schema = (_DIR / "_generate_task_prompt_schema.txt").read_text()
     messages = [
         {
             "role": "system",
@@ -86,7 +92,7 @@ def generate_task_description(task_name, instruction_num):
             "preference",
     ]:  # schema can be empty to disable it
         if (not task_info.get(required_keys, "") or task_info.get(required_keys, "") == ""):
-            print(f"{required_keys} is not in the ./task_instruction/{task_name}.json or is empty")
+            print(f"{required_keys} is not in {file_path} or is empty")
             return
     result = make_prompt_generate(
         task_info["full_description"],
@@ -99,7 +105,7 @@ def generate_task_description(task_name, instruction_num):
     task_info["unseen"].extend(result[0:2])
     # task_info['seen'] = result[2:]
     # task_info['unseen'] = result[0:2]
-    with open(f"./task_instruction/{task_name}.json", "w") as f:
+    with open(file_path, "w") as f:
         json.dump(task_info, f, indent=2, ensure_ascii=False)
 
 

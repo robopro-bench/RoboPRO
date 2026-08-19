@@ -88,14 +88,6 @@ make verify-rollout TASK_NAME=put_mouse_on_pad TASK_CONFIG=bench_demo_office_cle
 
 Use this to run a single rollout for a benchmark task and verify end-to-end task execution. This is the easiest entry point for producing one saved sample rollout from a chosen task/config pair.
 
-### `make diag-kitchen-curobo`
-
-```bash
-make diag-kitchen-curobo
-```
-
-Use this for focused debugging of CuRobo behavior in the kitchen benchmark environments.
-
 ## Data Generation
 
 ### `make collect-data`

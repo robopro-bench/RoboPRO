@@ -1,16 +1,26 @@
 import json
-from agent import *
-from argparse import ArgumentParser
-from get_image_from_glb import *
 import os
+import sys
+from argparse import ArgumentParser
 from pathlib import Path
 import base64
 import pprint
 import time
 import random
 
-_OBJ_DESC = Path(os.environ.get("BENCH_ROOT", ".")) / "bench_description" / "objects_description"
-_ASSETS_OBJECTS = Path(os.environ.get("ASSETS_ROOT", ".")) / "objects"
+_DIR = Path(__file__).resolve().parent
+_WORKSPACE = _DIR.parent.parent
+os.environ.setdefault("WORKSPACE_ROOT", str(_WORKSPACE))
+os.environ.setdefault("BENCH_ROOT", str(_WORKSPACE / "benchmark"))
+os.environ.setdefault("ASSETS_ROOT", str(_WORKSPACE / "assets"))
+if str(_DIR) not in sys.path:
+    sys.path.insert(0, str(_DIR))
+
+from agent import *
+from get_image_from_glb import *
+
+_OBJ_DESC = Path(os.environ["BENCH_ROOT"]) / "bench_description" / "objects_description"
+_ASSETS_OBJECTS = Path(os.environ["ASSETS_ROOT"]) / "objects"
 
 
 class subPart(BaseModel):
@@ -32,8 +42,7 @@ class ObjDescFormat(BaseModel):
     # val_description:List[str]=Field(description="similar to descriptions, used for validation")
 
 
-with open("./_generate_object_prompt.txt", "r") as f:
-    system_prompt = f.read()
+system_prompt = (_DIR / "_generate_object_prompt.txt").read_text()
 
 
 def save_json(save_dir, glb_file_name, ObjDescResult):

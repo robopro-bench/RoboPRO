@@ -99,7 +99,7 @@ endef
 	patch-curobo-config setup render-test verify-scene verify-rollout collect-data \
 	precollect-seeds eval-direct eval-client policy-server eval-pi05-single eval-pi05-double \
 	check-env-split \
-	collect-rollout-pi05 diag-kitchen-curobo occluder-visibility reachability-map \
+	collect-rollout-pi05 occluder-visibility reachability-map \
 	pickup-reachability analyze-occluder-rollout show-config
 
 help:
@@ -124,7 +124,6 @@ help:
 	'  make verify-scene             Load a benchmark task scene only.' \
 	'  make verify-rollout           Headless rollout smoke test; saves video by default.' \
 	'  make precollect-seeds         Generate eval seeds without saving demos.' \
-	'  make diag-kitchen-curobo      Kitchen collision diagnostic script.' \
 	'' \
 	'Occluder / reachability analysis (issue #35):' \
 	'  make occluder-visibility      Occluder visibility sweep (+rollout with ROLLOUT=1).' \
@@ -325,9 +324,6 @@ collect-rollout-pi05:
 		export ACTION_NOISE_VAR="$(ACTION_NOISE_VAR)"; \
 		if [[ "$(COLLECT_FIXED_SEED)" == "1" ]]; then export COLLECT_FIXED_SEED=1; fi; \
 		bash "$(ROOT_DIR)/policy/pi05/collect_rollout.sh" "$(TASK_NAME)" "$(TASK_CONFIG)" "$(TRAIN_CONFIG_NAME)" "$(MODEL_NAME)" "$(CHECKPOINT_ID)" "$(SEED)" "$(GPU_SPEC)")
-
-diag-kitchen-curobo:
-	$(call RUN_IN_SIM,$(PYTHON) script/bench_script/diag_kitchen_curobo.py)
 
 occluder-visibility:
 	$(call RUN_IN_SIM,\

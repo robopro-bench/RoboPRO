@@ -4,19 +4,30 @@
 
 RoboPRO is a bimanual manipulation benchmark for policy robustness. The simulation runtime (SAPIEN + CuRobo, Aloha-AgileX) is based on [RoboTwin 2.0](https://github.com/RoboTwin-Platform/RoboTwin); the 80 tasks, realistic scenes, metrics, and perturbation suite are ours.
 
-**Project page:** https://anonymous.4open.science/w/RoboPRO-EDE0/index.html
+**Project page:** TODO
 
 RoboPRO adds:
 - **Realistic scenes** across office, study, kitchen (small & large) domains
 - **Systematic perturbation suite** — Language, Vision, and Object axes for evaluating policy robustness
 - **Aloha-Agilex** bimanual embodiment with CuRobo motion planning
 
+## Layout
+
+| Path | Role |
+|---|---|
+| [`collect/`](collect/) | CuRobo demos, policy rollouts, grounding, trajectory replay, LeRobot convert |
+| [`eval/`](eval/) | Policy eval harness and fixed eval-seed lists |
+| [`benchmark/`](benchmark/) | Tasks, perturbation YAMLs, eval seeds, description JSON |
+| [`benchmark/task_description/`](benchmark/task_description/) | Offline LLM authoring for those JSON files |
+| [`sim/`](sim/) | SAPIEN + CuRobo runtime (modified RoboTwin 2.0) |
+| [`policy/`](policy/) | Policy glue; `pi0/openpi` and `pi05/openpi` are git submodules |
+
 ## Installation
 
 System prereqs (one-time): `libvulkan1 mesa-vulkan-drivers vulkan-tools` (apt), `ffmpeg`, and an NVIDIA driver with CUDA 12.x.
 
 ```bash
-git clone --recurse-submodules https://anonymous.4open.science/r/RoboPRO-EDE0
+git clone --recurse-submodules TODO
 cd RoboPRO
 ```
 
@@ -158,13 +169,15 @@ source set_env.sh                  # exports WORKSPACE_ROOT, SIM_ROOT, BENCH_ROO
 bash collect/collect_data.sh <task_name> <task_config> <gpu_id>
 # Example:
 bash collect/collect_data.sh put_mouse_on_pad bench_demo_office_clean 0
+# Multi-GPU:
+bash collect/collect_data.sh put_mouse_on_pad bench_demo_office_clean 0,1
 ```
 
-Episodes land in `data/<task_name>/<task_config>/` (YAML `save_path: ./data`). Schema and grounding: [`collect/README.md`](collect/README.md).
+Episodes land in `data/<task_name>/<task_config>/` (YAML `save_path: ./data`). Output schema, grounding, replay, and notices: [`collect/README.md`](collect/README.md).
 
 ### Convert HDF5 to LeRobot
 
-[`collect/lerobot_convert/`](collect/lerobot_convert/) turns a scene-organised RoboPRO dump (`<tier>/seedN/data/episode*.hdf5`) into a LeRobot v2.1 dataset (parquet + `countertop`/`left`/`right` videos, 1:1 at 30 fps). The task prompt is the HDF5 `task_name` looked up in `benchmark/bench_description/plain_instructions.json` (or `--task-text`).
+[`collect/lerobot_convert/`](collect/lerobot_convert/) turns a scene-organised RoboPRO dump (`<tier>/seedN/data/episode*.hdf5`) into a LeRobot v2.1 dataset (parquet + `countertop`/`left`/`right` videos, 1:1 at 30 fps). The task prompt is the HDF5 `task_name` looked up in `benchmark/bench_description/plain_instructions.json` (or `--task-text`). Details: [`collect/lerobot_convert/README.md`](collect/lerobot_convert/README.md).
 
 From the repo root (env with `cv2`, `av`, `h5py`, `pandas`, `numpy`):
 
@@ -177,7 +190,7 @@ PYTHONPATH=collect python -m lerobot_convert.convert_scenes \
 
 ### Run inference (policy eval)
 
-From the repo root after `source set_env.sh`. Eval rolls a trained checkpoint out against a `(task, config)` pair and writes a per-rollout success log under `eval_result/`. Two modes depending on whether your policy fits in the same Python env as the simulator.
+From the repo root after `source set_env.sh`. Eval rolls a trained checkpoint out against a `(task, config)` pair and writes a per-rollout success log under `eval_result/`. Two modes depending on whether your policy fits in the same Python env as the simulator. Harness and eval-seed design: [`eval/README.md`](eval/README.md).
 
 **Pretrained checkpoints:**
 
@@ -197,7 +210,7 @@ For pi05, symlink the downloaded `jax_30000/` dir to `policy/pi05/checkpoints/<t
 | `train_config_name` | Training config used to fine-tune the checkpoint |
 | `model_name` | Subdir name under `checkpoints/<train_config_name>/` |
 | `checkpoint_id` | Step number, e.g. `30000` |
-| `seed` | RNG seed for episode initialisation |
+| `seed` | Scan-mode offset only. When an eval seed file is loaded, episode seeds come from that file, not this arg. |
 | `gpu_id` | CUDA device, or `<server_gpu>:<client_gpu>` for dual-env |
 
 **Mode A — single-process** (policy + sim share one Python env, e.g. when openpi is conda-installable alongside SAPIEN):
@@ -230,7 +243,7 @@ bash policy/pi05/eval_double_env.sh put_mouse_on_pad bench_demo_office_clean my_
 
 The script spawns a `policy_model_server.py` in the pi05 venv and an `eval_policy_client.py` in the RoboPRO sim env, communicating over a free socket port.
 
-**Eval seeds.** When `BENCH_ROOT` is set and `benchmark/eval_seeds/<task>/<task_config>.txt` exists, eval loads that fixed seed list (skips live expert scanning). Override with `--eval_seed_file /path/to.txt`, or fall back to scanning other seeds with `--use_eval_seeds false`. Cap episodes with `--test_num N` (capped by the file length). Precollect seeds via `python collect/precollect_eval_seeds.py <task> <task_config>` (also used by `scripts/slurm/slurm_precollect_then_eval.sh`).
+**Eval seeds.** Eval uses the fixed, expert-validated lists at `benchmark/eval_seeds/<task>/<config>.txt` (20 seeds for `*_clean`, 2 otherwise; integers start at 40000 so they do not overlap training). The **same seed id** on clean vs d6–d15 places the **target at the same pose**; only clutter changes. Precollect with `python collect/precollect_eval_seeds.py <task> <config>`. Override with `--eval_seed_file PATH`, or scan live with `--use_eval_seeds false`. Cap with `--test_num N`. Details: [`eval/README.md`](eval/README.md).
 
 **Faster evaluation (optional).** Two opt-in settings cut the time per episode. Neither changes the scene a seed builds, the RNG streams, or the result. Leave them unset and eval behaves exactly as before.
 
@@ -306,13 +319,14 @@ See the YAMLs in `benchmark/bench_task_config/` for parameter-level details, and
 | Kitchen (Small) | `put_dish_in_rack`, `place_in_sink`, ... |
 | Kitchen (Large) | `microwave_heat`, `fridge_store`, ... |
 
-Full list in [`benchmark/TASKS.md`](benchmark/TASKS.md) and `benchmark/bench_envs/`. Grounding and episode schema: [`collect/README.md`](collect/README.md).
+Full list in [`benchmark/TASKS.md`](benchmark/TASKS.md) and `benchmark/bench_envs/`. Episode schema and grounding: [`collect/README.md`](collect/README.md). Eval seeds: [`eval/README.md`](eval/README.md).
 
 ## New tasks
 
 1. Write the task env under `benchmark/bench_envs/<scene>/<task>.py`.
 2. Add `_eval_step_lim.yml` entry under `benchmark/bench_task_config/`.
 3. Add a description template under `benchmark/bench_description/task_instructions/`.
+   Optional: fill `seen`/`unseen` variants with [`benchmark/task_description/`](benchmark/task_description/).
 
 Start from an analogous sibling task (`kitchenl/`, `office/`, `study/`) — copying a proven recipe is faster than inventing from scratch.
 
