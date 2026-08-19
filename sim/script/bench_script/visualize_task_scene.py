@@ -74,8 +74,8 @@ sim_root = Path(os.environ["SIM_ROOT"])
 
 os.chdir(sim_root)
 
-# collect/_env.resolve_save_path maps YAML `./data/...` onto DATA_ROOT. Without
-# this, cwd=sim would write smoke-test videos under sim/data/.
+# collect/_env.resolve_save_path maps YAML `./data` onto DATA_ROOT (repo-root
+# data/). Without this, cwd=sim would write smoke-test videos under sim/data/.
 _collect = Path(os.environ.get("WORKSPACE_ROOT", sim_root.parent)) / "collect"
 if str(_collect) not in sys.path:
     sys.path.insert(0, str(_collect))
@@ -335,7 +335,7 @@ def main():
 
     cfg["left_embodiment_config"] = get_embodiment_config(cfg["left_robot_file"])
     cfg["right_embodiment_config"] = get_embodiment_config(cfg["right_robot_file"])
-    cfg["save_path"] = resolve_save_path(cfg.get("save_path", "./data/bench_data"))
+    cfg["save_path"] = resolve_save_path(cfg.get("save_path") or "./data")
 
     # Build env and setup scene with viewer
     env = env_class()

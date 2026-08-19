@@ -1,7 +1,8 @@
 """Bootstrap eval/ scripts so they can run from any cwd.
 
-Puts SIM_ROOT / SIM_ROOT/script / BENCH_ROOT / policy/ / eval/ on sys.path and exports
-WORKSPACE_ROOT, SIM_ROOT, BENCH_ROOT, ASSETS_ROOT, DATA_ROOT, POLICY_ROOT.
+Puts SIM_ROOT / SIM_ROOT/script / BENCH_ROOT / policy/ / eval/ / collect/ on
+sys.path and exports WORKSPACE_ROOT, SIM_ROOT, BENCH_ROOT, ASSETS_ROOT,
+DATA_ROOT, POLICY_ROOT.
 """
 from __future__ import annotations
 
@@ -26,10 +27,10 @@ def bootstrap() -> None:
         os.environ["BENCH_ROOT"],
         os.environ["POLICY_ROOT"],
         str(EVAL_DIR),
+        str(WORKSPACE / "collect"),
         # sim/script holds modules imported bare (e.g. `from test_render import
         # Sapien_TEST`), not via the `script.` package prefix.
         os.path.join(sim, "script"),
-        os.path.join(sim, "description", "utils"),
     ):
         if p not in sys.path:
             sys.path.insert(0, p)

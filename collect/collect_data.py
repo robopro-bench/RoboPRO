@@ -100,7 +100,8 @@ def build_task_and_args(task_name, task_config):
     args["embodiment_name"] = embodiment_name
     args['task_config'] = task_config
     args["save_path"] = os.path.join(
-        resolve_save_path(args["save_path"]), str(args["task_name"]), args["task_config"])
+        resolve_save_path(args.get("save_path") or "./data"),
+        str(args["task_name"]), args["task_config"])
     return task, args
 
 

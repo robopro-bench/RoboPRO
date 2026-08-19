@@ -33,12 +33,11 @@ source set_env.sh
 export XLA_PYTHON_CLIENT_MEM_FRACTION=0.4
 export PYTHONUNBUFFERED=1
 
-# Use pi05 conda env (has openpi + sapien + curobo)
+# Single-process eval: use PI05_PYTHON if you have a mixed env (openpi+sapien).
+# Otherwise the dual-env wrappers in policy/pi05/ are the supported path.
+_WS="${WORKSPACE_ROOT:-$SIM_ROOT/..}"
 PYTHON="${PI05_PYTHON:-$(command -v python)}"
-# To pin a specific conda env: export PI05_PYTHON=/path/to/miniconda3/envs/pi05/bin/python
-
-# Add pi05 source to PYTHONPATH so openpi is importable
-export PYTHONPATH="${WORKSPACE_ROOT:-$SIM_ROOT/..}/policy/pi05/src:$PYTHONPATH"
+export PYTHONPATH="${_WS}/policy/pi05/openpi/src:${PYTHONPATH:-}"
 
 $PYTHON "${WORKSPACE_ROOT}/eval/eval_policy.py" \
     --config policy/pi05/deploy_policy.yml \

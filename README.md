@@ -142,7 +142,7 @@ python script/bench_script/visualize_task_scene.py \
     --bench-subdir office --rollout --no-render --seed 0 --save_data
 ```
 
-Expected on success: a `Success: True` line and an MP4 at `data/bench_data/video/episode_put_mouse_on_pad_0.mp4` (~176 frames @ 320×240).
+Expected on success: a `Success: True` line and an MP4 at `data/video/episode_put_mouse_on_pad_0.mp4` (~176 frames @ 320×240).
 
 ## Usage
 
@@ -160,16 +160,16 @@ bash collect/collect_data.sh <task_name> <task_config> <gpu_id>
 bash collect/collect_data.sh put_mouse_on_pad bench_demo_office_clean 0
 ```
 
-Episodes land in `data/<save_path>/<task_name>/<task_config>/` (YAML `./data/dataset` → `data/dataset/...`). Schema and grounding: [`collect/README.md`](collect/README.md).
+Episodes land in `data/<task_name>/<task_config>/` (YAML `save_path: ./data`). Schema and grounding: [`collect/README.md`](collect/README.md).
 
 ### Convert HDF5 to LeRobot
 
-[`sim/script/lerobot_convert/`](sim/script/lerobot_convert/) turns a scene-organised RoboPRO dump (`<tier>/seedN/data/episode*.hdf5`) into a LeRobot v2.1 dataset (parquet + `countertop`/`left`/`right` videos, 1:1 at 30 fps). The task prompt is the HDF5 `task_name` looked up in `benchmark/bench_description/plain_instructions.json` (or `--task-text`).
+[`collect/lerobot_convert/`](collect/lerobot_convert/) turns a scene-organised RoboPRO dump (`<tier>/seedN/data/episode*.hdf5`) into a LeRobot v2.1 dataset (parquet + `countertop`/`left`/`right` videos, 1:1 at 30 fps). The task prompt is the HDF5 `task_name` looked up in `benchmark/bench_description/plain_instructions.json` (or `--task-text`).
 
 From the repo root (env with `cv2`, `av`, `h5py`, `pandas`, `numpy`):
 
 ```bash
-PYTHONPATH=sim/script python -m lerobot_convert.convert_scenes \
+PYTHONPATH=collect python -m lerobot_convert.convert_scenes \
     --src /path/to/<task>_38scene_... \
     --out /path/to/lerobot_out \
     --limit 2 --overwrite

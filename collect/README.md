@@ -170,7 +170,7 @@ Everything below is written by `bash collect/collect_data.sh <task> <config> <gp
 (task, config):
 
 ```
-<save_path>/<task>/<config>/
+data/<task>/<config>/
 ├── data/episodeN.hdf5            the episode (schema below)
 ├── video/episodeN.mp4            countertop cam, 30 fps, 1 video frame per dataset frame
 ├── scene/episodeN/
@@ -283,13 +283,13 @@ for the thresholds they were recorded with.
 Every episode is replayable (bit-exact joint trajectory, verified max |Δq| = 0):
 
 ```
-python script/replay_trajectory.py <task> <collection_config> --replay-config replay_rich
+python collect/replay_trajectory.py <task> <collection_config> --replay-config replay_rich
 ```
 
 rebuilds the seeded scene, restores `_traj_data/episodeN_init.json` (authoritative),
 re-runs the saved joint paths with `need_plan=False`, and records the extra
 `data_type` modalities from `replay_rich.yml` into
-`data/replay_data/<task>/<config>_replay/`.
+`data/<task>/<config>_replay/`.
 
 ### 5.4 Inspection
 

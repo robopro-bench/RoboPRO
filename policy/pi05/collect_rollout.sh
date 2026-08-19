@@ -1,7 +1,7 @@
 #!/bin/bash
 # Dual-env rollout data collection for pi05:
-#   - server: pi05/.venv (uv-managed, openpi+jax)  → server_gpu
-#   - client: RoboPRO sim env (sapien)             → client_gpu
+#   - server: pi05/openpi/.venv (uv-managed, openpi+jax)  → server_gpu
+#   - client: RoboPRO sim env (sapien)                    → client_gpu
 # Usage:
 #   bash policy/pi05/collect_rollout.sh <task> <task_config> <train_config> <model_name> <checkpoint_id> <seed> <server_gpu>[:<client_gpu>]
 # If client_gpu is omitted, both processes share server_gpu.
@@ -57,8 +57,8 @@ EOF
 echo -e "\033[33mUsing socket port: ${FREE_PORT}\033[0m"
 
 # --- Server (pi05 uv venv) ---
-echo -e "\033[32m[server] Activating pi05 .venv\033[0m"
-PI05_VENV="$(pwd)/policy/pi05/.venv"
+echo -e "\033[32m[server] Activating pi05 openpi .venv\033[0m"
+PI05_VENV="$(pwd)/policy/pi05/openpi/.venv"
 (
     unset CUDA_VISIBLE_DEVICES
     export CUDA_VISIBLE_DEVICES=${server_gpu}

@@ -3,26 +3,16 @@
 """
 #!/usr/bin/python3
 """
-import json
 import os
-import sys
-import jax
+
 import numpy as np
-from openpi.models import model as _model
-from openpi.policies import aloha_policy
 from openpi.policies import policy_config as _policy_config
-from openpi.shared import download
 from openpi.training import config as _config
-from openpi.training import data_loader as _data_loader
 
-import cv2
-from PIL import Image
+from train_configs import apply_checkpoint_assets_id
+from train_configs import register as register_train_configs
 
-from openpi.models import model as _model
-from openpi.policies import policy_config as _policy_config
-from openpi.shared import download
-from openpi.training import config as _config
-from openpi.training import data_loader as _data_loader
+register_train_configs()
 
 
 class PI0:
@@ -50,11 +40,8 @@ class PI0:
             raise FileNotFoundError(f"no norm-stats asset dir under {specified_path}")
         assets_id = entries[0]
 
-        config = _config.get_config(self.train_config_name)
-        self.policy = _policy_config.create_trained_policy(
-            config,
-            ckpt_dir,
-            robotwin_repo_id=assets_id)
+        config = apply_checkpoint_assets_id(_config.get_config(self.train_config_name), assets_id)
+        self.policy = _policy_config.create_trained_policy(config, ckpt_dir)
         print("loading model success!")
         self.img_size = (224, 224)
         self.observation_window = None

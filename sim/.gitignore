@@ -1,6 +1,5 @@
 models/
-data/*
-!data/process_stuck.py
+data/
 __pycache__/
 **/checkpoints/
 result/

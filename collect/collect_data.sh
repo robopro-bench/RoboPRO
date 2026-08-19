@@ -28,6 +28,5 @@ else
     export CUDA_VISIBLE_DEVICES=${gpu_id}
     PYTHONWARNINGS=ignore::UserWarning \
     "${SIM_PYTHON}" -u "${COLLECT_DIR}/collect_data.py" $task_name $task_config
-    rm -rf "${DATA_ROOT}/dataset/${task_name}/${task_config}/.cache"
-    rm -rf "${DATA_ROOT}/bench_data/${task_name}/${task_config}/.cache"
+    rm -rf "${DATA_ROOT}/${task_name}/${task_config}/.cache"
 fi

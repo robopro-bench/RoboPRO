@@ -34,7 +34,7 @@ data_type:
   actor_segmentation: false
 pcd_down_sample_num: 1024
 pcd_crop: true
-save_path: ./data/bench_data
+save_path: ./data
 clear_cache_freq: 1
 collect_data: False
 eval_video_log: True

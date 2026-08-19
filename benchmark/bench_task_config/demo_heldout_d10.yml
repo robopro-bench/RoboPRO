@@ -2,7 +2,7 @@
 # Same tasks + observation modalities as the training demo_dataset, but with a
 # DISJOINT seed range (start_seed 100000) so the scenes/instructions are unseen at
 # training time — a true held-out eval set. Output ->
-#   data/demo_dataset_held_out/<task>/demo_heldout_d10/
+#   data/<task>/demo_heldout_d10/
 render_freq: 0
 episode_num: 3            # held-out episodes per task (lower for a faster eval)
 use_seed: false
@@ -45,7 +45,7 @@ data_type:                 # matches the training demo_dataset schema (policy-co
   object_poses: false
 pcd_down_sample_num: 1024
 pcd_crop: true
-save_path: ./data/demo_dataset_held_out
+save_path: ./data
 clear_cache_freq: 1
 collect_data: true
 eval_video_log: true

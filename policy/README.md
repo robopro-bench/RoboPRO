@@ -1,9 +1,18 @@
 # Policies
 
-| Directory | What it is | License |
-|---|---|---|
-| `pi0/` | OpenPI π0 library + RoboTwin `deploy_policy` / `eval.sh` glue | Library: [Apache 2.0](https://github.com/Physical-Intelligence/openpi/blob/main/LICENSE) ([`pi0/LICENSE`](pi0/LICENSE)). Wrappers: MIT / RoboTwin-derived. |
-| `pi05/` | OpenPI π0.5 + the same glue | Same split. [`pi05/LICENSE`](pi05/LICENSE) is the official Apache text for the library only. |
+| Directory | What it is |
+|---|---|
+| `pi0/` | RoboPRO deploy / process glue for π0. The openpi library is a git submodule at `pi0/openpi/`. |
+| `pi05/` | Same glue for π0.5, plus dual-env eval/collect wrappers. Submodule at `pi05/openpi/`. |
+
+Clone with `--recurse-submodules` (see the top-level README). If the checkouts are missing:
+
+```bash
+git submodule update --init policy/pi0/openpi policy/pi05/openpi
+cd policy/pi05/openpi && uv sync && cd -
+```
+
+LeRobot conversion is openpi’s example script, invoked by `generate.sh` (not copied into this repo).
 
 Run from the repo root after `source set_env.sh`.
 
@@ -13,4 +22,4 @@ bash policy/pi05/eval_double_env.sh <task> <config> <train_config> <model> <ckpt
 bash policy/pi05/collect_rollout.sh <task> <config> <train_config> <model> <ckpt_id> <seed> <gpu_spec>
 ```
 
-The eval harness is [`../eval/`](../eval/). Checkpoints go under `policy/<name>/checkpoints/`. pi05’s isolated env is `policy/pi05/.venv/`.
+The eval harness is [`../eval/`](../eval/). Checkpoints go under `policy/<name>/checkpoints/`. pi05’s isolated env is `policy/pi05/openpi/.venv/`.

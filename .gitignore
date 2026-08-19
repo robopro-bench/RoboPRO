@@ -75,8 +75,7 @@ eval_result/
 eval_result_smoke/
 
 # Runtime outputs and cloned deps (under sim/)
-sim/data/*
-!sim/data/process_stuck.py
+sim/data/
 sim/eval_result/
 sim/eval_result_smoke/
 sim/visibility_validation/

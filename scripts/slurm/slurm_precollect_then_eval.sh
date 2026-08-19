@@ -27,9 +27,9 @@ source set_env.sh
 export XLA_PYTHON_CLIENT_MEM_FRACTION=0.4
 export PYTHONUNBUFFERED=1
 
+_WS="${WORKSPACE_ROOT:-$SIM_ROOT/..}"
 PYTHON="${PI05_PYTHON:-$(command -v python)}"
-# To pin a specific conda env: export PI05_PYTHON=/path/to/miniconda3/envs/pi05/bin/python
-export PYTHONPATH="${WORKSPACE_ROOT:-$SIM_ROOT/..}/policy/pi05/src:$PYTHONPATH"
+export PYTHONPATH="${_WS}/policy/pi05/openpi/src:${PYTHONPATH:-}"
 
 # === Phase 1: pre-collect 20 eval seeds (skipped if file already has 20) ===
 echo "=== precollecting eval seeds for $TASK_NAME / $TASK_CONFIG ==="

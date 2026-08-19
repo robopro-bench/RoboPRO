@@ -13,9 +13,12 @@ gpu_id=${6}
 export CUDA_VISIBLE_DEVICES=${gpu_id}
 echo -e "\033[33mgpu id (to use): ${gpu_id}\033[0m"
 
-source .venv/bin/activate
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "${REPO_ROOT}"
+if [[ -z "${SIM_ROOT:-}" ]]; then
+    # shellcheck source=/dev/null
+    source "${REPO_ROOT}/set_env.sh"
+fi
 
 PYTHONWARNINGS=ignore::UserWarning \
 python eval/eval_policy.py --config policy/$policy_name/deploy_policy.yml \

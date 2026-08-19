@@ -64,14 +64,14 @@ for entry in "${TASKS[@]}"; do
         success_line=$(echo "$output" | grep -i "^Success:" | tail -1)
 
         # Move the saved video to a unique name
-        SRC_VIDEO="data/bench_data/video/episode_${task}_0.mp4"
+        SRC_VIDEO="data/video/episode_${task}_0.mp4"
         DST_VIDEO="$SAVE_SUBDIR/seed_${seed}.mp4"
         if [ -f "$SRC_VIDEO" ]; then
             mv "$SRC_VIDEO" "$DST_VIDEO"
             video_note="video: $DST_VIDEO"
         else
             # Try alternate naming patterns
-            FOUND_VIDEO=$(find data/bench_data/video/ -name "*${task}*" -newer "$LOG" -type f 2>/dev/null | head -1)
+            FOUND_VIDEO=$(find data/video/ -name "*${task}*" -newer "$LOG" -type f 2>/dev/null | head -1)
             if [ -n "$FOUND_VIDEO" ]; then
                 mv "$FOUND_VIDEO" "$DST_VIDEO"
                 video_note="video: $DST_VIDEO"

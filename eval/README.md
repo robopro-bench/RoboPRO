@@ -8,7 +8,7 @@ bash policy/pi05/eval.sh put_mouse_on_pad bench_demo_office_clean \
     my_office_train pi05_ckpt 30000 pi05_ckpt_30000 0 0
 ```
 
-Dual-process (pi05 server in its own `.venv`, sim client separate):
+Dual-process (pi05 server in `policy/pi05/openpi/.venv`, sim client separate):
 
 ```bash
 bash policy/pi05/eval_double_env.sh put_mouse_on_pad bench_demo_office_clean \

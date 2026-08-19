@@ -64,7 +64,7 @@ data_type:
   actor_segmentation: false
 pcd_down_sample_num: 1024
 pcd_crop: true
-save_path: ./data/bench_data
+save_path: ./data
 clear_cache_freq: 1
 collect_data: false
 eval_video_log: true
@@ -172,13 +172,13 @@ with open('$TASK_OBJECTS', 'w') as f:
             success_line=$(echo "$output" | grep -i "^Success:" | tail -1)
 
             # Move video
-            SRC_VIDEO="data/bench_data/video/episode_${task}_0.mp4"
+            SRC_VIDEO="data/video/episode_${task}_0.mp4"
             DST_VIDEO="${SAVE_SUBDIR}/${obj}_id${id}_seed${seed}.mp4"
             if [ -f "$SRC_VIDEO" ]; then
                 mv "$SRC_VIDEO" "$DST_VIDEO"
                 video_note="video: $DST_VIDEO"
             else
-                FOUND=$(find data/bench_data/video/ -name "*${task}*" -newer "$LOG" -type f 2>/dev/null | head -1)
+                FOUND=$(find data/video/ -name "*${task}*" -newer "$LOG" -type f 2>/dev/null | head -1)
                 if [ -n "$FOUND" ]; then
                     mv "$FOUND" "$DST_VIDEO"
                     video_note="video: $DST_VIDEO"

@@ -3,7 +3,7 @@ collect_rollout_client.py — policy (pi05/...) rollout data collection, FORMAT-
 IDENTICAL to the CuRobo collector.
 
 Runs in the RoboPRO conda env (client side); connects to a model server
-(pi05/.venv). Episodes are recorded through the SAME env pipeline as
+(pi05/openpi/.venv). Episodes are recorded through the SAME env pipeline as
 collect_data.py (`take_action` captures frames every save_freq substeps ->
 pkl cache -> merge_pkl_to_hdf5_video), so a policy-rollout run dir is
 indistinguishable from a CuRobo run dir except for the hdf5 `generator` attr

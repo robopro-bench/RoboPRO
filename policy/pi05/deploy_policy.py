@@ -5,7 +5,7 @@ current_file_path = os.path.abspath(__file__)
 parent_directory = os.path.dirname(current_file_path)
 sys.path.append(parent_directory)
 
-# pi_model imports jax/openpi which are only available in the pi05 .venv
+# pi_model imports jax/openpi which are only available in the pi05 openpi .venv
 # (server side). Defer the import so the client side can load this module
 # without those deps.
 

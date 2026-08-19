@@ -10,7 +10,7 @@
 #   bash collect_data.sh <task_name> <this_config_name> <gpu_id>     # single GPU
 #   bash collect_data.sh <task_name> <this_config_name> 0,1          # multi-GPU
 # Forgot a modality? Episodes are replayable bit-exact (DATA_GEN.md §5.3):
-#   python script/replay_trajectory.py <task> <this_config_name> --replay-config replay_rich
+#   python collect/replay_trajectory.py <task> <this_config_name> --replay-config replay_rich
 # ============================================================================
 
 render_freq: 0
@@ -74,7 +74,7 @@ data_type:
                            # lets you recompute collision/displacement offline.
 pcd_down_sample_num: 1024
 pcd_crop: true
-save_path: ./data/dataset
+save_path: ./data
 clear_cache_freq: 1
 collect_data: true
 eval_video_log: true

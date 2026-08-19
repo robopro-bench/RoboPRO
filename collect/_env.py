@@ -1,9 +1,9 @@
 """Bootstrap collect/ scripts so they can run from any cwd.
 
-Puts SIM_ROOT / SIM_ROOT/script / SIM_ROOT/description/utils / BENCH_ROOT /
-policy/ / collect/ on sys.path and exports WORKSPACE_ROOT, SIM_ROOT,
-BENCH_ROOT, ASSETS_ROOT, DATA_ROOT, POLICY_ROOT. Relative YAML save_path
-values (./data/dataset, ./data/bench_data) resolve under DATA_ROOT.
+Puts SIM_ROOT / SIM_ROOT/script / BENCH_ROOT / policy/ / collect/ on sys.path
+and exports WORKSPACE_ROOT, SIM_ROOT, BENCH_ROOT, ASSETS_ROOT, DATA_ROOT,
+POLICY_ROOT. Relative YAML save_path values (./data, ./data/...) resolve under
+DATA_ROOT (repo-root data/).
 """
 from __future__ import annotations
 
@@ -32,7 +32,6 @@ def bootstrap() -> None:
         # sim/script holds modules imported bare (e.g. `from test_render import
         # Sapien_TEST`), not via the `script.` package prefix.
         os.path.join(sim, "script"),
-        os.path.join(sim, "description", "utils"),
     ):
         if p not in sys.path:
             sys.path.insert(0, p)
@@ -43,10 +42,10 @@ def data_root() -> Path:
 
 
 def resolve_save_path(save_path: str) -> str:
-    """Map a YAML save_path onto DATA_ROOT without rewriting the YAMLs.
+    """Map a YAML save_path onto DATA_ROOT.
 
-    `./data/dataset` and `./data/bench_data` become `$DATA_ROOT/dataset`
-    and `$DATA_ROOT/bench_data`. Absolute paths are left alone.
+    `./data` becomes `$DATA_ROOT`. `./data/<bucket>` still becomes
+    `$DATA_ROOT/<bucket>`. Absolute paths are left alone.
     """
     p = Path(save_path)
     if p.is_absolute():
@@ -60,18 +59,13 @@ def resolve_save_path(save_path: str) -> str:
 
 
 def run_gen_instructions(task_name, task_config, language_num) -> None:
-    desc = Path(os.environ["SIM_ROOT"]) / "description"
-    gen = desc / "utils" / "generate_episode_instructions.py"
+    gen = COLLECT_DIR / "generate_episode_instructions.py"
     if not gen.exists():
         print(f"[collect] skip instructions: {gen} missing")
         return
-    # Invoke with sys.executable rather than the gen_episode_instructions.sh
-    # wrapper: that wrapper calls a bare `python`, which resolves to whatever is
-    # first on PATH (often an unrelated conda env without pyyaml) instead of the
-    # sim env we are already running in.
     subprocess.run(
         [sys.executable, str(gen), str(task_name), str(task_config), str(language_num)],
-        cwd=str(desc),
+        cwd=str(WORKSPACE),
         check=False,
     )
 

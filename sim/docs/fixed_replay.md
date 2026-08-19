@@ -82,8 +82,8 @@ Callers select the stream with `model.set_noise_episode(key)`.
 
 | path | role |
 | --- | --- |
-| `script/replay_utils.py` | `rebuild` / `replay_actions` / `state_fingerprint` / `build_args` |
-| `script/verify_replay_determinism.py` | the harness that measures all of the above |
+| `collect/replay_utils.py` | `rebuild` / `replay_actions` / `state_fingerprint` / `build_args` |
+| `collect/verify_replay_determinism.py` | the harness that measures all of the above |
 | `script/collect_qeval_pairs.py` | Q-eval pair collection built on the protocol |
 | `qeval_collect.sh` | launcher (model server + sim client) |
 | `policy/pi05/pi_model.py` | `set_noise_episode` / noise recording |
@@ -93,20 +93,20 @@ Callers select the stream with `model.set_noise_episode(key)`.
 
 ```bash
 # core claim: rebuilds are bit-exact
-python script/verify_replay_determinism.py --phase rebuild \
+python collect/verify_replay_determinism.py --phase rebuild \
     --task_name put_milktea_next_to_laptop --task_config bench_demo_office_d14 \
     --seed 0 --actions <episode>_noise.npz --repeats 3
 
 # survives a process boundary
-python script/verify_replay_determinism.py --phase crossproc ... --out /tmp/a.npz
-python script/verify_replay_determinism.py --phase crossproc ... --out /tmp/b.npz
-python script/verify_replay_determinism.py --compare /tmp/a.npz /tmp/b.npz
+python collect/verify_replay_determinism.py --phase crossproc ... --out /tmp/a.npz
+python collect/verify_replay_determinism.py --phase crossproc ... --out /tmp/b.npz
+python collect/verify_replay_determinism.py --compare /tmp/a.npz /tmp/b.npz
 
 # with the policy in the loop (needs a running model server)
-python script/verify_replay_determinism.py --phase closedloop --port <PORT> ...
+python collect/verify_replay_determinism.py --phase closedloop --port <PORT> ...
 
 # the control: what restore does instead (needs the `lookahead` package)
-python script/verify_replay_determinism.py --phase restore ... --T 100 --repeats 4
+python collect/verify_replay_determinism.py --phase restore ... --T 100 --repeats 4
 ```
 
 ## Caveats

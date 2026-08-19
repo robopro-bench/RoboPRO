@@ -252,7 +252,7 @@ class Kitchen_base_large(Bench_base_task):
 
         self.FRAME_IDX = 0
         self.task_name = kwags.get("task_name")
-        self.save_dir = kwags.get("save_path", "data")
+        self.save_dir = kwags.get("save_path") or os.environ.get("DATA_ROOT", "data")
         self.ep_num = kwags.get("now_ep_num", 0)
         self.render_freq = kwags.get("render_freq", 10)
         self.data_type = kwags.get("data_type", None)

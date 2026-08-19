@@ -3,26 +3,16 @@
 """
 #!/usr/bin/python3
 """
-import json
 import os
-import sys
-import jax
+
 import numpy as np
-from openpi.models import model as _model
-from openpi.policies import aloha_policy
 from openpi.policies import policy_config as _policy_config
-from openpi.shared import download
 from openpi.training import config as _config
-from openpi.training import data_loader as _data_loader
 
-import cv2
-from PIL import Image
+from train_configs import apply_checkpoint_assets_id
+from train_configs import register as register_train_configs
 
-from openpi.models import model as _model
-from openpi.policies import policy_config as _policy_config
-from openpi.shared import download
-from openpi.training import config as _config
-from openpi.training import data_loader as _data_loader
+register_train_configs()
 
 
 class PI0:
@@ -58,7 +48,7 @@ class PI0:
 
         is_pytorch_ckpt = os.path.exists(os.path.join(ckpt_dir, "model.safetensors"))
 
-        config = _config.get_config(self.train_config_name)
+        config = apply_checkpoint_assets_id(_config.get_config(self.train_config_name), assets_id)
         # PI05_FORCE_FP32 is a JAX/XLA-only workaround: on GB10/Blackwell bf16 inference aborts in XLA
         # (bf16->f16 lowering bug), so force float32 compute for the JAX backend. Must NOT be applied to
         # the PyTorch backend (it runs paligemma in bf16 to match training; forcing fp32 only on the
@@ -74,11 +64,7 @@ class PI0:
             print("[pi_model] PI05_FORCE_FP32=1 -> model compute dtype = float32")
         elif is_pytorch_ckpt:
             print("[pi_model] pytorch checkpoint -> native bf16 inference (PI05_FORCE_FP32 not applied)")
-        self.policy = _policy_config.create_trained_policy(
-            config,
-            ckpt_dir,
-            robotwin_repo_id=assets_id,
-            )
+        self.policy = _policy_config.create_trained_policy(config, ckpt_dir)
         print("loading model success!")
         self.img_size = (224, 224)
         self.observation_window = None
