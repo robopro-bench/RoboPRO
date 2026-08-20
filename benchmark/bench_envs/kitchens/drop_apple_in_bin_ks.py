@@ -18,9 +18,37 @@ class drop_apple_in_bin_ks(KitchenS_base_task):
     def _get_target_object_names(self) -> set[str]:
         return {self.target_obj.get_name()}
 
+    # Scene 1 needs its own layout for this task. It puts the sink at x = 0.10,
+    # and the sink's prohibited box -- x [-0.06, 0.26], y [-0.15, 0.32] -- covers
+    # the centre-front window the bin normally uses completely: clearing it in x
+    # is impossible for any |x| <= 0.12, and clearing it in y needs y < -0.27,
+    # outside the window and off the front of the 1.2 x 0.7 counter. So *every*
+    # scene-1 seed died in rand_pose_on_counter, which is one seed in three, and
+    # the loss was silent -- in seed-file mode eval does not guard setup_demo, so
+    # it took whole eval runs down mid-episode.
+    #
+    # The room that does exist is the two front flanks -- but they cannot be used
+    # one each. Apple left / bin right was tried and the expert cannot plan it on
+    # any seed: play_once picks the arm from the apple's sign, so that layout asks
+    # one arm to carry across the whole counter, outside its envelope.
+    #
+    # So both go on the left, in the strip in front of the microwave. The bin sits
+    # as close to the robot as the sink allows (x + 0.12 < -0.06, i.e. x < -0.18)
+    # and far enough forward to clear the microwave (y + 0.12 < -0.015); that puts
+    # it at roughly the same reach as the centre bin of scenes 0 and 2. The apple
+    # goes outboard of it, inside the +-0.4 range this task already grasps from.
+    # The gap between the two is narrow, so scene 1 -- and only scene 1 -- adds the
+    # apple to the prohibited set before the bin is sampled, instead of after.
+    #
+    # Scenes 0 and 2 are untouched, down to the order of the RNG draws.
+    SCENE1_APPLE_XLIM = [-0.42, -0.36]
+    SCENE1_BIN_XLIM = [-0.22, -0.19]
+    SCENE1_BIN_YLIM = [-0.24, -0.14]
+
     def load_actors(self):
+        scene1 = getattr(self, "scene_id", None) == 1
         rand_pos = self.rand_pose_on_counter(
-            xlim=[-0.32, 0.32],
+            xlim=self.SCENE1_APPLE_XLIM if scene1 else [-0.32, 0.32],
             ylim=[-0.15, 0.05],
             qpos=[0.5, 0.5, 0.5, 0.5],
             rotate_rand=True,
@@ -29,7 +57,7 @@ class drop_apple_in_bin_ks(KitchenS_base_task):
         )
         while abs(rand_pos.p[0]) < 0.3:
             rand_pos = self.rand_pose_on_counter(
-                xlim=[-0.4, 0.4],
+                xlim=self.SCENE1_APPLE_XLIM if scene1 else [-0.4, 0.4],
                 ylim=[-0.15, 0.05],
                 qpos=[0.5, 0.5, 0.5, 0.5],
                 rotate_rand=True,
@@ -49,6 +77,13 @@ class drop_apple_in_bin_ks(KitchenS_base_task):
         )
         self.target_obj.set_mass(0.05)
 
+        if scene1:
+            # see the note above: the bin's scene-1 window is only a few cm from
+            # the apple, so the bin sampler has to know where the apple landed.
+            # In scenes 0 and 2 the two windows are disjoint by construction and
+            # this is left where it always was, after both actors exist.
+            self.add_prohibit_area(self.target_obj, padding=0.02, area="table")
+
         # 063_tabletrashbin at scale 0.10 gives ~19x10x13 cm open-top bin. qpos
         # [0.5,0.5,0.5,0.5] rotates mesh-y (height) → world-z so the opening
         # faces up. IDs 0 and 6 are straight-walled bins used elsewhere in the
@@ -56,8 +91,8 @@ class drop_apple_in_bin_ks(KitchenS_base_task):
         # Static bin may sit over the middle sink; keep the original center
         # band so either arm can place into it.
         target_rand_pose = self.rand_pose_on_counter(
-            xlim=[-0.12, 0.12],
-            ylim=[-0.23, 0.05],
+            xlim=self.SCENE1_BIN_XLIM if scene1 else [-0.12, 0.12],
+            ylim=self.SCENE1_BIN_YLIM if scene1 else [-0.23, 0.05],
             qpos=[0.5, 0.5, 0.5, 0.5],
             rotate_rand=True,
             rotate_lim=[0, np.pi / 4, 0],
