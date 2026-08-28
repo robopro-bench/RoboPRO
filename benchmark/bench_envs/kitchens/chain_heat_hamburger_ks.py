@@ -36,7 +36,11 @@ class chain_heat_hamburger_ks(KitchenS_base_task):
         qpos_mw[0] = limits[0][1] * 0.95
         self.microwave.set_qpos(qpos_mw)
 
-        # Hamburger on counter, same x-side as microwave (same arm can do both).
+        # Same window as put_hamburger_in_microwave_ks. The door-swing
+        # keepout is still on (clutter must not sit there), but the
+        # hamburger is gone before the door closes, so it may spawn in
+        # that strip. Skipping only that extra box — the microwave body
+        # AABB still applies, which is what the atomic already clears.
         mw_x = float(self.microwave.get_pose().p[0])
         if mw_x < 0:
             xlim = [-0.45, -0.20]
@@ -50,6 +54,7 @@ class chain_heat_hamburger_ks(KitchenS_base_task):
             rotate_rand=True,
             rotate_lim=[0, np.pi, 0],
             obj_padding=0.06,
+            allow_microwave_front=True,
         )
 
         self.hamburger_id = int(np.random.choice([0, 1, 2]))

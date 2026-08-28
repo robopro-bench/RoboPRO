@@ -11,6 +11,18 @@ class chain_apple_bin_bowl_rack_spoon_sink_ks(KitchenS_base_task):
     Chain: apple → bin, bowl → dishrack, spoon → sink.
     """
 
+    # Scene 1 puts the sink at x=0.10. Its keep-out — x [-0.06, 0.26],
+    # y [-0.15, 0.32] — covers the original centre bowl window
+    # xlim=[-0.10, 0.10], ylim=[-0.20, -0.08] completely (same trap as
+    # drop_apple_in_bin_ks / put_bowl_in_sink_ks). Clearing it in x needs
+    # x < -0.12 or x > 0.32; clearing it in y needs y < -0.21. The rack is
+    # on the right, so the bowl stays on the right arm, in the front strip
+    # that actually clears the basin. Scenes 0 and 2 keep the original
+    # centre band — sink is on the right there, and those seeds already
+    # setup.
+    SCENE1_BOWL_XLIM = [0.08, 0.18]
+    SCENE1_BOWL_YLIM = [-0.30, -0.22]
+
     def setup_demo(self, is_test=False, **kwargs):
         kwargs["collision_cache"] = {"mesh": 100, "obb": 3}
         super()._init_task_env_(**kwargs)
@@ -51,10 +63,13 @@ class chain_apple_bin_bowl_rack_spoon_sink_ks(KitchenS_base_task):
         self.apple.set_mass(0.05)
         self.add_prohibit_area(self.apple, padding=0.02, area="table")
 
-        # Bowl: always in the middle (with variation).
+        # Bowl: centre band on scenes 0/2; scene 1 uses the right-front
+        # strip so the footprint clears the middle sink.
+        scene1 = getattr(self, "scene_id", None) == 1
         self.bowl_arm = ArmTag("right" if float(rack_p[0]) > 0 else "left")
         bowl_pose = self.rand_pose_on_counter(
-            xlim=[-0.10, 0.10], ylim=[-0.20, -0.08],
+            xlim=self.SCENE1_BOWL_XLIM if scene1 else [-0.10, 0.10],
+            ylim=self.SCENE1_BOWL_YLIM if scene1 else [-0.20, -0.08],
             qpos=[0.5, 0.5, 0.5, 0.5], rotate_rand=False,
             obj_padding=0.06,
         )

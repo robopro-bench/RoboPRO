@@ -18,8 +18,9 @@ class pick_boxdrink_from_basket(Kitchen_base_large):
     BOXDRINK_SPAWN_Z_OFFSET = 0.02
     TABLE_WORLD_XY_JITTER = 0.05
 
-    # Fixed in basket root frame; basket world pose is jittered in Kitchen_base_large.
-    BASKET_BOXDRINK_LOCAL = np.array([0.0, 0.0, 0.03], dtype=float)
+    # Basket mesh origin is on the rim (local Y=0); interior center is ~0.065.
+    # +Y puts the drink in the bowl (same convention as pick_can_from_basket).
+    BASKET_BOXDRINK_LOCAL = np.array([0.0, 0.05, 0.03], dtype=float)
 
     PLACE_WORLD_X_OFFSET = 0.08
     PLACE_WORLD_X_JITTER = (-0.04, 0.04)
@@ -67,7 +68,8 @@ class pick_boxdrink_from_basket(Kitchen_base_large):
     def setup_demo(self, is_test: bool = False, **kwargs):
         self.boxdrink_modelname = self.BOXDRINK_MODELNAME
         self.boxdrink_model_ids = list(self.BOXDRINK_MODEL_IDS)
-        self.boxdrink_spawn_rot_deg = [180.0, 0.0, 90.0]
+        # Stand the carton (mesh Y-up -> world Z). [180,0,90] laid it on its side.
+        self.boxdrink_spawn_rot_deg = [90.0, 0.0, 90.0]
 
         rot_cfg = kwargs.pop("boxdrink_spawn_rot_deg", None)
         if rot_cfg is not None:
@@ -84,6 +86,22 @@ class pick_boxdrink_from_basket(Kitchen_base_large):
 
         kwargs["collision_cache"] = {"mesh": 100, "obb": 3}
         super()._init_task_env_(**kwargs)
+
+    def _boxdrink_quat_from_cfg(self) -> list[float]:
+        roll_deg, pitch_deg, yaw_deg = self.boxdrink_spawn_rot_deg
+        ax = math.radians(roll_deg)
+        ay = math.radians(pitch_deg)
+        az = math.radians(yaw_deg)
+        qx, qy, qz, qw = t3d.euler.euler2quat(ax, ay, az)
+        return [qw, qx, qy, qz]
+
+    def _basket_spawn_pose(self) -> sapien.Pose:
+        basket_pose = self.basket_right.get_pose()
+        basket_tf = basket_pose.to_transformation_matrix()
+        basket_R = np.array(basket_tf[:3, :3], dtype=float)
+        basket_p = np.array(basket_tf[:3, 3], dtype=float)
+        world_pos = basket_p + basket_R @ np.array(self.BASKET_BOXDRINK_LOCAL, dtype=float)
+        return sapien.Pose(world_pos.tolist(), self._boxdrink_quat_from_cfg())
 
     def _is_boxdrink_inside_basket(self) -> bool:
         box_bb = get_actor_boundingbox(self.basket_right.actor)
@@ -120,8 +138,7 @@ class pick_boxdrink_from_basket(Kitchen_base_large):
         intrinsic_scale = self._get_asset_model_scale_create_actor(self.boxdrink_modelname, self.boxdrink_model_id)
         final_scale = float(intrinsic_scale) * float(self.boxdrink_scale)
 
-        spawn_pose = self.basket_right.get_pose()
-        spawn_pose.p[1] -= 0.02
+        spawn_pose = self._basket_spawn_pose()
 
         self.boxdrink = create_actor(
             scene=self.scene,
@@ -142,8 +159,8 @@ class pick_boxdrink_from_basket(Kitchen_base_large):
             self._ensure_boxdrink_grasp_metadata()
             self.add_prohibit_area(self.boxdrink, padding=0.04, area="table")
 
-            self.des_pose = get_random_place_pose(xlim = [-0.45, 0], ylim=[-0.15,-.05],
-                                        col_thr=0.15,zlim=[0.78],
+            self.des_pose = get_random_place_pose(xlim = [-0.25, -0.15], ylim=[-0.05, 0],
+                                        col_thr=0.15,zlim=[0.80], qpos=(0,0,0),
                                         object_bounds={})
             self.add_prohibit_area(self.des_pose, padding=0.0, area="table")
 
@@ -162,16 +179,10 @@ class pick_boxdrink_from_basket(Kitchen_base_large):
 
         self.move(self.move_by_displacement(arm_tag=arm_tag, z=0.15))
         self.move(self.back_to_origin(arm_tag=arm_tag))
-
-        self.move(
-            self.place_actor(
-                self.boxdrink,
-                arm_tag=arm_tag,
-                target_pose= self.des_pose,
-                constrain="auto",
-                pre_dis=0.07,
-                dis=0.005,
-            ))
+        self.add_collision()
+        self.update_world()
+        self.move(self.move_to_pose(arm_tag=arm_tag, target_pose=self.des_pose))
+        self.move(self.open_gripper(arm_tag=arm_tag))
      
         self.info["info"] = {
             "{A}": f"{self.boxdrink_modelname}/base{self.boxdrink_model_id}",

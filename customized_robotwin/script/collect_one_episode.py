@@ -243,9 +243,10 @@ def main():
                                timestep=getattr(task, 'timestep', None))
     info["seed"] = seed
     update_scene_info(run_dir, episode_idx, info)
-    # grounding: masking/episode{idx}.json sidecar + baked target/bin masks in the HDF5
-    # (mass-gen path). First-class per-episode output beside the HDF5 / scene_info.
-    if getattr(cd, "finalize_grounding", None) is not None:
+    # Grounding needs the per-frame actor_bbox group (only written when
+    # data_type.actor_bbox is on). Without it masking_resolve raises SystemExit,
+    # which escapes except-Exception and would mark a saved episode as error_rc1.
+    if (args.get("data_type") or {}).get("actor_bbox", False) and getattr(cd, "finalize_grounding", None) is not None:
         try:
             cd.finalize_grounding(args["save_path"], episode_idx, obj_pad=args.get("table_obj_pad"))
         except Exception as _me:  # noqa: BLE001

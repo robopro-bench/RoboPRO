@@ -286,6 +286,7 @@ class KitchenS_base_task(Bench_base_task):
         obj_padding=0.02,
         attempts=80,
         allow_sink=False,
+        allow_microwave_front=False,
     ):
         """Sample a pose in ``xlim × ylim`` that avoids every box already in
         ``self.prohibited_area["table"]``. If the requested range has no clear
@@ -298,6 +299,10 @@ class KitchenS_base_task(Bench_base_task):
         ``allow_sink`` skips the basin keep-out (static boards/bins may sit
         over the middle sink if they rest stably). Microwave, rack, and
         other object boxes still apply.
+
+        ``allow_microwave_front`` skips only the extra door-swing keepout
+        (``microwave_front_keepout``). Use it for objects that leave that
+        zone before the door closes — the microwave body AABB still applies.
         """
         from envs.utils import rand_pose
 
@@ -308,6 +313,7 @@ class KitchenS_base_task(Bench_base_task):
         if allow_sink and getattr(self, "sink", None) is not None:
             sp = self.sink.get_pose().p
             sink_xy = (float(sp[0]), float(sp[1]))
+        mw_front = getattr(self, "_microwave_front_keepout_box", None)
 
         pose = None
         for _ in range(attempts):
@@ -324,7 +330,10 @@ class KitchenS_base_task(Bench_base_task):
             fx0, fx1 = x - obj_padding, x + obj_padding
             fy0, fy1 = y - obj_padding, y + obj_padding
             blocked = False
-            for (x0, y0, x1, y1) in self.prohibited_area.get("table", []):
+            for box in self.prohibited_area.get("table", []):
+                if allow_microwave_front and mw_front is not None and box is mw_front:
+                    continue
+                x0, y0, x1, y1 = box
                 if sink_xy is not None and x0 <= sink_xy[0] <= x1 and y0 <= sink_xy[1] <= y1:
                     continue
                 if fx1 >= x0 and fx0 <= x1 and fy1 >= y0 and fy0 <= y1:
@@ -706,10 +715,16 @@ class KitchenS_base_task(Bench_base_task):
         # closing. The microwave opening/door faces -y (the robot side), so
         # prohibit a strip spanning the microwave width and extending in front.
         if getattr(self, "microwave_front_keepout", False):
-            self.prohibited_area["table"].append([
+            # Same list object is stored so rand_pose_on_counter can skip
+            # this box with allow_microwave_front without matching by value.
+            box = [
                 x - 0.25, y - 0.22,   # x0, y0  (-y = robot / door side)
                 x + 0.25, y + 0.10,   # x1, y1
-            ])
+            ]
+            self.prohibited_area["table"].append(box)
+            self._microwave_front_keepout_box = box
+        else:
+            self._microwave_front_keepout_box = None
 
     def _load_dishrack(self, table_height, table_xy_bias):
         x, y = self._get_scene_obj_locations("dishrack")

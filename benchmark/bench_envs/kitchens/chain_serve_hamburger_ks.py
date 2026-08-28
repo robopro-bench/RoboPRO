@@ -70,11 +70,14 @@ class chain_serve_hamburger_ks(KitchenS_base_task):
         # Pick-side arm (same side as microwave).
         self.arm_tag = ArmTag("right" if mw_x > 0 else "left")
 
-        # Bowl on counter, opposite side from microwave.
+        # Bowl stays on the counter while the door closes, so it cannot
+        # use allow_microwave_front. The keepout eats the original
+        # ylim=[-0.20, 0.00] completely; the only gap that also clears
+        # the scene-1 sink is the front strip (inboard x hits the basin).
         side_sign = 1 if self.arm_tag == "right" else -1
         bowl_pose = self.rand_pose_on_counter(
             xlim=[0.05, 0.25] if side_sign > 0 else [-0.25, -0.05],
-            ylim=[-0.20, 0.00],
+            ylim=[-0.31, -0.26],
             qpos=[0.5, 0.5, 0.5, 0.5],
             rotate_rand=False,
             obj_padding=0.08,
