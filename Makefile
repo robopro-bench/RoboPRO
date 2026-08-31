@@ -246,6 +246,9 @@ collect-data:
 precollect-seeds:
 	$(call RUN_IN_CUSTOMIZED,$(PYTHON) script/precollect_eval_seeds.py "$(TASK_NAME)" "$(TASK_CONFIG)")
 
+precollect-envs:
+	$(call RUN_IN_CUSTOMIZED,$(PYTHON) script/precollect_eval_envs.py "$(TASK_NAME)" "$(TASK_CONFIG)" $(if $(EVAL_ENV_TARGET),--target $(EVAL_ENV_TARGET),) $(if $(EVAL_ENV_START_SEED),--start-seed $(EVAL_ENV_START_SEED),))
+
 eval-direct:
 	$(call RUN_IN_CUSTOMIZED,\
 		$(PYTHON) script/eval_policy.py \

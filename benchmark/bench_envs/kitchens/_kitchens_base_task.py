@@ -54,19 +54,21 @@ class KitchenS_base_task(Bench_base_task):
     def _init_task_env_(self, table_xy_bias=[0, 0], table_height_bias=0, **kwags):
         super().__init__()
         ta.setup_logging("CRITICAL")
-        
-        self.seed = kwags.get("seed", 0)
 
-        np.random.seed(self.seed)
-        torch.manual_seed(self.seed)
-        random.seed(self.seed)
+        loading_eval_env = self._bind_eval_env(kwags)
+        if not loading_eval_env:
+            np.random.seed(self.seed)
+            torch.manual_seed(self.seed)
+            random.seed(self.seed)
         print_c(f"#### Seed value {self.seed} ####", "YELLOW")
 
         # A task may restrict which KitchenS scenes it runs in by setting the
         # class attribute `allowed_scene_ids` (e.g. microwave-cavity tasks skip
         # scene 2, where the microwave sits center and the cavity is out of the
         # arm's reach). Default behaviour is unchanged (uniform over 0,1,2).
-        if kwags.get("scene_id") is not None:
+        if loading_eval_env and self._eval_scene_spec.get("scene_id") is not None:
+            self.scene_id = int(self._eval_scene_spec["scene_id"])
+        elif kwags.get("scene_id") is not None:
             self.scene_id = kwags.get("scene_id")
         else:
             _allowed = getattr(self, "allowed_scene_ids", None)
@@ -102,7 +104,10 @@ class KitchenS_base_task(Bench_base_task):
         self.random_table_height = random_setting.get("random_table_height", 0)
         self.random_light = random_setting.get("random_light", False)
         self.crazy_random_light_rate = random_setting.get("crazy_random_light_rate", 0)
-        self.crazy_random_light = (0 if not self.random_light else np.random.rand() < self.crazy_random_light_rate)
+        if loading_eval_env:
+            self.crazy_random_light = bool(self._eval_scene_spec.get("crazy_random_light", False))
+        else:
+            self.crazy_random_light = (0 if not self.random_light else np.random.rand() < self.crazy_random_light_rate)
         self.random_embodiment = random_setting.get("random_embodiment", False)
         self.obstacle_height = random_setting.get("obstacle_height", "short")
         self.obstacle_density = random_setting.get("obstacle_density", 3)
@@ -138,7 +143,10 @@ class KitchenS_base_task(Bench_base_task):
         self.cluttered_objects_info = get_cluttered_objects_info()
 
         self.eval_success = False
-        self.table_z_bias = 0
+        if loading_eval_env:
+            self.table_z_bias = float(self._eval_scene_spec.get("table_z_bias", 0.0))
+        else:
+            self.table_z_bias = 0
 
 
 
@@ -167,6 +175,8 @@ class KitchenS_base_task(Bench_base_task):
         self.load_robot(**kwags)
         self.create_static_elements(table_xy_bias=table_xy_bias)
         self.load_camera(**kwags)
+        if loading_eval_env:
+            self.apply_camera_spec(self._eval_scene_spec.get("cameras") or [])
         self.robot.move_to_homestate()
 
         render_freq = self.render_freq
@@ -175,10 +185,15 @@ class KitchenS_base_task(Bench_base_task):
         self.render_freq = render_freq
 
         self.robot.set_origin_endpose()
-        self.load_actors()
+        if loading_eval_env:
+            self.load_actors_from_spec(self._eval_task_spec, self._eval_init_state)
+        else:
+            self.load_actors()
         self.add_gripper_operating_area()
 
-        if self.cluttered_table:
+        if loading_eval_env:
+            self.spawn_clutter_from_spec(self._eval_scene_spec.get("clutter") or [])
+        elif self.cluttered_table:
             self.get_cluttered_surfaces()
 
         self._apply_specular_ood()
@@ -195,10 +210,13 @@ class KitchenS_base_task(Bench_base_task):
         if kwags.get("data_type", {}).get("proximity", True):
             self._init_proximity_tracking(kwags.get("proximity_tracking", {}))
 
-        is_stable, unstable_list = self.check_stable()
-        if not is_stable:
-            raise UnStableError(
-                f'Objects is unstable in seed({kwags.get("seed", 0)}), unstable objects: {", ".join(unstable_list)}')
+        if loading_eval_env:
+            self._finish_eval_env_restore()
+        else:
+            is_stable, unstable_list = self.check_stable()
+            if not is_stable:
+                raise UnStableError(
+                    f'Objects is unstable in seed({kwags.get("seed", 0)}), unstable objects: {", ".join(unstable_list)}')
 
         exclude_obs = self.planner_exclude_obstacles
         if exclude_obs is None:
@@ -357,7 +375,9 @@ class KitchenS_base_task(Bench_base_task):
         table_height = self.kitchens_info["table_height"] + self.table_z_bias
 
         # Textures -------------------------------------------------------
-        if self.random_background:
+        if self._apply_eval_env_textures():
+            pass
+        elif self.random_background:
             texture_type = "seen" if not self.eval_mode else "unseen"
             directory_path = f"{os.environ['BENCH_ROOT']}/assets/background_texture/{texture_type}"
             file_count = len(
@@ -963,7 +983,7 @@ class KitchenS_base_task(Bench_base_task):
     # ------------------------------------------------------------------
 
     def enable_table(self, enable: bool):
-        names = [f"table_[0, 0, 0.74, 1, 0, 0, 0]_{self.seed}"]
+        names = [f"table_[0, 0, 0.74, 1, 0, 0, 0]_{self._collision_cache_id()}"]
         self.enable_obstacle(enable, obb_names=names)
 
     def grasp_actor_from_table(

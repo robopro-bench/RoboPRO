@@ -9,6 +9,8 @@ import glob
 
 class drop_apple_in_bin_ks(KitchenS_base_task):
 
+    supports_eval_env = True
+
     def setup_demo(self, is_test=False, **kwargs):
         kwargs["collision_cache"] = {"mesh": 100, "obb": 3}
         super()._init_task_env_(**kwargs)
@@ -79,6 +81,50 @@ class drop_apple_in_bin_ks(KitchenS_base_task):
         # Drop point is above the bin opening. Bin scaled height is ~0.10 m,
         # so we target ~0.08 m above the actor origin — the gripper releases
         # the apple just above the rim and it falls in.
+        self.des_obj_pose = self.des_obj.get_pose().p.tolist() + [0, 0, 0, 1]
+        self.des_obj_pose[2] += 0.08
+
+    def capture_task_spec(self) -> dict:
+        return {
+            "apple_id": int(self.apple_id),
+            "bin_id": int(self.bin_id),
+            "target_name": self.target_obj.get_name(),
+            "des_name": self.des_obj.get_name(),
+        }
+
+    def load_actors_from_spec(self, spec, init_state):
+        self.apple_id = int(spec["apple_id"])
+        apple_pose = self.pose_from_init_state(init_state, spec.get("target_name", "035_apple"))
+        self.target_obj = create_actor(
+            scene=self,
+            pose=apple_pose,
+            modelname="035_apple",
+            convex=True,
+            model_id=self.apple_id,
+        )
+        self.target_obj.set_mass(0.05)
+
+        self.bin_id = int(spec["bin_id"])
+        bin_name = spec.get("des_name", "bin")
+        bin_pose = self.pose_from_init_state(init_state, bin_name)
+        self.des_obj = create_actor(
+            scene=self,
+            pose=bin_pose,
+            modelname="063_tabletrashbin",
+            convex=True,
+            model_id=self.bin_id,
+            scale=[0.10, 0.10, 0.10],
+            is_static=True,
+        )
+        self.des_obj.set_name("bin")
+        self.add_prohibit_area(self.des_obj, padding=0.02, area="table")
+        self.add_prohibit_area(self.target_obj, padding=0.02, area="table")
+        self._refresh_des_obj_pose()
+
+    def after_eval_env_restore(self):
+        self._refresh_des_obj_pose()
+
+    def _refresh_des_obj_pose(self):
         self.des_obj_pose = self.des_obj.get_pose().p.tolist() + [0, 0, 0, 1]
         self.des_obj_pose[2] += 0.08
 

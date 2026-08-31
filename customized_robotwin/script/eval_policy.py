@@ -26,6 +26,7 @@ import pdb
 
 from generate_episode_instructions import *
 from script.eval_seeds import resolve_eval_seeds, resolve_test_num, resolve_expert_check, resolve_instruction_bank
+from script.eval_envs import resolve_eval_envs, env_pack_label, eval_setup_kwargs
 
 current_file_path = os.path.abspath(__file__)
 parent_directory = os.path.dirname(current_file_path)
@@ -181,17 +182,23 @@ def main(usr_args):
 
     st_seed = 100000 * (1 + seed)
     suc_nums = []
-    seed_list = resolve_eval_seeds(task_name, task_config, usr_args)
-    test_num = resolve_test_num(usr_args, seed_list, default=1)
+    env_list = resolve_eval_envs(task_name, task_config, usr_args, task_env=TASK_ENV)
+    if env_list is not None:
+        seed_list = None
+        test_num = resolve_test_num(usr_args, env_list, default=1)
+        print(f"\033[96mUsing {len(env_list)} eval env packs "
+              f"(evaluating first {test_num}); ignoring eval_seeds\033[0m")
+    else:
+        seed_list = resolve_eval_seeds(task_name, task_config, usr_args)
+        test_num = resolve_test_num(usr_args, seed_list, default=1)
+        if seed_list is not None:
+            print(f"\033[96mUsing {len(seed_list)} precollected eval seeds "
+                  f"(evaluating first {test_num})\033[0m")
+        else:
+            print(f"\033[96mNo eval seed file; scanning from st_seed={st_seed} "
+                  f"(test_num={test_num})\033[0m")
     expert_check = resolve_expert_check(usr_args, default=True)
     topk = 1
-
-    if seed_list is not None:
-        print(f"\033[96mUsing {len(seed_list)} precollected eval seeds "
-              f"(evaluating first {test_num})\033[0m")
-    else:
-        print(f"\033[96mNo eval seed file; scanning from st_seed={st_seed} "
-              f"(test_num={test_num})\033[0m")
 
     model = get_model(usr_args)
     st_seed, suc_num, used_seeds = eval_policy(
@@ -204,6 +211,7 @@ def main(usr_args):
         video_size=video_size,
         instruction_type=instruction_type,
         seed_list=seed_list,
+        env_list=env_list,
         expert_check=expert_check,
     )
     suc_nums.append(suc_num)
@@ -214,7 +222,10 @@ def main(usr_args):
     with open(file_path, "w") as file:
         file.write(f"Timestamp: {current_time}\n\n")
         file.write(f"Instruction Type: {instruction_type}\n\n")
-        file.write(f"Eval seeds: {' '.join(map(str, used_seeds))}\n\n")
+        if env_list is not None:
+            file.write(f"Eval envs: {' '.join(map(str, used_seeds))}\n\n")
+        else:
+            file.write(f"Eval seeds: {' '.join(map(str, used_seeds))}\n\n")
         # file.write(str(task_reward) + '\n')
         file.write("\n".join(map(str, np.array(suc_nums) / test_num)))
 
@@ -231,13 +242,14 @@ def eval_policy(task_name,
                 video_size=None,
                 instruction_type=None,
                 seed_list=None,
+                env_list=None,
                 expert_check=True):
     print(f"\033[34mTask Name: {args['task_name']}\033[0m")
     print(f"\033[34mPolicy Name: {args['policy_name']}\033[0m")
 
     # Honor the caller's expert_check setting, but always skip the live check for
-    # precollected seeds (already expert-validated).
-    expert_check = expert_check and (seed_list is None)
+    # precollected seeds and frozen env packs (already expert-validated).
+    expert_check = expert_check and (seed_list is None) and (env_list is None)
     TASK_ENV.suc = 0
     TASK_ENV.test_num = 0
 
@@ -245,6 +257,7 @@ def eval_policy(task_name,
     succ_seed = 0
     suc_test_seed_list = []
     seed_idx = 0
+    env_idx = 0
 
     policy_name = args["policy_name"]
     eval_func = eval_function_decorator(policy_name, "eval")
@@ -257,7 +270,14 @@ def eval_policy(task_name,
     args["eval_mode"] = True
 
     while succ_seed < test_num:
-        if seed_list is not None:
+        eval_env = None
+        if env_list is not None:
+            if env_idx >= len(env_list):
+                break
+            eval_env = env_list[env_idx]
+            env_idx += 1
+            now_seed = int((eval_env.get("meta") or {}).get("episode_index", env_idx - 1))
+        elif seed_list is not None:
             if seed_idx >= len(seed_list):
                 break
             now_seed = seed_list[seed_idx]
@@ -268,7 +288,7 @@ def eval_policy(task_name,
 
         if expert_check:
             try:
-                TASK_ENV.setup_demo(now_ep_num=now_id, seed=now_seed, is_test=True, **args)
+                TASK_ENV.setup_demo(**eval_setup_kwargs(now_id, now_seed, args, eval_env))
                 episode_info = TASK_ENV.play_once()
                 if episode_info is None:
                     episode_info = getattr(TASK_ENV, "info", {"info": {}})
@@ -294,13 +314,16 @@ def eval_policy(task_name,
                 print("error occurs !")
                 continue
         else:
-            # Seed-list mode: no expert replay; instructions use empty placeholders
+            # Seed-list / env-pack mode: no expert replay; instructions use empty placeholders
             # (bench plain_instructions) or the language bank when enabled.
             episode_info = {"info": {}}
 
         if (not expert_check) or (TASK_ENV.plan_success and TASK_ENV.check_success()):
             succ_seed += 1
-            suc_test_seed_list.append(now_seed)
+            if eval_env is not None:
+                suc_test_seed_list.append(env_pack_label(eval_env))
+            else:
+                suc_test_seed_list.append(now_seed)
         else:
             now_seed += 1
             args["render_freq"] = render_freq
@@ -308,7 +331,7 @@ def eval_policy(task_name,
 
         args["render_freq"] = render_freq
 
-        TASK_ENV.setup_demo(now_ep_num=now_id, seed=now_seed, is_test=True, **args)
+        TASK_ENV.setup_demo(**eval_setup_kwargs(now_id, now_seed, args, eval_env))
 
         # Language perturbation: use instruction bank if enabled
         lang_perturb = args.get("domain_randomization", {}).get("language_perturbation", {})
@@ -391,10 +414,10 @@ def eval_policy(task_name,
 
         print(
             f"\033[93m{task_name}\033[0m | \033[94m{args['policy_name']}\033[0m | \033[92m{args['task_config']}\033[0m | \033[91m{args['ckpt_setting']}\033[0m\n"
-            f"Success rate: \033[96m{TASK_ENV.suc}/{TASK_ENV.test_num}\033[0m => \033[95m{round(TASK_ENV.suc/TASK_ENV.test_num*100, 1)}%\033[0m, current seed: \033[90m{now_seed}\033[0m\n"
+            f"Success rate: \033[96m{TASK_ENV.suc}/{TASK_ENV.test_num}\033[0m => \033[95m{round(TASK_ENV.suc/TASK_ENV.test_num*100, 1)}%\033[0m, current: \033[90m{suc_test_seed_list[-1] if suc_test_seed_list else now_seed}\033[0m\n"
         )
         # TASK_ENV._take_picture()
-        if seed_list is None:
+        if seed_list is None and env_list is None:
             now_seed += 1
 
     return now_seed, TASK_ENV.suc, suc_test_seed_list
