@@ -208,7 +208,7 @@ The script spawns a `policy_model_server.py` in the pi05 venv and an `eval_polic
 | `ROBOTWIN_SKIP_CUROBO_WARMUP=1` | environment | Skips CuRobo's CUDA-graph warmup when the planner is built (~5 s per arm, ~10 s per process). The planner still works; it compiles on its first real plan instead. A policy eval never plans a motion, so it never pays that cost. |
 | `render_static_cameras: [countertop_camera]` | task config YAML, under `camera:` | Renders only the listed static cameras each step. The others are still built, so the scene is unchanged; they just take no pictures. Unset renders every camera. Wrist cameras stay under `collect_wrist_camera`. |
 
-List every static camera your policy reads in `render_static_cameras`. A camera left off the list is missing from the observation.
+List every static camera your policy reads in `render_static_cameras`. A camera left off the list still appears in the observation, but with no `rgb` image.
 
 **Direct Python invocation** (bypassing the shell wrappers):
 
