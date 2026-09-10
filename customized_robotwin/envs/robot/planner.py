@@ -127,7 +127,16 @@ try:
             )
 
             self.motion_gen = MotionGen(motion_gen_config)
-            self.motion_gen.warmup()
+            # `warmup()` pre-compiles the CUDA graphs so the FIRST plan is fast, and it
+            # costs 5.9 s per planner -- 11.8 s of every process, since a dual-arm
+            # embodiment builds two. A policy evaluation never plans: it commits the
+            # chunks the model gives it, and the only planner method it reaches is
+            # `plan_grippers`, which is a numpy linspace. Skipping the warmup leaves the
+            # planner fully functional and moves the compile to the first plan that
+            # actually happens. Measured on `drop_apple_in_bin_ks` seed 40000: scene
+            # build plus model load fell from 41.3 s to 29.5 s, same verdict.
+            if os.environ.get("ROBOTWIN_SKIP_CUROBO_WARMUP") != "1":
+                self.motion_gen.warmup()
             self.motion_gen_near_contact = None
 
             # Batch planning is memory-hungry. Defer its construction until a caller
