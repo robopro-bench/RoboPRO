@@ -59,6 +59,13 @@ class Camera:
         self.collect_head_camera = kwags["camera"].get("collect_head_camera", True)
         self.collect_wrist_camera = kwags["camera"].get("collect_wrist_camera", True)
 
+        # Static cameras to RENDER when only some are read. None renders every one, which
+        # is the default. They are all still BUILT: skipping construction changes the
+        # scene. Wrist cameras are not in this list and are governed by
+        # `collect_wrist_camera` as before.
+        _render_only = kwags["camera"].get("render_static_cameras")
+        self.render_static_cameras = set(_render_only) if _render_only else None
+
         # embodiment = kwags.get('embodiment')
         # embodiment_config_path = os.path.join(CONFIGS_PATH, '_embodiment_config.yml')
         # with open(embodiment_config_path, 'r', encoding='utf-8') as f:
@@ -279,7 +286,8 @@ class Camera:
             self.right_camera.take_picture()
 
         for camera, name in zip(self.static_camera_list, self.static_camera_name):
-            if camera_names is None or name in camera_names:
+            wanted = camera_names if camera_names is not None else self.render_static_cameras
+            if wanted is None or name in wanted:
                 camera.take_picture()
 
         # ================================= sensor camera =================================
@@ -357,7 +365,8 @@ class Camera:
             res["right_camera"]["rgba"] = _get_rgba(self.right_camera)
 
         for camera, camera_name in zip(self.static_camera_list, self.static_camera_name):
-            if camera_names is not None and camera_name not in camera_names:
+            wanted = camera_names if camera_names is not None else self.render_static_cameras
+            if wanted is not None and camera_name not in wanted:
                 continue
             if camera_name == "head_camera":
                 if self.collect_head_camera:
@@ -495,6 +504,9 @@ class Camera:
             res["right_camera"]["depth"] *= rgba["right_camera"]["rgba"][:, :, 3] / 255
         
         for camera, camera_name in zip(self.static_camera_list, self.static_camera_name):
+            if (self.render_static_cameras is not None
+                    and camera_name not in self.render_static_cameras):
+                continue
             if camera_name == "head_camera":
                 if self.collect_head_camera:
                     res[camera_name] = {}

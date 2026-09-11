@@ -201,6 +201,15 @@ The script spawns a `policy_model_server.py` in the pi05 venv and an `eval_polic
 
 **Eval seeds.** When `BENCH_ROOT` is set and `benchmark/eval_seeds/<task>/<task_config>.txt` exists, eval loads that fixed seed list (skips live expert scanning). Override with `--eval_seed_file /path/to.txt`, or fall back to scanning other seeds with `--use_eval_seeds false`. Cap episodes with `--test_num N` (capped by the file length). Precollect seeds via `python script/precollect_eval_seeds.py <task> <task_config>` (also used by `scripts/slurm/slurm_precollect_then_eval.sh`).
 
+**Faster evaluation (optional).** Two opt-in settings cut the time per episode. Neither changes the scene a seed builds, the RNG streams, or the result. Leave them unset and eval behaves exactly as before.
+
+| Setting | Where | Effect |
+|---|---|---|
+| `ROBOTWIN_SKIP_CUROBO_WARMUP=1` | environment | Skips CuRobo's CUDA-graph warmup when the planner is built (~5 s per arm, ~10 s per process). The planner still works; it compiles on its first real plan instead. A policy eval never plans a motion, so it never pays that cost. |
+| `render_static_cameras: [countertop_camera]` | task config YAML, under `camera:` | Renders only the listed static cameras each step. The others are still built, so the scene is unchanged; they just take no pictures. Unset renders every camera. Wrist cameras stay under `collect_wrist_camera`. |
+
+List every static camera your policy reads in `render_static_cameras`. A camera left off the list still appears in the observation, but with no `rgb` image.
+
 **Direct Python invocation** (bypassing the shell wrappers):
 
 ```bash
