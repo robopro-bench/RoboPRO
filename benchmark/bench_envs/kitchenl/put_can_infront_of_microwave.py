@@ -76,7 +76,7 @@ class put_can_infront_of_microwave(Kitchen_base_large):
                 grasp_dis=self.GRASP_DIS
             )
         )
-        self.attach_object(self.target_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.target_name}/collision/base{self.target_id}.glb", str(arm_tag))
+        self.attach_object(self.target_obj, f"{os.environ['ASSETS_ROOT']}/objects/{self.target_name}/collision/base{self.target_id}.glb", str(arm_tag))
         self.move(self.move_by_displacement(arm_tag, z = 0.04))
 
         self.move(

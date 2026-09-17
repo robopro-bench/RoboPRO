@@ -36,7 +36,7 @@ Use this after dependency changes when you only want to resync the uv environmen
 make download-assets
 ```
 
-Use this to fetch the benchmark asset bundle into the configured asset destination.
+Use this to fetch the asset bundle into repo-root `assets/` (or `ASSETS_DEST`).
 
 ### `make link-assets`
 
@@ -44,7 +44,7 @@ Use this to fetch the benchmark asset bundle into the configured asset destinati
 make link-assets
 ```
 
-Use this to wire the benchmark asset directory and the `customized_robotwin/assets` path to the destination you want to use locally.
+Use this only when assets live somewhere other than repo-root `assets/`. It points `assets` at `ASSETS_DEST`.
 
 ### `make configure-curobo-assets`
 
@@ -88,14 +88,6 @@ make verify-rollout TASK_NAME=put_mouse_on_pad TASK_CONFIG=bench_demo_office_cle
 
 Use this to run a single rollout for a benchmark task and verify end-to-end task execution. This is the easiest entry point for producing one saved sample rollout from a chosen task/config pair.
 
-### `make diag-kitchen-curobo`
-
-```bash
-make diag-kitchen-curobo
-```
-
-Use this for focused debugging of CuRobo behavior in the kitchen benchmark environments.
-
 ## Data Generation
 
 ### `make collect-data`
@@ -104,7 +96,7 @@ Use this for focused debugging of CuRobo behavior in the kitchen benchmark envir
 make collect-data TASK_NAME=put_mouse_on_pad TASK_CONFIG=bench_demo_office_clean GPU_ID=0
 ```
 
-Use this to run the dataset collection pipeline for one task/config setting. This is the main entry point for producing benchmark training-style episodes, videos, and scene metadata for a task configuration.
+Use this to run the dataset collection pipeline (`collect/collect_data.sh`) for one task/config setting. This is the main entry point for producing benchmark training-style episodes, videos, and scene metadata for a task configuration. Episodes land under repo-root `data/`.
 
 ### `make precollect-seeds`
 
@@ -130,7 +122,7 @@ Use this to collect policy rollouts from the `pi05` model using the dual-environ
 make eval-direct POLICY_NAME=pi05 TASK_NAME=put_mouse_on_pad TASK_CONFIG=bench_demo_office_clean TRAIN_CONFIG_NAME=my_office_train MODEL_NAME=pi05_ckpt CHECKPOINT_ID=30000
 ```
 
-Use this for direct single-process evaluation through `script/eval_policy.py`. It is the most straightforward entry point when you want to evaluate a checkpoint against a task/config pair.
+Use this for direct single-process evaluation through `eval/eval_policy.py`. It is the most straightforward entry point when you want to evaluate a checkpoint against a task/config pair. Results land under repo-root `eval_result/`.
 
 ### `make policy-server`
 

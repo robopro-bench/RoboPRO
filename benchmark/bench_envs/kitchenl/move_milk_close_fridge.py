@@ -126,7 +126,7 @@ class move_milk_close_fridge(Kitchen_base_large):
         self.target_obj_pose = self.milk_box.get_pose()
         self.collision_list.append({
             "actor": self.milk_box,
-            "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/{self.obj_name}/collision/base{self.milk_box_model_id}.glb",
+            "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/{self.obj_name}/collision/base{self.milk_box_model_id}.glb",
             "pose": self.target_obj_pose
         })
         self.target_obj_pose = np.concatenate([self.target_obj_pose.p, self.target_obj_pose.q]).tolist()
@@ -204,7 +204,7 @@ class move_milk_close_fridge(Kitchen_base_large):
         # 4. place bottle
         self.move(self.move_by_displacement(arm_tag=arm_tag, z=0.03))
         
-        self.attach_object(self.milk_box, f"{os.environ['BENCH_ROOT']}/assets/objects/038_milk-box/collision/base{self.milk_box_model_id}.glb", str(arm_tag))
+        self.attach_object(self.milk_box, f"{os.environ['ASSETS_ROOT']}/objects/038_milk-box/collision/base{self.milk_box_model_id}.glb", str(arm_tag))
         self.move(self.move_to_pose(arm_tag=arm_tag, target_pose=sapien.Pose(p=[0.3,-0.15,0.95], q=[0.7071,0,0,0.7071])))
         # self.move(self.back_to_origin(arm_tag=arm_tag))
 

@@ -10,9 +10,9 @@ For each object_ood obstacle entry, checks:
   5. No seen/OOD variant ID overlaps
 
 Usage:
-    cd customized_robotwin
-    source set_env.sh
-    python ../scripts/validate_ood_objects.py
+    source set_env.sh  # repo root
+    cd sim
+    python ../scripts/validation/validate_ood_objects.py
 
     # Validate a single scene:
     python ../scripts/validate_ood_objects.py --scene office
@@ -215,10 +215,11 @@ def main():
     else:
         bench_root = Path(__file__).resolve().parent.parent / "benchmark"
         if not bench_root.exists():
-            print("ERROR: Set BENCH_ROOT or run from customized_robotwin/ with set_env.sh")
+            print("ERROR: Set BENCH_ROOT or source set_env.sh from the repo root")
             sys.exit(1)
 
-    objects_dir = bench_root / "assets" / "objects"
+    assets_root = Path(os.environ.get("ASSETS_ROOT") or Path(__file__).resolve().parents[2] / "assets")
+    objects_dir = assets_root / "objects"
     task_objects_path = Path(args.task_objects) if args.task_objects else bench_root / "bench_task_config" / "task_objects.yml"
 
     with open(task_objects_path) as f:

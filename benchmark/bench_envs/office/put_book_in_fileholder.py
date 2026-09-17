@@ -72,7 +72,7 @@ class put_book_in_fileholder(Office_base_task):
         self.move(self.grasp_actor(self.target_obj, arm_tag=arm_tag2, pre_grasp_dis=0.04, grasp_dis=0.02))
 
         self.move(self.move_by_displacement(arm_tag=arm_tag2, z=0.015))
-        self.attach_object(self.target_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/043_book/collision/base0.glb", str(arm_tag2))
+        self.attach_object(self.target_obj, f"{os.environ['ASSETS_ROOT']}/objects/043_book/collision/base0.glb", str(arm_tag2))
 
         self.move(
             self.place_actor(

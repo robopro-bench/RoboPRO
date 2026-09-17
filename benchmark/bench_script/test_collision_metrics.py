@@ -3,8 +3,8 @@ Test script for collision metrics: load a bench env (office or study), run play_
 save video + collision log.
 
 USAGE:
-    cd customized_robotwin
-    source set_env.sh
+    source set_env.sh  # repo root
+    cd sim
     python $BENCH_ROOT/bench_script/test_collision_metrics.py <task_name> <task_config> [options]
 
     (Ensure your conda/venv with PyYAML, numpy, imageio/cv2 is activated.)
@@ -36,7 +36,7 @@ from pathlib import Path
 import numpy as np
 
 def _resolve_repo_paths():
-    """Resolve benchmark/customized_robotwin roots, tolerating a wrong ROBOTWIN_ROOT."""
+    """Resolve benchmark/sim roots, tolerating a wrong SIM_ROOT."""
     script_path = Path(__file__).resolve()
     default_bench_root = script_path.parent.parent
     workspace_root = default_bench_root.parent
@@ -44,7 +44,7 @@ def _resolve_repo_paths():
     def _valid_bench_root(path):
         return (path / "bench_envs").is_dir() and (path / "bench_task_config").is_dir()
 
-    def _valid_robotwin_root(path):
+    def _valid_sim_root(path):
         return (path / "envs").is_dir() and (path / "task_config" / "_embodiment_config.yml").exists()
 
     bench_candidates = [
@@ -52,8 +52,8 @@ def _resolve_repo_paths():
         default_bench_root,
     ]
     robotwin_candidates = [
-        os.environ.get("ROBOTWIN_ROOT"),
-        workspace_root / "customized_robotwin",
+        os.environ.get("SIM_ROOT"),
+        workspace_root / "sim",
     ]
 
     bench_root = None
@@ -65,36 +65,36 @@ def _resolve_repo_paths():
             bench_root = path
             break
 
-    robotwin_root = None
+    sim_root = None
     for candidate in robotwin_candidates:
         if not candidate:
             continue
         path = Path(candidate).expanduser().resolve()
-        if _valid_robotwin_root(path):
-            robotwin_root = path
+        if _valid_sim_root(path):
+            sim_root = path
             break
 
-    if bench_root is None or robotwin_root is None:
+    if bench_root is None or sim_root is None:
         raise SystemExit(
-            "Could not resolve BENCH_ROOT/customized_robotwin. "
-            "Expected benchmark/ and customized_robotwin/ to be sibling folders."
+            "Could not resolve BENCH_ROOT/sim. "
+            "Expected benchmark/ and sim/ to be sibling folders."
         )
 
     os.environ["BENCH_ROOT"] = str(bench_root)
-    os.environ["ROBOTWIN_ROOT"] = str(robotwin_root)
-    return bench_root, robotwin_root
+    os.environ["SIM_ROOT"] = str(sim_root)
+    return bench_root, sim_root
 
 
-bench_root, robotwin_root = _resolve_repo_paths()
+bench_root, sim_root = _resolve_repo_paths()
 
-for p in [robotwin_root, bench_root]:
+for p in [sim_root, bench_root]:
     sp = str(p)
     if sp not in sys.path:
         sys.path.insert(0, sp)
 
-os.chdir(robotwin_root)
+os.chdir(sim_root)
 
-from envs import CONFIGS_PATH
+from envs import CONFIGS_PATH, resolve_embodiment_path
 
 
 def _extract_task_class(envs_module, task_name):
@@ -278,10 +278,6 @@ def make_patched_take_dense_action(env, collision_log, frame_list, capture_every
 
 
 def main():
-    # Ensure bench task config is used
-    if os.getenv("ROBOTWIN_BENCH_TASK") != "bench":
-        os.environ["ROBOTWIN_BENCH_TASK"] = "bench"
-
     parser = argparse.ArgumentParser(description="Test collision metrics: run task, save video + collision log")
     parser.add_argument("task_name", type=str, help="Task module (e.g. place_phone_shelf, move_cup)")
     parser.add_argument("task_config", type=str, help="Task config (e.g. bench_demo_clean)")
@@ -326,7 +322,7 @@ def main():
         _embodiment_types = yaml.load(f.read(), Loader=yaml.FullLoader)
 
     def get_embodiment_file(name):
-        robot_file = _embodiment_types[name]["file_path"]
+        robot_file = resolve_embodiment_path(_embodiment_types[name]["file_path"])
         if robot_file is None:
             raise SystemExit("missing embodiment files")
         return robot_file

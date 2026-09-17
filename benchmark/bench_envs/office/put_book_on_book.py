@@ -71,7 +71,7 @@ class put_book_on_book(Office_base_task):
 
         self.move(self.grasp_actor(self.target_obj, arm_tag=arm_tag, pre_grasp_dis=0.04, grasp_dis=0.01))
         self.move(self.move_by_displacement(arm_tag=arm_tag, y=-0.01, z=0.01))
-        self.attach_object(self.target_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/043_book/collision/base0.glb", str(arm_tag))
+        self.attach_object(self.target_obj, f"{os.environ['ASSETS_ROOT']}/objects/043_book/collision/base0.glb", str(arm_tag))
         self.enable_table(enable=False)
         
 

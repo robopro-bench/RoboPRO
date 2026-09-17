@@ -122,7 +122,7 @@ class put_bottle_in_basket(Kitchen_base_large):
             )
         )
 
-        self.attach_object(self.bottle, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.bottle_modelname}/collision/base{self.bottle_model_id}.glb", str(arm_tag))
+        self.attach_object(self.bottle, f"{os.environ['ASSETS_ROOT']}/objects/{self.bottle_modelname}/collision/base{self.bottle_model_id}.glb", str(arm_tag))
         
         if self.scene_id == 2:
             self.move(self.move_by_displacement(arm_tag=arm_tag, x = -0.2, y=-0.2, z=0.2))

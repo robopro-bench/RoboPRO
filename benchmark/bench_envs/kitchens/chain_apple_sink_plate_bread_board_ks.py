@@ -135,7 +135,7 @@ class chain_apple_sink_plate_bread_board_ks(KitchenS_base_task):
 
         self.attach_object(
             self.apple,
-            f"{os.environ['BENCH_ROOT']}/assets/objects/035_apple/collision/base{self.apple_id}.glb",
+            f"{os.environ['ASSETS_ROOT']}/objects/035_apple/collision/base{self.apple_id}.glb",
             str(arm_tag),
         )
         self.enable_table(enable=True)
@@ -166,7 +166,7 @@ class chain_apple_sink_plate_bread_board_ks(KitchenS_base_task):
         self.move(self.move_by_displacement(arm_tag=arm, z=0.1))
         self.attach_object(
             self.bread,
-            f"{os.environ['BENCH_ROOT']}/assets/objects/075_bread/collision/base{self.bread_id}.glb",
+            f"{os.environ['ASSETS_ROOT']}/objects/075_bread/collision/base{self.bread_id}.glb",
             str(arm),
         )
         self.enable_table(enable=True)

@@ -144,7 +144,7 @@ class move_seal_onto_book(Study_base_task):
         self.move(self.grasp_actor(self.target_obj_1, arm_tag=book_arm_tag, pre_grasp_dis=pre_grasp_dist))
         self.move(self.move_by_displacement(arm_tag=book_arm_tag, y=self.ep_lift,
                                             z=self.lift_height))
-        self.attach_object(self.target_obj_1, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.target_name}/collision/base{self.target_id_1}.glb", str(book_arm_tag))
+        self.attach_object(self.target_obj_1, f"{os.environ['ASSETS_ROOT']}/objects/{self.target_name}/collision/base{self.target_id_1}.glb", str(book_arm_tag))
         self.add_collision()
         self.update_world()
         self.move(
@@ -187,7 +187,7 @@ class move_seal_onto_book(Study_base_task):
         seal_x_disp = 0.15 if seal_x <= 0 else -0.15
         self.move(self.move_by_displacement(arm_tag=seal_arm_tag, x=seal_x_disp,
                                             z=0.15))
-        self.attach_object(self.seal_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.seal_name}/collision/base{self.seal_id}.glb", str(seal_arm_tag))
+        self.attach_object(self.seal_obj, f"{os.environ['ASSETS_ROOT']}/objects/{self.seal_name}/collision/base{self.seal_id}.glb", str(seal_arm_tag))
 
         # Place seal directly on top of the book
         book_bb = get_actor_boundingbox(self.target_obj_1.actor)

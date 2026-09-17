@@ -93,7 +93,7 @@ class chain_bowl_rack_apple_sink_ks(KitchenS_base_task):
         self.move(self.move_by_displacement(arm_tag=arm, y=-0.30, z=0.30))
         self.attach_object(
             self.bowl1,
-            f"{os.environ['BENCH_ROOT']}/assets/objects/002_bowl/collision/base{self.bowl1_id}.glb",
+            f"{os.environ['ASSETS_ROOT']}/objects/002_bowl/collision/base{self.bowl1_id}.glb",
             str(arm),
         )
         self.enable_table(enable=True)
@@ -150,7 +150,7 @@ class chain_bowl_rack_apple_sink_ks(KitchenS_base_task):
 
         self.attach_object(
             self.apple,
-            f"{os.environ['BENCH_ROOT']}/assets/objects/035_apple/collision/base{self.apple_id}.glb",
+            f"{os.environ['ASSETS_ROOT']}/objects/035_apple/collision/base{self.apple_id}.glb",
             str(arm),
         )
         self.enable_table(enable=True)

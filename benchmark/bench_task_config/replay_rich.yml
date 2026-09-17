@@ -6,7 +6,7 @@
 # EXTRA modalities below — i.e. anything you forgot (or chose to skip) at
 # collection time, without re-planning.
 #
-#   python script/replay_trajectory.py <task_name> <collection_config> \
+#   python collect/replay_trajectory.py <task_name> <collection_config> \
 #       --replay-config replay_rich
 #
 # Outputs -> <save_path>/<task_name>/<collection_config>_<out_subdir>/
@@ -30,7 +30,7 @@ data_type:
   proximity: true           # re-export scene geometry alongside the replay
 
 # Where replay datasets are written (defaults to the collection save_path if unset).
-save_path: ./data/replay_data
+save_path: ./data
 
 # Subdir suffix: outputs go to <save_path>/<task>/<collection_config>_<out_subdir>/.
 out_subdir: replay

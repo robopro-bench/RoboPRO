@@ -1,12 +1,12 @@
 #!/bin/bash
-#SBATCH --partition=h100-private
+#SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --qos=high
 #SBATCH --time=3-00:00:00
 #SBATCH --mem=64G
 #SBATCH --cpus-per-task=8
-# NOTE: set --chdir and --output to your local checkout, e.g.
-#   #SBATCH --chdir=/path/to/RoboPRO/customized_robotwin
+# NOTE: set --partition/--chdir/--output to your cluster and checkout, e.g.
+#   #SBATCH --chdir=/path/to/RoboPRO
 #   #SBATCH --output=/path/to/RoboPRO/logs/%x_%j.out
 
 # Args: <task_name> <task_config> <train_config> <model_name> <ckpt_id> <seed> <test_num>
@@ -24,17 +24,16 @@ echo "GPU: $CUDA_VISIBLE_DEVICES"
 echo ""
 
 source set_env.sh
-export ROBOTWIN_BENCH_TASK="bench"
 export XLA_PYTHON_CLIENT_MEM_FRACTION=0.4
 export PYTHONUNBUFFERED=1
 
+_WS="${WORKSPACE_ROOT:-$SIM_ROOT/..}"
 PYTHON="${PI05_PYTHON:-$(command -v python)}"
-# To pin a specific conda env: export PI05_PYTHON=/path/to/miniconda3/envs/pi05/bin/python
-export PYTHONPATH="$ROBOTWIN_ROOT/policy/pi05/src:$PYTHONPATH"
+export PYTHONPATH="${_WS}/policy/pi05/openpi/src:${PYTHONPATH:-}"
 
 # === Phase 1: pre-collect 20 eval seeds (skipped if file already has 20) ===
 echo "=== precollecting eval seeds for $TASK_NAME / $TASK_CONFIG ==="
-$PYTHON script/precollect_eval_seeds.py "$TASK_NAME" "$TASK_CONFIG"
+$PYTHON "${WORKSPACE_ROOT}/collect/precollect_eval_seeds.py" "$TASK_NAME" "$TASK_CONFIG"
 PRECOLLECT_RC=$?
 echo "precollect exit code: $PRECOLLECT_RC"
 echo ""
@@ -59,7 +58,7 @@ echo ""
 
 # === Phase 2: eval ===
 echo "=== running eval ==="
-$PYTHON script/eval_policy.py \
+$PYTHON "${WORKSPACE_ROOT}/eval/eval_policy.py" \
     --config policy/pi05/deploy_policy.yml \
     --overrides \
     --task_name "$TASK_NAME" \

@@ -78,14 +78,15 @@ class Office_base_task(Bench_base_task):
         """
         super().__init__() # need to fix this. right now this does nothing. it should be calling gym.Env.__init__()
         ta.setup_logging("CRITICAL")  # hide logging
-        np.random.seed(kwags.get("seed", 0))
-        torch.manual_seed(kwags.get("seed", 0))
+        loading_eval_env = self._bind_eval_env(kwags)
+        if not loading_eval_env:
+            np.random.seed(self.seed)
+            torch.manual_seed(self.seed)
         # random.seed(kwags.get('seed', 0))
-        self.seed = kwags.get("seed", 0)
 
         self.FRAME_IDX = 0
         self.task_name = kwags.get("task_name")
-        self.save_dir = kwags.get("save_path", "data")
+        self.save_dir = kwags.get("save_path") or os.environ.get("DATA_ROOT", "data")
         self.ep_num = kwags.get("now_ep_num", 0)
         self.render_freq = kwags.get("render_freq", 10)
         self.data_type = kwags.get("data_type", None)
@@ -113,7 +114,10 @@ class Office_base_task(Bench_base_task):
         self.random_table_height = random_setting.get("random_table_height", 0)
         self.random_light = random_setting.get("random_light", False)
         self.crazy_random_light_rate = random_setting.get("crazy_random_light_rate", 0)
-        self.crazy_random_light = (0 if not self.random_light else np.random.rand() < self.crazy_random_light_rate)
+        if loading_eval_env:
+            self.crazy_random_light = bool(self._eval_scene_spec.get("crazy_random_light", False))
+        else:
+            self.crazy_random_light = (0 if not self.random_light else np.random.rand() < self.crazy_random_light_rate)
         self.random_embodiment = random_setting.get("random_embodiment", False)  # TODO
         self.obstacle_height = random_setting.get("obstacle_height", "short")
         self.obstacle_density = random_setting.get("obstacle_density", 3)
@@ -190,7 +194,10 @@ class Office_base_task(Bench_base_task):
 
         self.eval_success = False
         # self.table_z_bias = (np.random.uniform(low=-self.random_table_height, high=0) + table_height_bias)  # TODO
-        self.table_z_bias = 0
+        if loading_eval_env:
+            self.table_z_bias = float(self._eval_scene_spec.get("table_z_bias", 0.0))
+        else:
+            self.table_z_bias = 0
         self.office_info = {
             "table_height": 0.74,
             "table_area":[1.2, 0.7], # x,y area 
@@ -225,11 +232,16 @@ class Office_base_task(Bench_base_task):
         self.cuboid_collision_list = [] # list of cuboid collision objects for curobo planner
         self._init_collision_metrics()
 
-        self.arr_v = np.random.choice([0,1,2]) # which version to use for furniture arrangement
+        if loading_eval_env and self._eval_scene_spec.get("arr_v") is not None:
+            self.arr_v = int(self._eval_scene_spec["arr_v"])
+        else:
+            self.arr_v = np.random.choice([0,1,2]) # which version to use for furniture arrangement
 
         self.load_robot(**kwags)
         self.create_static_elements(table_xy_bias=table_xy_bias)
         self.load_camera(**kwags)
+        if loading_eval_env:
+            self.apply_camera_spec(self._eval_scene_spec.get("cameras") or [])
         self.robot.move_to_homestate()
 
         render_freq = self.render_freq
@@ -238,10 +250,15 @@ class Office_base_task(Bench_base_task):
         self.render_freq = render_freq
 
         self.robot.set_origin_endpose()
-        self.load_actors()
+        if loading_eval_env:
+            self.load_actors_from_spec(self._eval_task_spec, self._eval_init_state)
+        else:
+            self.load_actors()
         self.add_gripper_operating_area()
 
-        if self.cluttered_table:
+        if loading_eval_env:
+            self.spawn_clutter_from_spec(self._eval_scene_spec.get("clutter") or [])
+        elif self.cluttered_table:
             self.load_basic_office_items()
             self.get_cluttered_surfaces()
 
@@ -261,11 +278,14 @@ class Office_base_task(Bench_base_task):
         if kwags.get("data_type", {}).get("proximity", True):
             self._init_proximity_tracking(kwags.get("proximity_tracking", {}))
 
-        is_stable, unstable_list = self.check_stable()
-        if not is_stable:
-            raise UnStableError(
-                f'Objects is unstable in seed({kwags.get("seed", 0)}), unstable objects: {", ".join(unstable_list)}')
-            # print(f'Objects is unstable in seed({kwags.get("seed", 0)}), unstable objects: {", ".join(unstable_list)}')
+        if loading_eval_env:
+            self._finish_eval_env_restore()
+        else:
+            is_stable, unstable_list = self.check_stable()
+            if not is_stable:
+                raise UnStableError(
+                    f'Objects is unstable in seed({kwags.get("seed", 0)}), unstable objects: {", ".join(unstable_list)}')
+                # print(f'Objects is unstable in seed({kwags.get("seed", 0)}), unstable objects: {", ".join(unstable_list)}')
 
         exclude_obs = self.planner_exclude_obstacles
         if exclude_obs is None:
@@ -304,9 +324,11 @@ class Office_base_task(Bench_base_task):
         wall_texture, table_texture, floor_texture = None, None, None
         table_height = self.office_info["table_height"] + self.table_z_bias
 
-        if self.random_background:
+        if self._apply_eval_env_textures():
+            pass
+        elif self.random_background:
             texture_type = "seen" if not self.eval_mode else "unseen"
-            directory_path = f"{os.environ['BENCH_ROOT']}/assets/background_texture/{texture_type}"
+            directory_path = f"{os.environ['ASSETS_ROOT']}/background_texture/{texture_type}"
             file_count = len(
                 [name for name in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, name))])
 
@@ -417,7 +439,7 @@ class Office_base_task(Bench_base_task):
         )
         self.collision_list.append({
             "actor": self.shelf,
-            "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/121_wall-shelf/cc0_wall_shelf_4.glb",
+            "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/121_wall-shelf/cc0_wall_shelf_4.glb",
         })
         xmin = pose[0] - self.office_info["shelf_area"][0]/2
         xmax = pose[0] + self.office_info["shelf_area"][0]/2
@@ -441,19 +463,19 @@ class Office_base_task(Bench_base_task):
         self.cabinet.set_mass(0.5)
         self.collision_list.append({
             "actor": self.cabinet,
-            "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/036_cabinet/46653/textured_objs/",
+            "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/036_cabinet/46653/textured_objs/",
             "link": "link_0",
             "files": ["original-4.obj","original-7.obj"], # these are only the side panels of the cabinet. Drawer is added separately when needed
         })
         self.collision_list.append({
             "actor": self.cabinet,
-            "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/036_cabinet/46653/textured_objs/",
+            "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/036_cabinet/46653/textured_objs/",
             "link": "link_3",
             "files": ["original-57.obj","original-62.obj"], # these are the top panel and handle. needed for collision checking
         })
         self.collision_list.append({
             "actor": self.cabinet,
-            "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/036_cabinet/46653/textured_objs/",
+            "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/036_cabinet/46653/textured_objs/",
             "link": "link_2",
             "files": ["original-34.obj", "original-41.obj"], # middle panel
         })
@@ -494,7 +516,7 @@ class Office_base_task(Bench_base_task):
         self.prohibited_area["table"].append([xmin-0.01, ymin, xmax+0.01, ymax])
         self.collision_list.append({
             "actor": self.file_holder,
-            "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/122_file-holder/base.glb",
+            "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/122_file-holder/base.glb",
         })
     def load_basic_office_items(self):
         # load office items: items that are always placed as obstacles ie key obstacles
@@ -550,7 +572,7 @@ class Office_base_task(Bench_base_task):
         #         self.add_prohibit_area(self.laptop, padding=0.01)
         #         self.collision_list.append({
         #             "actor": self.laptop,
-        #             "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/015_laptop/9912/textured_objs/",
+        #             "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/015_laptop/9912/textured_objs/",
         #             "link": ["link_0", "link_1"],
         #             "files": ["original-5.obj"],
         #         })
@@ -591,7 +613,7 @@ class Office_base_task(Bench_base_task):
                 self.prohibited_area["table"].append([pose[0]-0.03, pose[1]-0.03, pose[0]+0.03, pose[1]+0.03]) # manual because plant extents are incorrect
                 self.collision_list.append({
                     "actor": self.plant,
-                    "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/120_plant/collision/base{plant_id}.glb",
+                    "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/120_plant/collision/base{plant_id}.glb",
                     "is_obstacle": True,
                 })
     
@@ -650,7 +672,7 @@ class Office_base_task(Bench_base_task):
         """
         import yaml as _yaml
         from envs.utils.rand_create_cluttered_actor import _scale_vec3_from_task_yaml
-        objects_dir = Path(os.environ["BENCH_ROOT"]) / "assets" / "objects"
+        objects_dir = Path(os.environ["ASSETS_ROOT"]) / "objects"
         with open(Path(os.environ["BENCH_ROOT"]) / "bench_task_config" / "task_objects.yml",
                   "r", encoding="utf-8") as _f:
             scales_cfg = (_yaml.safe_load(_f) or {}).get("scales", {})
@@ -689,21 +711,29 @@ class Office_base_task(Bench_base_task):
         return info, weighted
 
     def add_extra_cameras(self):
-        self.cameras.add_extra_cameras(f"{os.environ['BENCH_ROOT']}/assets/embodiments/office_config.yml")
+        self.cameras.add_extra_cameras(f"{os.environ['ASSETS_ROOT']}/embodiments/office_config.yml")
     
     def enable_drawer(self, enable: bool):
         files = ["original-23.obj", "original-24.obj", "original-18.obj", "original-34.obj", "original-41.obj", "original-57.obj", "original-62.obj"]
-        names = [f"{os.environ['BENCH_ROOT']}/assets/objects/036_cabinet/46653/textured_objs/{file}_{self.seed}" for file in files]
+        cid = self._collision_cache_id()
+        if getattr(self, "_eval_env", None):
+            names = [f"{file}_{cid}" for file in files]
+        else:
+            names = [f"{os.environ['ASSETS_ROOT']}/objects/036_cabinet/46653/textured_objs/{file}_{self.seed}" for file in files]
         self.enable_obstacle(enable, names)
     
     def disable_panel(self):
         # disable middle panel so that closing and opening dont throw a curobo error
         files = ["original-34.obj", "original-41.obj"]
-        names = [f"{os.environ['BENCH_ROOT']}/assets/objects/036_cabinet/46653/textured_objs/{file}_{self.seed}" for file in files]
+        cid = self._collision_cache_id()
+        if getattr(self, "_eval_env", None):
+            names = [f"{file}_{cid}" for file in files]
+        else:
+            names = [f"{os.environ['ASSETS_ROOT']}/objects/036_cabinet/46653/textured_objs/{file}_{self.seed}" for file in files]
         self.enable_obstacle(False, names)
     
     def enable_table(self, enable: bool):
-        names = [f"table_[0, 0, 0.74, 1, 0, 0, 0]_{self.seed}"]
+        names = [f"table_[0, 0, 0.74, 1, 0, 0, 0]_{self._collision_cache_id()}"]
         self.enable_obstacle(enable, obb_names=names)
 
     def add_cabinet_collision(self):
@@ -712,7 +742,7 @@ class Office_base_task(Bench_base_task):
         self.cabinet.set_qpos([limit[1],0,0]) # open drawer for extracting open pose
         self.collision_list.append({
             "actor": self.cabinet,
-            "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/036_cabinet/46653/textured_objs/",
+            "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/036_cabinet/46653/textured_objs/",
             "pose": self.cabinet.get_link_pose("link_1"),
             "files": ["original-23.obj", "original-24.obj", "original-18.obj"],
         })

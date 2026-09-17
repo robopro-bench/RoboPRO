@@ -105,7 +105,7 @@ class move_seal_cup_next_to_box(Study_base_task):
         # Lift the mouse upward by 0.1 meters in z-direction
         self.move(self.move_by_displacement(arm_tag=arm_tag, x=-z if self.side_to_place == "left" else z, z=z))
 
-        self.attach_object(target_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/{target_name}/collision/base{target_id}.glb", str(arm_tag))
+        self.attach_object(target_obj, f"{os.environ['ASSETS_ROOT']}/objects/{target_name}/collision/base{target_id}.glb", str(arm_tag))
         # Place the mouse at the target location with alignment constraint
         self.move(
             self.place_actor(

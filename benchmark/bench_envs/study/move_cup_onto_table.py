@@ -109,7 +109,7 @@ class move_cup_onto_table(Study_base_task):
         # Lift the mouse upward by 0.1 meters in z-direction
         self.move(self.move_by_displacement(arm_tag=arm_tag, x=self.ep_lift, z=self.lift_height))
 
-        self.attach_object(self.target_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.target_name}/collision/base{self.target_id}.glb", str(arm_tag))
+        self.attach_object(self.target_obj, f"{os.environ['ASSETS_ROOT']}/objects/{self.target_name}/collision/base{self.target_id}.glb", str(arm_tag))
 
         self.move(
             self.place_actor(

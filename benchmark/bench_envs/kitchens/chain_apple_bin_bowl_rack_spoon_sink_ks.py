@@ -110,7 +110,7 @@ class chain_apple_bin_bowl_rack_spoon_sink_ks(KitchenS_base_task):
         self.move(self.move_by_displacement(arm_tag=arm, z=0.10))
         self.attach_object(
             self.apple,
-            f"{os.environ['BENCH_ROOT']}/assets/objects/035_apple/collision/base{self.apple_id}.glb",
+            f"{os.environ['ASSETS_ROOT']}/objects/035_apple/collision/base{self.apple_id}.glb",
             str(arm),
         )
         self.enable_table(enable=True)
@@ -131,7 +131,7 @@ class chain_apple_bin_bowl_rack_spoon_sink_ks(KitchenS_base_task):
         self.move(self.move_by_displacement(arm_tag=arm_tag, z=0.10))
         self.attach_object(
             self.bowl,
-            f"{os.environ['BENCH_ROOT']}/assets/objects/002_bowl/collision/base{self.bowl_id}.glb",
+            f"{os.environ['ASSETS_ROOT']}/objects/002_bowl/collision/base{self.bowl_id}.glb",
             str(arm_tag),
         )
         # Pop rack from curobo so bowl-rack overlap checks don't block planning.
@@ -170,7 +170,7 @@ class chain_apple_bin_bowl_rack_spoon_sink_ks(KitchenS_base_task):
         self.move(self.move_by_displacement(arm_tag=arm_tag, z=0.1))
         self.attach_object(
             self.spoon,
-            f"{os.environ.get('BENCH_ROOT', os.environ['ROBOTWIN_ROOT'] + '/../benchmark')}/assets/objects/134_spoon/collision/base{self.spoon_id}.glb",
+            f"{os.environ['ASSETS_ROOT']}/objects/134_spoon/collision/base{self.spoon_id}.glb",
             str(arm_tag),
         )
         self.enable_table(enable=True)

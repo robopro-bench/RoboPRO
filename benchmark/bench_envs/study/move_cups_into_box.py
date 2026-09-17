@@ -82,7 +82,7 @@ class move_cups_into_box(Study_base_task):
             self.move(self.move_by_displacement(arm_tag=arm_tag, x=x, z=z,
                                                 constraint_pose =[0,0,0.8, 0, 0, 0]))
 
-            self.attach_object(t[-1], f"{os.environ['BENCH_ROOT']}/assets/objects/{t[0]}/collision/base{t[1]}.glb", str(arm_tag))
+            self.attach_object(t[-1], f"{os.environ['ASSETS_ROOT']}/objects/{t[0]}/collision/base{t[1]}.glb", str(arm_tag))
 
             # Place the mouse at the target location with alignment constraint
             self.move(

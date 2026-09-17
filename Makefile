@@ -3,12 +3,14 @@ SHELL := /bin/bash
 .ONESHELL:
 
 ROOT_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
-CUSTOMIZED_ROOT := $(ROOT_DIR)/customized_robotwin
+SIM_ROOT := $(ROOT_DIR)/sim
 PYTHON ?= $(ROOT_DIR)/.venv/bin/python
+# Policy-side interpreter: policies like pi05 use the openpi submodule uv venv
+# (openpi+jax) which the sim .venv does not have. Falls back to $(PYTHON) when absent.
+POLICY_PYTHON ?= $(firstword $(wildcard $(ROOT_DIR)/policy/$(POLICY_NAME)/openpi/.venv/bin/python) $(PYTHON))
 UV ?= uv
 
 # Common benchmark settings
-ROBOTWIN_BENCH_TASK ?= bench
 TASK_NAME ?= put_mouse_on_pad
 TASK_CONFIG ?= bench_demo_office_clean
 BENCH_SUBDIR ?= office
@@ -42,10 +44,11 @@ PLAN_FAIL_CAMERA ?= demo_camera
 
 # Asset / install flags
 PYTHON_VERSION ?= 3.10
-ASSETS_DEST ?= $(ROOT_DIR)/benchmark/assets
+ASSETS_DEST ?= $(ROOT_DIR)/assets
 KEEP_ZIPS ?= 0
 ASSETS_DATASET_NAME ?= RoboPRO_assets
-ASSETS_PATH ?= $(ROOT_DIR)/benchmark
+# CuRobo templates expand ${ASSETS_PATH}/assets/embodiments/...
+ASSETS_PATH ?= $(ROOT_DIR)
 
 # Eval / policy flags
 POLICY_NAME ?= pi05
@@ -80,17 +83,23 @@ REACH_Z ?= 0.90
 REACH_ARMS ?= both
 PICKUP_SEEDS ?= 1,2,3,4,5
 
-define RUN_IN_CUSTOMIZED
-	cd "$(CUSTOMIZED_ROOT)"
+define RUN_IN_SIM
+	source "$(ROOT_DIR)/set_env.sh"
+	cd "$(SIM_ROOT)"
+	$(1)
+endef
+
+define RUN_IN_ROOT
+	cd "$(ROOT_DIR)"
 	source set_env.sh
-	export ROBOTWIN_BENCH_TASK="$(ROBOTWIN_BENCH_TASK)"
 	$(1)
 endef
 
 .PHONY: help check-prereqs bootstrap sync download-assets link-assets configure-curobo-assets \
 	patch-curobo-config setup render-test verify-scene verify-rollout collect-data \
 	precollect-seeds eval-direct eval-client policy-server eval-pi05-single eval-pi05-double \
-	collect-rollout-pi05 diag-kitchen-curobo occluder-visibility reachability-map \
+	check-env-split \
+	collect-rollout-pi05 occluder-visibility reachability-map \
 	pickup-reachability analyze-occluder-rollout show-config
 
 help:
@@ -101,9 +110,9 @@ help:
 	'  make check-prereqs            Verify system tools (uv, nvcc, ffmpeg, etc.).' \
 	'  make bootstrap                Create/sync .venv via uv and run post-install patches.' \
 	'    Vars: PYTHON_VERSION=3.10' \
-	'  make download-assets          Download benchmark bundles.' \
-	'    Vars: ASSETS_DEST=benchmark/assets KEEP_ZIPS=0|1' \
-	'  make link-assets              Wire benchmark/assets and customized_robotwin/assets to ASSETS_DEST.' \
+	'  make download-assets          Download asset bundles into assets/.' \
+	'    Vars: ASSETS_DEST=assets KEEP_ZIPS=0|1' \
+	'  make link-assets              Point repo-root assets/ at ASSETS_DEST if it differs.' \
 	'  make configure-curobo-assets  Render curobo_{left,right}.yml from curobo_*_tmp.yml' \
 	'    Vars: ASSETS_PATH=$(ASSETS_PATH)' \
 	'  make patch-curobo-config      Run scripts/install/patch_aloha_curobo.py' \
@@ -111,10 +120,10 @@ help:
 	'' \
 	'Smoke tests:' \
 	'  make render-test              Minimal Sapien renderer smoke test.' \
+	'  make check-env-split          Verify the dual-env eval import split (server has no sapien dep).' \
 	'  make verify-scene             Load a benchmark task scene only.' \
 	'  make verify-rollout           Headless rollout smoke test; saves video by default.' \
 	'  make precollect-seeds         Generate eval seeds without saving demos.' \
-	'  make diag-kitchen-curobo      Kitchen collision diagnostic script.' \
 	'' \
 	'Occluder / reachability analysis (issue #35):' \
 	'  make occluder-visibility      Occluder visibility sweep (+rollout with ROLLOUT=1).' \
@@ -128,13 +137,13 @@ help:
 	'    Vars: PICKUP_SEEDS=1,2,3 OFFSET=0.2 REACH_Z=0.90' \
 	'' \
 	'Data collection:' \
-	'  make collect-data             Run collect_data.sh for one task/config.' \
+	'  make collect-data             Run collect/collect_data.sh for one task/config.' \
 	'  make collect-rollout-pi05     Dual-env pi05 rollout collection.' \
 	'' \
 	'Policy eval:' \
-	'  make eval-direct              Direct eval via script/eval_policy.py.' \
-	'  make policy-server            Start script/policy_model_server.py.' \
-	'  make eval-client              Start script/eval_policy_client.py.' \
+	'  make eval-direct              Direct eval via eval/eval_policy.py.' \
+	'  make policy-server            Start eval/policy_model_server.py.' \
+	'  make eval-client              Start eval/eval_policy_client.py.' \
 	'  make eval-pi05-single         Use policy/pi05/eval.sh (single-process).' \
 	'  make eval-pi05-double         Use policy/pi05/eval_double_env.sh.' \
 	'' \
@@ -196,22 +205,21 @@ download-assets:
 link-assets:
 	cd "$(ROOT_DIR)"
 	mkdir -p "$(ASSETS_DEST)"
-	if [[ "$(ASSETS_DEST)" != "$(ROOT_DIR)/benchmark/assets" ]]; then
-		if [[ -e "$(ROOT_DIR)/benchmark/assets" && ! -L "$(ROOT_DIR)/benchmark/assets" ]]; then
-			printf 'benchmark/assets already exists as a real directory.\n' >&2
+	if [[ "$(ASSETS_DEST)" != "$(ROOT_DIR)/assets" ]]; then
+		if [[ -e "$(ROOT_DIR)/assets" && ! -L "$(ROOT_DIR)/assets" ]]; then
+			printf 'assets/ already exists as a real directory.\n' >&2
 			printf 'Move or remove it first, then re-run make link-assets ASSETS_DEST=%s\n' "$(ASSETS_DEST)" >&2
 			exit 1
 		fi
-		ln -sfn "$(ASSETS_DEST)" "$(ROOT_DIR)/benchmark/assets"
-		printf 'linked benchmark/assets -> %s\n' "$(ASSETS_DEST)"
+		ln -sfn "$(ASSETS_DEST)" "$(ROOT_DIR)/assets"
+		printf 'linked assets -> %s\n' "$(ASSETS_DEST)"
+	else
+		printf 'assets already at %s\n' "$(ASSETS_DEST)"
 	fi
-	ln -sfn ../benchmark/assets customized_robotwin/assets
-	printf 'linked customized_robotwin/assets -> ../benchmark/assets\n'
 
 configure-curobo-assets:
-	cd "$(ROOT_DIR)/benchmark/assets/embodiments/aloha-agilex"
-	ASSETS_PATH="$(ASSETS_PATH)" "$(PYTHON)" -c 'from pathlib import Path; import os; assets_path = os.environ["ASSETS_PATH"]; [Path(f"curobo_{side}.yml").write_text(Path(f"curobo_{side}_tmp.yml").read_text(encoding="utf-8").replace("$${ASSETS_PATH}", assets_path), encoding="utf-8") for side in ("left", "right")]'
-	printf 'generated curobo_left.yml and curobo_right.yml with ASSETS_PATH=$(ASSETS_PATH)\n'
+	cd "$(ROOT_DIR)"
+	ASSETS_ROOT="$(ASSETS_DEST)" ASSETS_PATH="$(ASSETS_PATH)" "$(PYTHON)" sim/script/update_embodiment_config_path.py
 
 patch-curobo-config:
 	cd "$(ROOT_DIR)"
@@ -219,11 +227,14 @@ patch-curobo-config:
 
 setup: link-assets configure-curobo-assets patch-curobo-config
 
+check-env-split:
+	"$(PYTHON)" scripts/check_eval_env_split.py
+
 render-test:
-	$(call RUN_IN_CUSTOMIZED,$(PYTHON) script/test_render.py)
+	$(call RUN_IN_SIM,$(PYTHON) script/test_render.py)
 
 verify-scene:
-	$(call RUN_IN_CUSTOMIZED,\
+	$(call RUN_IN_SIM,\
 		cmd='$(PYTHON) script/bench_script/visualize_task_scene.py "$(TASK_NAME)" "$(TASK_CONFIG)" --seed "$(SEED)" --render-freq "$(RENDER_FREQ)" --viewer-camera "$(VIEWER_CAMERA)"'; \
 		if [[ -n "$(BENCH_SUBDIR)" ]]; then cmd+=" --bench-subdir $(BENCH_SUBDIR)"; fi; \
 		if [[ "$(NO_RENDER)" == "1" ]]; then cmd+=" --no-render"; fi; \
@@ -231,7 +242,7 @@ verify-scene:
 		eval "$$cmd")
 
 verify-rollout:
-	$(call RUN_IN_CUSTOMIZED,\
+	$(call RUN_IN_SIM,\
 		cmd='$(PYTHON) script/bench_script/visualize_task_scene.py "$(TASK_NAME)" "$(TASK_CONFIG)" --seed "$(SEED)" --render-freq "$(RENDER_FREQ)" --viewer-camera "$(VIEWER_CAMERA)"'; \
 		if [[ -n "$(BENCH_SUBDIR)" ]]; then cmd+=" --bench-subdir $(BENCH_SUBDIR)"; fi; \
 		if [[ "$(ROLLOUT)" == "1" ]]; then cmd+=" --rollout"; fi; \
@@ -241,14 +252,17 @@ verify-rollout:
 		eval "$$cmd")
 
 collect-data:
-	$(call RUN_IN_CUSTOMIZED,bash collect_data.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(GPU_ID)")
+	$(call RUN_IN_ROOT,bash collect/collect_data.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(GPU_ID)")
 
 precollect-seeds:
-	$(call RUN_IN_CUSTOMIZED,$(PYTHON) script/precollect_eval_seeds.py "$(TASK_NAME)" "$(TASK_CONFIG)")
+	$(call RUN_IN_ROOT,$(PYTHON) collect/precollect_eval_seeds.py "$(TASK_NAME)" "$(TASK_CONFIG)")
+
+precollect-envs:
+	$(call RUN_IN_ROOT,$(PYTHON) collect/precollect_eval_envs.py "$(TASK_NAME)" "$(TASK_CONFIG)" $(if $(EVAL_ENV_TARGET),--target $(EVAL_ENV_TARGET),) $(if $(EVAL_ENV_START_SEED),--start-seed $(EVAL_ENV_START_SEED),))
 
 eval-direct:
-	$(call RUN_IN_CUSTOMIZED,\
-		$(PYTHON) script/eval_policy.py \
+	$(call RUN_IN_ROOT,\
+		$(PYTHON) eval/eval_policy.py \
 			--config "$(POLICY_CONFIG)" \
 			--overrides \
 			--task_name "$(TASK_NAME)" \
@@ -263,8 +277,8 @@ eval-direct:
 			--test_num "$(TEST_NUM)")
 
 policy-server:
-	$(call RUN_IN_CUSTOMIZED,\
-		$(PYTHON) script/policy_model_server.py \
+	$(call RUN_IN_ROOT,\
+		$(POLICY_PYTHON) eval/policy_model_server.py \
 			--port "$(PORT)" \
 			--config "$(POLICY_CONFIG)" \
 			--overrides \
@@ -278,8 +292,8 @@ policy-server:
 			--seed "$(SEED)")
 
 eval-client:
-	$(call RUN_IN_CUSTOMIZED,\
-		$(PYTHON) script/eval_policy_client.py \
+	$(call RUN_IN_ROOT,\
+		$(PYTHON) eval/eval_policy_client.py \
 			--port "$(PORT)" \
 			--config "$(POLICY_CONFIG)" \
 			--overrides \
@@ -295,13 +309,13 @@ eval-client:
 			--test_num "$(TEST_NUM)")
 
 eval-pi05-single:
-	$(call RUN_IN_CUSTOMIZED,bash policy/pi05/eval.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(TRAIN_CONFIG_NAME)" "$(MODEL_NAME)" "$(CHECKPOINT_ID)" "$(CKPT_SETTING)" "$(SEED)" "$(GPU_ID)")
+	$(call RUN_IN_ROOT,bash policy/pi05/eval.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(TRAIN_CONFIG_NAME)" "$(MODEL_NAME)" "$(CHECKPOINT_ID)" "$(CKPT_SETTING)" "$(SEED)" "$(GPU_ID)")
 
 eval-pi05-double:
-	$(call RUN_IN_CUSTOMIZED,bash policy/pi05/eval_double_env.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(TRAIN_CONFIG_NAME)" "$(MODEL_NAME)" "$(CHECKPOINT_ID)" "$(SEED)" "$(GPU_SPEC)")
+	$(call RUN_IN_ROOT,bash policy/pi05/eval_double_env.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(TRAIN_CONFIG_NAME)" "$(MODEL_NAME)" "$(CHECKPOINT_ID)" "$(SEED)" "$(GPU_SPEC)")
 
 collect-rollout-pi05:
-	$(call RUN_IN_CUSTOMIZED,\
+	$(call RUN_IN_ROOT,\
 		export COLLECT_NUM="$(COLLECT_NUM)"; \
 		if [[ -n "$(COLLECT_START_SEED)" ]]; then export COLLECT_START_SEED="$(COLLECT_START_SEED)"; fi; \
 		export COLLECT_BRANCH_NUM="$(COLLECT_BRANCH_NUM)"; \
@@ -309,13 +323,10 @@ collect-rollout-pi05:
 		export COLLECT_BRANCH_NOISE_STEPS="$(COLLECT_BRANCH_NOISE_STEPS)"; \
 		export ACTION_NOISE_VAR="$(ACTION_NOISE_VAR)"; \
 		if [[ "$(COLLECT_FIXED_SEED)" == "1" ]]; then export COLLECT_FIXED_SEED=1; fi; \
-		bash policy/pi05/collect_rollout.sh "$(TASK_NAME)" "$(TASK_CONFIG)" "$(TRAIN_CONFIG_NAME)" "$(MODEL_NAME)" "$(CHECKPOINT_ID)" "$(SEED)" "$(GPU_SPEC)")
-
-diag-kitchen-curobo:
-	$(call RUN_IN_CUSTOMIZED,$(PYTHON) script/bench_script/diag_kitchen_curobo.py)
+		bash "$(ROOT_DIR)/policy/pi05/collect_rollout.sh" "$(TASK_NAME)" "$(TASK_CONFIG)" "$(TRAIN_CONFIG_NAME)" "$(MODEL_NAME)" "$(CHECKPOINT_ID)" "$(SEED)" "$(GPU_SPEC)")
 
 occluder-visibility:
-	$(call RUN_IN_CUSTOMIZED,\
+	$(call RUN_IN_SIM,\
 		export CUROBO_TRAJOPT_SEEDS="$(CUROBO_TRAJOPT_SEEDS)"; \
 		export CUROBO_MAX_ATTEMPTS="$(CUROBO_MAX_ATTEMPTS)"; \
 		export CUROBO_BATCH_GRAPH_SEEDS="$(CUROBO_BATCH_GRAPH_SEEDS)"; \
@@ -333,12 +344,12 @@ occluder-visibility:
 		eval "$$cmd")
 
 reachability-map:
-	$(call RUN_IN_CUSTOMIZED,\
+	$(call RUN_IN_SIM,\
 		$(PYTHON) script/bench_script/reachability_map.py --base-config "$(TASK_CONFIG)" \
 			--seed "$(REACH_SEED)" --offset "$(OFFSET)" --arms "$(REACH_ARMS)" --z "$(REACH_Z)")
 
 pickup-reachability:
-	$(call RUN_IN_CUSTOMIZED,\
+	$(call RUN_IN_SIM,\
 		$(PYTHON) script/bench_script/pickup_reachability_map.py --base-config "$(TASK_CONFIG)" \
 			--seeds "$(PICKUP_SEEDS)" --offset "$(OFFSET)" --z "$(REACH_Z)")
 

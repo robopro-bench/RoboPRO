@@ -167,7 +167,7 @@ class move_bottle_from_fridge_next_to_can(Kitchen_base_large):
         self.add_prohibit_area(self.can, padding=0.01, area="table")
         self.collision_list.append({
             "actor": self.can,
-            "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/071_can/collision/base{self.can_id}.glb",
+            "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/071_can/collision/base{self.can_id}.glb",
         })
 
         half_size = [0.04, 0.04, 0.0005]
@@ -214,7 +214,7 @@ class move_bottle_from_fridge_next_to_can(Kitchen_base_large):
                 contact_point_id=self.GRASP_CONTACT_POINT_ID,
             )
         )
-        self.attach_object(self.bottle, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.bottle_modelname}/collision/base{self.bottle_model_id}.glb", str(arm_tag))
+        self.attach_object(self.bottle, f"{os.environ['ASSETS_ROOT']}/objects/{self.bottle_modelname}/collision/base{self.bottle_model_id}.glb", str(arm_tag))
 
         # 4. place bottle
         self.move(self.move_by_displacement(arm_tag=arm_tag, **self.LIFT_DELTA))
@@ -236,7 +236,7 @@ class move_bottle_from_fridge_next_to_can(Kitchen_base_large):
         self.move(self.move_by_displacement(arm_tag=arm_tag, y=-0.03))
         self.collision_list.append({
             "actor": self.bottle,
-            "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/{self.bottle_modelname}/collision/base{self.bottle_model_id}.glb",
+            "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/{self.bottle_modelname}/collision/base{self.bottle_model_id}.glb",
         })
         self.update_world()
 

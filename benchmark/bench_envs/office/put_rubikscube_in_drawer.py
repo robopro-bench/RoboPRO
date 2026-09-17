@@ -62,7 +62,7 @@ class put_rubikscube_in_drawer(Office_base_task):
 
         self.move(self.grasp_actor(self.target_obj, arm_tag=arm_tag, pre_grasp_dis=0.1, grasp_dis=0.04, contact_point_id=3))
         self.move(self.move_by_displacement(arm_tag=arm_tag, z=0.02, y=-0.02))
-        self.attach_object(self.target_obj, f"{os.environ['BENCH_ROOT']}/assets/objects/073_rubikscube/collision/base{self.cube_id}.glb", str(arm_tag))
+        self.attach_object(self.target_obj, f"{os.environ['ASSETS_ROOT']}/objects/073_rubikscube/collision/base{self.cube_id}.glb", str(arm_tag))
 
         target_pose = self.cabinet.get_functional_point(0)
         target_pose[1] -= 0.005

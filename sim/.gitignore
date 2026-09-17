@@ -1,0 +1,26 @@
+models/
+data/
+__pycache__/
+**/checkpoints/
+result/
+envs/curobo
+*.zip
+viewer_show.*
+eval_video/
+**/.DS_Store
+
+# eval result
+eval_result/
+
+# rollout data
+rollout_data/
+
+policy/weights/*
+
+envs/curobo/*
+
+.vscode
+/config.json
+
+/*.json*
+/*.txt

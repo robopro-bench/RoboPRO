@@ -124,6 +124,208 @@ class Bench_base_task(Base_Task):
     def _init_task_env_(self, table_xy_bias=[0, 0], table_height_bias=0, **kwags):
         pass
 
+    # =========================================================== Frozen eval env packs ===========================================================
+    # Opt-in: tasks set supports_eval_env = True and implement capture_task_spec /
+    # load_actors_from_spec. Search writes JSON packs; eval rebuilds from them
+    # without replaying integer seeds.
+    supports_eval_env = False
+
+    def capture_task_spec(self) -> dict:
+        raise NotImplementedError(
+            f"{type(self).__name__} does not implement capture_task_spec "
+            "(required when supports_eval_env is True)"
+        )
+
+    def load_actors_from_spec(self, spec: dict, init_state: dict):
+        raise NotImplementedError(
+            f"{type(self).__name__} does not implement load_actors_from_spec "
+            "(required when supports_eval_env is True)"
+        )
+
+    def after_eval_env_restore(self):
+        """Hook after restore_init_state in pack mode (recompute derived poses)."""
+        pass
+
+    def _bind_eval_env(self, kwags) -> bool:
+        """Parse eval_env pack from kwargs. Sets self.seed to episode_index in pack mode."""
+        eval_env = kwags.get("eval_env")
+        self._eval_env = eval_env
+        construction = (eval_env or {}).get("construction") or {}
+        self._eval_scene_spec = construction.get("scene") or {}
+        self._eval_task_spec = construction.get("task") or {}
+        self._eval_init_state = (eval_env or {}).get("init_state")
+        self.task_config = kwags.get("task_config", getattr(self, "task_config", None))
+        if eval_env:
+            meta = eval_env.get("meta") or {}
+            episode_index = int(meta.get("episode_index", kwags.get("now_ep_num", 0)))
+            self.seed = episode_index
+            self._eval_env_id = meta.get("env_id") or f"episode_{episode_index:04d}"
+            return True
+        self._eval_env_id = None
+        self.seed = kwags.get("seed", 0)
+        return False
+
+    def _collision_cache_id(self):
+        if getattr(self, "_eval_env_id", None):
+            return self._eval_env_id
+        return getattr(self, "seed", 0)
+
+    def _apply_eval_env_textures(self) -> bool:
+        if not getattr(self, "_eval_env", None):
+            return False
+        textures = (self._eval_scene_spec or {}).get("textures")
+        if textures is None:
+            return False
+        self.wall_texture = textures.get("wall_texture")
+        self.table_texture = textures.get("table_texture")
+        self.floor_texture = textures.get("floor_texture")
+        return True
+
+    @staticmethod
+    def _pose_to_list(pose):
+        return [np.asarray(pose.p, dtype=float).tolist(),
+                np.asarray(pose.q, dtype=float).tolist()]
+
+    @staticmethod
+    def pose_from_list(p_q) -> sapien.Pose:
+        p, q = p_q
+        return sapien.Pose(p=p, q=q)
+
+    @staticmethod
+    def pose_from_init_state(init_state: dict, name: str, occurrence: int = 0) -> sapien.Pose:
+        matches = [a for a in (init_state or {}).get("actors", []) if a.get("name") == name]
+        if occurrence >= len(matches):
+            raise KeyError(
+                f"init_state has no actor named '{name}' at occurrence {occurrence} "
+                f"({len(matches)} match(es))"
+            )
+        return Bench_base_task.pose_from_list(matches[occurrence]["pose"])
+
+    def capture_scene_spec(self) -> dict:
+        cameras = []
+        cam_list = getattr(getattr(self, "cameras", None), "static_camera_list", None) or []
+        for cam in cam_list:
+            try:
+                name = cam.get_name() if hasattr(cam, "get_name") else cam.entity.get_name()
+                cameras.append({"name": name, "pose": self._pose_to_list(cam.entity.get_pose())})
+            except Exception as e:
+                print(f"[capture_scene_spec] skip camera: {e}")
+        clutter = []
+        for rec in getattr(self, "record_cluttered_objects", None) or []:
+            clutter.append(dict(rec))
+        return {
+            "scene_id": int(self.scene_id) if getattr(self, "scene_id", None) is not None else None,
+            "arr_v": int(self.arr_v) if getattr(self, "arr_v", None) is not None else None,
+            "table_z_bias": float(getattr(self, "table_z_bias", 0.0)),
+            "crazy_random_light": bool(getattr(self, "crazy_random_light", False)),
+            "textures": {
+                "wall_texture": getattr(self, "wall_texture", None),
+                "table_texture": getattr(self, "table_texture", None),
+                "floor_texture": getattr(self, "floor_texture", None),
+            },
+            "cameras": cameras,
+            "clutter": clutter,
+        }
+
+    def apply_camera_spec(self, cameras):
+        if not cameras:
+            return
+        by_name = {c["name"]: c for c in cameras if c.get("name")}
+        cam_list = getattr(getattr(self, "cameras", None), "static_camera_list", None) or []
+        for cam in cam_list:
+            try:
+                name = cam.get_name() if hasattr(cam, "get_name") else cam.entity.get_name()
+            except Exception:
+                continue
+            rec = by_name.get(name)
+            if rec and rec.get("pose"):
+                cam.entity.set_pose(self.pose_from_list(rec["pose"]))
+
+    def _record_clutter_item(self, actor, obj_name, obj_idx, modeltype="glb"):
+        pose = actor.get_pose()
+        scale = getattr(actor, "scale", None)
+        if isinstance(scale, np.ndarray):
+            scale = scale.tolist()
+        rec = {
+            "object_type": obj_name,
+            "object_index": obj_idx,
+            "name": actor.get_name(),
+            "scale": scale,
+            "type": modeltype,
+            "pose": self._pose_to_list(pose),
+        }
+        self.record_cluttered_objects.append(rec)
+        return rec
+
+    def spawn_clutter_from_spec(self, clutter_list):
+        """Spawn recorded clutter at recorded poses. No RNG / rejection sampling."""
+        self.record_cluttered_objects = []
+        self.cluttered_objs = []
+        if not clutter_list:
+            return
+        for rec in clutter_list:
+            obj_name = rec["object_type"]
+            obj_idx = rec["object_index"]
+            scale = rec.get("scale")
+            pose = self.pose_from_list(rec["pose"]) if rec.get("pose") else sapien.Pose()
+            modeltype = rec.get("type", "glb")
+            if modeltype == "urdf":
+                actor = create_urdf_obj(
+                    self,
+                    pose=pose,
+                    modelname=obj_name,
+                    scale=scale[0] if isinstance(scale, (list, tuple)) else scale,
+                    fix_root_link=False,
+                )
+            else:
+                actor = create_actor(
+                    scene=self,
+                    pose=pose,
+                    modelname=obj_name,
+                    convex=True,
+                    model_id=obj_idx if not isinstance(obj_idx, str) else int(obj_idx) if str(obj_idx).isdigit() else obj_idx,
+                    scale=scale,
+                    is_static=False,
+                )
+            if actor is None:
+                print(f"[spawn_clutter_from_spec] failed to spawn {obj_name} id={obj_idx}")
+                continue
+            actor.set_name(rec.get("name") or obj_name)
+            self.stabilize_object(actor)
+            self.cluttered_objs.append(actor)
+            self._record_clutter_item(actor, obj_name, obj_idx, modeltype=modeltype)
+            if modeltype == "urdf":
+                path = f"{os.environ['ASSETS_ROOT']}/objects/objaverse/{obj_name}/{obj_idx}/coacd_collision.obj"
+            else:
+                path = f"{os.environ['ASSETS_ROOT']}/objects/{obj_name}/collision/base{obj_idx}.glb"
+            self.collision_list.append({
+                "actor": actor,
+                "collision_path": path,
+                "is_obstacle": True,
+            })
+
+    def build_eval_env_pack(self, episode_index: int, search_seed=None) -> dict:
+        return {
+            "construction": {
+                "scene": self.capture_scene_spec(),
+                "task": self.capture_task_spec(),
+            },
+            "init_state": self.capture_init_state(),
+            "meta": {
+                "schema_version": 1,
+                "task_name": getattr(self, "task_name", None),
+                "task_config": getattr(self, "task_config", None),
+                "episode_index": int(episode_index),
+                "env_id": f"episode_{int(episode_index):04d}",
+                "search_seed": search_seed,
+            },
+        }
+
+    def _finish_eval_env_restore(self):
+        if self._eval_init_state:
+            self.restore_init_state(self._eval_init_state)
+        self.apply_camera_spec((self._eval_scene_spec or {}).get("cameras") or [])
+        self.after_eval_env_restore()
 
     def setup_scene(self, **kwargs):
         """
@@ -203,7 +405,7 @@ class Bench_base_task(Base_Task):
         else:
             self.direction_light_lst = []
             for direction_light in direction_lights:
-                if self.random_light:
+                if self.random_light and not getattr(self, "_eval_env", None):
                     direction_light[1] = [
                         np.random.rand(),
                         np.random.rand(),
@@ -213,7 +415,7 @@ class Bench_base_task(Base_Task):
                     self.scene.add_directional_light(direction_light[0], direction_light[1], shadow=shadow))
             self.point_light_lst = []
             for point_light in point_lights:
-                if self.random_light:
+                if self.random_light and not getattr(self, "_eval_env", None):
                     point_light[1] = [np.random.rand(), np.random.rand(), np.random.rand()]
                 self.point_light_lst.append(self.scene.add_point_light(point_light[0], point_light[1], shadow=shadow))
 
@@ -407,8 +609,8 @@ class Bench_base_task(Base_Task):
         if not bank_path:
             return None
         if not os.path.isabs(bank_path):
-            # Try BENCH_ROOT (where bench_task_config lives) then ROBOTWIN_ROOT.
-            for root in (os.environ.get("BENCH_ROOT"), os.environ.get("ROBOTWIN_ROOT"), "."):
+            # Try BENCH_ROOT (where bench_task_config lives) then SIM_ROOT.
+            for root in (os.environ.get("BENCH_ROOT"), os.environ.get("SIM_ROOT"), "."):
                 if not root:
                     continue
                 # Config path may already start with 'benchmark/…' when BENCH_ROOT
@@ -585,16 +787,17 @@ class Bench_base_task(Base_Task):
             else:
                 tall_count += 1
 
-            self.record_cluttered_objects.append(
-                {"object_type": obj_name, "object_index": obj_idx}
+            self._record_clutter_item(
+                self.cluttered_obj, obj_name, obj_idx,
+                modeltype=cluttered_item_info[obj_name]["type"],
             )
             placed_objects[obj_name].append(obj_idx)
 
             # add to collision list
             if cluttered_item_info[obj_name]["type"] == "urdf":
-                path = f"{os.environ['BENCH_ROOT']}/assets/objects/objaverse/{obj_name}/{obj_idx}/coacd_collision.obj"
+                path = f"{os.environ['ASSETS_ROOT']}/objects/objaverse/{obj_name}/{obj_idx}/coacd_collision.obj"
             else:
-                path = f"{os.environ['BENCH_ROOT']}/assets/objects/{obj_name}/collision/base{obj_idx}.glb"
+                path = f"{os.environ['ASSETS_ROOT']}/objects/{obj_name}/collision/base{obj_idx}.glb"
             self.collision_list.append({
                 "actor": self.cluttered_obj,
                 "collision_path": path,
@@ -710,16 +913,17 @@ class Bench_base_task(Base_Task):
             self.size_dict.append(pose)
             success_count += 1
 
-            self.record_cluttered_objects.append(
-                {"object_type": obj_name, "object_index": obj_idx}
+            self._record_clutter_item(
+                self.cluttered_obj, obj_name, obj_idx,
+                modeltype=cluttered_item_info[obj_name]["type"],
             )
             placed_objects[obj_name].append(obj_idx)
 
             # add to collision list
             if cluttered_item_info[obj_name]["type"] == "urdf":
-                path = f"{os.environ['BENCH_ROOT']}/assets/objects/objaverse/{obj_name}/{obj_idx}/coacd_collision.obj"
+                path = f"{os.environ['ASSETS_ROOT']}/objects/objaverse/{obj_name}/{obj_idx}/coacd_collision.obj"
             else:
-                path = f"{os.environ['BENCH_ROOT']}/assets/objects/{obj_name}/collision/base{obj_idx}.glb"
+                path = f"{os.environ['ASSETS_ROOT']}/objects/{obj_name}/collision/base{obj_idx}.glb"
             self.collision_list.append({
                 "actor": self.cluttered_obj,
                 "collision_path": path,
@@ -2083,7 +2287,7 @@ class Bench_base_task(Base_Task):
                     else:
                         pose = actor.get_pose()
                     np_pose = np.concatenate([pose.p, pose.q]).tolist()
-                    collision_dict["mesh"][f"{actor.get_name()}_{np_pose}_{self.seed}"] = {
+                    collision_dict["mesh"][f"{actor.get_name()}_{np_pose}_{self._collision_cache_id()}"] = {
                             "file_path": collision_path,
                             "pose": np_pose,
                             "scale": actor.scale,
@@ -2094,7 +2298,7 @@ class Bench_base_task(Base_Task):
                 name = info["name"]
                 dims = info["dims"]
                 pose = info["pose"]
-                collision_dict["cuboid"][f"{name}_{pose}_{self.seed}"] = {
+                collision_dict["cuboid"][f"{name}_{pose}_{self._collision_cache_id()}"] = {
                     "dims": dims,
                     "pose": pose,
                 }
@@ -2162,7 +2366,10 @@ class Bench_base_task(Base_Task):
             if getattr(m, "faces", None) is None or len(m.faces) == 0:
                 continue
 
-            part_name = f"{p}_{self.seed}"
+            if getattr(self, "_eval_env", None):
+                part_name = f"{p.name}_{self._collision_cache_id()}"
+            else:
+                part_name = f"{p}_{self.seed}"
             collision_dict["mesh"][part_name] = {
                 "file_path": str(p),
                 "pose": list(pose),

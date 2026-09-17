@@ -87,7 +87,7 @@ class chain_heat_hamburger_ks(KitchenS_base_task):
 
         self.attach_object(
             self.target_obj,
-            f"{os.environ['BENCH_ROOT']}/assets/objects/006_hamburg/collision/base{self.hamburger_id}.glb",
+            f"{os.environ['ASSETS_ROOT']}/objects/006_hamburg/collision/base{self.hamburger_id}.glb",
             str(arm_tag),
         )
         self.enable_table(enable=True)

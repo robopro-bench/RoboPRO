@@ -62,7 +62,7 @@ class place_bowl_in_dishrack_ks(KitchenS_base_task):
         self.move(self.move_by_displacement(arm_tag=arm_tag, z=0.10))
         self.attach_object(
             self.target_obj,
-            f"{os.environ['BENCH_ROOT']}/assets/objects/002_bowl/collision/base{self.bowl_id}.glb",
+            f"{os.environ['ASSETS_ROOT']}/objects/002_bowl/collision/base{self.bowl_id}.glb",
             str(arm_tag),
         )
 

@@ -72,7 +72,7 @@ def _resize_to_height(img, target_h):
 
 def main():
     p = argparse.ArgumentParser(description="Extract robot-camera MP4(s) from an episode HDF5")
-    p.add_argument("hdf5", help="Path to episode HDF5 (e.g. data/bench_data/data/episode0.hdf5)")
+    p.add_argument("hdf5", help="Path to episode HDF5 (e.g. data/<task>/<config>/data/episode0.hdf5)")
     p.add_argument("--cameras", default=None,
                    help="Comma-separated camera names. Default: all cameras with rgb in the file.")
     p.add_argument("--stack", action="store_true",

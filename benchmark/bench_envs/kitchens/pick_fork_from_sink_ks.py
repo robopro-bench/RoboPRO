@@ -125,7 +125,7 @@ class pick_fork_from_sink_ks(KitchenS_base_task):
         # (place_actor recomputes pre-place from scripted attach frame and fails IK).
         self.attach_object(
             self.target_obj,
-            f"{os.environ['BENCH_ROOT']}/assets/objects/033_fork/collision/base{self.fork_id}.glb",
+            f"{os.environ['ASSETS_ROOT']}/objects/033_fork/collision/base{self.fork_id}.glb",
             str(arm_tag),
         )
         self.enable_table(enable=True)

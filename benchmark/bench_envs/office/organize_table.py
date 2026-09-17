@@ -120,7 +120,7 @@ class organize_table(Office_base_task):
         self.des_obj_2.set_mass(2)
         self.collision_list.append({
             "actor": self.des_obj_2,
-            "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/078_phonestand/collision/base{self.stand_id}.glb",
+            "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/078_phonestand/collision/base{self.stand_id}.glb",
         })
         self.add_prohibit_area(self.des_obj_2, padding=0.01, area="table")
 
@@ -197,7 +197,7 @@ class organize_table(Office_base_task):
         self.add_operating_area(self.target_obj_3.get_pose().p)
         self.collision_list.append({
             "actor": self.target_obj_3,
-            "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/101_milk-tea/collision/base{self.milktea_id}.glb",
+            "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/101_milk-tea/collision/base{self.milktea_id}.glb",
             "pose": self.target_obj_3.get_pose(),
         })
         self.target_obj_3_pose = self.target_obj_3.get_pose()
@@ -223,7 +223,7 @@ class organize_table(Office_base_task):
         # Lift the target_obj_1 upward by 0.1 meters in z-direction
         self.move(self.move_by_displacement(arm_tag=arms[0], z=0.1))
 
-        self.attach_object(self.target_obj_1, f"{os.environ['BENCH_ROOT']}/assets/objects/047_mouse/collision/base{self.mouse_id}.glb", str(arms[0]))
+        self.attach_object(self.target_obj_1, f"{os.environ['ASSETS_ROOT']}/objects/047_mouse/collision/base{self.mouse_id}.glb", str(arms[0]))
         # self.move(self.move_by_displacement(arm_tag=arms[0], x=-0.1, y=-0.1))
         
         # Place the target_obj_1 at the target location with alignment constraint
@@ -249,7 +249,7 @@ class organize_table(Office_base_task):
         self.move((arms[1], actions[1:]))
         self.move(self.move_by_displacement(arm_tag=arms[1], z=0.03))
         
-        self.attach_object(self.target_obj_2, f"{os.environ['BENCH_ROOT']}/assets/objects/077_phone/collision/base{self.phone_id}.glb", str(arms[1]))
+        self.attach_object(self.target_obj_2, f"{os.environ['ASSETS_ROOT']}/objects/077_phone/collision/base{self.phone_id}.glb", str(arms[1]))
         self.enable_table(enable=True)
 
         # Get des_obj_2's functional point as target for placement
@@ -270,7 +270,7 @@ class organize_table(Office_base_task):
         self.move(self.move_by_displacement(arm_tag=arms[1], y=-0.03))
         self.collision_list.append({
             "actor": self.target_obj_2,
-            "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/077_phone/collision/base{self.phone_id}.glb",
+            "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/077_phone/collision/base{self.phone_id}.glb",
         })
         self.update_world()
 
@@ -291,7 +291,7 @@ class organize_table(Office_base_task):
         # Lift the target_obj_1 upward by 0.1 meters in z-direction
         self.move(self.move_by_displacement(arm_tag=arms[2], z=0.01))
 
-        self.attach_object(self.target_obj_3, f"{os.environ['BENCH_ROOT']}/assets/objects/101_milk-tea/collision/base{self.milktea_id}.glb", str(arms[2]))
+        self.attach_object(self.target_obj_3, f"{os.environ['ASSETS_ROOT']}/objects/101_milk-tea/collision/base{self.milktea_id}.glb", str(arms[2]))
 
         # Place the target_obj_1 at the target location with alignment constraint
         action = self.place_actor(

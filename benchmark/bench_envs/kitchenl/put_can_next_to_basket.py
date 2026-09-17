@@ -117,7 +117,7 @@ class put_can_next_to_basket(Kitchen_base_large):
                 # gripper_pos=self.GRASP_CLOSE_POS,
             )
         )
-        self.attach_object(self.can, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.can_modelname}/collision/base{self.can_model_id}.glb", str(arm_tag))
+        self.attach_object(self.can, f"{os.environ['ASSETS_ROOT']}/objects/{self.can_modelname}/collision/base{self.can_model_id}.glb", str(arm_tag))
         lift = 0.15
         if self.scene_id == 0:
             self.move(self.move_by_displacement(arm_tag, z = lift, y= -lift, x= lift))

@@ -133,7 +133,7 @@ class pick_apple_from_bowl_ks(KitchenS_base_task):
         # move_to_pose + open_gripper, keeping the top-down wrist.
         self.attach_object(
             self.target_obj,
-            f"{os.environ['BENCH_ROOT']}/assets/objects/035_apple/collision/base{self.apple_id}.glb",
+            f"{os.environ['ASSETS_ROOT']}/objects/035_apple/collision/base{self.apple_id}.glb",
             str(arm_tag),
         )
         self.enable_table(enable=True)

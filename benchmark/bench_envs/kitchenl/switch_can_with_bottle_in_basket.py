@@ -153,7 +153,7 @@ class switch_can_with_bottle_in_basket(Kitchen_base_large):
     def add_can_to_collision(self):
             self.collision_list.append({
                 "actor": self.can,
-                "collision_path": f"{os.environ['BENCH_ROOT']}/assets/objects/{self.can_modelname}/visual/base{self.can_model_id}.glb",
+                "collision_path": f"{os.environ['ASSETS_ROOT']}/objects/{self.can_modelname}/visual/base{self.can_model_id}.glb",
             })
     def play_once(self):
         arm_tag = ArmTag("left")
@@ -168,7 +168,7 @@ class switch_can_with_bottle_in_basket(Kitchen_base_large):
                 contact_point_id=self.GRASP_CONTACT_POINT_ID,
             )
         )
-        self.attach_object(self.can, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.can_modelname}/collision/base{self.can_model_id}.glb", str(arm_tag))
+        self.attach_object(self.can, f"{os.environ['ASSETS_ROOT']}/objects/{self.can_modelname}/collision/base{self.can_model_id}.glb", str(arm_tag))
 
         self.move(self.back_to_origin(arm_tag=arm_tag))
         self.move(self.move_to_pose(arm_tag=arm_tag, target_pose=self.can_des_pose))
@@ -193,7 +193,7 @@ class switch_can_with_bottle_in_basket(Kitchen_base_large):
             )
         )
 
-        self.attach_object(self.bottle, f"{os.environ['BENCH_ROOT']}/assets/objects/{self.bottle_modelname}/collision/base{self.bottle_model_id}.glb", str(arm_tag))
+        self.attach_object(self.bottle, f"{os.environ['ASSETS_ROOT']}/objects/{self.bottle_modelname}/collision/base{self.bottle_model_id}.glb", str(arm_tag))
         
         self.move(
             self.place_actor(
