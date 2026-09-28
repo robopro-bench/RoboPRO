@@ -281,7 +281,7 @@
       $('#lb-method-count').textContent = String(ranked.length);
       $('#lb-update-date').textContent = new Intl.DateTimeFormat(undefined, {
         year: 'numeric', month: 'short', day: 'numeric'
-      }).format(new Date(leaderboardData.source.fetched_at));
+      }).format(new Date(leaderboardData.source.source_updated_at || leaderboardData.source.fetched_at));
 
       const scope = [
         currentSetting.label,
@@ -398,7 +398,7 @@
       return;
     }
     try {
-      const res = await fetch('leaderboard-data.json?v=1', { cache: 'no-cache' });
+      const res = await fetch('leaderboard-data.json?v=2', { cache: 'no-cache' });
       leaderboardData = await res.json();
     } catch (e) {
       console.error('Failed to load leaderboard data:', e);
