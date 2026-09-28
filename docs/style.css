@@ -169,6 +169,14 @@ h1.title .title-logo {
   border-radius: 6px;
   box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 18px 38px -22px rgba(0,0,0,0.18);
 }
+.logo-block .overview-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 6px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 18px 38px -22px rgba(0,0,0,0.18);
+}
 .logo-caption {
   font-family: var(--mono);
   font-size: 0.74rem;
