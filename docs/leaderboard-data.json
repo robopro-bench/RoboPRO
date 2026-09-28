@@ -1,0 +1,4141 @@
+{
+  "schema_version": 1,
+  "source": {
+    "label": "RoboPro-Baselines on Hugging Face",
+    "url": "https://huggingface.co/datasets/JackLiu0406/RoboPro-Baselines",
+    "revision": "main",
+    "fetched_at": "2026-08-20T20:10:39.870Z"
+  },
+  "metrics": {
+    "sr": {
+      "label": "SR",
+      "direction": "higher",
+      "description": "Success rate"
+    },
+    "hsr": {
+      "label": "HSR",
+      "direction": "higher",
+      "description": "Hard success rate (success and no collision)"
+    },
+    "cr": {
+      "label": "CR",
+      "direction": "lower",
+      "description": "Collision rate"
+    }
+  },
+  "models": [
+    {
+      "id": "pi05",
+      "name": "π0.5"
+    },
+    {
+      "id": "pi0",
+      "name": "π0"
+    },
+    {
+      "id": "xvla",
+      "name": "X-VLA"
+    }
+  ],
+  "settings": [
+    {
+      "id": "clean",
+      "label": "Clean",
+      "description": "Obstacle-free evaluation across the released RoboPRO baseline suite."
+    },
+    {
+      "id": "clutter",
+      "label": "Clutter",
+      "description": "Average over obstacle densities d6–d15."
+    },
+    {
+      "id": "perturbation",
+      "label": "Perturbation",
+      "description": "Average over five language axes and vision blur on the curated 12-task subset."
+    }
+  ],
+  "scenes": [
+    {
+      "id": "office",
+      "label": "Office"
+    },
+    {
+      "id": "study",
+      "label": "Study"
+    },
+    {
+      "id": "kitchens",
+      "label": "Kitchen-S"
+    },
+    {
+      "id": "kitchenl",
+      "label": "Kitchen-L"
+    }
+  ],
+  "results": {
+    "pi05": {
+      "clean": [
+        {
+          "scene": "kitchenl",
+          "task": "move_bottle",
+          "n": 20,
+          "sr": 50,
+          "hsr": 50,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "move_bottle_from_fridge_next_to_can",
+          "n": 20,
+          "sr": 95,
+          "hsr": 95,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "move_can_from_cabinet_to_basket",
+          "n": 20,
+          "sr": 45,
+          "hsr": 40,
+          "cr": 30
+        },
+        {
+          "scene": "kitchenl",
+          "task": "move_milk_close_fridge",
+          "n": 20,
+          "sr": 60,
+          "hsr": 60,
+          "cr": 10
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_bottle_from_fridge",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_boxdrink_from_basket",
+          "n": 20,
+          "sr": 5,
+          "hsr": 5,
+          "cr": 95
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_can_from_basket",
+          "n": 20,
+          "sr": 75,
+          "hsr": 5,
+          "cr": 95
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_can_from_cabinet",
+          "n": 20,
+          "sr": 90,
+          "hsr": 90,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_milk_box_from_fridge",
+          "n": 20,
+          "sr": 75,
+          "hsr": 75,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_sauce_can_from_cabinet",
+          "n": 20,
+          "sr": 90,
+          "hsr": 90,
+          "cr": 5
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_bottle_in_basket",
+          "n": 20,
+          "sr": 85,
+          "hsr": 85,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_bottle_in_fridge",
+          "n": 20,
+          "sr": 85,
+          "hsr": 85,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_close_cabinet",
+          "n": 20,
+          "sr": 85,
+          "hsr": 85,
+          "cr": 5
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_in_cabinet",
+          "n": 20,
+          "sr": 80,
+          "hsr": 70,
+          "cr": 15
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_infront_of_microwave",
+          "n": 20,
+          "sr": 90,
+          "hsr": 85,
+          "cr": 5
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_next_to_basket",
+          "n": 20,
+          "sr": 45,
+          "hsr": 40,
+          "cr": 5
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_milk_box_in_fridge",
+          "n": 20,
+          "sr": 85,
+          "hsr": 75,
+          "cr": 10
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_sauce_can_in_basket",
+          "n": 20,
+          "sr": 75,
+          "hsr": 60,
+          "cr": 30
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_sauce_can_in_cabinet",
+          "n": 20,
+          "sr": 90,
+          "hsr": 85,
+          "cr": 5
+        },
+        {
+          "scene": "kitchenl",
+          "task": "switch_can_with_bottle_in_basket",
+          "n": 20,
+          "sr": 45,
+          "hsr": 5,
+          "cr": 95
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_apple_bin_bowl_rack_spoon_sink_ks",
+          "n": 20,
+          "sr": 10,
+          "hsr": 10,
+          "cr": 15
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_apple_sink_plate_bread_board_ks",
+          "n": 20,
+          "sr": 95,
+          "hsr": 85,
+          "cr": 10
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_bowl_rack_apple_sink_ks",
+          "n": 20,
+          "sr": 5,
+          "hsr": 0,
+          "cr": 85
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_heat_hamburger_ks",
+          "n": 20,
+          "sr": 65,
+          "hsr": 60,
+          "cr": 15
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_serve_hamburger_ks",
+          "n": 20,
+          "sr": 30,
+          "hsr": 25,
+          "cr": 25
+        },
+        {
+          "scene": "kitchens",
+          "task": "close_microwave_ks",
+          "n": 20,
+          "sr": 50,
+          "hsr": 50,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "drop_apple_in_bin_ks",
+          "n": 20,
+          "sr": 80,
+          "hsr": 70,
+          "cr": 10
+        },
+        {
+          "scene": "kitchens",
+          "task": "move_hamburger_onto_plate_ks",
+          "n": 20,
+          "sr": 80,
+          "hsr": 80,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_apple_from_bowl_ks",
+          "n": 20,
+          "sr": 100,
+          "hsr": 15,
+          "cr": 85
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_apple_from_sink_ks",
+          "n": 20,
+          "sr": 95,
+          "hsr": 90,
+          "cr": 5
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_fork_from_sink_ks",
+          "n": 20,
+          "sr": 100,
+          "hsr": 95,
+          "cr": 5
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_hamburger_from_microwave_ks",
+          "n": 20,
+          "sr": 60,
+          "hsr": 60,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "place_bowl_in_dishrack_ks",
+          "n": 20,
+          "sr": 85,
+          "hsr": 85,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_bowl_in_sink_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_bread_on_board_ks",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_hamburger_in_microwave_ks",
+          "n": 20,
+          "sr": 95,
+          "hsr": 95,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_spoon_in_dishrack_ks",
+          "n": 20,
+          "sr": 90,
+          "hsr": 90,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_spoon_in_sink_ks",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_spoon_on_plate_ks",
+          "n": 20,
+          "sr": 60,
+          "hsr": 60,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "close_drawer",
+          "n": 20,
+          "sr": 90,
+          "hsr": 90,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "move_items_around",
+          "n": 20,
+          "sr": 30,
+          "hsr": 30,
+          "cr": 20
+        },
+        {
+          "scene": "office",
+          "task": "open_drawer",
+          "n": 20,
+          "sr": 80,
+          "hsr": 80,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "organize_table",
+          "n": 20,
+          "sr": 5,
+          "hsr": 5,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "put_book_in_fileholder",
+          "n": 20,
+          "sr": 30,
+          "hsr": 30,
+          "cr": 10
+        },
+        {
+          "scene": "office",
+          "task": "put_book_on_book",
+          "n": 20,
+          "sr": 60,
+          "hsr": 60,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "put_milktea_next_to_laptop",
+          "n": 20,
+          "sr": 75,
+          "hsr": 75,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "put_milktea_on_shelf",
+          "n": 20,
+          "sr": 35,
+          "hsr": 35,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "put_mouse_next_to_stapler",
+          "n": 20,
+          "sr": 60,
+          "hsr": 60,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "put_mouse_on_pad",
+          "n": 20,
+          "sr": 60,
+          "hsr": 60,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "put_phone_next_to_cube",
+          "n": 20,
+          "sr": 75,
+          "hsr": 75,
+          "cr": 20
+        },
+        {
+          "scene": "office",
+          "task": "put_phone_on_holder",
+          "n": 20,
+          "sr": 65,
+          "hsr": 65,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "put_rubikscube_in_drawer",
+          "n": 20,
+          "sr": 60,
+          "hsr": 60,
+          "cr": 15
+        },
+        {
+          "scene": "office",
+          "task": "put_rubikscube_next_to_milktea",
+          "n": 20,
+          "sr": 65,
+          "hsr": 55,
+          "cr": 15
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_in_drawer",
+          "n": 20,
+          "sr": 90,
+          "hsr": 80,
+          "cr": 10
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_next_to_mouse",
+          "n": 20,
+          "sr": 60,
+          "hsr": 60,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_on_book",
+          "n": 20,
+          "sr": 90,
+          "hsr": 90,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "set_up_table",
+          "n": 20,
+          "sr": 20,
+          "hsr": 20,
+          "cr": 20
+        },
+        {
+          "scene": "office",
+          "task": "store_rubikscube_on_shelf",
+          "n": 20,
+          "sr": 25,
+          "hsr": 20,
+          "cr": 45
+        },
+        {
+          "scene": "office",
+          "task": "store_stapler_in_drawer",
+          "n": 20,
+          "sr": 35,
+          "hsr": 30,
+          "cr": 10
+        },
+        {
+          "scene": "study",
+          "task": "empty_box",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_book_onto_table",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_cup",
+          "n": 20,
+          "sr": 95,
+          "hsr": 95,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_cup_next_to_book",
+          "n": 20,
+          "sr": 85,
+          "hsr": 85,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_cup_onto_table",
+          "n": 20,
+          "sr": 90,
+          "hsr": 90,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_cup_put_pen_in_cup",
+          "n": 20,
+          "sr": 55,
+          "hsr": 55,
+          "cr": 10
+        },
+        {
+          "scene": "study",
+          "task": "move_cups_into_box",
+          "n": 20,
+          "sr": 70,
+          "hsr": 70,
+          "cr": 5
+        },
+        {
+          "scene": "study",
+          "task": "move_pen_to_box",
+          "n": 11,
+          "sr": 90.9,
+          "hsr": 90.9,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_cup_next_to_box",
+          "n": 20,
+          "sr": 80,
+          "hsr": 80,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_next_to_box",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_next_to_pencup",
+          "n": 20,
+          "sr": 95,
+          "hsr": 95,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_onto_book",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_onto_table",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "put_cup_in_box",
+          "n": 20,
+          "sr": 85,
+          "hsr": 85,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "put_cup_on_coaster",
+          "n": 20,
+          "sr": 80,
+          "hsr": 80,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "put_cup_on_table",
+          "n": 20,
+          "sr": 70,
+          "hsr": 70,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "put_glue_in_box",
+          "n": 20,
+          "sr": 95,
+          "hsr": 70,
+          "cr": 25
+        },
+        {
+          "scene": "study",
+          "task": "put_pen_in_box",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "put_pen_in_pencup",
+          "n": 20,
+          "sr": 20,
+          "hsr": 10,
+          "cr": 50
+        },
+        {
+          "scene": "study",
+          "task": "put_seal_in_box",
+          "n": 20,
+          "sr": 95,
+          "hsr": 95,
+          "cr": 0
+        }
+      ],
+      "clutter": [
+        {
+          "scene": "kitchenl",
+          "task": "move_bottle",
+          "n": 20,
+          "sr": 55,
+          "hsr": 55,
+          "cr": 40
+        },
+        {
+          "scene": "kitchenl",
+          "task": "move_bottle_from_fridge_next_to_can",
+          "n": 20,
+          "sr": 100,
+          "hsr": 85,
+          "cr": 15
+        },
+        {
+          "scene": "kitchenl",
+          "task": "move_can_from_cabinet_to_basket",
+          "n": 20,
+          "sr": 30,
+          "hsr": 25,
+          "cr": 30
+        },
+        {
+          "scene": "kitchenl",
+          "task": "move_milk_close_fridge",
+          "n": 20,
+          "sr": 20,
+          "hsr": 20,
+          "cr": 40
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_bottle_from_fridge",
+          "n": 20,
+          "sr": 100,
+          "hsr": 45,
+          "cr": 55
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_boxdrink_from_basket",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 80
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_can_from_basket",
+          "n": 20,
+          "sr": 90,
+          "hsr": 0,
+          "cr": 100
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_can_from_cabinet",
+          "n": 20,
+          "sr": 100,
+          "hsr": 65,
+          "cr": 35
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_milk_box_from_fridge",
+          "n": 20,
+          "sr": 100,
+          "hsr": 95,
+          "cr": 5
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_sauce_can_from_cabinet",
+          "n": 20,
+          "sr": 100,
+          "hsr": 25,
+          "cr": 75
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_bottle_in_basket",
+          "n": 20,
+          "sr": 45,
+          "hsr": 25,
+          "cr": 65
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_bottle_in_fridge",
+          "n": 20,
+          "sr": 15,
+          "hsr": 5,
+          "cr": 85
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_close_cabinet",
+          "n": 20,
+          "sr": 90,
+          "hsr": 55,
+          "cr": 35
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_in_cabinet",
+          "n": 20,
+          "sr": 70,
+          "hsr": 40,
+          "cr": 60
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_infront_of_microwave",
+          "n": 20,
+          "sr": 60,
+          "hsr": 50,
+          "cr": 15
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_next_to_basket",
+          "n": 20,
+          "sr": 60,
+          "hsr": 50,
+          "cr": 20
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_milk_box_in_fridge",
+          "n": 20,
+          "sr": 65,
+          "hsr": 30,
+          "cr": 70
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_sauce_can_in_basket",
+          "n": 20,
+          "sr": 80,
+          "hsr": 70,
+          "cr": 15
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_sauce_can_in_cabinet",
+          "n": 20,
+          "sr": 75,
+          "hsr": 45,
+          "cr": 45
+        },
+        {
+          "scene": "kitchenl",
+          "task": "switch_can_with_bottle_in_basket",
+          "n": 20,
+          "sr": 50,
+          "hsr": 5,
+          "cr": 95
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_apple_bin_bowl_rack_spoon_sink_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 5
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_apple_sink_plate_bread_board_ks",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_bowl_rack_apple_sink_ks",
+          "n": 22,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 18.2
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_heat_hamburger_ks",
+          "n": 19,
+          "sr": 57.9,
+          "hsr": 52.6,
+          "cr": 26.3
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_serve_hamburger_ks",
+          "n": 15,
+          "sr": 46.7,
+          "hsr": 33.3,
+          "cr": 40
+        },
+        {
+          "scene": "kitchens",
+          "task": "close_microwave_ks",
+          "n": 24,
+          "sr": 83.3,
+          "hsr": 62.5,
+          "cr": 20.8
+        },
+        {
+          "scene": "kitchens",
+          "task": "drop_apple_in_bin_ks",
+          "n": 21,
+          "sr": 81,
+          "hsr": 47.6,
+          "cr": 42.9
+        },
+        {
+          "scene": "kitchens",
+          "task": "move_hamburger_onto_plate_ks",
+          "n": 20,
+          "sr": 80,
+          "hsr": 80,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_apple_from_bowl_ks",
+          "n": 20,
+          "sr": 85,
+          "hsr": 70,
+          "cr": 15
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_apple_from_sink_ks",
+          "n": 22,
+          "sr": 68.2,
+          "hsr": 59.1,
+          "cr": 22.7
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_fork_from_sink_ks",
+          "n": 20,
+          "sr": 100,
+          "hsr": 85,
+          "cr": 15
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_hamburger_from_microwave_ks",
+          "n": 24,
+          "sr": 70.8,
+          "hsr": 45.8,
+          "cr": 33.3
+        },
+        {
+          "scene": "kitchens",
+          "task": "place_bowl_in_dishrack_ks",
+          "n": 20,
+          "sr": 5,
+          "hsr": 5,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_bowl_in_sink_ks",
+          "n": 20,
+          "sr": 95,
+          "hsr": 95,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_bread_on_board_ks",
+          "n": 21,
+          "sr": 66.7,
+          "hsr": 66.7,
+          "cr": 14.3
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_hamburger_in_microwave_ks",
+          "n": 21,
+          "sr": 66.7,
+          "hsr": 57.1,
+          "cr": 19
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_spoon_in_dishrack_ks",
+          "n": 20,
+          "sr": 25,
+          "hsr": 25,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_spoon_in_sink_ks",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_spoon_on_plate_ks",
+          "n": 20,
+          "sr": 80,
+          "hsr": 80,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "close_drawer",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "move_items_around",
+          "n": 20,
+          "sr": 5,
+          "hsr": 5,
+          "cr": 75
+        },
+        {
+          "scene": "office",
+          "task": "open_drawer",
+          "n": 20,
+          "sr": 85,
+          "hsr": 75,
+          "cr": 10
+        },
+        {
+          "scene": "office",
+          "task": "organize_table",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 90
+        },
+        {
+          "scene": "office",
+          "task": "put_book_in_fileholder",
+          "n": 20,
+          "sr": 15,
+          "hsr": 15,
+          "cr": 40
+        },
+        {
+          "scene": "office",
+          "task": "put_book_on_book",
+          "n": 20,
+          "sr": 55,
+          "hsr": 55,
+          "cr": 10
+        },
+        {
+          "scene": "office",
+          "task": "put_milktea_next_to_laptop",
+          "n": 20,
+          "sr": 50,
+          "hsr": 40,
+          "cr": 35
+        },
+        {
+          "scene": "office",
+          "task": "put_milktea_on_shelf",
+          "n": 20,
+          "sr": 15,
+          "hsr": 10,
+          "cr": 65
+        },
+        {
+          "scene": "office",
+          "task": "put_mouse_next_to_stapler",
+          "n": 20,
+          "sr": 75,
+          "hsr": 75,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "put_mouse_on_pad",
+          "n": 20,
+          "sr": 35,
+          "hsr": 15,
+          "cr": 45
+        },
+        {
+          "scene": "office",
+          "task": "put_phone_next_to_cube",
+          "n": 20,
+          "sr": 60,
+          "hsr": 30,
+          "cr": 55
+        },
+        {
+          "scene": "office",
+          "task": "put_phone_on_holder",
+          "n": 20,
+          "sr": 95,
+          "hsr": 90,
+          "cr": 10
+        },
+        {
+          "scene": "office",
+          "task": "put_rubikscube_in_drawer",
+          "n": 20,
+          "sr": 80,
+          "hsr": 75,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "put_rubikscube_next_to_milktea",
+          "n": 20,
+          "sr": 30,
+          "hsr": 30,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_in_drawer",
+          "n": 20,
+          "sr": 75,
+          "hsr": 45,
+          "cr": 50
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_next_to_mouse",
+          "n": 20,
+          "sr": 10,
+          "hsr": 0,
+          "cr": 100
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_on_book",
+          "n": 20,
+          "sr": 90,
+          "hsr": 85,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "set_up_table",
+          "n": 20,
+          "sr": 10,
+          "hsr": 5,
+          "cr": 85
+        },
+        {
+          "scene": "office",
+          "task": "store_rubikscube_on_shelf",
+          "n": 20,
+          "sr": 30,
+          "hsr": 20,
+          "cr": 60
+        },
+        {
+          "scene": "office",
+          "task": "store_stapler_in_drawer",
+          "n": 20,
+          "sr": 30,
+          "hsr": 10,
+          "cr": 60
+        },
+        {
+          "scene": "study",
+          "task": "empty_box",
+          "n": 20,
+          "sr": 65,
+          "hsr": 65,
+          "cr": 5
+        },
+        {
+          "scene": "study",
+          "task": "move_book_onto_table",
+          "n": 20,
+          "sr": 95,
+          "hsr": 60,
+          "cr": 40
+        },
+        {
+          "scene": "study",
+          "task": "move_cup",
+          "n": 20,
+          "sr": 25,
+          "hsr": 15,
+          "cr": 45
+        },
+        {
+          "scene": "study",
+          "task": "move_cup_next_to_book",
+          "n": 20,
+          "sr": 40,
+          "hsr": 40,
+          "cr": 15
+        },
+        {
+          "scene": "study",
+          "task": "move_cup_onto_table",
+          "n": 20,
+          "sr": 80,
+          "hsr": 75,
+          "cr": 5
+        },
+        {
+          "scene": "study",
+          "task": "move_cup_put_pen_in_cup",
+          "n": 20,
+          "sr": 40,
+          "hsr": 40,
+          "cr": 40
+        },
+        {
+          "scene": "study",
+          "task": "move_cups_into_box",
+          "n": 20,
+          "sr": 50,
+          "hsr": 35,
+          "cr": 40
+        },
+        {
+          "scene": "study",
+          "task": "move_pen_to_box",
+          "n": 19,
+          "sr": 89.5,
+          "hsr": 15.8,
+          "cr": 73.7
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_cup_next_to_box",
+          "n": 20,
+          "sr": 85,
+          "hsr": 85,
+          "cr": 5
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_next_to_box",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_next_to_pencup",
+          "n": 20,
+          "sr": 80,
+          "hsr": 80,
+          "cr": 10
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_onto_book",
+          "n": 20,
+          "sr": 90,
+          "hsr": 50,
+          "cr": 40
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_onto_table",
+          "n": 20,
+          "sr": 100,
+          "hsr": 95,
+          "cr": 5
+        },
+        {
+          "scene": "study",
+          "task": "put_cup_in_box",
+          "n": 20,
+          "sr": 35,
+          "hsr": 35,
+          "cr": 25
+        },
+        {
+          "scene": "study",
+          "task": "put_cup_on_coaster",
+          "n": 20,
+          "sr": 20,
+          "hsr": 10,
+          "cr": 55
+        },
+        {
+          "scene": "study",
+          "task": "put_cup_on_table",
+          "n": 20,
+          "sr": 80,
+          "hsr": 80,
+          "cr": 15
+        },
+        {
+          "scene": "study",
+          "task": "put_glue_in_box",
+          "n": 20,
+          "sr": 90,
+          "hsr": 50,
+          "cr": 45
+        },
+        {
+          "scene": "study",
+          "task": "put_pen_in_box",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "put_pen_in_pencup",
+          "n": 20,
+          "sr": 5,
+          "hsr": 5,
+          "cr": 35
+        },
+        {
+          "scene": "study",
+          "task": "put_seal_in_box",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        }
+      ],
+      "perturbation": [
+        {
+          "scene": "kitchenl",
+          "task": "put_bottle_in_basket",
+          "n": 120,
+          "sr": 20,
+          "hsr": 20,
+          "cr": 12.5
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_bottle_in_fridge",
+          "n": 120,
+          "sr": 30.8,
+          "hsr": 30.8,
+          "cr": 15
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_in_cabinet",
+          "n": 120,
+          "sr": 70.8,
+          "hsr": 69.2,
+          "cr": 13.3
+        },
+        {
+          "scene": "kitchens",
+          "task": "drop_apple_in_bin_ks",
+          "n": 120,
+          "sr": 87.5,
+          "hsr": 85,
+          "cr": 5.8
+        },
+        {
+          "scene": "kitchens",
+          "task": "move_hamburger_onto_plate_ks",
+          "n": 120,
+          "sr": 91.7,
+          "hsr": 90.8,
+          "cr": 0.8
+        },
+        {
+          "scene": "kitchens",
+          "task": "place_bowl_in_dishrack_ks",
+          "n": 120,
+          "sr": 84.2,
+          "hsr": 84.2,
+          "cr": 1.7
+        },
+        {
+          "scene": "office",
+          "task": "put_mouse_on_pad",
+          "n": 120,
+          "sr": 71.7,
+          "hsr": 71.7,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "put_rubikscube_in_drawer",
+          "n": 120,
+          "sr": 62.5,
+          "hsr": 62.5,
+          "cr": 12.5
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_next_to_mouse",
+          "n": 120,
+          "sr": 70.8,
+          "hsr": 70.8,
+          "cr": 2.5
+        },
+        {
+          "scene": "study",
+          "task": "move_cup",
+          "n": 120,
+          "sr": 90.8,
+          "hsr": 90.8,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_pen_to_box",
+          "n": 66,
+          "sr": 74.2,
+          "hsr": 74.2,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_next_to_pencup",
+          "n": 120,
+          "sr": 95.8,
+          "hsr": 95.8,
+          "cr": 0
+        }
+      ]
+    },
+    "pi0": {
+      "clean": [
+        {
+          "scene": "kitchenl",
+          "task": "move_bottle",
+          "n": 20,
+          "sr": 50,
+          "hsr": 50,
+          "cr": 30
+        },
+        {
+          "scene": "kitchenl",
+          "task": "move_bottle_from_fridge_next_to_can",
+          "n": 20,
+          "sr": 80,
+          "hsr": 80,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "move_can_from_cabinet_to_basket",
+          "n": 20,
+          "sr": 50,
+          "hsr": 45,
+          "cr": 35
+        },
+        {
+          "scene": "kitchenl",
+          "task": "move_milk_close_fridge",
+          "n": 20,
+          "sr": 50,
+          "hsr": 50,
+          "cr": 15
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_bottle_from_fridge",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_boxdrink_from_basket",
+          "n": 20,
+          "sr": 5,
+          "hsr": 5,
+          "cr": 55
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_can_from_basket",
+          "n": 20,
+          "sr": 70,
+          "hsr": 25,
+          "cr": 75
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_can_from_cabinet",
+          "n": 20,
+          "sr": 100,
+          "hsr": 85,
+          "cr": 15
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_milk_box_from_fridge",
+          "n": 20,
+          "sr": 95,
+          "hsr": 95,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_sauce_can_from_cabinet",
+          "n": 20,
+          "sr": 95,
+          "hsr": 95,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_bottle_in_basket",
+          "n": 20,
+          "sr": 60,
+          "hsr": 55,
+          "cr": 25
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_bottle_in_fridge",
+          "n": 20,
+          "sr": 75,
+          "hsr": 75,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_close_cabinet",
+          "n": 20,
+          "sr": 80,
+          "hsr": 80,
+          "cr": 5
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_in_cabinet",
+          "n": 20,
+          "sr": 85,
+          "hsr": 80,
+          "cr": 10
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_infront_of_microwave",
+          "n": 20,
+          "sr": 70,
+          "hsr": 70,
+          "cr": 10
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_next_to_basket",
+          "n": 20,
+          "sr": 40,
+          "hsr": 25,
+          "cr": 25
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_milk_box_in_fridge",
+          "n": 20,
+          "sr": 55,
+          "hsr": 40,
+          "cr": 25
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_sauce_can_in_basket",
+          "n": 20,
+          "sr": 70,
+          "hsr": 45,
+          "cr": 55
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_sauce_can_in_cabinet",
+          "n": 20,
+          "sr": 65,
+          "hsr": 65,
+          "cr": 10
+        },
+        {
+          "scene": "kitchenl",
+          "task": "switch_can_with_bottle_in_basket",
+          "n": 20,
+          "sr": 30,
+          "hsr": 5,
+          "cr": 90
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_apple_bin_bowl_rack_spoon_sink_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 5
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_apple_sink_plate_bread_board_ks",
+          "n": 20,
+          "sr": 90,
+          "hsr": 80,
+          "cr": 10
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_bowl_rack_apple_sink_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 85
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_heat_hamburger_ks",
+          "n": 20,
+          "sr": 55,
+          "hsr": 55,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_serve_hamburger_ks",
+          "n": 20,
+          "sr": 40,
+          "hsr": 40,
+          "cr": 5
+        },
+        {
+          "scene": "kitchens",
+          "task": "close_microwave_ks",
+          "n": 20,
+          "sr": 80,
+          "hsr": 80,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "drop_apple_in_bin_ks",
+          "n": 20,
+          "sr": 80,
+          "hsr": 80,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "move_hamburger_onto_plate_ks",
+          "n": 20,
+          "sr": 40,
+          "hsr": 40,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_apple_from_bowl_ks",
+          "n": 20,
+          "sr": 90,
+          "hsr": 10,
+          "cr": 85
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_apple_from_sink_ks",
+          "n": 20,
+          "sr": 95,
+          "hsr": 90,
+          "cr": 10
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_fork_from_sink_ks",
+          "n": 20,
+          "sr": 90,
+          "hsr": 80,
+          "cr": 10
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_hamburger_from_microwave_ks",
+          "n": 20,
+          "sr": 75,
+          "hsr": 75,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "place_bowl_in_dishrack_ks",
+          "n": 20,
+          "sr": 85,
+          "hsr": 85,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_bowl_in_sink_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 10
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_bread_on_board_ks",
+          "n": 20,
+          "sr": 95,
+          "hsr": 95,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_hamburger_in_microwave_ks",
+          "n": 20,
+          "sr": 75,
+          "hsr": 75,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_spoon_in_dishrack_ks",
+          "n": 20,
+          "sr": 80,
+          "hsr": 80,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_spoon_in_sink_ks",
+          "n": 20,
+          "sr": 70,
+          "hsr": 70,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_spoon_on_plate_ks",
+          "n": 20,
+          "sr": 15,
+          "hsr": 15,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "close_drawer",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "move_items_around",
+          "n": 20,
+          "sr": 5,
+          "hsr": 5,
+          "cr": 40
+        },
+        {
+          "scene": "office",
+          "task": "open_drawer",
+          "n": 20,
+          "sr": 70,
+          "hsr": 70,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "organize_table",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 10
+        },
+        {
+          "scene": "office",
+          "task": "put_book_in_fileholder",
+          "n": 20,
+          "sr": 20,
+          "hsr": 20,
+          "cr": 30
+        },
+        {
+          "scene": "office",
+          "task": "put_book_on_book",
+          "n": 20,
+          "sr": 65,
+          "hsr": 65,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "put_milktea_next_to_laptop",
+          "n": 20,
+          "sr": 30,
+          "hsr": 30,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "put_milktea_on_shelf",
+          "n": 20,
+          "sr": 25,
+          "hsr": 25,
+          "cr": 10
+        },
+        {
+          "scene": "office",
+          "task": "put_mouse_next_to_stapler",
+          "n": 20,
+          "sr": 60,
+          "hsr": 60,
+          "cr": 25
+        },
+        {
+          "scene": "office",
+          "task": "put_mouse_on_pad",
+          "n": 20,
+          "sr": 25,
+          "hsr": 25,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "put_phone_next_to_cube",
+          "n": 20,
+          "sr": 25,
+          "hsr": 25,
+          "cr": 15
+        },
+        {
+          "scene": "office",
+          "task": "put_phone_on_holder",
+          "n": 20,
+          "sr": 50,
+          "hsr": 50,
+          "cr": 15
+        },
+        {
+          "scene": "office",
+          "task": "put_rubikscube_in_drawer",
+          "n": 20,
+          "sr": 40,
+          "hsr": 40,
+          "cr": 25
+        },
+        {
+          "scene": "office",
+          "task": "put_rubikscube_next_to_milktea",
+          "n": 20,
+          "sr": 25,
+          "hsr": 25,
+          "cr": 40
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_in_drawer",
+          "n": 20,
+          "sr": 50,
+          "hsr": 35,
+          "cr": 25
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_next_to_mouse",
+          "n": 20,
+          "sr": 45,
+          "hsr": 45,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_on_book",
+          "n": 20,
+          "sr": 85,
+          "hsr": 85,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "set_up_table",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 35
+        },
+        {
+          "scene": "office",
+          "task": "store_rubikscube_on_shelf",
+          "n": 20,
+          "sr": 25,
+          "hsr": 20,
+          "cr": 40
+        },
+        {
+          "scene": "office",
+          "task": "store_stapler_in_drawer",
+          "n": 20,
+          "sr": 40,
+          "hsr": 40,
+          "cr": 35
+        },
+        {
+          "scene": "study",
+          "task": "empty_box",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_book_onto_table",
+          "n": 20,
+          "sr": 95,
+          "hsr": 95,
+          "cr": 5
+        },
+        {
+          "scene": "study",
+          "task": "move_cup",
+          "n": 20,
+          "sr": 90,
+          "hsr": 90,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_cup_next_to_book",
+          "n": 20,
+          "sr": 45,
+          "hsr": 45,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_cup_onto_table",
+          "n": 20,
+          "sr": 65,
+          "hsr": 65,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_cup_put_pen_in_cup",
+          "n": 20,
+          "sr": 60,
+          "hsr": 60,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_cups_into_box",
+          "n": 20,
+          "sr": 65,
+          "hsr": 65,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_pen_to_box",
+          "n": 11,
+          "sr": 81.8,
+          "hsr": 81.8,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_cup_next_to_box",
+          "n": 20,
+          "sr": 70,
+          "hsr": 70,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_next_to_box",
+          "n": 20,
+          "sr": 95,
+          "hsr": 95,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_next_to_pencup",
+          "n": 20,
+          "sr": 85,
+          "hsr": 85,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_onto_book",
+          "n": 20,
+          "sr": 85,
+          "hsr": 65,
+          "cr": 25
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_onto_table",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "put_cup_in_box",
+          "n": 20,
+          "sr": 85,
+          "hsr": 85,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "put_cup_on_coaster",
+          "n": 20,
+          "sr": 15,
+          "hsr": 15,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "put_cup_on_table",
+          "n": 20,
+          "sr": 60,
+          "hsr": 60,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "put_glue_in_box",
+          "n": 20,
+          "sr": 65,
+          "hsr": 50,
+          "cr": 25
+        },
+        {
+          "scene": "study",
+          "task": "put_pen_in_box",
+          "n": 20,
+          "sr": 95,
+          "hsr": 95,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "put_pen_in_pencup",
+          "n": 20,
+          "sr": 25,
+          "hsr": 10,
+          "cr": 45
+        },
+        {
+          "scene": "study",
+          "task": "put_seal_in_box",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        }
+      ],
+      "clutter": [
+        {
+          "scene": "kitchenl",
+          "task": "move_bottle",
+          "n": 20,
+          "sr": 50,
+          "hsr": 40,
+          "cr": 20
+        },
+        {
+          "scene": "kitchenl",
+          "task": "move_bottle_from_fridge_next_to_can",
+          "n": 20,
+          "sr": 70,
+          "hsr": 70,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "move_can_from_cabinet_to_basket",
+          "n": 20,
+          "sr": 70,
+          "hsr": 65,
+          "cr": 25
+        },
+        {
+          "scene": "kitchenl",
+          "task": "move_milk_close_fridge",
+          "n": 20,
+          "sr": 5,
+          "hsr": 0,
+          "cr": 65
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_bottle_from_fridge",
+          "n": 20,
+          "sr": 95,
+          "hsr": 20,
+          "cr": 80
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_boxdrink_from_basket",
+          "n": 20,
+          "sr": 75,
+          "hsr": 20,
+          "cr": 70
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_can_from_basket",
+          "n": 20,
+          "sr": 70,
+          "hsr": 0,
+          "cr": 100
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_can_from_cabinet",
+          "n": 20,
+          "sr": 90,
+          "hsr": 35,
+          "cr": 65
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_milk_box_from_fridge",
+          "n": 20,
+          "sr": 90,
+          "hsr": 80,
+          "cr": 15
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_sauce_can_from_cabinet",
+          "n": 20,
+          "sr": 90,
+          "hsr": 55,
+          "cr": 35
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_bottle_in_basket",
+          "n": 20,
+          "sr": 65,
+          "hsr": 20,
+          "cr": 70
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_bottle_in_fridge",
+          "n": 20,
+          "sr": 45,
+          "hsr": 40,
+          "cr": 40
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_close_cabinet",
+          "n": 20,
+          "sr": 75,
+          "hsr": 45,
+          "cr": 40
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_in_cabinet",
+          "n": 20,
+          "sr": 70,
+          "hsr": 35,
+          "cr": 50
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_infront_of_microwave",
+          "n": 20,
+          "sr": 15,
+          "hsr": 15,
+          "cr": 55
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_next_to_basket",
+          "n": 20,
+          "sr": 35,
+          "hsr": 10,
+          "cr": 75
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_milk_box_in_fridge",
+          "n": 20,
+          "sr": 50,
+          "hsr": 15,
+          "cr": 55
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_sauce_can_in_basket",
+          "n": 20,
+          "sr": 50,
+          "hsr": 35,
+          "cr": 50
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_sauce_can_in_cabinet",
+          "n": 20,
+          "sr": 55,
+          "hsr": 20,
+          "cr": 60
+        },
+        {
+          "scene": "kitchenl",
+          "task": "switch_can_with_bottle_in_basket",
+          "n": 20,
+          "sr": 45,
+          "hsr": 10,
+          "cr": 85
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_apple_bin_bowl_rack_spoon_sink_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 35
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_apple_sink_plate_bread_board_ks",
+          "n": 20,
+          "sr": 75,
+          "hsr": 75,
+          "cr": 5
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_bowl_rack_apple_sink_ks",
+          "n": 22,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 31.8
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_heat_hamburger_ks",
+          "n": 19,
+          "sr": 42.1,
+          "hsr": 36.8,
+          "cr": 36.8
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_serve_hamburger_ks",
+          "n": 15,
+          "sr": 33.3,
+          "hsr": 13.3,
+          "cr": 53.3
+        },
+        {
+          "scene": "kitchens",
+          "task": "close_microwave_ks",
+          "n": 24,
+          "sr": 79.2,
+          "hsr": 66.7,
+          "cr": 12.5
+        },
+        {
+          "scene": "kitchens",
+          "task": "drop_apple_in_bin_ks",
+          "n": 21,
+          "sr": 38.1,
+          "hsr": 19,
+          "cr": 33.3
+        },
+        {
+          "scene": "kitchens",
+          "task": "move_hamburger_onto_plate_ks",
+          "n": 20,
+          "sr": 20,
+          "hsr": 20,
+          "cr": 15
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_apple_from_bowl_ks",
+          "n": 20,
+          "sr": 65,
+          "hsr": 60,
+          "cr": 10
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_apple_from_sink_ks",
+          "n": 22,
+          "sr": 81.8,
+          "hsr": 50,
+          "cr": 36.4
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_fork_from_sink_ks",
+          "n": 20,
+          "sr": 75,
+          "hsr": 50,
+          "cr": 45
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_hamburger_from_microwave_ks",
+          "n": 24,
+          "sr": 58.3,
+          "hsr": 41.7,
+          "cr": 29.2
+        },
+        {
+          "scene": "kitchens",
+          "task": "place_bowl_in_dishrack_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_bowl_in_sink_ks",
+          "n": 20,
+          "sr": 95,
+          "hsr": 95,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_bread_on_board_ks",
+          "n": 20,
+          "sr": 20,
+          "hsr": 10,
+          "cr": 45
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_hamburger_in_microwave_ks",
+          "n": 21,
+          "sr": 23.8,
+          "hsr": 23.8,
+          "cr": 47.6
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_spoon_in_dishrack_ks",
+          "n": 20,
+          "sr": 5,
+          "hsr": 5,
+          "cr": 10
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_spoon_in_sink_ks",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_spoon_on_plate_ks",
+          "n": 20,
+          "sr": 35,
+          "hsr": 5,
+          "cr": 45
+        },
+        {
+          "scene": "office",
+          "task": "close_drawer",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "move_items_around",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 95
+        },
+        {
+          "scene": "office",
+          "task": "open_drawer",
+          "n": 20,
+          "sr": 95,
+          "hsr": 95,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "organize_table",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 85
+        },
+        {
+          "scene": "office",
+          "task": "put_book_in_fileholder",
+          "n": 20,
+          "sr": 10,
+          "hsr": 5,
+          "cr": 40
+        },
+        {
+          "scene": "office",
+          "task": "put_book_on_book",
+          "n": 20,
+          "sr": 50,
+          "hsr": 50,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "put_milktea_next_to_laptop",
+          "n": 20,
+          "sr": 40,
+          "hsr": 5,
+          "cr": 90
+        },
+        {
+          "scene": "office",
+          "task": "put_milktea_on_shelf",
+          "n": 20,
+          "sr": 20,
+          "hsr": 10,
+          "cr": 85
+        },
+        {
+          "scene": "office",
+          "task": "put_mouse_next_to_stapler",
+          "n": 20,
+          "sr": 15,
+          "hsr": 15,
+          "cr": 55
+        },
+        {
+          "scene": "office",
+          "task": "put_mouse_on_pad",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 100
+        },
+        {
+          "scene": "office",
+          "task": "put_phone_next_to_cube",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 80
+        },
+        {
+          "scene": "office",
+          "task": "put_phone_on_holder",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 95
+        },
+        {
+          "scene": "office",
+          "task": "put_rubikscube_in_drawer",
+          "n": 20,
+          "sr": 15,
+          "hsr": 15,
+          "cr": 55
+        },
+        {
+          "scene": "office",
+          "task": "put_rubikscube_next_to_milktea",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 70
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_in_drawer",
+          "n": 20,
+          "sr": 25,
+          "hsr": 5,
+          "cr": 75
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_next_to_mouse",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 90
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_on_book",
+          "n": 20,
+          "sr": 95,
+          "hsr": 85,
+          "cr": 10
+        },
+        {
+          "scene": "office",
+          "task": "set_up_table",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 100
+        },
+        {
+          "scene": "office",
+          "task": "store_rubikscube_on_shelf",
+          "n": 20,
+          "sr": 25,
+          "hsr": 20,
+          "cr": 65
+        },
+        {
+          "scene": "office",
+          "task": "store_stapler_in_drawer",
+          "n": 20,
+          "sr": 25,
+          "hsr": 5,
+          "cr": 80
+        },
+        {
+          "scene": "study",
+          "task": "empty_box",
+          "n": 20,
+          "sr": 70,
+          "hsr": 60,
+          "cr": 25
+        },
+        {
+          "scene": "study",
+          "task": "move_book_onto_table",
+          "n": 20,
+          "sr": 75,
+          "hsr": 45,
+          "cr": 40
+        },
+        {
+          "scene": "study",
+          "task": "move_cup",
+          "n": 20,
+          "sr": 60,
+          "hsr": 50,
+          "cr": 40
+        },
+        {
+          "scene": "study",
+          "task": "move_cup_next_to_book",
+          "n": 20,
+          "sr": 30,
+          "hsr": 25,
+          "cr": 10
+        },
+        {
+          "scene": "study",
+          "task": "move_cup_onto_table",
+          "n": 20,
+          "sr": 55,
+          "hsr": 20,
+          "cr": 70
+        },
+        {
+          "scene": "study",
+          "task": "move_cup_put_pen_in_cup",
+          "n": 20,
+          "sr": 40,
+          "hsr": 20,
+          "cr": 60
+        },
+        {
+          "scene": "study",
+          "task": "move_cups_into_box",
+          "n": 20,
+          "sr": 65,
+          "hsr": 20,
+          "cr": 75
+        },
+        {
+          "scene": "study",
+          "task": "move_pen_to_box",
+          "n": 19,
+          "sr": 47.4,
+          "hsr": 0,
+          "cr": 84.2
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_cup_next_to_box",
+          "n": 20,
+          "sr": 85,
+          "hsr": 85,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_next_to_box",
+          "n": 20,
+          "sr": 75,
+          "hsr": 75,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_next_to_pencup",
+          "n": 20,
+          "sr": 55,
+          "hsr": 55,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_onto_book",
+          "n": 20,
+          "sr": 55,
+          "hsr": 15,
+          "cr": 85
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_onto_table",
+          "n": 20,
+          "sr": 85,
+          "hsr": 60,
+          "cr": 30
+        },
+        {
+          "scene": "study",
+          "task": "put_cup_in_box",
+          "n": 20,
+          "sr": 75,
+          "hsr": 75,
+          "cr": 5
+        },
+        {
+          "scene": "study",
+          "task": "put_cup_on_coaster",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 90
+        },
+        {
+          "scene": "study",
+          "task": "put_cup_on_table",
+          "n": 20,
+          "sr": 35,
+          "hsr": 30,
+          "cr": 55
+        },
+        {
+          "scene": "study",
+          "task": "put_glue_in_box",
+          "n": 20,
+          "sr": 80,
+          "hsr": 60,
+          "cr": 25
+        },
+        {
+          "scene": "study",
+          "task": "put_pen_in_box",
+          "n": 20,
+          "sr": 85,
+          "hsr": 85,
+          "cr": 10
+        },
+        {
+          "scene": "study",
+          "task": "put_pen_in_pencup",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 50
+        },
+        {
+          "scene": "study",
+          "task": "put_seal_in_box",
+          "n": 20,
+          "sr": 80,
+          "hsr": 80,
+          "cr": 5
+        }
+      ],
+      "perturbation": [
+        {
+          "scene": "kitchenl",
+          "task": "put_bottle_in_basket",
+          "n": 120,
+          "sr": 12.5,
+          "hsr": 12.5,
+          "cr": 40.8
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_bottle_in_fridge",
+          "n": 120,
+          "sr": 15,
+          "hsr": 15,
+          "cr": 3.3
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_in_cabinet",
+          "n": 120,
+          "sr": 74.2,
+          "hsr": 64.2,
+          "cr": 17.5
+        },
+        {
+          "scene": "kitchens",
+          "task": "drop_apple_in_bin_ks",
+          "n": 120,
+          "sr": 72.5,
+          "hsr": 68.3,
+          "cr": 5
+        },
+        {
+          "scene": "kitchens",
+          "task": "move_hamburger_onto_plate_ks",
+          "n": 120,
+          "sr": 46.7,
+          "hsr": 45,
+          "cr": 4.2
+        },
+        {
+          "scene": "kitchens",
+          "task": "place_bowl_in_dishrack_ks",
+          "n": 120,
+          "sr": 84.2,
+          "hsr": 84.2,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "put_mouse_on_pad",
+          "n": 120,
+          "sr": 23.3,
+          "hsr": 23.3,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "put_rubikscube_in_drawer",
+          "n": 120,
+          "sr": 40.8,
+          "hsr": 39.2,
+          "cr": 25.8
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_next_to_mouse",
+          "n": 120,
+          "sr": 46.7,
+          "hsr": 46.7,
+          "cr": 5
+        },
+        {
+          "scene": "study",
+          "task": "move_cup",
+          "n": 120,
+          "sr": 88.3,
+          "hsr": 88.3,
+          "cr": 0.8
+        },
+        {
+          "scene": "study",
+          "task": "move_pen_to_box",
+          "n": 66,
+          "sr": 57.6,
+          "hsr": 57.6,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_next_to_pencup",
+          "n": 120,
+          "sr": 90.8,
+          "hsr": 90.8,
+          "cr": 0
+        }
+      ]
+    },
+    "xvla": {
+      "clean": [
+        {
+          "scene": "kitchenl",
+          "task": "move_bottle",
+          "n": 20,
+          "sr": 80,
+          "hsr": 75,
+          "cr": 25
+        },
+        {
+          "scene": "kitchenl",
+          "task": "move_bottle_from_fridge_next_to_can",
+          "n": 20,
+          "sr": 70,
+          "hsr": 70,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "move_can_from_cabinet_to_basket",
+          "n": 20,
+          "sr": 50,
+          "hsr": 50,
+          "cr": 10
+        },
+        {
+          "scene": "kitchenl",
+          "task": "move_milk_close_fridge",
+          "n": 20,
+          "sr": 50,
+          "hsr": 50,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_bottle_from_fridge",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_boxdrink_from_basket",
+          "n": 20,
+          "sr": 5,
+          "hsr": 5,
+          "cr": 35
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_can_from_basket",
+          "n": 20,
+          "sr": 80,
+          "hsr": 30,
+          "cr": 60
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_can_from_cabinet",
+          "n": 20,
+          "sr": 90,
+          "hsr": 90,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_milk_box_from_fridge",
+          "n": 20,
+          "sr": 65,
+          "hsr": 65,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_sauce_can_from_cabinet",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_bottle_in_basket",
+          "n": 20,
+          "sr": 95,
+          "hsr": 95,
+          "cr": 5
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_bottle_in_fridge",
+          "n": 20,
+          "sr": 80,
+          "hsr": 80,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_close_cabinet",
+          "n": 20,
+          "sr": 90,
+          "hsr": 85,
+          "cr": 5
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_in_cabinet",
+          "n": 20,
+          "sr": 90,
+          "hsr": 90,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_infront_of_microwave",
+          "n": 20,
+          "sr": 90,
+          "hsr": 90,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_next_to_basket",
+          "n": 20,
+          "sr": 55,
+          "hsr": 55,
+          "cr": 0
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_milk_box_in_fridge",
+          "n": 20,
+          "sr": 85,
+          "hsr": 85,
+          "cr": 5
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_sauce_can_in_basket",
+          "n": 20,
+          "sr": 90,
+          "hsr": 60,
+          "cr": 40
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_sauce_can_in_cabinet",
+          "n": 20,
+          "sr": 95,
+          "hsr": 70,
+          "cr": 30
+        },
+        {
+          "scene": "kitchenl",
+          "task": "switch_can_with_bottle_in_basket",
+          "n": 20,
+          "sr": 35,
+          "hsr": 5,
+          "cr": 80
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_apple_bin_bowl_rack_spoon_sink_ks",
+          "n": 20,
+          "sr": 5,
+          "hsr": 5,
+          "cr": 10
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_apple_sink_plate_bread_board_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 5
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_bowl_rack_apple_sink_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 80
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_heat_hamburger_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_serve_hamburger_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "close_microwave_ks",
+          "n": 20,
+          "sr": 50,
+          "hsr": 50,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "drop_apple_in_bin_ks",
+          "n": 20,
+          "sr": 45,
+          "hsr": 45,
+          "cr": 5
+        },
+        {
+          "scene": "kitchens",
+          "task": "move_hamburger_onto_plate_ks",
+          "n": 20,
+          "sr": 35,
+          "hsr": 35,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_apple_from_bowl_ks",
+          "n": 20,
+          "sr": 35,
+          "hsr": 5,
+          "cr": 85
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_apple_from_sink_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_fork_from_sink_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_hamburger_from_microwave_ks",
+          "n": 20,
+          "sr": 5,
+          "hsr": 5,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "place_bowl_in_dishrack_ks",
+          "n": 20,
+          "sr": 80,
+          "hsr": 80,
+          "cr": 10
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_bowl_in_sink_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 15
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_bread_on_board_ks",
+          "n": 20,
+          "sr": 35,
+          "hsr": 35,
+          "cr": 5
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_hamburger_in_microwave_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_spoon_in_dishrack_ks",
+          "n": 20,
+          "sr": 45,
+          "hsr": 45,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_spoon_in_sink_ks",
+          "n": 20,
+          "sr": 55,
+          "hsr": 55,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_spoon_on_plate_ks",
+          "n": 20,
+          "sr": 25,
+          "hsr": 25,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "close_drawer",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "move_items_around",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "open_drawer",
+          "n": 20,
+          "sr": 45,
+          "hsr": 45,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "organize_table",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 10
+        },
+        {
+          "scene": "office",
+          "task": "put_book_in_fileholder",
+          "n": 20,
+          "sr": 40,
+          "hsr": 40,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "put_book_on_book",
+          "n": 20,
+          "sr": 65,
+          "hsr": 65,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "put_milktea_next_to_laptop",
+          "n": 20,
+          "sr": 70,
+          "hsr": 70,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "put_milktea_on_shelf",
+          "n": 20,
+          "sr": 60,
+          "hsr": 60,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "put_mouse_next_to_stapler",
+          "n": 20,
+          "sr": 75,
+          "hsr": 65,
+          "cr": 25
+        },
+        {
+          "scene": "office",
+          "task": "put_mouse_on_pad",
+          "n": 20,
+          "sr": 30,
+          "hsr": 30,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "put_phone_next_to_cube",
+          "n": 20,
+          "sr": 20,
+          "hsr": 20,
+          "cr": 30
+        },
+        {
+          "scene": "office",
+          "task": "put_phone_on_holder",
+          "n": 20,
+          "sr": 30,
+          "hsr": 30,
+          "cr": 10
+        },
+        {
+          "scene": "office",
+          "task": "put_rubikscube_in_drawer",
+          "n": 20,
+          "sr": 40,
+          "hsr": 40,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "put_rubikscube_next_to_milktea",
+          "n": 20,
+          "sr": 45,
+          "hsr": 35,
+          "cr": 35
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_in_drawer",
+          "n": 20,
+          "sr": 40,
+          "hsr": 40,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_next_to_mouse",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 10
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_on_book",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "set_up_table",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "store_rubikscube_on_shelf",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "store_stapler_in_drawer",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "empty_box",
+          "n": 20,
+          "sr": 90,
+          "hsr": 90,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_book_onto_table",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_cup",
+          "n": 20,
+          "sr": 40,
+          "hsr": 40,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_cup_next_to_book",
+          "n": 20,
+          "sr": 60,
+          "hsr": 60,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_cup_onto_table",
+          "n": 20,
+          "sr": 55,
+          "hsr": 55,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_cup_put_pen_in_cup",
+          "n": 20,
+          "sr": 35,
+          "hsr": 35,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_cups_into_box",
+          "n": 20,
+          "sr": 85,
+          "hsr": 85,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_pen_to_box",
+          "n": 11,
+          "sr": 45.5,
+          "hsr": 45.5,
+          "cr": 9.1
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_cup_next_to_box",
+          "n": 20,
+          "sr": 75,
+          "hsr": 75,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_next_to_box",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_next_to_pencup",
+          "n": 20,
+          "sr": 20,
+          "hsr": 20,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_onto_book",
+          "n": 20,
+          "sr": 85,
+          "hsr": 85,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_onto_table",
+          "n": 20,
+          "sr": 95,
+          "hsr": 95,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "put_cup_in_box",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "put_cup_on_coaster",
+          "n": 20,
+          "sr": 65,
+          "hsr": 65,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "put_cup_on_table",
+          "n": 20,
+          "sr": 50,
+          "hsr": 50,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "put_glue_in_box",
+          "n": 20,
+          "sr": 75,
+          "hsr": 50,
+          "cr": 50
+        },
+        {
+          "scene": "study",
+          "task": "put_pen_in_box",
+          "n": 20,
+          "sr": 65,
+          "hsr": 65,
+          "cr": 5
+        },
+        {
+          "scene": "study",
+          "task": "put_pen_in_pencup",
+          "n": 20,
+          "sr": 10,
+          "hsr": 5,
+          "cr": 20
+        },
+        {
+          "scene": "study",
+          "task": "put_seal_in_box",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        }
+      ],
+      "clutter": [
+        {
+          "scene": "kitchenl",
+          "task": "move_bottle",
+          "n": 20,
+          "sr": 20,
+          "hsr": 0,
+          "cr": 90
+        },
+        {
+          "scene": "kitchenl",
+          "task": "move_bottle_from_fridge_next_to_can",
+          "n": 20,
+          "sr": 80,
+          "hsr": 75,
+          "cr": 10
+        },
+        {
+          "scene": "kitchenl",
+          "task": "move_can_from_cabinet_to_basket",
+          "n": 20,
+          "sr": 60,
+          "hsr": 55,
+          "cr": 35
+        },
+        {
+          "scene": "kitchenl",
+          "task": "move_milk_close_fridge",
+          "n": 20,
+          "sr": 25,
+          "hsr": 25,
+          "cr": 40
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_bottle_from_fridge",
+          "n": 20,
+          "sr": 95,
+          "hsr": 30,
+          "cr": 65
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_boxdrink_from_basket",
+          "n": 20,
+          "sr": 20,
+          "hsr": 0,
+          "cr": 100
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_can_from_basket",
+          "n": 20,
+          "sr": 90,
+          "hsr": 25,
+          "cr": 75
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_can_from_cabinet",
+          "n": 20,
+          "sr": 60,
+          "hsr": 25,
+          "cr": 55
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_milk_box_from_fridge",
+          "n": 20,
+          "sr": 100,
+          "hsr": 95,
+          "cr": 5
+        },
+        {
+          "scene": "kitchenl",
+          "task": "pick_sauce_can_from_cabinet",
+          "n": 20,
+          "sr": 85,
+          "hsr": 30,
+          "cr": 70
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_bottle_in_basket",
+          "n": 20,
+          "sr": 65,
+          "hsr": 10,
+          "cr": 90
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_bottle_in_fridge",
+          "n": 20,
+          "sr": 40,
+          "hsr": 40,
+          "cr": 60
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_close_cabinet",
+          "n": 20,
+          "sr": 70,
+          "hsr": 15,
+          "cr": 70
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_in_cabinet",
+          "n": 20,
+          "sr": 100,
+          "hsr": 50,
+          "cr": 50
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_infront_of_microwave",
+          "n": 20,
+          "sr": 65,
+          "hsr": 65,
+          "cr": 10
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_next_to_basket",
+          "n": 20,
+          "sr": 25,
+          "hsr": 20,
+          "cr": 45
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_milk_box_in_fridge",
+          "n": 20,
+          "sr": 80,
+          "hsr": 0,
+          "cr": 95
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_sauce_can_in_basket",
+          "n": 20,
+          "sr": 60,
+          "hsr": 40,
+          "cr": 55
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_sauce_can_in_cabinet",
+          "n": 20,
+          "sr": 90,
+          "hsr": 30,
+          "cr": 70
+        },
+        {
+          "scene": "kitchenl",
+          "task": "switch_can_with_bottle_in_basket",
+          "n": 19,
+          "sr": 63.2,
+          "hsr": 10.5,
+          "cr": 84.2
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_apple_bin_bowl_rack_spoon_sink_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 40
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_apple_sink_plate_bread_board_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_bowl_rack_apple_sink_ks",
+          "n": 22,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 36.4
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_heat_hamburger_ks",
+          "n": 19,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 21.1
+        },
+        {
+          "scene": "kitchens",
+          "task": "chain_serve_hamburger_ks",
+          "n": 15,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 13.3
+        },
+        {
+          "scene": "kitchens",
+          "task": "close_microwave_ks",
+          "n": 24,
+          "sr": 45.8,
+          "hsr": 37.5,
+          "cr": 16.7
+        },
+        {
+          "scene": "kitchens",
+          "task": "drop_apple_in_bin_ks",
+          "n": 21,
+          "sr": 19,
+          "hsr": 19,
+          "cr": 38.1
+        },
+        {
+          "scene": "kitchens",
+          "task": "move_hamburger_onto_plate_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 5
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_apple_from_bowl_ks",
+          "n": 20,
+          "sr": 30,
+          "hsr": 25,
+          "cr": 55
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_apple_from_sink_ks",
+          "n": 22,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 0
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_fork_from_sink_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 45
+        },
+        {
+          "scene": "kitchens",
+          "task": "pick_hamburger_from_microwave_ks",
+          "n": 24,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 12.5
+        },
+        {
+          "scene": "kitchens",
+          "task": "place_bowl_in_dishrack_ks",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 40
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_bowl_in_sink_ks",
+          "n": 20,
+          "sr": 25,
+          "hsr": 25,
+          "cr": 5
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_bread_on_board_ks",
+          "n": 20,
+          "sr": 50,
+          "hsr": 45,
+          "cr": 20
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_hamburger_in_microwave_ks",
+          "n": 21,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 23.8
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_spoon_in_dishrack_ks",
+          "n": 20,
+          "sr": 5,
+          "hsr": 5,
+          "cr": 20
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_spoon_in_sink_ks",
+          "n": 20,
+          "sr": 20,
+          "hsr": 15,
+          "cr": 5
+        },
+        {
+          "scene": "kitchens",
+          "task": "put_spoon_on_plate_ks",
+          "n": 20,
+          "sr": 10,
+          "hsr": 0,
+          "cr": 25
+        },
+        {
+          "scene": "office",
+          "task": "close_drawer",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "move_items_around",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 60
+        },
+        {
+          "scene": "office",
+          "task": "open_drawer",
+          "n": 20,
+          "sr": 60,
+          "hsr": 60,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "organize_table",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 55
+        },
+        {
+          "scene": "office",
+          "task": "put_book_in_fileholder",
+          "n": 20,
+          "sr": 30,
+          "hsr": 20,
+          "cr": 65
+        },
+        {
+          "scene": "office",
+          "task": "put_book_on_book",
+          "n": 20,
+          "sr": 85,
+          "hsr": 85,
+          "cr": 5
+        },
+        {
+          "scene": "office",
+          "task": "put_milktea_next_to_laptop",
+          "n": 20,
+          "sr": 25,
+          "hsr": 0,
+          "cr": 80
+        },
+        {
+          "scene": "office",
+          "task": "put_milktea_on_shelf",
+          "n": 20,
+          "sr": 20,
+          "hsr": 20,
+          "cr": 50
+        },
+        {
+          "scene": "office",
+          "task": "put_mouse_next_to_stapler",
+          "n": 20,
+          "sr": 90,
+          "hsr": 90,
+          "cr": 10
+        },
+        {
+          "scene": "office",
+          "task": "put_mouse_on_pad",
+          "n": 18,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 61.1
+        },
+        {
+          "scene": "office",
+          "task": "put_phone_next_to_cube",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 60
+        },
+        {
+          "scene": "office",
+          "task": "put_rubikscube_in_drawer",
+          "n": 20,
+          "sr": 50,
+          "hsr": 45,
+          "cr": 35
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_in_drawer",
+          "n": 20,
+          "sr": 65,
+          "hsr": 40,
+          "cr": 50
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_on_book",
+          "n": 20,
+          "sr": 90,
+          "hsr": 90,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "set_up_table",
+          "n": 1,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "store_rubikscube_on_shelf",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 0
+        },
+        {
+          "scene": "office",
+          "task": "store_stapler_in_drawer",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "empty_box",
+          "n": 20,
+          "sr": 95,
+          "hsr": 35,
+          "cr": 65
+        },
+        {
+          "scene": "study",
+          "task": "move_book_onto_table",
+          "n": 20,
+          "sr": 90,
+          "hsr": 55,
+          "cr": 45
+        },
+        {
+          "scene": "study",
+          "task": "move_cup",
+          "n": 20,
+          "sr": 5,
+          "hsr": 5,
+          "cr": 40
+        },
+        {
+          "scene": "study",
+          "task": "move_cup_next_to_book",
+          "n": 20,
+          "sr": 60,
+          "hsr": 55,
+          "cr": 25
+        },
+        {
+          "scene": "study",
+          "task": "move_cup_onto_table",
+          "n": 20,
+          "sr": 55,
+          "hsr": 55,
+          "cr": 40
+        },
+        {
+          "scene": "study",
+          "task": "move_cup_put_pen_in_cup",
+          "n": 20,
+          "sr": 20,
+          "hsr": 15,
+          "cr": 70
+        },
+        {
+          "scene": "study",
+          "task": "move_cups_into_box",
+          "n": 20,
+          "sr": 50,
+          "hsr": 40,
+          "cr": 50
+        },
+        {
+          "scene": "study",
+          "task": "move_pen_to_box",
+          "n": 19,
+          "sr": 78.9,
+          "hsr": 52.6,
+          "cr": 47.4
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_cup_next_to_box",
+          "n": 20,
+          "sr": 35,
+          "hsr": 35,
+          "cr": 15
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_next_to_box",
+          "n": 20,
+          "sr": 100,
+          "hsr": 100,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_next_to_pencup",
+          "n": 20,
+          "sr": 10,
+          "hsr": 10,
+          "cr": 5
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_onto_book",
+          "n": 20,
+          "sr": 85,
+          "hsr": 65,
+          "cr": 20
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_onto_table",
+          "n": 20,
+          "sr": 90,
+          "hsr": 50,
+          "cr": 50
+        },
+        {
+          "scene": "study",
+          "task": "put_cup_in_box",
+          "n": 20,
+          "sr": 65,
+          "hsr": 65,
+          "cr": 25
+        },
+        {
+          "scene": "study",
+          "task": "put_cup_on_coaster",
+          "n": 20,
+          "sr": 0,
+          "hsr": 0,
+          "cr": 80
+        },
+        {
+          "scene": "study",
+          "task": "put_cup_on_table",
+          "n": 20,
+          "sr": 35,
+          "hsr": 10,
+          "cr": 45
+        },
+        {
+          "scene": "study",
+          "task": "put_pen_in_box",
+          "n": 20,
+          "sr": 70,
+          "hsr": 70,
+          "cr": 5
+        },
+        {
+          "scene": "study",
+          "task": "put_seal_in_box",
+          "n": 4,
+          "sr": 75,
+          "hsr": 75,
+          "cr": 25
+        }
+      ],
+      "perturbation": [
+        {
+          "scene": "kitchenl",
+          "task": "put_bottle_in_basket",
+          "n": 120,
+          "sr": 35,
+          "hsr": 33.3,
+          "cr": 11.7
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_bottle_in_fridge",
+          "n": 120,
+          "sr": 32.5,
+          "hsr": 32.5,
+          "cr": 3.3
+        },
+        {
+          "scene": "kitchenl",
+          "task": "put_can_in_cabinet",
+          "n": 120,
+          "sr": 81.7,
+          "hsr": 80,
+          "cr": 3.3
+        },
+        {
+          "scene": "kitchens",
+          "task": "drop_apple_in_bin_ks",
+          "n": 120,
+          "sr": 40,
+          "hsr": 39.2,
+          "cr": 5.8
+        },
+        {
+          "scene": "kitchens",
+          "task": "move_hamburger_onto_plate_ks",
+          "n": 120,
+          "sr": 27.5,
+          "hsr": 27.5,
+          "cr": 2.5
+        },
+        {
+          "scene": "kitchens",
+          "task": "place_bowl_in_dishrack_ks",
+          "n": 120,
+          "sr": 68.3,
+          "hsr": 68.3,
+          "cr": 5.8
+        },
+        {
+          "scene": "office",
+          "task": "put_mouse_on_pad",
+          "n": 120,
+          "sr": 22.5,
+          "hsr": 22.5,
+          "cr": 9.2
+        },
+        {
+          "scene": "office",
+          "task": "put_rubikscube_in_drawer",
+          "n": 120,
+          "sr": 47.5,
+          "hsr": 43.3,
+          "cr": 15
+        },
+        {
+          "scene": "office",
+          "task": "put_stapler_next_to_mouse",
+          "n": 120,
+          "sr": 8.3,
+          "hsr": 8.3,
+          "cr": 5.8
+        },
+        {
+          "scene": "study",
+          "task": "move_cup",
+          "n": 120,
+          "sr": 29.2,
+          "hsr": 29.2,
+          "cr": 0
+        },
+        {
+          "scene": "study",
+          "task": "move_pen_to_box",
+          "n": 66,
+          "sr": 45.5,
+          "hsr": 45.5,
+          "cr": 1.5
+        },
+        {
+          "scene": "study",
+          "task": "move_seal_next_to_pencup",
+          "n": 120,
+          "sr": 30.8,
+          "hsr": 30.8,
+          "cr": 0
+        }
+      ]
+    }
+  }
+}

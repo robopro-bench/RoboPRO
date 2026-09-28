@@ -3,6 +3,7 @@
 (() => {
   const TAB_IDS = ['overview', 'tasks', 'collision', 'vision', 'language', 'leaderboard', 'rollouts'];
   let manifest = null;
+  let leaderboardData = null;
 
   // ---------- Helpers ----------
 
@@ -172,83 +173,195 @@
   // ---------- Leaderboard ----------
 
   const initLeaderboard = () => {
-    const fmt = (s) => s == null ? '—' : s;
-    const num = (n, digits = 2) => n == null ? '—' : Number(n).toFixed(digits);
-
-    // Table 1 — Clutter
-    const clutter = $('#lb-clutter');
-    clutter.innerHTML = '';
-    for (const m of manifest.leaderboard.models) {
-      const c = m.clutter;
-      const row = el('tr', {}, [
-        el('td', {}, m.name),
-        el('td', { class: 'num' }, fmt(c.clean.office)),
-        el('td', { class: 'num' }, fmt(c.clean.study)),
-        el('td', { class: 'num' }, fmt(c.clean.kitchens)),
-        el('td', { class: 'num' }, fmt(c.clean.kitchenl)),
-        el('td', { class: 'num' }, fmt(c.clean.avg)),
-        el('td', { class: 'num' }, fmt(c.cluttered.office)),
-        el('td', { class: 'num' }, fmt(c.cluttered.study)),
-        el('td', { class: 'num' }, fmt(c.cluttered.kitchens)),
-        el('td', { class: 'num' }, fmt(c.cluttered.kitchenl)),
-        el('td', { class: 'num' }, fmt(c.cluttered.avg)),
-        el('td', { class: 'num' }, fmt(c.overall))
-      ]);
-      clutter.appendChild(row);
+    if (!leaderboardData) {
+      $('#lb-ranking-note').textContent = 'Leaderboard data could not be loaded. Please refresh the page.';
+      return;
     }
 
-    // Table 2 — Perturbation
-    const perturb = $('#lb-perturb');
-    perturb.innerHTML = '';
-    for (const m of manifest.leaderboard.models) {
-      const p = m.perturbation;
-      const rows = [
-        ['SR ↑',  p.original.sr,  p.object.sr,  p.visual.sr,  p.language.sr,  p.average.sr,  +1],
-        ['HSR ↑', p.original.hsr, p.object.hsr, p.visual.hsr, p.language.hsr, p.average.hsr, +1],
-        ['CR ↓',  p.original.cr,  p.object.cr,  p.visual.cr,  p.language.cr,  p.average.cr, -1]
-      ];
-      rows.forEach((r, i) => {
-        const tr = el('tr');
-        if (i === 0) {
-          const modelTd = el('td', { rowspan: '3', style: 'border-right:1px solid var(--rule);' }, m.name);
-          tr.appendChild(modelTd);
+    const state = { setting: 'clean', metric: 'sr', scene: 'all', task: 'all', view: 'all' };
+    const metricSelect = $('#lb-metric');
+    const sceneSelect = $('#lb-scene');
+    const taskSelect = $('#lb-task');
+    const settingButtons = [...document.querySelectorAll('[data-lb-setting]')];
+    const viewButtons = [...document.querySelectorAll('[data-lb-view]')];
+    const sceneOrder = new Map(leaderboardData.scenes.map((scene, index) => [scene.id, index]));
+    const taskLabel = (scene, task) =>
+      manifest.tasks?.[scene]?.find((entry) => entry.slug === task)?.label ||
+      task.replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
+    const sceneLabel = (scene) =>
+      leaderboardData.scenes.find((entry) => entry.id === scene)?.label || scene;
+    const metric = () => leaderboardData.metrics[state.metric];
+    const setting = () => leaderboardData.settings.find((entry) => entry.id === state.setting);
+    const metricLabel = () => `${metric().label} ${metric().direction === 'higher' ? '↑' : '↓'}`;
+    const percent = (value) => Number.isFinite(value) ? `${value.toFixed(1)}%` : '—';
+    const recordsFor = (modelId) => (leaderboardData.results[modelId]?.[state.setting] || [])
+      .filter((row) => state.scene === 'all' || row.scene === state.scene)
+      .filter((row) => state.task === 'all' || `${row.scene}/${row.task}` === state.task);
+    const aggregate = (records) => {
+      const n = records.reduce((sum, row) => sum + row.n, 0);
+      const weighted = (key) => n
+        ? records.reduce((sum, row) => sum + row[key] * row.n, 0) / n
+        : null;
+      return { n, tasks: records.length, sr: weighted('sr'), hsr: weighted('hsr'), cr: weighted('cr') };
+    };
+    const taskOptions = () => {
+      const all = new Map();
+      for (const model of leaderboardData.models) {
+        for (const row of leaderboardData.results[model.id]?.[state.setting] || []) {
+          if (state.scene !== 'all' && row.scene !== state.scene) continue;
+          all.set(`${row.scene}/${row.task}`, row);
         }
-        const orig = r[1];
-        tr.appendChild(el('td', {}, r[0]));
-        for (let col = 1; col <= 5; col++) {
-          const v = r[col];
-          const td = el('td', { class: 'num' }, num(v));
-          if (col >= 2 && col <= 5 && orig != null && v != null) {
-            const delta = (v - orig);
-            const isImprovement = (r[6] === +1) ? delta > 0 : delta < 0;
-            const sign = delta >= 0 ? '+' : '−';
-            const span = el('span', {
-              class: isImprovement ? 'delta-up' : 'delta-down'
-            }, ' ' + sign + Math.abs(delta).toFixed(2));
-            td.appendChild(span);
-          }
-          tr.appendChild(td);
-        }
-        perturb.appendChild(tr);
+      }
+      return [...all.entries()]
+        .sort(([, a], [, b]) => (sceneOrder.get(a.scene) - sceneOrder.get(b.scene)) ||
+          taskLabel(a.scene, a.task).localeCompare(taskLabel(b.scene, b.task)))
+        .map(([value, row]) => ({ value, label: `${sceneLabel(row.scene)} · ${taskLabel(row.scene, row.task)}` }));
+    };
+    const ranking = () => leaderboardData.models
+      .map((model) => ({ model, scores: aggregate(recordsFor(model.id)) }))
+      .filter((entry) => entry.scores.n)
+      .sort((a, b) => {
+        const delta = a.scores[state.metric] - b.scores[state.metric];
+        return metric().direction === 'higher' ? -delta : delta;
       });
-    }
+    const availableTasks = () => {
+      const tasks = new Map();
+      for (const model of leaderboardData.models) {
+        for (const row of recordsFor(model.id)) {
+          tasks.set(`${row.scene}/${row.task}`, { scene: row.scene, task: row.task });
+        }
+      }
+      return [...tasks.values()];
+    };
+    const taskResultRows = (ranked) => {
+      const rows = availableTasks().map(({ scene, task }) => {
+        const byModel = ranked.map(({ model }) =>
+          (leaderboardData.results[model.id]?.[state.setting] || [])
+            .find((row) => row.scene === scene && row.task === task));
+        const values = byModel.filter(Boolean).map((row) => row[state.metric]);
+        return {
+          scene,
+          task,
+          byModel,
+          score: values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : null,
+        };
+      });
+      if (state.view === 'hardest' && state.task === 'all') {
+        rows.sort((a, b) => metric().direction === 'higher' ? a.score - b.score : b.score - a.score);
+        return rows.slice(0, 10);
+      }
+      return rows.sort((a, b) => (sceneOrder.get(a.scene) - sceneOrder.get(b.scene)) ||
+        taskLabel(a.scene, a.task).localeCompare(taskLabel(b.scene, b.task)));
+    };
 
-    // Table 3 — Collision
-    const coll = $('#lb-collision');
-    coll.innerHTML = '';
-    for (const m of manifest.leaderboard.models) {
-      const c = m.collision;
-      const row = el('tr', {}, [
-        el('td', {}, m.name),
-        el('td', { class: 'num' }, num(c.clean.fcr)),
-        el('td', { class: 'num' }, num(c.clean.ocr)),
-        el('td', { class: 'num' }, num(c.clean.cr)),
-        el('td', { class: 'num' }, num(c.cluttered.fcr)),
-        el('td', { class: 'num' }, num(c.cluttered.ocr)),
-        el('td', { class: 'num' }, num(c.cluttered.cr))
-      ]);
-      coll.appendChild(row);
-    }
+    const render = () => {
+      const options = taskOptions();
+      if (state.task !== 'all' && !options.some((option) => option.value === state.task)) state.task = 'all';
+      fillSelect(taskSelect, [{ value: 'all', label: 'All available tasks' }, ...options]);
+      taskSelect.value = state.task;
+
+      const currentSetting = setting();
+      $('#lb-setting-title').textContent = currentSetting.label;
+      $('#lb-setting-description').textContent = currentSetting.description;
+      settingButtons.forEach((button) => {
+        const active = button.dataset.lbSetting === state.setting;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+      viewButtons.forEach((button) => {
+        const active = button.dataset.lbView === state.view;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+
+      const ranked = ranking();
+      const exemplar = ranked[0]?.scores || { n: 0, tasks: 0 };
+      $('#lb-task-count').textContent = String(exemplar.tasks);
+      $('#lb-episode-count').textContent = String(exemplar.n);
+      $('#lb-method-count').textContent = String(ranked.length);
+      $('#lb-update-date').textContent = new Intl.DateTimeFormat(undefined, {
+        year: 'numeric', month: 'short', day: 'numeric'
+      }).format(new Date(leaderboardData.source.fetched_at));
+
+      const scope = [
+        currentSetting.label,
+        state.scene === 'all' ? 'all scenes' : sceneLabel(state.scene),
+        state.task === 'all' ? `${exemplar.tasks} tasks` : taskLabel(...state.task.split('/')),
+      ].join(' · ');
+      $('#lb-ranking-heading').textContent = `Overall Ranking — ${scope}`;
+      $('#lb-ranking-note').textContent =
+        `Ranked by ${metricLabel()}. Scores are micro-averaged over the selected evaluation episodes; CR is lower-is-better.`;
+
+      const rankingBody = $('#lb-ranking');
+      rankingBody.innerHTML = '';
+      ranked.forEach(({ model, scores }, index) => {
+        const row = el('tr', {}, [
+          el('td', { class: 'num rank' }, String(index + 1)),
+          el('td', { class: 'method' }, model.name),
+          el('td', { class: `num${state.metric === 'sr' ? ' ranked-metric' : ''}` }, percent(scores.sr)),
+          el('td', { class: `num${state.metric === 'hsr' ? ' ranked-metric' : ''}` }, percent(scores.hsr)),
+          el('td', { class: `num${state.metric === 'cr' ? ' ranked-metric' : ''}` }, percent(scores.cr)),
+          el('td', { class: 'num' }, String(scores.n)),
+          el('td', { class: 'num' }, String(scores.tasks)),
+        ]);
+        rankingBody.appendChild(row);
+      });
+
+      const perTask = taskResultRows(ranked);
+      $('#lb-task-heading').textContent = state.task === 'all'
+        ? `Per-task Results — ${metricLabel()}`
+        : `Task Result — ${taskLabel(...state.task.split('/'))}`;
+      $('#lb-task-note').textContent = state.view === 'hardest' && state.task === 'all'
+        ? `Showing the ten most difficult selected tasks by mean ${metric().label} across the released methods. Trial counts follow the method-column order.`
+        : `Each cell is the selected metric for one task. Trial counts follow the method-column order; a dash means the source has no result for that cell.`;
+      const taskHead = $('#lb-task-head');
+      taskHead.innerHTML = '';
+      taskHead.appendChild(el('tr', {}, [
+        el('th', {}, 'Task'),
+        el('th', {}, 'Scene'),
+        el('th', { class: 'num' }, 'Trials'),
+        ...ranked.map(({ model }) => el('th', { class: 'num' }, model.name)),
+      ]));
+      const taskBody = $('#lb-task-results');
+      taskBody.innerHTML = '';
+      perTask.forEach(({ scene, task, byModel }) => {
+        const values = byModel.map((row) => row?.[state.metric]).filter(Number.isFinite);
+        const best = values.length ? (metric().direction === 'higher' ? Math.max(...values) : Math.min(...values)) : null;
+        const trialCounts = byModel.map((row) => row?.n ?? '—');
+        taskBody.appendChild(el('tr', {}, [
+          el('td', { class: 'task-name' }, taskLabel(scene, task)),
+          el('td', { class: 'scene-name' }, sceneLabel(scene)),
+          el('td', { class: 'num' }, [...new Set(trialCounts)].join(' / ')),
+          ...byModel.map((row) => el('td', {
+            class: `num${row && row[state.metric] === best ? ' best' : ''}`
+          }, row ? percent(row[state.metric]) : '—')),
+        ]));
+      });
+    };
+
+    fillSelect(metricSelect, Object.entries(leaderboardData.metrics).map(([id, entry]) => ({
+      value: id,
+      label: `${entry.label} · ${entry.description} (${entry.direction === 'higher' ? 'higher is better' : 'lower is better'})`,
+    })));
+    fillSelect(sceneSelect, [
+      { value: 'all', label: 'All scenes' },
+      ...leaderboardData.scenes.map((scene) => ({ value: scene.id, label: scene.label })),
+    ]);
+    metricSelect.value = state.metric;
+    sceneSelect.value = state.scene;
+    settingButtons.forEach((button) => button.addEventListener('click', () => {
+      state.setting = button.dataset.lbSetting;
+      state.task = 'all';
+      render();
+    }));
+    viewButtons.forEach((button) => button.addEventListener('click', () => {
+      state.view = button.dataset.lbView;
+      render();
+    }));
+    metricSelect.addEventListener('change', () => { state.metric = metricSelect.value; render(); });
+    sceneSelect.addEventListener('change', () => { state.scene = sceneSelect.value; state.task = 'all'; render(); });
+    taskSelect.addEventListener('change', () => { state.task = taskSelect.value; render(); });
+    render();
   };
 
   // ---------- Rollouts ----------
@@ -283,6 +396,12 @@
     } catch (e) {
       console.error('Failed to load manifest.json:', e);
       return;
+    }
+    try {
+      const res = await fetch('leaderboard-data.json?v=1', { cache: 'no-cache' });
+      leaderboardData = await res.json();
+    } catch (e) {
+      console.error('Failed to load leaderboard data:', e);
     }
     initTasks();
     initCollision();

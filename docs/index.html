@@ -210,60 +210,72 @@
   <div class="container">
     <div class="panel-head">
       <h2>Leaderboard</h2>
-      <p>State-of-the-art bimanual manipulation policies evaluated on RoboPRO. Tables reproduce the main results from the paper appendix.</p>
+      <p>Compare released RoboPRO baselines across clean scenes, clutter, and perturbations. Every score below is computed from the public per-task evaluation records.</p>
     </div>
 
-    <div class="table-wrap">
-      <h3>Table 1 · Clutter — SR/HSR per scene</h3>
-      <p class="table-note">Per-environment SR / HSR with no perturbations applied. <strong>Off</strong> = Office, <strong>Stu</strong> = Study, <strong>K-S</strong> = Kitchen-S, <strong>K-L</strong> = Kitchen-L. Higher is better. Best in column shown in bold.</p>
-      <table class="booktabs">
+    <section class="leaderboard-intro" aria-label="Leaderboard setting">
+      <div>
+        <p class="kicker">Benchmark setting</p>
+        <h3 id="lb-setting-title">Clean</h3>
+        <p id="lb-setting-description">Obstacle-free evaluation across the released RoboPRO baseline suite.</p>
+      </div>
+      <a class="source-link" href="https://huggingface.co/datasets/JackLiu0406/RoboPro-Baselines/tree/main" target="_blank" rel="noopener noreferrer">Open baseline data ↗</a>
+    </section>
+
+    <div class="leaderboard-setting-tabs" role="group" aria-label="Evaluation setting">
+      <button class="leaderboard-setting active" type="button" data-lb-setting="clean" aria-pressed="true">Clean</button>
+      <button class="leaderboard-setting" type="button" data-lb-setting="clutter" aria-pressed="false">Clutter</button>
+      <button class="leaderboard-setting" type="button" data-lb-setting="perturbation" aria-pressed="false">Perturbation</button>
+    </div>
+
+    <div class="controls leaderboard-controls">
+      <div class="field">
+        <label for="lb-metric">Rank by</label>
+        <select id="lb-metric"></select>
+      </div>
+      <div class="field">
+        <label for="lb-scene">Scene</label>
+        <select id="lb-scene"></select>
+      </div>
+      <div class="field">
+        <label for="lb-task">Task</label>
+        <select id="lb-task"></select>
+      </div>
+      <div class="field leaderboard-view-field">
+        <span class="control-label">Task view</span>
+        <div class="leaderboard-view-toggle" role="group" aria-label="Per-task result detail">
+          <button class="leaderboard-view active" type="button" data-lb-view="all" aria-pressed="true">All</button>
+          <button class="leaderboard-view" type="button" data-lb-view="hardest" aria-pressed="false">Hardest 10</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="leaderboard-facts" aria-live="polite">
+      <div><span id="lb-task-count">—</span><small>selected tasks</small></div>
+      <div><span id="lb-episode-count">—</span><small>trials / method</small></div>
+      <div><span id="lb-method-count">—</span><small>released methods</small></div>
+      <div><span id="lb-update-date">—</span><small>data snapshot</small></div>
+    </div>
+
+    <div class="table-wrap leaderboard-table-wrap">
+      <h3 id="lb-ranking-heading">Overall Ranking</h3>
+      <p id="lb-ranking-note" class="table-note">—</p>
+      <table class="booktabs leaderboard-table">
         <thead>
           <tr>
-            <th rowspan="2">Model</th>
-            <th colspan="5" style="text-align:center; padding-bottom:0.1rem;">Clean (SR / HSR)</th>
-            <th colspan="5" style="text-align:center; padding-bottom:0.1rem;">Cluttered (SR / HSR)</th>
-            <th rowspan="2" class="num">Overall</th>
-          </tr>
-          <tr>
-            <th class="num">Off</th><th class="num">Stu</th><th class="num">K-S</th><th class="num">K-L</th><th class="num">Avg</th>
-            <th class="num">Off</th><th class="num">Stu</th><th class="num">K-S</th><th class="num">K-L</th><th class="num">Avg</th>
+            <th class="num">Rank</th><th>Method</th><th class="num">SR ↑</th><th class="num">HSR ↑</th><th class="num">CR ↓</th><th class="num">Trials</th><th class="num">Tasks</th>
           </tr>
         </thead>
-        <tbody id="lb-clutter"></tbody>
+        <tbody id="lb-ranking"></tbody>
       </table>
     </div>
 
-    <div class="table-wrap">
-      <h3>Table 2 · Perturbation impact</h3>
-      <p class="table-note">Averaged over top-12 tasks (three from each environment), reported for Object (OOD textures and objects), Visual, and Language perturbations. SR↑, HSR↑, CR↓.</p>
-      <table class="booktabs">
-        <thead>
-          <tr>
-            <th>Model</th><th>Metric</th>
-            <th class="num">Original</th><th class="num">Object</th><th class="num">Visual</th><th class="num">Language</th>
-            <th class="num">Pert. Avg.</th>
-          </tr>
-        </thead>
-        <tbody id="lb-perturb"></tbody>
-      </table>
-    </div>
-
-    <div class="table-wrap">
-      <h3>Table 3 · Collision in clean vs. cluttered</h3>
-      <p class="table-note">Averaged over all scenes with no perturbations applied. Lower is better. <strong>FCR</strong> = furniture collision rate, <strong>OCR</strong> = object collision rate, <strong>CR</strong> = total collision rate.</p>
-      <table class="booktabs">
-        <thead>
-          <tr>
-            <th rowspan="2">Model</th>
-            <th colspan="3" style="text-align:center; padding-bottom:0.1rem;">Clean</th>
-            <th colspan="3" style="text-align:center; padding-bottom:0.1rem;">Cluttered</th>
-          </tr>
-          <tr>
-            <th class="num">FCR</th><th class="num">OCR</th><th class="num">CR</th>
-            <th class="num">FCR</th><th class="num">OCR</th><th class="num">CR</th>
-          </tr>
-        </thead>
-        <tbody id="lb-collision"></tbody>
+    <div class="table-wrap leaderboard-table-wrap">
+      <h3 id="lb-task-heading">Per-task Results</h3>
+      <p id="lb-task-note" class="table-note">—</p>
+      <table class="booktabs leaderboard-table">
+        <thead id="lb-task-head"></thead>
+        <tbody id="lb-task-results"></tbody>
       </table>
     </div>
   </div>
@@ -304,6 +316,6 @@
   </div>
 </footer>
 
-<script src="app.js?v=6"></script>
+<script src="app.js?v=7"></script>
 </body>
 </html>
