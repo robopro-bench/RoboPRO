@@ -1,0 +1,41 @@
+# Replay overlay config for replay_trajectory.py
+#
+# NOT a full task config. replay_trajectory.py loads the *collection* task_config
+# (to reproduce the identical seeded scene + handles), restores the recorded
+# initial state, then re-runs the saved joint trajectory while recording the
+# extra modalities below, i.e. anything you forgot (or chose to skip) at
+# collection time, without re-planning.
+#
+#   python collect/replay_trajectory.py <task_name> <collection_config> \
+#       --replay-config replay_rich
+#
+# Outputs -> <save_path>/<task_name>/<collection_config>_<out_subdir>/
+#            (data/episodeN.hdf5, video/, ...). Reads _traj_data + episodeN_init.json
+#            from the original collection dir.
+
+# Extra modalities merged into the collection data_type (each already supported
+# by get_obs()/_take_picture). Turn on whatever the original run skipped.
+data_type:
+  rgb: true
+  depth: true
+  pointcloud: false         # keep off: the stock cloud (head-cam-only, 1024 pts)
+                            # is redundant: dense labeled clouds are rebuilt offline
+                            # from depth + intrinsics/extrinsics (+ masks)
+  mesh_segmentation: true
+  actor_segmentation: true
+  third_view: true          # overhead observer camera
+  endpose: true
+  qpos: true
+  object_poses: true        # per-frame object poses
+  proximity: true           # re-export scene geometry alongside the replay
+
+# Where replay datasets are written (defaults to the collection save_path if unset).
+save_path: ./data
+
+# Subdir suffix: outputs go to <save_path>/<task>/<collection_config>_<out_subdir>/.
+out_subdir: replay
+
+# Capture cadence (physics substeps between saved frames). Match the collection's
+# save_freq to keep frame alignment, or lower it for denser replay data.
+save_freq: 15
+video_fps: 30

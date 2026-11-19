@@ -1,0 +1,2382 @@
+{
+  "empty_box": {
+    "original": "empty the box",
+    "synonyms": [
+      "clear the box",
+      "evacuate the box",
+      "remove items from the box",
+      "deplete the box",
+      "unload the box",
+      "empty the container",
+      "empty the case",
+      "empty the receptacle",
+      "empty the carton",
+      "empty the storage box",
+      "please empty the box",
+      "empty the box please",
+      "could you empty the box?",
+      "would you empty the box?",
+      "I need you to empty the box",
+      "make sure to empty the box",
+      "go ahead and empty the box",
+      "empty the box if you would",
+      "clear out the box",
+      "completely empty the box"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 empty the box.",
+      "When you have a moment, empty the box.",
+      "I'm in a bit of a rush, but empty the box.",
+      "Before we finish, empty the box.",
+      "Just to be clear, empty the box.",
+      "At your earliest convenience, empty the box.",
+      "For the next step, empty the box.",
+      "Whenever you're ready, empty the box.",
+      "I realize this is important \u2014 empty the box.",
+      "As soon as you can manage, empty the box.",
+      "There's a pen and paper nearby, but empty the box.",
+      "I see a book and glue on the desk \u2014 empty the box.",
+      "Aside from the other items, empty the box.",
+      "Ignoring the extra clutter, empty the box.",
+      "Despite the many objects around, empty the box.",
+      "There are several things here, but focus on empty the box.",
+      "Setting everything else aside, empty the box.",
+      "Amidst the workspace items, empty the box.",
+      "Not the other one nearby, but empty the box.",
+      "Among all these supplies, empty the box.",
+      "empty the container that holds things",
+      "empty the object you read from",
+      "empty the vessel for drinking",
+      "empty the implement you write with",
+      "empty the rubber stamp for marking",
+      "empty the liquid substance that bonds",
+      "empty the protective pad underneath",
+      "empty the holder for writing implements",
+      "I need to organize the workspace \u2014 empty the box.",
+      "To make room for other things, empty the box.",
+      "Let me tidy up \u2014 empty the box.",
+      "Before we can proceed, empty the box.",
+      "So everything is more accessible, empty the box.",
+      "In preparation for the next task, empty the box.",
+      "To improve the work area, empty the box.",
+      "The next step is to empty the box.",
+      "Before adding more items, empty the box.",
+      "For better ergonomics here, empty the box.",
+      "Um, could you empty the box?",
+      "Would you mind empty the box?",
+      "Could you maybe empty the box?",
+      "If you don't mind, empty the box.",
+      "Would you be so kind as to empty the box?",
+      "Like, empty the box?",
+      "Uh, can you empty the box?",
+      "I was wondering if you could empty the box.",
+      "Sorry, but empty the box?",
+      "If it's not too much trouble, empty the box.",
+      "can you empty the box (please)?",
+      "can you empty the box (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "empty the drawer"
+      },
+      {
+        "change_type": "d",
+        "text": "do not empty the box"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid empty the box"
+      },
+      {
+        "change_type": "f",
+        "text": "empty the box (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: empty the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: empty the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: empty the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: empty the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: empty the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: empty the box"
+      }
+    ]
+  },
+  "move_book_onto_table": {
+    "original": "move the book onto the table",
+    "synonyms": [
+      "shift the book onto the table",
+      "relocate the book onto the table",
+      "transport the book onto the table",
+      "reposition the book onto the table",
+      "place the book onto the table",
+      "move the volume onto the table",
+      "move the tome onto the table",
+      "move the publication onto the table",
+      "move the bound volume onto the table",
+      "move the text onto the table",
+      "move the book onto the surface",
+      "move the book onto the desk",
+      "move the book onto the workspace",
+      "move the book onto the tabletop",
+      "move the book onto the flat surface",
+      "please move the book onto the table",
+      "move the book onto the table please",
+      "could you move the book onto the table?",
+      "would you move the book onto the table?",
+      "I need you to move the book onto the table"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 move the book onto the table.",
+      "When you have a moment, move the book onto the table.",
+      "I'm in a bit of a rush, but move the book onto the table.",
+      "Before we finish, move the book onto the table.",
+      "Just to be clear, move the book onto the table.",
+      "At your earliest convenience, move the book onto the table.",
+      "For the next step, move the book onto the table.",
+      "Whenever you're ready, move the book onto the table.",
+      "I realize this is important \u2014 move the book onto the table.",
+      "As soon as you can manage, move the book onto the table.",
+      "There's a pen and paper nearby, but move the book onto the table.",
+      "I see a book and glue on the desk \u2014 move the book onto the table.",
+      "Aside from the other items, move the book onto the table.",
+      "Ignoring the extra clutter, move the book onto the table.",
+      "Despite the many objects around, move the book onto the table.",
+      "There are several things here, but focus on move the book onto the table.",
+      "Setting everything else aside, move the book onto the table.",
+      "Amidst the workspace items, move the book onto the table.",
+      "Not the other one nearby, but move the book onto the table.",
+      "Among all these supplies, move the book onto the table.",
+      "move the container that holds things onto the table",
+      "move the object you read from onto the table",
+      "move the vessel for drinking onto the table",
+      "move the implement you write with onto the table",
+      "move the rubber stamp for marking onto the table",
+      "move the liquid substance that bonds onto the table",
+      "move the protective pad underneath onto the table",
+      "move the holder for writing implements onto the table",
+      "I need to organize the workspace \u2014 move the book onto the table.",
+      "To make room for other things, move the book onto the table.",
+      "Let me tidy up \u2014 move the book onto the table.",
+      "Before we can proceed, move the book onto the table.",
+      "So everything is more accessible, move the book onto the table.",
+      "In preparation for the next task, move the book onto the table.",
+      "To improve the work area, move the book onto the table.",
+      "The next step is to move the book onto the table.",
+      "Before adding more items, move the book onto the table.",
+      "For better ergonomics here, move the book onto the table.",
+      "Um, could you move the book onto the table?",
+      "Would you mind move the book onto the table?",
+      "Could you maybe move the book onto the table?",
+      "If you don't mind, move the book onto the table.",
+      "Would you be so kind as to move the book onto the table?",
+      "Like, move the book onto the table?",
+      "Uh, can you move the book onto the table?",
+      "I was wondering if you could move the book onto the table.",
+      "Sorry, but move the book onto the table?",
+      "If it's not too much trouble, move the book onto the table.",
+      "can you move the book onto the table (please)?",
+      "can you move the book onto the table (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "move the magazine onto the table"
+      },
+      {
+        "change_type": "c",
+        "text": "move the book under the table"
+      },
+      {
+        "change_type": "d",
+        "text": "do not move the book onto the table"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid move the book onto the table"
+      },
+      {
+        "change_type": "f",
+        "text": "move the book onto the table (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the book onto the table"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the book onto the table"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the book onto the table"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the book onto the table"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the book onto the table"
+      }
+    ]
+  },
+  "move_cup": {
+    "original": "move the cup",
+    "synonyms": [
+      "shift the cup",
+      "relocate the cup",
+      "transport the cup",
+      "reposition the cup",
+      "place the cup",
+      "move the vessel",
+      "move the mug",
+      "move the drinking cup",
+      "move the beaker",
+      "move the container",
+      "please move the cup",
+      "move the cup please",
+      "could you move the cup?",
+      "would you move the cup?",
+      "I need you to move the cup",
+      "make sure to move the cup",
+      "go ahead and move the cup",
+      "move the cup if you would",
+      "shift the cup over",
+      "the cup needs to be relocated"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 move the cup.",
+      "When you have a moment, move the cup.",
+      "I'm in a bit of a rush, but move the cup.",
+      "Before we finish, move the cup.",
+      "Just to be clear, move the cup.",
+      "At your earliest convenience, move the cup.",
+      "For the next step, move the cup.",
+      "Whenever you're ready, move the cup.",
+      "I realize this is important \u2014 move the cup.",
+      "As soon as you can manage, move the cup.",
+      "There's a pen and paper nearby, but move the cup.",
+      "I see a book and glue on the desk \u2014 move the cup.",
+      "Aside from the other items, move the cup.",
+      "Ignoring the extra clutter, move the cup.",
+      "Despite the many objects around, move the cup.",
+      "There are several things here, but focus on move the cup.",
+      "Setting everything else aside, move the cup.",
+      "Amidst the workspace items, move the cup.",
+      "Not the other one nearby, but move the cup.",
+      "Among all these supplies, move the cup.",
+      "move the container that holds things",
+      "move the object you read from",
+      "move the vessel for drinking",
+      "move the implement you write with",
+      "move the rubber stamp for marking",
+      "move the liquid substance that bonds",
+      "move the protective pad underneath",
+      "move the holder for writing implements",
+      "I need to organize the workspace \u2014 move the cup.",
+      "To make room for other things, move the cup.",
+      "Let me tidy up \u2014 move the cup.",
+      "Before we can proceed, move the cup.",
+      "So everything is more accessible, move the cup.",
+      "In preparation for the next task, move the cup.",
+      "To improve the work area, move the cup.",
+      "The next step is to move the cup.",
+      "Before adding more items, move the cup.",
+      "For better ergonomics here, move the cup.",
+      "Um, could you move the cup?",
+      "Would you mind move the cup?",
+      "Could you maybe move the cup?",
+      "If you don't mind, move the cup.",
+      "Would you be so kind as to move the cup?",
+      "Like, move the cup?",
+      "Uh, can you move the cup?",
+      "I was wondering if you could move the cup.",
+      "Sorry, but move the cup?",
+      "If it's not too much trouble, move the cup.",
+      "can you move the cup (please)?",
+      "can you move the cup (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "move the bowl"
+      },
+      {
+        "change_type": "d",
+        "text": "do not move the cup"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid move the cup"
+      },
+      {
+        "change_type": "e",
+        "text": "move two cups"
+      },
+      {
+        "change_type": "f",
+        "text": "move the cup (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cup"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cup"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cup"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cup"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cup"
+      }
+    ]
+  },
+  "move_cup_next_to_book": {
+    "original": "move the cup next to the book",
+    "synonyms": [
+      "shift the cup next to the book",
+      "relocate the cup next to the book",
+      "transport the cup next to the book",
+      "reposition the cup next to the book",
+      "place the cup next to the book",
+      "move the vessel next to the book",
+      "move the mug next to the book",
+      "move the drinking cup next to the book",
+      "move the beaker next to the book",
+      "move the container next to the book",
+      "move the cup beside the book",
+      "move the cup adjacent to the book",
+      "move the cup alongside the book",
+      "move the cup near the book",
+      "move the cup by the book",
+      "please move the cup next to the book",
+      "move the cup next to the book please",
+      "could you move the cup next to the book?",
+      "would you move the cup next to the book?",
+      "I need you to move the cup next to the book"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 move the cup next to the book.",
+      "When you have a moment, move the cup next to the book.",
+      "I'm in a bit of a rush, but move the cup next to the book.",
+      "Before we finish, move the cup next to the book.",
+      "Just to be clear, move the cup next to the book.",
+      "At your earliest convenience, move the cup next to the book.",
+      "For the next step, move the cup next to the book.",
+      "Whenever you're ready, move the cup next to the book.",
+      "I realize this is important \u2014 move the cup next to the book.",
+      "As soon as you can manage, move the cup next to the book.",
+      "There's a pen and paper nearby, but move the cup next to the book.",
+      "I see a book and glue on the desk \u2014 move the cup next to the book.",
+      "Aside from the other items, move the cup next to the book.",
+      "Ignoring the extra clutter, move the cup next to the book.",
+      "Despite the many objects around, move the cup next to the book.",
+      "There are several things here, but focus on move the cup next to the book.",
+      "Setting everything else aside, move the cup next to the book.",
+      "Amidst the workspace items, move the cup next to the book.",
+      "Not the other one nearby, but move the cup next to the book.",
+      "Among all these supplies, move the cup next to the book.",
+      "move the container that holds things next to the book",
+      "move the object you read from next to the book",
+      "move the vessel for drinking next to the book",
+      "move the implement you write with next to the book",
+      "move the rubber stamp for marking next to the book",
+      "move the liquid substance that bonds next to the book",
+      "move the protective pad underneath next to the book",
+      "move the holder for writing implements next to the book",
+      "I need to organize the workspace \u2014 move the cup next to the book.",
+      "To make room for other things, move the cup next to the book.",
+      "Let me tidy up \u2014 move the cup next to the book.",
+      "Before we can proceed, move the cup next to the book.",
+      "So everything is more accessible, move the cup next to the book.",
+      "In preparation for the next task, move the cup next to the book.",
+      "To improve the work area, move the cup next to the book.",
+      "The next step is to move the cup next to the book.",
+      "Before adding more items, move the cup next to the book.",
+      "For better ergonomics here, move the cup next to the book.",
+      "Um, could you move the cup next to the book?",
+      "Would you mind move the cup next to the book?",
+      "Could you maybe move the cup next to the book?",
+      "If you don't mind, move the cup next to the book.",
+      "Would you be so kind as to move the cup next to the book?",
+      "Like, move the cup next to the book?",
+      "Uh, can you move the cup next to the book?",
+      "I was wondering if you could move the cup next to the book.",
+      "Sorry, but move the cup next to the book?",
+      "If it's not too much trouble, move the cup next to the book.",
+      "can you move the cup next to the book (please)?",
+      "can you move the cup next to the book (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "move the bowl next to the book"
+      },
+      {
+        "change_type": "c",
+        "text": "move the cup far from the book"
+      },
+      {
+        "change_type": "d",
+        "text": "do not move the cup next to the book"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid move the cup next to the book"
+      },
+      {
+        "change_type": "e",
+        "text": "move two cups next to the book"
+      },
+      {
+        "change_type": "f",
+        "text": "move the cup next to the book (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cup next to the book"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cup next to the book"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cup next to the book"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cup next to the book"
+      }
+    ]
+  },
+  "move_cup_onto_table": {
+    "original": "move the cup onto the table",
+    "synonyms": [
+      "shift the cup onto the table",
+      "relocate the cup onto the table",
+      "transport the cup onto the table",
+      "reposition the cup onto the table",
+      "place the cup onto the table",
+      "move the vessel onto the table",
+      "move the mug onto the table",
+      "move the drinking cup onto the table",
+      "move the beaker onto the table",
+      "move the container onto the table",
+      "move the cup onto the surface",
+      "move the cup onto the desk",
+      "move the cup onto the workspace",
+      "move the cup onto the tabletop",
+      "move the cup onto the flat surface",
+      "please move the cup onto the table",
+      "move the cup onto the table please",
+      "could you move the cup onto the table?",
+      "would you move the cup onto the table?",
+      "I need you to move the cup onto the table"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 move the cup onto the table.",
+      "When you have a moment, move the cup onto the table.",
+      "I'm in a bit of a rush, but move the cup onto the table.",
+      "Before we finish, move the cup onto the table.",
+      "Just to be clear, move the cup onto the table.",
+      "At your earliest convenience, move the cup onto the table.",
+      "For the next step, move the cup onto the table.",
+      "Whenever you're ready, move the cup onto the table.",
+      "I realize this is important \u2014 move the cup onto the table.",
+      "As soon as you can manage, move the cup onto the table.",
+      "There's a pen and paper nearby, but move the cup onto the table.",
+      "I see a book and glue on the desk \u2014 move the cup onto the table.",
+      "Aside from the other items, move the cup onto the table.",
+      "Ignoring the extra clutter, move the cup onto the table.",
+      "Despite the many objects around, move the cup onto the table.",
+      "There are several things here, but focus on move the cup onto the table.",
+      "Setting everything else aside, move the cup onto the table.",
+      "Amidst the workspace items, move the cup onto the table.",
+      "Not the other one nearby, but move the cup onto the table.",
+      "Among all these supplies, move the cup onto the table.",
+      "move the container that holds things onto the table",
+      "move the object you read from onto the table",
+      "move the vessel for drinking onto the table",
+      "move the implement you write with onto the table",
+      "move the rubber stamp for marking onto the table",
+      "move the liquid substance that bonds onto the table",
+      "move the protective pad underneath onto the table",
+      "move the holder for writing implements onto the table",
+      "I need to organize the workspace \u2014 move the cup onto the table.",
+      "To make room for other things, move the cup onto the table.",
+      "Let me tidy up \u2014 move the cup onto the table.",
+      "Before we can proceed, move the cup onto the table.",
+      "So everything is more accessible, move the cup onto the table.",
+      "In preparation for the next task, move the cup onto the table.",
+      "To improve the work area, move the cup onto the table.",
+      "The next step is to move the cup onto the table.",
+      "Before adding more items, move the cup onto the table.",
+      "For better ergonomics here, move the cup onto the table.",
+      "Um, could you move the cup onto the table?",
+      "Would you mind move the cup onto the table?",
+      "Could you maybe move the cup onto the table?",
+      "If you don't mind, move the cup onto the table.",
+      "Would you be so kind as to move the cup onto the table?",
+      "Like, move the cup onto the table?",
+      "Uh, can you move the cup onto the table?",
+      "I was wondering if you could move the cup onto the table.",
+      "Sorry, but move the cup onto the table?",
+      "If it's not too much trouble, move the cup onto the table.",
+      "can you move the cup onto the table (please)?",
+      "can you move the cup onto the table (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "move the bowl onto the table"
+      },
+      {
+        "change_type": "c",
+        "text": "move the cup under the table"
+      },
+      {
+        "change_type": "d",
+        "text": "do not move the cup onto the table"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid move the cup onto the table"
+      },
+      {
+        "change_type": "e",
+        "text": "move two cups onto the table"
+      },
+      {
+        "change_type": "f",
+        "text": "move the cup onto the table (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cup onto the table"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cup onto the table"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cup onto the table"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cup onto the table"
+      }
+    ]
+  },
+  "move_cup_put_pen_in_cup": {
+    "original": "move the cup and put the pen in the cup",
+    "synonyms": [
+      "shift and insert the cup and put the pen in the cup",
+      "relocate and place the cup and put the pen in the cup",
+      "transport and put the cup and put the pen in the cup",
+      "reposition and insert the cup and put the pen in the cup",
+      "place and put the cup and put the pen in the cup",
+      "move the vessel and put the pen in the vessel",
+      "move the mug and put the pen in the mug",
+      "move the drinking cup and put the pen in the drinking cup",
+      "move the beaker and put the pen in the beaker",
+      "move the container and put the pen in the container",
+      "move the cup and put the writing instrument in the cup",
+      "move the cup and put the ballpoint in the cup",
+      "move the cup and put the writing tool in the cup",
+      "move the cup and put the pen in the cup",
+      "move the cup and put the marker in the cup",
+      "please move the cup and put the pen in the cup",
+      "move the cup and put the pen in the cup please",
+      "could you move the cup and put the pen in the cup?",
+      "would you move the cup and put the pen in the cup?",
+      "I need you to move the cup and put the pen in the cup"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 move the cup and put the pen in the cup.",
+      "When you have a moment, move the cup and put the pen in the cup.",
+      "I'm in a bit of a rush, but move the cup and put the pen in the cup.",
+      "Before we finish, move the cup and put the pen in the cup.",
+      "Just to be clear, move the cup and put the pen in the cup.",
+      "At your earliest convenience, move the cup and put the pen in the cup.",
+      "For the next step, move the cup and put the pen in the cup.",
+      "Whenever you're ready, move the cup and put the pen in the cup.",
+      "I realize this is important \u2014 move the cup and put the pen in the cup.",
+      "As soon as you can manage, move the cup and put the pen in the cup.",
+      "There's a pen and paper nearby, but move the cup and put the pen in the cup.",
+      "I see a book and glue on the desk \u2014 move the cup and put the pen in the cup.",
+      "Aside from the other items, move the cup and put the pen in the cup.",
+      "Ignoring the extra clutter, move the cup and put the pen in the cup.",
+      "Despite the many objects around, move the cup and put the pen in the cup.",
+      "There are several things here, but focus on move the cup and put the pen in the cup.",
+      "Setting everything else aside, move the cup and put the pen in the cup.",
+      "Amidst the workspace items, move the cup and put the pen in the cup.",
+      "Not the other one nearby, but move the cup and put the pen in the cup.",
+      "Among all these supplies, move the cup and put the pen in the cup.",
+      "move the container that holds things and put the pen in the container that holds things",
+      "move the object you read from and put the pen in the object you read from",
+      "move the vessel for drinking and put the pen in the vessel for drinking",
+      "move the implement you write with and put the pen in the implement you write with",
+      "move the rubber stamp for marking and put the pen in the rubber stamp for marking",
+      "move the liquid substance that bonds and put the pen in the liquid substance that bonds",
+      "move the protective pad underneath and put the pen in the protective pad underneath",
+      "move the holder for writing implements and put the pen in the holder for writing implements",
+      "I need to organize the workspace \u2014 move the cup and put the pen in the cup.",
+      "To make room for other things, move the cup and put the pen in the cup.",
+      "Let me tidy up \u2014 move the cup and put the pen in the cup.",
+      "Before we can proceed, move the cup and put the pen in the cup.",
+      "So everything is more accessible, move the cup and put the pen in the cup.",
+      "In preparation for the next task, move the cup and put the pen in the cup.",
+      "To improve the work area, move the cup and put the pen in the cup.",
+      "The next step is to move the cup and put the pen in the cup.",
+      "Before adding more items, move the cup and put the pen in the cup.",
+      "For better ergonomics here, move the cup and put the pen in the cup.",
+      "Um, could you move the cup and put the pen in the cup?",
+      "Would you mind move the cup and put the pen in the cup?",
+      "Could you maybe move the cup and put the pen in the cup?",
+      "If you don't mind, move the cup and put the pen in the cup.",
+      "Would you be so kind as to move the cup and put the pen in the cup?",
+      "Like, move the cup and put the pen in the cup?",
+      "Uh, can you move the cup and put the pen in the cup?",
+      "I was wondering if you could move the cup and put the pen in the cup.",
+      "Sorry, but move the cup and put the pen in the cup?",
+      "If it's not too much trouble, move the cup and put the pen in the cup.",
+      "can you move the cup and put the pen in the cup (please)?",
+      "can you move the cup and put the pen in the cup (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the pen in the cup and move the cup"
+      },
+      {
+        "change_type": "b",
+        "text": "move the bowl and put the pen in the bowl"
+      },
+      {
+        "change_type": "b",
+        "text": "move the cup and put the pencil in the cup"
+      },
+      {
+        "change_type": "c",
+        "text": "move the cup and put the pen on top of the cup"
+      },
+      {
+        "change_type": "d",
+        "text": "do not move the cup and put the pen in the cup"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid move the cup and put the pen in the cup"
+      },
+      {
+        "change_type": "e",
+        "text": "move two cups and put the pen in two cups"
+      },
+      {
+        "change_type": "f",
+        "text": "move the cup and put the pen in the cup (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cup and put the pen in the cup"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cup and put the pen in the cup"
+      }
+    ]
+  },
+  "move_cups_into_box": {
+    "original": "move the cups into the box",
+    "synonyms": [
+      "shift the cups into the box",
+      "relocate the cups into the box",
+      "transport the cups into the box",
+      "reposition the cups into the box",
+      "place the cups into the box",
+      "move the vessels into the box",
+      "move the mugs into the box",
+      "move the drinking cups into the box",
+      "move the containers into the box",
+      "move the collection of cups into the box",
+      "move the cups into the container",
+      "move the cups into the case",
+      "move the cups into the receptacle",
+      "move the cups into the carton",
+      "move the cups into the storage box",
+      "please move the cups into the box",
+      "move the cups into the box please",
+      "could you move the cups into the box?",
+      "would you move the cups into the box?",
+      "I need you to move the cups into the box"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 move the cups into the box.",
+      "When you have a moment, move the cups into the box.",
+      "I'm in a bit of a rush, but move the cups into the box.",
+      "Before we finish, move the cups into the box.",
+      "Just to be clear, move the cups into the box.",
+      "At your earliest convenience, move the cups into the box.",
+      "For the next step, move the cups into the box.",
+      "Whenever you're ready, move the cups into the box.",
+      "I realize this is important \u2014 move the cups into the box.",
+      "As soon as you can manage, move the cups into the box.",
+      "There's a pen and paper nearby, but move the cups into the box.",
+      "I see a book and glue on the desk \u2014 move the cups into the box.",
+      "Aside from the other items, move the cups into the box.",
+      "Ignoring the extra clutter, move the cups into the box.",
+      "Despite the many objects around, move the cups into the box.",
+      "There are several things here, but focus on move the cups into the box.",
+      "Setting everything else aside, move the cups into the box.",
+      "Amidst the workspace items, move the cups into the box.",
+      "Not the other one nearby, but move the cups into the box.",
+      "Among all these supplies, move the cups into the box.",
+      "move the container that holds things into the box",
+      "move the object you read from into the box",
+      "move the vessel for drinking into the box",
+      "move the implement you write with into the box",
+      "move the rubber stamp for marking into the box",
+      "move the liquid substance that bonds into the box",
+      "move the protective pad underneath into the box",
+      "move the holder for writing implements into the box",
+      "I need to organize the workspace \u2014 move the cups into the box.",
+      "To make room for other things, move the cups into the box.",
+      "Let me tidy up \u2014 move the cups into the box.",
+      "Before we can proceed, move the cups into the box.",
+      "So everything is more accessible, move the cups into the box.",
+      "In preparation for the next task, move the cups into the box.",
+      "To improve the work area, move the cups into the box.",
+      "The next step is to move the cups into the box.",
+      "Before adding more items, move the cups into the box.",
+      "For better ergonomics here, move the cups into the box.",
+      "Um, could you move the cups into the box?",
+      "Would you mind move the cups into the box?",
+      "Could you maybe move the cups into the box?",
+      "If you don't mind, move the cups into the box.",
+      "Would you be so kind as to move the cups into the box?",
+      "Like, move the cups into the box?",
+      "Uh, can you move the cups into the box?",
+      "I was wondering if you could move the cups into the box.",
+      "Sorry, but move the cups into the box?",
+      "If it's not too much trouble, move the cups into the box.",
+      "can you move the cups into the box (please)?",
+      "can you move the cups into the box (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "move the bowl into the box"
+      },
+      {
+        "change_type": "d",
+        "text": "do not move the cups into the box"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid move the cups into the box"
+      },
+      {
+        "change_type": "e",
+        "text": "move only one cup into the box"
+      },
+      {
+        "change_type": "f",
+        "text": "move the cups into the box (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cups into the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cups into the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cups into the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cups into the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the cups into the box"
+      }
+    ]
+  },
+  "move_pen_to_box": {
+    "original": "move the pen to the box",
+    "synonyms": [
+      "shift the pen to the box",
+      "relocate the pen to the box",
+      "transport the pen to the box",
+      "reposition the pen to the box",
+      "place the pen to the box",
+      "move the writing instrument to the box",
+      "move the ballpoint to the box",
+      "move the writing tool to the box",
+      "move the marker to the box",
+      "move the stylus to the box",
+      "move the pen to the container",
+      "move the pen to the case",
+      "move the pen to the receptacle",
+      "move the pen to the carton",
+      "move the pen to the storage box",
+      "please move the pen to the box",
+      "move the pen to the box please",
+      "could you move the pen to the box?",
+      "would you move the pen to the box?",
+      "I need you to move the pen to the box"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 move the pen to the box.",
+      "When you have a moment, move the pen to the box.",
+      "I'm in a bit of a rush, but move the pen to the box.",
+      "Before we finish, move the pen to the box.",
+      "Just to be clear, move the pen to the box.",
+      "At your earliest convenience, move the pen to the box.",
+      "For the next step, move the pen to the box.",
+      "Whenever you're ready, move the pen to the box.",
+      "I realize this is important \u2014 move the pen to the box.",
+      "As soon as you can manage, move the pen to the box.",
+      "There's a pen and paper nearby, but move the pen to the box.",
+      "I see a book and glue on the desk \u2014 move the pen to the box.",
+      "Aside from the other items, move the pen to the box.",
+      "Ignoring the extra clutter, move the pen to the box.",
+      "Despite the many objects around, move the pen to the box.",
+      "There are several things here, but focus on move the pen to the box.",
+      "Setting everything else aside, move the pen to the box.",
+      "Amidst the workspace items, move the pen to the box.",
+      "Not the other one nearby, but move the pen to the box.",
+      "Among all these supplies, move the pen to the box.",
+      "move the container that holds things to the box",
+      "move the object you read from to the box",
+      "move the vessel for drinking to the box",
+      "move the implement you write with to the box",
+      "move the rubber stamp for marking to the box",
+      "move the liquid substance that bonds to the box",
+      "move the protective pad underneath to the box",
+      "move the holder for writing implements to the box",
+      "I need to organize the workspace \u2014 move the pen to the box.",
+      "To make room for other things, move the pen to the box.",
+      "Let me tidy up \u2014 move the pen to the box.",
+      "Before we can proceed, move the pen to the box.",
+      "So everything is more accessible, move the pen to the box.",
+      "In preparation for the next task, move the pen to the box.",
+      "To improve the work area, move the pen to the box.",
+      "The next step is to move the pen to the box.",
+      "Before adding more items, move the pen to the box.",
+      "For better ergonomics here, move the pen to the box.",
+      "Um, could you move the pen to the box?",
+      "Would you mind move the pen to the box?",
+      "Could you maybe move the pen to the box?",
+      "If you don't mind, move the pen to the box.",
+      "Would you be so kind as to move the pen to the box?",
+      "Like, move the pen to the box?",
+      "Uh, can you move the pen to the box?",
+      "I was wondering if you could move the pen to the box.",
+      "Sorry, but move the pen to the box?",
+      "If it's not too much trouble, move the pen to the box.",
+      "can you move the pen to the box (please)?",
+      "can you move the pen to the box (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "move the pencil to the box"
+      },
+      {
+        "change_type": "d",
+        "text": "do not move the pen to the box"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid move the pen to the box"
+      },
+      {
+        "change_type": "f",
+        "text": "move the pen to the box (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the pen to the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the pen to the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the pen to the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the pen to the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the pen to the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the pen to the box"
+      }
+    ]
+  },
+  "move_seal_cup_next_to_box": {
+    "original": "move the seal and the cup next to the box",
+    "synonyms": [
+      "shift and relocate the seal and the cup next to the box",
+      "transport and reposition the seal and the cup next to the box",
+      "place and move the seal and the cup next to the box",
+      "shift and move the seal and the cup next to the box",
+      "relocate and place the seal and the cup next to the box",
+      "move the stamp and the cup next to the box",
+      "move the rubber seal and the cup next to the box",
+      "move the stamp seal and the cup next to the box",
+      "move the rubber stamp and the cup next to the box",
+      "move the seal stamp and the cup next to the box",
+      "move the seal and the vessel next to the box",
+      "move the seal and the mug next to the box",
+      "move the seal and the drinking cup next to the box",
+      "move the seal and the container next to the box",
+      "move the seal and the beaker next to the box",
+      "move the seal and the cup beside the box",
+      "move the seal and the cup adjacent to the box",
+      "move the seal and the cup alongside the box",
+      "move the seal and the cup near the box",
+      "move the seal and the cup by the box"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 move the seal and the cup next to the box.",
+      "When you have a moment, move the seal and the cup next to the box.",
+      "I'm in a bit of a rush, but move the seal and the cup next to the box.",
+      "Before we finish, move the seal and the cup next to the box.",
+      "Just to be clear, move the seal and the cup next to the box.",
+      "At your earliest convenience, move the seal and the cup next to the box.",
+      "For the next step, move the seal and the cup next to the box.",
+      "Whenever you're ready, move the seal and the cup next to the box.",
+      "I realize this is important \u2014 move the seal and the cup next to the box.",
+      "As soon as you can manage, move the seal and the cup next to the box.",
+      "There's a pen and paper nearby, but move the seal and the cup next to the box.",
+      "I see a book and glue on the desk \u2014 move the seal and the cup next to the box.",
+      "Aside from the other items, move the seal and the cup next to the box.",
+      "Ignoring the extra clutter, move the seal and the cup next to the box.",
+      "Despite the many objects around, move the seal and the cup next to the box.",
+      "There are several things here, but focus on move the seal and the cup next to the box.",
+      "Setting everything else aside, move the seal and the cup next to the box.",
+      "Amidst the workspace items, move the seal and the cup next to the box.",
+      "Not the other one nearby, but move the seal and the cup next to the box.",
+      "Among all these supplies, move the seal and the cup next to the box.",
+      "move the container that holds things and the cup next to the box",
+      "move the object you read from and the cup next to the box",
+      "move the vessel for drinking and the cup next to the box",
+      "move the implement you write with and the cup next to the box",
+      "move the rubber stamp for marking and the cup next to the box",
+      "move the liquid substance that bonds and the cup next to the box",
+      "move the protective pad underneath and the cup next to the box",
+      "move the holder for writing implements and the cup next to the box",
+      "I need to organize the workspace \u2014 move the seal and the cup next to the box.",
+      "To make room for other things, move the seal and the cup next to the box.",
+      "Let me tidy up \u2014 move the seal and the cup next to the box.",
+      "Before we can proceed, move the seal and the cup next to the box.",
+      "So everything is more accessible, move the seal and the cup next to the box.",
+      "In preparation for the next task, move the seal and the cup next to the box.",
+      "To improve the work area, move the seal and the cup next to the box.",
+      "The next step is to move the seal and the cup next to the box.",
+      "Before adding more items, move the seal and the cup next to the box.",
+      "For better ergonomics here, move the seal and the cup next to the box.",
+      "Um, could you move the seal and the cup next to the box?",
+      "Would you mind move the seal and the cup next to the box?",
+      "Could you maybe move the seal and the cup next to the box?",
+      "If you don't mind, move the seal and the cup next to the box.",
+      "Would you be so kind as to move the seal and the cup next to the box?",
+      "Like, move the seal and the cup next to the box?",
+      "Uh, can you move the seal and the cup next to the box?",
+      "I was wondering if you could move the seal and the cup next to the box.",
+      "Sorry, but move the seal and the cup next to the box?",
+      "If it's not too much trouble, move the seal and the cup next to the box.",
+      "can you move the seal and the cup next to the box (please)?",
+      "can you move the seal and the cup next to the box (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "the cup next to the box and move the seal"
+      },
+      {
+        "change_type": "b",
+        "text": "move the sticker and the cup next to the box"
+      },
+      {
+        "change_type": "b",
+        "text": "move the seal and the bowl next to the box"
+      },
+      {
+        "change_type": "c",
+        "text": "move the seal and the cup far from the box"
+      },
+      {
+        "change_type": "d",
+        "text": "do not move the seal and the cup next to the box"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid move the seal and the cup next to the box"
+      },
+      {
+        "change_type": "e",
+        "text": "move the seal and two cups next to the box"
+      },
+      {
+        "change_type": "f",
+        "text": "move the seal and the cup next to the box (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal and the cup next to the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal and the cup next to the box"
+      }
+    ]
+  },
+  "move_seal_next_to_box": {
+    "original": "move the seal next to the box",
+    "synonyms": [
+      "shift the seal next to the box",
+      "relocate the seal next to the box",
+      "transport the seal next to the box",
+      "reposition the seal next to the box",
+      "place the seal next to the box",
+      "move the stamp next to the box",
+      "move the rubber seal next to the box",
+      "move the stamp seal next to the box",
+      "move the rubber stamp next to the box",
+      "move the seal stamp next to the box",
+      "move the seal beside the box",
+      "move the seal adjacent to the box",
+      "move the seal alongside the box",
+      "move the seal near the box",
+      "move the seal by the box",
+      "please move the seal next to the box",
+      "move the seal next to the box please",
+      "could you move the seal next to the box?",
+      "would you move the seal next to the box?",
+      "I need you to move the seal next to the box"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 move the seal next to the box.",
+      "When you have a moment, move the seal next to the box.",
+      "I'm in a bit of a rush, but move the seal next to the box.",
+      "Before we finish, move the seal next to the box.",
+      "Just to be clear, move the seal next to the box.",
+      "At your earliest convenience, move the seal next to the box.",
+      "For the next step, move the seal next to the box.",
+      "Whenever you're ready, move the seal next to the box.",
+      "I realize this is important \u2014 move the seal next to the box.",
+      "As soon as you can manage, move the seal next to the box.",
+      "There's a pen and paper nearby, but move the seal next to the box.",
+      "I see a book and glue on the desk \u2014 move the seal next to the box.",
+      "Aside from the other items, move the seal next to the box.",
+      "Ignoring the extra clutter, move the seal next to the box.",
+      "Despite the many objects around, move the seal next to the box.",
+      "There are several things here, but focus on move the seal next to the box.",
+      "Setting everything else aside, move the seal next to the box.",
+      "Amidst the workspace items, move the seal next to the box.",
+      "Not the other one nearby, but move the seal next to the box.",
+      "Among all these supplies, move the seal next to the box.",
+      "move the container that holds things next to the box",
+      "move the object you read from next to the box",
+      "move the vessel for drinking next to the box",
+      "move the implement you write with next to the box",
+      "move the rubber stamp for marking next to the box",
+      "move the liquid substance that bonds next to the box",
+      "move the protective pad underneath next to the box",
+      "move the holder for writing implements next to the box",
+      "I need to organize the workspace \u2014 move the seal next to the box.",
+      "To make room for other things, move the seal next to the box.",
+      "Let me tidy up \u2014 move the seal next to the box.",
+      "Before we can proceed, move the seal next to the box.",
+      "So everything is more accessible, move the seal next to the box.",
+      "In preparation for the next task, move the seal next to the box.",
+      "To improve the work area, move the seal next to the box.",
+      "The next step is to move the seal next to the box.",
+      "Before adding more items, move the seal next to the box.",
+      "For better ergonomics here, move the seal next to the box.",
+      "Um, could you move the seal next to the box?",
+      "Would you mind move the seal next to the box?",
+      "Could you maybe move the seal next to the box?",
+      "If you don't mind, move the seal next to the box.",
+      "Would you be so kind as to move the seal next to the box?",
+      "Like, move the seal next to the box?",
+      "Uh, can you move the seal next to the box?",
+      "I was wondering if you could move the seal next to the box.",
+      "Sorry, but move the seal next to the box?",
+      "If it's not too much trouble, move the seal next to the box.",
+      "can you move the seal next to the box (please)?",
+      "can you move the seal next to the box (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "move the sticker next to the box"
+      },
+      {
+        "change_type": "c",
+        "text": "move the seal far from the box"
+      },
+      {
+        "change_type": "d",
+        "text": "do not move the seal next to the box"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid move the seal next to the box"
+      },
+      {
+        "change_type": "f",
+        "text": "move the seal next to the box (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal next to the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal next to the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal next to the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal next to the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal next to the box"
+      }
+    ]
+  },
+  "move_seal_next_to_pencup": {
+    "original": "move the seal next to the pen cup",
+    "synonyms": [
+      "shift the seal next to the pen cup",
+      "relocate the seal next to the pen cup",
+      "transport the seal next to the pen cup",
+      "reposition the seal next to the pen cup",
+      "place the seal next to the pen cup",
+      "move the stamp next to the pen cup",
+      "move the rubber seal next to the pen cup",
+      "move the stamp seal next to the pen cup",
+      "move the rubber stamp next to the pen cup",
+      "move the seal stamp next to the pen cup",
+      "move the seal beside the pen cup",
+      "move the seal adjacent to the pencil holder",
+      "move the seal near the pencil cup",
+      "move the seal by the pen holder",
+      "move the seal alongside the pencil cup",
+      "please move the seal next to the pen cup",
+      "move the seal next to the pen cup please",
+      "could you move the seal next to the pen cup?",
+      "would you move the seal next to the pen cup?",
+      "I need you to move the seal next to the pen cup"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 move the seal next to the pen cup.",
+      "When you have a moment, move the seal next to the pen cup.",
+      "I'm in a bit of a rush, but move the seal next to the pen cup.",
+      "Before we finish, move the seal next to the pen cup.",
+      "Just to be clear, move the seal next to the pen cup.",
+      "At your earliest convenience, move the seal next to the pen cup.",
+      "For the next step, move the seal next to the pen cup.",
+      "Whenever you're ready, move the seal next to the pen cup.",
+      "I realize this is important \u2014 move the seal next to the pen cup.",
+      "As soon as you can manage, move the seal next to the pen cup.",
+      "There's a pen and paper nearby, but move the seal next to the pen cup.",
+      "I see a book and glue on the desk \u2014 move the seal next to the pen cup.",
+      "Aside from the other items, move the seal next to the pen cup.",
+      "Ignoring the extra clutter, move the seal next to the pen cup.",
+      "Despite the many objects around, move the seal next to the pen cup.",
+      "There are several things here, but focus on move the seal next to the pen cup.",
+      "Setting everything else aside, move the seal next to the pen cup.",
+      "Amidst the workspace items, move the seal next to the pen cup.",
+      "Not the other one nearby, but move the seal next to the pen cup.",
+      "Among all these supplies, move the seal next to the pen cup.",
+      "move the container that holds things next to the pen cup",
+      "move the object you read from next to the pen cup",
+      "move the vessel for drinking next to the pen cup",
+      "move the implement you write with next to the pen cup",
+      "move the rubber stamp for marking next to the pen cup",
+      "move the liquid substance that bonds next to the pen cup",
+      "move the protective pad underneath next to the pen cup",
+      "move the holder for writing implements next to the pen cup",
+      "I need to organize the workspace \u2014 move the seal next to the pen cup.",
+      "To make room for other things, move the seal next to the pen cup.",
+      "Let me tidy up \u2014 move the seal next to the pen cup.",
+      "Before we can proceed, move the seal next to the pen cup.",
+      "So everything is more accessible, move the seal next to the pen cup.",
+      "In preparation for the next task, move the seal next to the pen cup.",
+      "To improve the work area, move the seal next to the pen cup.",
+      "The next step is to move the seal next to the pen cup.",
+      "Before adding more items, move the seal next to the pen cup.",
+      "For better ergonomics here, move the seal next to the pen cup.",
+      "Um, could you move the seal next to the pen cup?",
+      "Would you mind move the seal next to the pen cup?",
+      "Could you maybe move the seal next to the pen cup?",
+      "If you don't mind, move the seal next to the pen cup.",
+      "Would you be so kind as to move the seal next to the pen cup?",
+      "Like, move the seal next to the pen cup?",
+      "Uh, can you move the seal next to the pen cup?",
+      "I was wondering if you could move the seal next to the pen cup.",
+      "Sorry, but move the seal next to the pen cup?",
+      "If it's not too much trouble, move the seal next to the pen cup.",
+      "can you move the seal next to the pen cup (please)?",
+      "can you move the seal next to the pen cup (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "move the sticker next to the pen cup"
+      },
+      {
+        "change_type": "c",
+        "text": "move the seal far from the pen cup"
+      },
+      {
+        "change_type": "d",
+        "text": "do not move the seal next to the pen cup"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid move the seal next to the pen cup"
+      },
+      {
+        "change_type": "f",
+        "text": "move the seal next to the pen cup (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal next to the pen cup"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal next to the pen cup"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal next to the pen cup"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal next to the pen cup"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal next to the pen cup"
+      }
+    ]
+  },
+  "move_seal_onto_book": {
+    "original": "move the seal onto the book",
+    "synonyms": [
+      "shift the seal onto the book",
+      "relocate the seal onto the book",
+      "transport the seal onto the book",
+      "reposition the seal onto the book",
+      "place the seal onto the book",
+      "move the stamp onto the book",
+      "move the rubber seal onto the book",
+      "move the stamp seal onto the book",
+      "move the rubber stamp onto the book",
+      "move the seal stamp onto the book",
+      "move the seal onto the volume",
+      "move the seal onto the tome",
+      "move the seal onto the publication",
+      "move the seal on top of the book",
+      "move the seal onto the text",
+      "please move the seal onto the book",
+      "move the seal onto the book please",
+      "could you move the seal onto the book?",
+      "would you move the seal onto the book?",
+      "I need you to move the seal onto the book"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 move the seal onto the book.",
+      "When you have a moment, move the seal onto the book.",
+      "I'm in a bit of a rush, but move the seal onto the book.",
+      "Before we finish, move the seal onto the book.",
+      "Just to be clear, move the seal onto the book.",
+      "At your earliest convenience, move the seal onto the book.",
+      "For the next step, move the seal onto the book.",
+      "Whenever you're ready, move the seal onto the book.",
+      "I realize this is important \u2014 move the seal onto the book.",
+      "As soon as you can manage, move the seal onto the book.",
+      "There's a pen and paper nearby, but move the seal onto the book.",
+      "I see a book and glue on the desk \u2014 move the seal onto the book.",
+      "Aside from the other items, move the seal onto the book.",
+      "Ignoring the extra clutter, move the seal onto the book.",
+      "Despite the many objects around, move the seal onto the book.",
+      "There are several things here, but focus on move the seal onto the book.",
+      "Setting everything else aside, move the seal onto the book.",
+      "Amidst the workspace items, move the seal onto the book.",
+      "Not the other one nearby, but move the seal onto the book.",
+      "Among all these supplies, move the seal onto the book.",
+      "move the container that holds things onto the book",
+      "move the object you read from onto the book",
+      "move the vessel for drinking onto the book",
+      "move the implement you write with onto the book",
+      "move the rubber stamp for marking onto the book",
+      "move the liquid substance that bonds onto the book",
+      "move the protective pad underneath onto the book",
+      "move the holder for writing implements onto the book",
+      "I need to organize the workspace \u2014 move the seal onto the book.",
+      "To make room for other things, move the seal onto the book.",
+      "Let me tidy up \u2014 move the seal onto the book.",
+      "Before we can proceed, move the seal onto the book.",
+      "So everything is more accessible, move the seal onto the book.",
+      "In preparation for the next task, move the seal onto the book.",
+      "To improve the work area, move the seal onto the book.",
+      "The next step is to move the seal onto the book.",
+      "Before adding more items, move the seal onto the book.",
+      "For better ergonomics here, move the seal onto the book.",
+      "Um, could you move the seal onto the book?",
+      "Would you mind move the seal onto the book?",
+      "Could you maybe move the seal onto the book?",
+      "If you don't mind, move the seal onto the book.",
+      "Would you be so kind as to move the seal onto the book?",
+      "Like, move the seal onto the book?",
+      "Uh, can you move the seal onto the book?",
+      "I was wondering if you could move the seal onto the book.",
+      "Sorry, but move the seal onto the book?",
+      "If it's not too much trouble, move the seal onto the book.",
+      "can you move the seal onto the book (please)?",
+      "can you move the seal onto the book (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "move the sticker onto the book"
+      },
+      {
+        "change_type": "c",
+        "text": "move the seal under the book"
+      },
+      {
+        "change_type": "d",
+        "text": "do not move the seal onto the book"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid move the seal onto the book"
+      },
+      {
+        "change_type": "f",
+        "text": "move the seal onto the book (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal onto the book"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal onto the book"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal onto the book"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal onto the book"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal onto the book"
+      }
+    ]
+  },
+  "move_seal_onto_table": {
+    "original": "move the seal onto the table",
+    "synonyms": [
+      "shift the seal onto the table",
+      "relocate the seal onto the table",
+      "transport the seal onto the table",
+      "reposition the seal onto the table",
+      "place the seal onto the table",
+      "move the stamp onto the table",
+      "move the rubber seal onto the table",
+      "move the stamp seal onto the table",
+      "move the rubber stamp onto the table",
+      "move the seal stamp onto the table",
+      "move the seal onto the surface",
+      "move the seal onto the desk",
+      "move the seal onto the workspace",
+      "move the seal onto the tabletop",
+      "move the seal onto the flat surface",
+      "please move the seal onto the table",
+      "move the seal onto the table please",
+      "could you move the seal onto the table?",
+      "would you move the seal onto the table?",
+      "I need you to move the seal onto the table"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 move the seal onto the table.",
+      "When you have a moment, move the seal onto the table.",
+      "I'm in a bit of a rush, but move the seal onto the table.",
+      "Before we finish, move the seal onto the table.",
+      "Just to be clear, move the seal onto the table.",
+      "At your earliest convenience, move the seal onto the table.",
+      "For the next step, move the seal onto the table.",
+      "Whenever you're ready, move the seal onto the table.",
+      "I realize this is important \u2014 move the seal onto the table.",
+      "As soon as you can manage, move the seal onto the table.",
+      "There's a pen and paper nearby, but move the seal onto the table.",
+      "I see a book and glue on the desk \u2014 move the seal onto the table.",
+      "Aside from the other items, move the seal onto the table.",
+      "Ignoring the extra clutter, move the seal onto the table.",
+      "Despite the many objects around, move the seal onto the table.",
+      "There are several things here, but focus on move the seal onto the table.",
+      "Setting everything else aside, move the seal onto the table.",
+      "Amidst the workspace items, move the seal onto the table.",
+      "Not the other one nearby, but move the seal onto the table.",
+      "Among all these supplies, move the seal onto the table.",
+      "move the container that holds things onto the table",
+      "move the object you read from onto the table",
+      "move the vessel for drinking onto the table",
+      "move the implement you write with onto the table",
+      "move the rubber stamp for marking onto the table",
+      "move the liquid substance that bonds onto the table",
+      "move the protective pad underneath onto the table",
+      "move the holder for writing implements onto the table",
+      "I need to organize the workspace \u2014 move the seal onto the table.",
+      "To make room for other things, move the seal onto the table.",
+      "Let me tidy up \u2014 move the seal onto the table.",
+      "Before we can proceed, move the seal onto the table.",
+      "So everything is more accessible, move the seal onto the table.",
+      "In preparation for the next task, move the seal onto the table.",
+      "To improve the work area, move the seal onto the table.",
+      "The next step is to move the seal onto the table.",
+      "Before adding more items, move the seal onto the table.",
+      "For better ergonomics here, move the seal onto the table.",
+      "Um, could you move the seal onto the table?",
+      "Would you mind move the seal onto the table?",
+      "Could you maybe move the seal onto the table?",
+      "If you don't mind, move the seal onto the table.",
+      "Would you be so kind as to move the seal onto the table?",
+      "Like, move the seal onto the table?",
+      "Uh, can you move the seal onto the table?",
+      "I was wondering if you could move the seal onto the table.",
+      "Sorry, but move the seal onto the table?",
+      "If it's not too much trouble, move the seal onto the table.",
+      "can you move the seal onto the table (please)?",
+      "can you move the seal onto the table (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "move the sticker onto the table"
+      },
+      {
+        "change_type": "c",
+        "text": "move the seal under the table"
+      },
+      {
+        "change_type": "d",
+        "text": "do not move the seal onto the table"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid move the seal onto the table"
+      },
+      {
+        "change_type": "f",
+        "text": "move the seal onto the table (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal onto the table"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal onto the table"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal onto the table"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal onto the table"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: move the seal onto the table"
+      }
+    ]
+  },
+  "put_cup_in_box": {
+    "original": "put the cup in the box",
+    "synonyms": [
+      "place the cup in the box",
+      "set the cup in the box",
+      "position the cup in the box",
+      "lay the cup in the box",
+      "deposit the cup in the box",
+      "put the vessel in the box",
+      "put the mug in the box",
+      "put the drinking cup in the box",
+      "put the container in the box",
+      "put the beaker in the box",
+      "put the cup in the container",
+      "put the cup in the case",
+      "put the cup in the receptacle",
+      "put the cup in the carton",
+      "put the cup in the storage box",
+      "please put the cup in the box",
+      "put the cup in the box please",
+      "could you put the cup in the box?",
+      "would you put the cup in the box?",
+      "I need you to put the cup in the box"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 put the cup in the box.",
+      "When you have a moment, put the cup in the box.",
+      "I'm in a bit of a rush, but put the cup in the box.",
+      "Before we finish, put the cup in the box.",
+      "Just to be clear, put the cup in the box.",
+      "At your earliest convenience, put the cup in the box.",
+      "For the next step, put the cup in the box.",
+      "Whenever you're ready, put the cup in the box.",
+      "I realize this is important \u2014 put the cup in the box.",
+      "As soon as you can manage, put the cup in the box.",
+      "There's a pen and paper nearby, but put the cup in the box.",
+      "I see a book and glue on the desk \u2014 put the cup in the box.",
+      "Aside from the other items, put the cup in the box.",
+      "Ignoring the extra clutter, put the cup in the box.",
+      "Despite the many objects around, put the cup in the box.",
+      "There are several things here, but focus on put the cup in the box.",
+      "Setting everything else aside, put the cup in the box.",
+      "Amidst the workspace items, put the cup in the box.",
+      "Not the other one nearby, but put the cup in the box.",
+      "Among all these supplies, put the cup in the box.",
+      "put the container that holds things in the box",
+      "put the object you read from in the box",
+      "put the vessel for drinking in the box",
+      "put the implement you write with in the box",
+      "put the rubber stamp for marking in the box",
+      "put the liquid substance that bonds in the box",
+      "put the protective pad underneath in the box",
+      "put the holder for writing implements in the box",
+      "I need to organize the workspace \u2014 put the cup in the box.",
+      "To make room for other things, put the cup in the box.",
+      "Let me tidy up \u2014 put the cup in the box.",
+      "Before we can proceed, put the cup in the box.",
+      "So everything is more accessible, put the cup in the box.",
+      "In preparation for the next task, put the cup in the box.",
+      "To improve the work area, put the cup in the box.",
+      "The next step is to put the cup in the box.",
+      "Before adding more items, put the cup in the box.",
+      "For better ergonomics here, put the cup in the box.",
+      "Um, could you put the cup in the box?",
+      "Would you mind put the cup in the box?",
+      "Could you maybe put the cup in the box?",
+      "If you don't mind, put the cup in the box.",
+      "Would you be so kind as to put the cup in the box?",
+      "Like, put the cup in the box?",
+      "Uh, can you put the cup in the box?",
+      "I was wondering if you could put the cup in the box.",
+      "Sorry, but put the cup in the box?",
+      "If it's not too much trouble, put the cup in the box.",
+      "can you put the cup in the box (please)?",
+      "can you put the cup in the box (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "put the bowl in the box"
+      },
+      {
+        "change_type": "c",
+        "text": "put the cup on top of the box"
+      },
+      {
+        "change_type": "d",
+        "text": "do not put the cup in the box"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid put the cup in the box"
+      },
+      {
+        "change_type": "e",
+        "text": "put two cups in the box"
+      },
+      {
+        "change_type": "f",
+        "text": "put the cup in the box (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the cup in the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the cup in the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the cup in the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the cup in the box"
+      }
+    ]
+  },
+  "put_cup_on_coaster": {
+    "original": "put the cup on the coaster",
+    "synonyms": [
+      "place the cup on the coaster",
+      "set the cup on the coaster",
+      "position the cup on the coaster",
+      "lay the cup on the coaster",
+      "deposit the cup on the coaster",
+      "put the vessel on the coaster",
+      "put the mug on the coaster",
+      "put the drinking cup on the coaster",
+      "put the container on the coaster",
+      "put the beaker on the coaster",
+      "put the cup on the mat",
+      "put the cup on the base",
+      "put the cup on the stand",
+      "put the cup on the underlay",
+      "put the cup on the protective mat",
+      "please put the cup on the coaster",
+      "put the cup on the coaster please",
+      "could you put the cup on the coaster?",
+      "would you put the cup on the coaster?",
+      "I need you to put the cup on the coaster"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 put the cup on the coaster.",
+      "When you have a moment, put the cup on the coaster.",
+      "I'm in a bit of a rush, but put the cup on the coaster.",
+      "Before we finish, put the cup on the coaster.",
+      "Just to be clear, put the cup on the coaster.",
+      "At your earliest convenience, put the cup on the coaster.",
+      "For the next step, put the cup on the coaster.",
+      "Whenever you're ready, put the cup on the coaster.",
+      "I realize this is important \u2014 put the cup on the coaster.",
+      "As soon as you can manage, put the cup on the coaster.",
+      "There's a pen and paper nearby, but put the cup on the coaster.",
+      "I see a book and glue on the desk \u2014 put the cup on the coaster.",
+      "Aside from the other items, put the cup on the coaster.",
+      "Ignoring the extra clutter, put the cup on the coaster.",
+      "Despite the many objects around, put the cup on the coaster.",
+      "There are several things here, but focus on put the cup on the coaster.",
+      "Setting everything else aside, put the cup on the coaster.",
+      "Amidst the workspace items, put the cup on the coaster.",
+      "Not the other one nearby, but put the cup on the coaster.",
+      "Among all these supplies, put the cup on the coaster.",
+      "put the container that holds things on the coaster",
+      "put the object you read from on the coaster",
+      "put the vessel for drinking on the coaster",
+      "put the implement you write with on the coaster",
+      "put the rubber stamp for marking on the coaster",
+      "put the liquid substance that bonds on the coaster",
+      "put the protective pad underneath on the coaster",
+      "put the holder for writing implements on the coaster",
+      "I need to organize the workspace \u2014 put the cup on the coaster.",
+      "To make room for other things, put the cup on the coaster.",
+      "Let me tidy up \u2014 put the cup on the coaster.",
+      "Before we can proceed, put the cup on the coaster.",
+      "So everything is more accessible, put the cup on the coaster.",
+      "In preparation for the next task, put the cup on the coaster.",
+      "To improve the work area, put the cup on the coaster.",
+      "The next step is to put the cup on the coaster.",
+      "Before adding more items, put the cup on the coaster.",
+      "For better ergonomics here, put the cup on the coaster.",
+      "Um, could you put the cup on the coaster?",
+      "Would you mind put the cup on the coaster?",
+      "Could you maybe put the cup on the coaster?",
+      "If you don't mind, put the cup on the coaster.",
+      "Would you be so kind as to put the cup on the coaster?",
+      "Like, put the cup on the coaster?",
+      "Uh, can you put the cup on the coaster?",
+      "I was wondering if you could put the cup on the coaster.",
+      "Sorry, but put the cup on the coaster?",
+      "If it's not too much trouble, put the cup on the coaster.",
+      "can you put the cup on the coaster (please)?",
+      "can you put the cup on the coaster (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "put the bowl on the coaster"
+      },
+      {
+        "change_type": "c",
+        "text": "put the cup under the coaster"
+      },
+      {
+        "change_type": "d",
+        "text": "do not put the cup on the coaster"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid put the cup on the coaster"
+      },
+      {
+        "change_type": "e",
+        "text": "put two cups on the coaster"
+      },
+      {
+        "change_type": "f",
+        "text": "put the cup on the coaster (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the cup on the coaster"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the cup on the coaster"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the cup on the coaster"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the cup on the coaster"
+      }
+    ]
+  },
+  "put_cup_on_table": {
+    "original": "put the cup on the table",
+    "synonyms": [
+      "place the cup on the table",
+      "set the cup on the table",
+      "position the cup on the table",
+      "lay the cup on the table",
+      "deposit the cup on the table",
+      "put the vessel on the table",
+      "put the mug on the table",
+      "put the drinking cup on the table",
+      "put the container on the table",
+      "put the beaker on the table",
+      "put the cup on the surface",
+      "put the cup on the desk",
+      "put the cup on the workspace",
+      "put the cup on the tabletop",
+      "put the cup on the flat surface",
+      "please put the cup on the table",
+      "put the cup on the table please",
+      "could you put the cup on the table?",
+      "would you put the cup on the table?",
+      "I need you to put the cup on the table"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 put the cup on the table.",
+      "When you have a moment, put the cup on the table.",
+      "I'm in a bit of a rush, but put the cup on the table.",
+      "Before we finish, put the cup on the table.",
+      "Just to be clear, put the cup on the table.",
+      "At your earliest convenience, put the cup on the table.",
+      "For the next step, put the cup on the table.",
+      "Whenever you're ready, put the cup on the table.",
+      "I realize this is important \u2014 put the cup on the table.",
+      "As soon as you can manage, put the cup on the table.",
+      "There's a pen and paper nearby, but put the cup on the table.",
+      "I see a book and glue on the desk \u2014 put the cup on the table.",
+      "Aside from the other items, put the cup on the table.",
+      "Ignoring the extra clutter, put the cup on the table.",
+      "Despite the many objects around, put the cup on the table.",
+      "There are several things here, but focus on put the cup on the table.",
+      "Setting everything else aside, put the cup on the table.",
+      "Amidst the workspace items, put the cup on the table.",
+      "Not the other one nearby, but put the cup on the table.",
+      "Among all these supplies, put the cup on the table.",
+      "put the container that holds things on the table",
+      "put the object you read from on the table",
+      "put the vessel for drinking on the table",
+      "put the implement you write with on the table",
+      "put the rubber stamp for marking on the table",
+      "put the liquid substance that bonds on the table",
+      "put the protective pad underneath on the table",
+      "put the holder for writing implements on the table",
+      "I need to organize the workspace \u2014 put the cup on the table.",
+      "To make room for other things, put the cup on the table.",
+      "Let me tidy up \u2014 put the cup on the table.",
+      "Before we can proceed, put the cup on the table.",
+      "So everything is more accessible, put the cup on the table.",
+      "In preparation for the next task, put the cup on the table.",
+      "To improve the work area, put the cup on the table.",
+      "The next step is to put the cup on the table.",
+      "Before adding more items, put the cup on the table.",
+      "For better ergonomics here, put the cup on the table.",
+      "Um, could you put the cup on the table?",
+      "Would you mind put the cup on the table?",
+      "Could you maybe put the cup on the table?",
+      "If you don't mind, put the cup on the table.",
+      "Would you be so kind as to put the cup on the table?",
+      "Like, put the cup on the table?",
+      "Uh, can you put the cup on the table?",
+      "I was wondering if you could put the cup on the table.",
+      "Sorry, but put the cup on the table?",
+      "If it's not too much trouble, put the cup on the table.",
+      "can you put the cup on the table (please)?",
+      "can you put the cup on the table (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "put the bowl on the table"
+      },
+      {
+        "change_type": "c",
+        "text": "put the cup under the table"
+      },
+      {
+        "change_type": "d",
+        "text": "do not put the cup on the table"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid put the cup on the table"
+      },
+      {
+        "change_type": "e",
+        "text": "put two cups on the table"
+      },
+      {
+        "change_type": "f",
+        "text": "put the cup on the table (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the cup on the table"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the cup on the table"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the cup on the table"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the cup on the table"
+      }
+    ]
+  },
+  "put_glue_in_box": {
+    "original": "put the glue in the box",
+    "synonyms": [
+      "place the glue in the box",
+      "set the glue in the box",
+      "position the glue in the box",
+      "lay the glue in the box",
+      "deposit the glue in the box",
+      "put the adhesive in the box",
+      "put the bonding agent in the box",
+      "put the adhesive substance in the box",
+      "put the paste in the box",
+      "put the glue stick in the box",
+      "put the glue in the container",
+      "put the glue in the case",
+      "put the glue in the receptacle",
+      "put the glue in the carton",
+      "put the glue in the storage box",
+      "please put the glue in the box",
+      "put the glue in the box please",
+      "could you put the glue in the box?",
+      "would you put the glue in the box?",
+      "I need you to put the glue in the box"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 put the glue in the box.",
+      "When you have a moment, put the glue in the box.",
+      "I'm in a bit of a rush, but put the glue in the box.",
+      "Before we finish, put the glue in the box.",
+      "Just to be clear, put the glue in the box.",
+      "At your earliest convenience, put the glue in the box.",
+      "For the next step, put the glue in the box.",
+      "Whenever you're ready, put the glue in the box.",
+      "I realize this is important \u2014 put the glue in the box.",
+      "As soon as you can manage, put the glue in the box.",
+      "There's a pen and paper nearby, but put the glue in the box.",
+      "I see a book and glue on the desk \u2014 put the glue in the box.",
+      "Aside from the other items, put the glue in the box.",
+      "Ignoring the extra clutter, put the glue in the box.",
+      "Despite the many objects around, put the glue in the box.",
+      "There are several things here, but focus on put the glue in the box.",
+      "Setting everything else aside, put the glue in the box.",
+      "Amidst the workspace items, put the glue in the box.",
+      "Not the other one nearby, but put the glue in the box.",
+      "Among all these supplies, put the glue in the box.",
+      "put the container that holds things in the box",
+      "put the object you read from in the box",
+      "put the vessel for drinking in the box",
+      "put the implement you write with in the box",
+      "put the rubber stamp for marking in the box",
+      "put the liquid substance that bonds in the box",
+      "put the protective pad underneath in the box",
+      "put the holder for writing implements in the box",
+      "I need to organize the workspace \u2014 put the glue in the box.",
+      "To make room for other things, put the glue in the box.",
+      "Let me tidy up \u2014 put the glue in the box.",
+      "Before we can proceed, put the glue in the box.",
+      "So everything is more accessible, put the glue in the box.",
+      "In preparation for the next task, put the glue in the box.",
+      "To improve the work area, put the glue in the box.",
+      "The next step is to put the glue in the box.",
+      "Before adding more items, put the glue in the box.",
+      "For better ergonomics here, put the glue in the box.",
+      "Um, could you put the glue in the box?",
+      "Would you mind put the glue in the box?",
+      "Could you maybe put the glue in the box?",
+      "If you don't mind, put the glue in the box.",
+      "Would you be so kind as to put the glue in the box?",
+      "Like, put the glue in the box?",
+      "Uh, can you put the glue in the box?",
+      "I was wondering if you could put the glue in the box.",
+      "Sorry, but put the glue in the box?",
+      "If it's not too much trouble, put the glue in the box.",
+      "can you put the glue in the box (please)?",
+      "can you put the glue in the box (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "c",
+        "text": "put the glue on top of the box"
+      },
+      {
+        "change_type": "d",
+        "text": "do not put the glue in the box"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid put the glue in the box"
+      },
+      {
+        "change_type": "f",
+        "text": "put the glue in the box (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the glue in the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the glue in the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the glue in the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the glue in the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the glue in the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the glue in the box"
+      }
+    ]
+  },
+  "put_pen_in_box": {
+    "original": "put the pen in the box",
+    "synonyms": [
+      "place the pen in the box",
+      "set the pen in the box",
+      "position the pen in the box",
+      "lay the pen in the box",
+      "deposit the pen in the box",
+      "put the writing instrument in the box",
+      "put the ballpoint in the box",
+      "put the writing tool in the box",
+      "put the marker in the box",
+      "put the stylus in the box",
+      "put the pen in the container",
+      "put the pen in the case",
+      "put the pen in the receptacle",
+      "put the pen in the carton",
+      "put the pen in the storage box",
+      "please put the pen in the box",
+      "put the pen in the box please",
+      "could you put the pen in the box?",
+      "would you put the pen in the box?",
+      "I need you to put the pen in the box"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 put the pen in the box.",
+      "When you have a moment, put the pen in the box.",
+      "I'm in a bit of a rush, but put the pen in the box.",
+      "Before we finish, put the pen in the box.",
+      "Just to be clear, put the pen in the box.",
+      "At your earliest convenience, put the pen in the box.",
+      "For the next step, put the pen in the box.",
+      "Whenever you're ready, put the pen in the box.",
+      "I realize this is important \u2014 put the pen in the box.",
+      "As soon as you can manage, put the pen in the box.",
+      "There's a pen and paper nearby, but put the pen in the box.",
+      "I see a book and glue on the desk \u2014 put the pen in the box.",
+      "Aside from the other items, put the pen in the box.",
+      "Ignoring the extra clutter, put the pen in the box.",
+      "Despite the many objects around, put the pen in the box.",
+      "There are several things here, but focus on put the pen in the box.",
+      "Setting everything else aside, put the pen in the box.",
+      "Amidst the workspace items, put the pen in the box.",
+      "Not the other one nearby, but put the pen in the box.",
+      "Among all these supplies, put the pen in the box.",
+      "put the container that holds things in the box",
+      "put the object you read from in the box",
+      "put the vessel for drinking in the box",
+      "put the implement you write with in the box",
+      "put the rubber stamp for marking in the box",
+      "put the liquid substance that bonds in the box",
+      "put the protective pad underneath in the box",
+      "put the holder for writing implements in the box",
+      "I need to organize the workspace \u2014 put the pen in the box.",
+      "To make room for other things, put the pen in the box.",
+      "Let me tidy up \u2014 put the pen in the box.",
+      "Before we can proceed, put the pen in the box.",
+      "So everything is more accessible, put the pen in the box.",
+      "In preparation for the next task, put the pen in the box.",
+      "To improve the work area, put the pen in the box.",
+      "The next step is to put the pen in the box.",
+      "Before adding more items, put the pen in the box.",
+      "For better ergonomics here, put the pen in the box.",
+      "Um, could you put the pen in the box?",
+      "Would you mind put the pen in the box?",
+      "Could you maybe put the pen in the box?",
+      "If you don't mind, put the pen in the box.",
+      "Would you be so kind as to put the pen in the box?",
+      "Like, put the pen in the box?",
+      "Uh, can you put the pen in the box?",
+      "I was wondering if you could put the pen in the box.",
+      "Sorry, but put the pen in the box?",
+      "If it's not too much trouble, put the pen in the box.",
+      "can you put the pen in the box (please)?",
+      "can you put the pen in the box (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "put the pencil in the box"
+      },
+      {
+        "change_type": "c",
+        "text": "put the pen on top of the box"
+      },
+      {
+        "change_type": "d",
+        "text": "do not put the pen in the box"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid put the pen in the box"
+      },
+      {
+        "change_type": "f",
+        "text": "put the pen in the box (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the pen in the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the pen in the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the pen in the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the pen in the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the pen in the box"
+      }
+    ]
+  },
+  "put_pen_in_pencup": {
+    "original": "put the pen in the pen cup",
+    "synonyms": [
+      "place the pen in the pen cup",
+      "set the pen in the pen cup",
+      "position the pen in the pen cup",
+      "lay the pen in the pen cup",
+      "deposit the pen in the pen cup",
+      "put the writing instrument in the writing instrument cup",
+      "put the ballpoint in the ballpoint cup",
+      "put the writing tool in the writing tool cup",
+      "put the marker in the marker cup",
+      "put the stylus in the stylus cup",
+      "put the pen in the pencil holder",
+      "put the pen in the pen holder",
+      "put the pen in the pencil cup",
+      "put the pen in the writing instrument holder",
+      "put the pen in the pen container",
+      "please put the pen in the pen cup",
+      "put the pen in the pen cup please",
+      "could you put the pen in the pen cup?",
+      "would you put the pen in the pen cup?",
+      "I need you to put the pen in the pen cup"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 put the pen in the pen cup.",
+      "When you have a moment, put the pen in the pen cup.",
+      "I'm in a bit of a rush, but put the pen in the pen cup.",
+      "Before we finish, put the pen in the pen cup.",
+      "Just to be clear, put the pen in the pen cup.",
+      "At your earliest convenience, put the pen in the pen cup.",
+      "For the next step, put the pen in the pen cup.",
+      "Whenever you're ready, put the pen in the pen cup.",
+      "I realize this is important \u2014 put the pen in the pen cup.",
+      "As soon as you can manage, put the pen in the pen cup.",
+      "There's a pen and paper nearby, but put the pen in the pen cup.",
+      "I see a book and glue on the desk \u2014 put the pen in the pen cup.",
+      "Aside from the other items, put the pen in the pen cup.",
+      "Ignoring the extra clutter, put the pen in the pen cup.",
+      "Despite the many objects around, put the pen in the pen cup.",
+      "There are several things here, but focus on put the pen in the pen cup.",
+      "Setting everything else aside, put the pen in the pen cup.",
+      "Amidst the workspace items, put the pen in the pen cup.",
+      "Not the other one nearby, but put the pen in the pen cup.",
+      "Among all these supplies, put the pen in the pen cup.",
+      "put the container that holds things in the container that holds things cup",
+      "put the object you read from in the object you read from cup",
+      "put the vessel for drinking in the vessel for drinking cup",
+      "put the implement you write with in the implement you write with cup",
+      "put the rubber stamp for marking in the rubber stamp for marking cup",
+      "put the liquid substance that bonds in the liquid substance that bonds cup",
+      "put the protective pad underneath in the protective pad underneath cup",
+      "put the holder for writing implements in the holder for writing implements cup",
+      "I need to organize the workspace \u2014 put the pen in the pen cup.",
+      "To make room for other things, put the pen in the pen cup.",
+      "Let me tidy up \u2014 put the pen in the pen cup.",
+      "Before we can proceed, put the pen in the pen cup.",
+      "So everything is more accessible, put the pen in the pen cup.",
+      "In preparation for the next task, put the pen in the pen cup.",
+      "To improve the work area, put the pen in the pen cup.",
+      "The next step is to put the pen in the pen cup.",
+      "Before adding more items, put the pen in the pen cup.",
+      "For better ergonomics here, put the pen in the pen cup.",
+      "Um, could you put the pen in the pen cup?",
+      "Would you mind put the pen in the pen cup?",
+      "Could you maybe put the pen in the pen cup?",
+      "If you don't mind, put the pen in the pen cup.",
+      "Would you be so kind as to put the pen in the pen cup?",
+      "Like, put the pen in the pen cup?",
+      "Uh, can you put the pen in the pen cup?",
+      "I was wondering if you could put the pen in the pen cup.",
+      "Sorry, but put the pen in the pen cup?",
+      "If it's not too much trouble, put the pen in the pen cup.",
+      "can you put the pen in the pen cup (please)?",
+      "can you put the pen in the pen cup (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "put the pencil in the pencil cup"
+      },
+      {
+        "change_type": "c",
+        "text": "put the pen on top of the pen cup"
+      },
+      {
+        "change_type": "d",
+        "text": "do not put the pen in the pen cup"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid put the pen in the pen cup"
+      },
+      {
+        "change_type": "f",
+        "text": "put the pen in the pen cup (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the pen in the pen cup"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the pen in the pen cup"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the pen in the pen cup"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the pen in the pen cup"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the pen in the pen cup"
+      }
+    ]
+  },
+  "put_seal_in_box": {
+    "original": "put the seal in the box",
+    "synonyms": [
+      "place the seal in the box",
+      "set the seal in the box",
+      "position the seal in the box",
+      "lay the seal in the box",
+      "deposit the seal in the box",
+      "put the stamp in the box",
+      "put the rubber seal in the box",
+      "put the stamp seal in the box",
+      "put the rubber stamp in the box",
+      "put the seal stamp in the box",
+      "put the seal in the container",
+      "put the seal in the case",
+      "put the seal in the receptacle",
+      "put the seal in the carton",
+      "put the seal in the storage box",
+      "please put the seal in the box",
+      "put the seal in the box please",
+      "could you put the seal in the box?",
+      "would you put the seal in the box?",
+      "I need you to put the seal in the box"
+    ],
+    "perturbations": [
+      "It's getting late \u2014 put the seal in the box.",
+      "When you have a moment, put the seal in the box.",
+      "I'm in a bit of a rush, but put the seal in the box.",
+      "Before we finish, put the seal in the box.",
+      "Just to be clear, put the seal in the box.",
+      "At your earliest convenience, put the seal in the box.",
+      "For the next step, put the seal in the box.",
+      "Whenever you're ready, put the seal in the box.",
+      "I realize this is important \u2014 put the seal in the box.",
+      "As soon as you can manage, put the seal in the box.",
+      "There's a pen and paper nearby, but put the seal in the box.",
+      "I see a book and glue on the desk \u2014 put the seal in the box.",
+      "Aside from the other items, put the seal in the box.",
+      "Ignoring the extra clutter, put the seal in the box.",
+      "Despite the many objects around, put the seal in the box.",
+      "There are several things here, but focus on put the seal in the box.",
+      "Setting everything else aside, put the seal in the box.",
+      "Amidst the workspace items, put the seal in the box.",
+      "Not the other one nearby, but put the seal in the box.",
+      "Among all these supplies, put the seal in the box.",
+      "put the container that holds things in the box",
+      "put the object you read from in the box",
+      "put the vessel for drinking in the box",
+      "put the implement you write with in the box",
+      "put the rubber stamp for marking in the box",
+      "put the liquid substance that bonds in the box",
+      "put the protective pad underneath in the box",
+      "put the holder for writing implements in the box",
+      "I need to organize the workspace \u2014 put the seal in the box.",
+      "To make room for other things, put the seal in the box.",
+      "Let me tidy up \u2014 put the seal in the box.",
+      "Before we can proceed, put the seal in the box.",
+      "So everything is more accessible, put the seal in the box.",
+      "In preparation for the next task, put the seal in the box.",
+      "To improve the work area, put the seal in the box.",
+      "The next step is to put the seal in the box.",
+      "Before adding more items, put the seal in the box.",
+      "For better ergonomics here, put the seal in the box.",
+      "Um, could you put the seal in the box?",
+      "Would you mind put the seal in the box?",
+      "Could you maybe put the seal in the box?",
+      "If you don't mind, put the seal in the box.",
+      "Would you be so kind as to put the seal in the box?",
+      "Like, put the seal in the box?",
+      "Uh, can you put the seal in the box?",
+      "I was wondering if you could put the seal in the box.",
+      "Sorry, but put the seal in the box?",
+      "If it's not too much trouble, put the seal in the box.",
+      "can you put the seal in the box (please)?",
+      "can you put the seal in the box (please)?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "put the sticker in the box"
+      },
+      {
+        "change_type": "c",
+        "text": "put the seal on top of the box"
+      },
+      {
+        "change_type": "d",
+        "text": "do not put the seal in the box"
+      },
+      {
+        "change_type": "d",
+        "text": "avoid put the seal in the box"
+      },
+      {
+        "change_type": "f",
+        "text": "put the seal in the box (on the floor)"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the seal in the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the seal in the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the seal in the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the seal in the box"
+      },
+      {
+        "change_type": "a",
+        "text": "the opposite of: put the seal in the box"
+      }
+    ]
+  }
+}

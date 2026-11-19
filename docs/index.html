@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RoboPRO: A Perturbation-Resilient and Obstacle-Aware Benchmark for Robotic Manipulation</title>
+<meta name="description" content="RoboPRO is a benchmark of 80 bimanual manipulation tasks across four furnished indoor scenes, with 16K demonstrations, factorial perturbations across vision/language/object axes, controllable obstacle density, and two safety-aware collision metrics." />
+<link rel="stylesheet" href="style.css?v=9" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <p class="eyebrow">Benchmark · Bimanual Manipulation · Robustness &amp; Safety</p>
+    <h1 class="title"><img src="logo.png?v=6" alt="RoboPRO: A Perturbation-Resilient and Obstacle-Aware Benchmark for Robotic Manipulation" class="title-logo" /></h1>
+    <p class="tagline">A <em>Perturbation-Resilient</em> and <em>Obstacle-aware</em> benchmark for evaluating the robustness and safety of bimanual manipulation policies in cluttered, realistic scenes.</p>
+    <div class="byline">
+      <span><strong>80</strong> bimanual tasks</span>
+      <span><strong>4</strong> furnished scenes</span>
+      <span><strong>3</strong> perturbation axes</span>
+      <span><strong>2</strong> safety metrics</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-ghost" href="install.html">Install →</a>
+      <a class="btn btn-primary" href="https://github.com/robopro-bench/RoboPRO">Code ↗</a>
+      <a class="btn btn-primary" href="https://huggingface.co/datasets/RoboPRO/RoboPRO_data">Dataset ↗</a>
+    </div>
+  </div>
+</header>
+
+<nav class="tab-nav" aria-label="Section navigation">
+  <div class="container">
+    <ul class="tab-strip" role="tablist">
+      <li><a href="#overview"    class="active" data-tab="overview"    role="tab">Overview</a></li>
+      <li><a href="#tasks"                       data-tab="tasks"       role="tab">Task Gallery</a></li>
+      <li><a href="#collision"                   data-tab="collision"   role="tab">Collision</a></li>
+      <li><a href="#vision"                      data-tab="vision"      role="tab">Vision</a></li>
+      <li><a href="#language"                    data-tab="language"    role="tab">Language</a></li>
+      <li><a href="#leaderboard"                 data-tab="leaderboard" role="tab">Leaderboard</a></li>
+      <li><a href="#rollouts"                    data-tab="rollouts"    role="tab">Policy Rollouts</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ Overview (default) ============ -->
+<section id="overview" class="tab-panel active" role="tabpanel">
+
+  <section class="logo-block video-block">
+    <div class="container">
+      <video class="overview-video" controls muted playsinline preload="metadata" poster="videos/robopro_overview_poster.jpg">
+        <source src="videos/robopro_overview.mp4" type="video/mp4" />
+      </video>
+      <div class="logo-caption">RoboPRO in two minutes: scenes, tasks, clutter, perturbations, and policy performance</div>
+    </div>
+  </section>
+
+  <section class="abstract">
+    <div class="container">
+      <h2>Abstract</h2>
+      <p>
+        Object manipulation in the real world requires robotic policies to be robust to contextual perturbations and capable of safe planning in cluttered scenes. However, the majority of existing robotics benchmarks contain clean tabletop environments with success rate as the sole metric, leaving two critical deployment questions unanswered: <em>does the policy manipulate safely under real conditions, and what leads to its failure?</em> Some benchmarks evaluate robustness by applying perturbations in isolation on uncluttered surfaces and relying on binary or count-based collision detection. Others provide realistic environments but omit perturbation evaluation and safety metrics entirely.
+      </p>
+      <p>
+        To this end, we present <strong>RoboPRO</strong>, a <strong>Robo</strong>tics benchmark for <strong>P</strong>erturbation-<strong>R</strong>esilient and <strong>O</strong>bstacle-aware planning, which unifies various axes of robustness in manipulation. RoboPRO comprises 80 diverse bimanual atomic and compositional tasks across four furnished indoor environments, with a total of 16,000 demonstrations and 5.6K diverse language instructions. Scenes are populated with different numbers of distractors, ranging from clean (only target objects) to densely populated, imposing both visual and operational clutter. We propose two novel metrics that detect unsafe contact between the robot and the environment or distractors. Our evaluation protocol consists of a factorial analysis of three key perturbations (visual, linguistic, and object-level) at multiple distractor densities. We conduct extensive experiments on RoboPRO using state-of-the-art manipulation policies to analyze the impact of visual and operational clutter, perturbations, and instructional diversity. Our findings highlight the key challenges for manipulation in real-world conditions and motivate future research in this domain.
+      </p>
+    </div>
+  </section>
+
+  <section class="logo-block">
+    <div class="container">
+      <img src="teaser.png?v=6" alt="RoboPRO teaser: atomic and compositional tasks across four diverse scenes, visual/language/object perturbations, and OOD generalization" class="teaser-img" />
+      <div class="logo-caption">An overview of RoboPRO: atomic &amp; compositional tasks · diverse scenes · visual / language / object perturbations · OOD generalization</div>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="container">
+      <p>
+        RoboPRO sits between two existing camps. Tabletop suites exercise clean
+        per-skill evaluation but ignore real-world clutter and only report a single
+        success metric; household-scale suites model realistic environments yet
+        contain no systematic perturbations. RoboPRO inherits the furnished,
+        multi-skill, bimanual character of household suites and applies
+        perturbations <em>within</em> cluttered scenes, so each robustness
+        axis can be measured separately and jointly with safety.
+      </p>
+      <div class="stats">
+        <div class="stat"><div class="num">80</div><div class="lbl">Tasks</div></div>
+        <div class="stat"><div class="num">16K</div><div class="lbl">Demonstrations</div></div>
+        <div class="stat"><div class="num">5.6K</div><div class="lbl">Language Instructions</div></div>
+        <div class="stat"><div class="num">4</div><div class="lbl">Indoor Scenes</div></div>
+      </div>
+    </div>
+  </section>
+
+</section>
+
+<!-- ============ Task Gallery ============ -->
+<section id="tasks" class="tab-panel" role="tabpanel">
+  <div class="container">
+    <div class="panel-head">
+      <h2>Task Gallery</h2>
+      <p>Eighty tasks spanning four indoor environments, with fifteen atomic and five compositional tasks per scene. Pick a scene, then a task to view a representative rollout.</p>
+    </div>
+
+    <div class="controls">
+      <div class="field">
+        <label for="task-scene">Scene</label>
+        <select id="task-scene"></select>
+      </div>
+      <div class="field">
+        <label for="task-slug">Task</label>
+        <select id="task-slug"></select>
+      </div>
+    </div>
+
+    <div class="viewer">
+      <div id="task-video-slot"></div>
+      <div class="meta">
+        <h3 id="task-title">—</h3>
+        <p id="task-desc"></p>
+        <dl>
+          <dt>Scene</dt><dd id="task-scene-label">—</dd>
+          <dt>Type</dt><dd id="task-kind">—</dd>
+          <dt>Slug</dt><dd><code id="task-slug-text">—</code></dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Collision ============ -->
+<section id="collision" class="tab-panel" role="tabpanel">
+  <div class="container">
+    <div class="panel-head">
+      <h2>Collision &amp; Operational Clutter</h2>
+      <p>The same task in the same scene, executed at increasing obstacle densities <code>k ∈ {0, 6, 7, ..., 15}</code>. Distractors are sampled inside the workspace volume swept by the canonical demonstration trajectory, so they intersect the operational path and force active avoidance.</p>
+    </div>
+
+    <div class="controls">
+      <div class="field">
+        <label for="collision-density">Density</label>
+        <select id="collision-density"></select>
+      </div>
+    </div>
+
+    <div class="viewer">
+      <div id="collision-video-slot"></div>
+      <div class="meta">
+        <h3 id="collision-title">—</h3>
+        <dl>
+          <dt>Distractors</dt><dd id="collision-count">—</dd>
+          <dt>Task</dt><dd><code id="collision-task">—</code></dd>
+          <dt>Scene</dt><dd id="collision-scene">—</dd>
+        </dl>
+        <p style="margin-top:1rem; color: var(--muted); font-size: 0.9rem;">
+          RoboPRO instruments two safety metrics, <strong>FCR</strong> (force-violating furniture contact) and <strong>OCR</strong> (object-displacement contact), which distinguish a 2&nbsp;mm cup nudge from a sweep that knocks a cup off the table.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Vision ============ -->
+<section id="vision" class="tab-panel" role="tabpanel">
+  <div class="container">
+    <div class="panel-head">
+      <h2>Vision Perturbations</h2>
+      <p>Three independently-toggleable axes plus a combined setting. Lighting is fixed at scene reset; blur and pixel shift are resampled every frame, so all three stack independently with the language and object axes.</p>
+    </div>
+
+    <div class="controls">
+      <div class="field">
+        <label for="vision-axis">Axis</label>
+        <select id="vision-axis"></select>
+      </div>
+    </div>
+
+    <div class="viewer">
+      <div id="vision-video-slot"></div>
+      <div class="meta">
+        <h3 id="vision-title">—</h3>
+        <p id="vision-blurb"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Language ============ -->
+<section id="language" class="tab-panel" role="tabpanel">
+  <div class="container">
+    <div class="panel-head">
+      <h2>Language Perturbations</h2>
+      <p>Five evaluation-time language axes, each with ten validated paraphrases per task, disjoint from the four light-weight axes used at training time. Robust performance requires generalization beyond surface forms seen during fine-tuning.</p>
+    </div>
+
+    <div class="controls">
+      <div class="field">
+        <label for="language-axis">Axis</label>
+        <select id="language-axis"></select>
+      </div>
+    </div>
+
+    <div class="viewer">
+      <div id="language-video-slot"></div>
+      <div class="meta">
+        <h3 id="language-title">—</h3>
+        <p style="font-size:0.9rem;color:var(--muted);margin:0;">Sample instruction:</p>
+        <blockquote id="language-sample">—</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Leaderboard ============ -->
+<section id="leaderboard" class="tab-panel" role="tabpanel">
+  <div class="container">
+    <div class="panel-head">
+      <h2>Leaderboard</h2>
+      <p>Compare released RoboPRO baselines across clean scenes, clutter, and perturbations. Every score below is computed from the public per-task evaluation records.</p>
+    </div>
+
+    <section class="leaderboard-intro" aria-label="Leaderboard setting">
+      <div>
+        <p class="kicker">Benchmark setting</p>
+        <h3 id="lb-setting-title">Clean</h3>
+        <p id="lb-setting-description">Obstacle-free evaluation across the released RoboPRO baseline suite.</p>
+      </div>
+      <a class="source-link" href="https://huggingface.co/datasets/JackLiu0406/RoboPro-Baselines/tree/main" target="_blank" rel="noopener noreferrer">Open baseline data ↗</a>
+    </section>
+
+    <div class="leaderboard-setting-tabs" role="group" aria-label="Evaluation setting">
+      <button class="leaderboard-setting active" type="button" data-lb-setting="clean" aria-pressed="true">Clean</button>
+      <button class="leaderboard-setting" type="button" data-lb-setting="clutter" aria-pressed="false">Clutter</button>
+      <button class="leaderboard-setting" type="button" data-lb-setting="perturbation_clean" aria-pressed="false">Perturbation · Clean</button>
+      <button class="leaderboard-setting" type="button" data-lb-setting="perturbation_clutter" aria-pressed="false">Perturbation · Clutter</button>
+    </div>
+
+    <div class="controls leaderboard-controls">
+      <div class="field">
+        <label for="lb-metric">Rank by</label>
+        <select id="lb-metric"></select>
+      </div>
+      <div class="field">
+        <label for="lb-scene">Scene</label>
+        <select id="lb-scene"></select>
+      </div>
+      <div class="field">
+        <label for="lb-task">Task</label>
+        <select id="lb-task"></select>
+      </div>
+      <div class="field leaderboard-view-field">
+        <span class="control-label">Task view</span>
+        <div class="leaderboard-view-toggle" role="group" aria-label="Per-task result detail">
+          <button class="leaderboard-view active" type="button" data-lb-view="all" aria-pressed="true">All</button>
+          <button class="leaderboard-view" type="button" data-lb-view="hardest" aria-pressed="false">Hardest 10</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="leaderboard-facts" aria-live="polite">
+      <div><span id="lb-task-count">—</span><small>selected tasks</small></div>
+      <div><span id="lb-episode-count">—</span><small>trials / method</small></div>
+      <div><span id="lb-method-count">—</span><small>released methods</small></div>
+      <div><span id="lb-update-date">—</span><small>data snapshot</small></div>
+    </div>
+
+    <div class="table-wrap leaderboard-table-wrap">
+      <h3 id="lb-ranking-heading">Overall Ranking</h3>
+      <p id="lb-ranking-note" class="table-note">—</p>
+      <table class="booktabs leaderboard-table">
+        <thead>
+          <tr>
+            <th class="num">Rank</th><th>Method</th><th class="num">SR ↑</th><th class="num">HSR ↑</th><th class="num">CR ↓</th><th class="num">Trials</th><th class="num">Tasks</th>
+          </tr>
+        </thead>
+        <tbody id="lb-ranking"></tbody>
+      </table>
+    </div>
+
+    <div class="table-wrap leaderboard-table-wrap">
+      <h3 id="lb-task-heading">Per-task Results</h3>
+      <p id="lb-task-note" class="table-note">—</p>
+      <table class="booktabs leaderboard-table">
+        <thead id="lb-task-head"></thead>
+        <tbody id="lb-task-results"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Policy Rollouts ============ -->
+<section id="rollouts" class="tab-panel" role="tabpanel">
+  <div class="container">
+    <div class="panel-head">
+      <h2>Policy Rollouts</h2>
+      <p>Curated rollouts of the leading policy across diverse tasks and scenes.</p>
+    </div>
+    <div class="rollouts-grid" id="rollouts-grid"></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ Citation ============ -->
+<section class="citation">
+  <div class="container">
+    <h2>Citation</h2>
+    <p>RoboPRO was introduced in <em>Data and Evaluation Protocols for Robust Robotic Manipulation</em>, Data-Centric Robotics Workshop @ RSS&nbsp;2026, by Zhiyuan Li, Charles Eret, Xuan Zhao, Yangzheng Wu, and Amir Rasouli (Huawei Technologies Canada).</p>
+    <pre><code>@inproceedings{li2026robopro,
+  title     = {Data and Evaluation Protocols for Robust Robotic Manipulation},
+  author    = {Li, Zhiyuan and Eret, Charles and Zhao, Xuan and Wu, Yangzheng and Rasouli, Amir},
+  booktitle = {Data-Centric Robotics Workshop at Robotics: Science and Systems (RSS)},
+  year      = {2026},
+  url       = {https://robopro-bench.github.io/RoboPRO/}
+}</code></pre>
+  </div>
+</section>
+
+<footer>
+  <div class="container" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:1rem;">
+    <span>RoboPRO · 2026</span>
+    <span>Built atop <a href="https://robotwin-platform.github.io">RoboTwin</a> &amp; SAPIEN</span>
+  </div>
+</footer>
+
+<script src="app.js?v=8"></script>
+</body>
+</html>

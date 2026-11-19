@@ -1,0 +1,2382 @@
+{
+  "move_bottle": {
+    "original": "move the bottle",
+    "synonyms": [
+      "relocate the bottle",
+      "shift the bottle",
+      "transfer the bottle",
+      "position the bottle",
+      "transport the bottle",
+      "move the plastic bottle",
+      "move the drink bottle",
+      "move the glass bottle",
+      "move the container",
+      "move the beverage bottle",
+      "move the bottle to another location",
+      "the bottle should be moved",
+      "move the bottle please",
+      "please move the bottle",
+      "the bottle needs to be moved",
+      "please relocate the bottle",
+      "kindly move the bottle",
+      "could you move the bottle",
+      "the bottle goes elsewhere",
+      "reposition the bottle"
+    ],
+    "perturbations": [
+      "It's getting late, move the bottle",
+      "I'm busy right now, move the bottle",
+      "Before the meeting, move the bottle",
+      "The kitchen is cold, move the bottle",
+      "It's almost dinner time, move the bottle",
+      "While I'm away, move the bottle",
+      "This evening, move the bottle",
+      "It's been a long day, move the bottle",
+      "Between tasks, move the bottle",
+      "When you get a chance, move the bottle",
+      "The fridge, cabinet, and counter have items, move the bottle",
+      "Among the bottles and cans, move the bottle",
+      "the bottle, not the other items, move it",
+      "Avoiding the boxes and jars, move the bottle",
+      "the bottle is the one, move it",
+      "Separate from the cans, move the bottle",
+      "Of all the containers here, move the bottle",
+      "The specific the bottle, move it",
+      "Ignoring the rest, move the bottle",
+      "Just the bottle, move it carefully",
+      "The cold storage box has it, move the bottle",
+      "The item in the metallic container, move it",
+      "The vessel for liquids, move it",
+      "What sits on the shelf, move it",
+      "The container that preserves food, move the bottle",
+      "The enclosed storage with doors, move the bottle",
+      "The receptacle for items, move the bottle",
+      "The device that keeps things cold, mentioned earlier, move the bottle",
+      "Whatever holds the consumables, move it",
+      "The place where we store things, move the bottle",
+      "I'm thirsty, move the bottle",
+      "We need it for dinner, move the bottle",
+      "To prepare the meal, move the bottle",
+      "For the recipe, move the bottle",
+      "I want to tidy up, move the bottle",
+      "We should organize things, move the bottle",
+      "To make space, move the bottle",
+      "For safekeeping, move the bottle",
+      "It's best to store it, move the bottle",
+      "We should keep it organized, move the bottle",
+      "Could you move the bottle",
+      "Would you please move the bottle",
+      "Could you possibly move the bottle",
+      "Would it be possible to move the bottle",
+      "I was wondering if you could move the bottle",
+      "It would be helpful if you moved the bottle",
+      "Do you think you could move the bottle",
+      "Would you mind moveing the bottle",
+      "Could we move the bottle together",
+      "I'd appreciate it if you moved the bottle"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "move the bottle to the bottle"
+      },
+      {
+        "change_type": "b",
+        "text": "move the can"
+      },
+      {
+        "change_type": "b",
+        "text": "move the glass"
+      },
+      {
+        "change_type": "c",
+        "text": "put the bottle on top of everything"
+      },
+      {
+        "change_type": "d",
+        "text": "do not move the bottle"
+      },
+      {
+        "change_type": "e",
+        "text": "move two bottles"
+      },
+      {
+        "change_type": "f",
+        "text": "move the bottle cap"
+      },
+      {
+        "change_type": "f",
+        "text": "move the bottle label"
+      },
+      {
+        "change_type": "c",
+        "text": "move the bottle under the table"
+      },
+      {
+        "change_type": "b",
+        "text": "move the cork"
+      }
+    ]
+  },
+  "move_bottle_from_fridge_next_to_can": {
+    "original": "move the bottle from the fridge next to the can",
+    "synonyms": [
+      "relocate the bottle from the fridge next to the can",
+      "shift the bottle from the fridge next to the can",
+      "transfer the bottle from the fridge next to the can",
+      "position the bottle from the fridge next to the can",
+      "transport the bottle from the fridge next to the can",
+      "move the plastic bottle from the fridge next to the can",
+      "move the drink bottle from the fridge next to the can",
+      "move the glass bottle from the fridge next to the can",
+      "move the container from the fridge next to the can",
+      "move the beverage bottle from the fridge next to the can",
+      "move the bottle from the fridge beside the can",
+      "the bottle from the fridge should be placed next to the can",
+      "move the bottle from the fridge next to the can please",
+      "please move the bottle from the fridge next to the can",
+      "move the bottle from the refrigerator next to the can",
+      "move the bottle from the fridge next to the aluminum can",
+      "move the bottle away from the fridge to beside the can",
+      "take the bottle from the fridge and position it next to the can",
+      "the bottle needs to be moved from the fridge next to the can",
+      "move the bottle out of the fridge and next to the can"
+    ],
+    "perturbations": [
+      "It's getting late, move the bottle from the fridge",
+      "I'm busy right now, move the bottle from the fridge",
+      "Before the meeting, move the bottle from the fridge",
+      "The kitchen is cold, move the bottle from the fridge",
+      "It's almost dinner time, move the bottle from the fridge",
+      "While I'm away, move the bottle from the fridge",
+      "This evening, move the bottle from the fridge",
+      "It's been a long day, move the bottle from the fridge",
+      "Between tasks, move the bottle from the fridge",
+      "When you get a chance, move the bottle from the fridge",
+      "The fridge, cabinet, and counter have items, move the bottle from the fridge",
+      "Among the bottles and cans, move the bottle from the fridge",
+      "the bottle from the fridge, not the other items, move it",
+      "Avoiding the boxes and jars, move the bottle from the fridge",
+      "the bottle from the fridge is the one, move it",
+      "Separate from the cans, move the bottle from the fridge",
+      "Of all the containers here, move the bottle from the fridge",
+      "The specific the bottle from the fridge, move it",
+      "Ignoring the rest, move the bottle from the fridge",
+      "Just the bottle from the fridge, move it carefully",
+      "The cold storage box has it, move the bottle from the fridge",
+      "The item in the metallic container, move it",
+      "The vessel for liquids, move it",
+      "What sits on the shelf, move it",
+      "The container that preserves food, move the bottle from the fridge",
+      "The enclosed storage with doors, move the bottle from the fridge",
+      "The receptacle for items, move the bottle from the fridge",
+      "The device that keeps things cold, mentioned earlier, move the bottle from the fridge",
+      "Whatever holds the consumables, move it",
+      "The place where we store things, move the bottle from the fridge",
+      "I'm thirsty, move the bottle from the fridge",
+      "We need it for dinner, move the bottle from the fridge",
+      "To prepare the meal, move the bottle from the fridge",
+      "For the recipe, move the bottle from the fridge",
+      "I want to tidy up, move the bottle from the fridge",
+      "We should organize things, move the bottle from the fridge",
+      "To make space, move the bottle from the fridge",
+      "For safekeeping, move the bottle from the fridge",
+      "It's best to store it, move the bottle from the fridge",
+      "We should keep it organized, move the bottle from the fridge",
+      "Could you move the bottle from the fridge",
+      "Would you please move the bottle from the fridge",
+      "Could you possibly move the bottle from the fridge",
+      "Would it be possible to move the bottle from the fridge",
+      "I was wondering if you could move the bottle from the fridge",
+      "It would be helpful if you moved the bottle from the fridge",
+      "Do you think you could move the bottle from the fridge",
+      "Would you mind moveing the bottle from the fridge",
+      "Could we move the bottle from the fridge together",
+      "I'd appreciate it if you moved the bottle from the fridge"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "move the can from the fridge next to the bottle"
+      },
+      {
+        "change_type": "b",
+        "text": "move the milk from the fridge next to the can"
+      },
+      {
+        "change_type": "c",
+        "text": "move the bottle from the fridge under the can"
+      },
+      {
+        "change_type": "c",
+        "text": "move the bottle from the fridge on top of the can"
+      },
+      {
+        "change_type": "d",
+        "text": "do not move the bottle from the fridge next to the can"
+      },
+      {
+        "change_type": "e",
+        "text": "move two bottles from the fridge next to the can"
+      },
+      {
+        "change_type": "f",
+        "text": "move the bottle from the freezer next to the can"
+      },
+      {
+        "change_type": "b",
+        "text": "move the box drink from the fridge next to the can"
+      },
+      {
+        "change_type": "c",
+        "text": "move the bottle from the fridge into the can"
+      },
+      {
+        "change_type": "a",
+        "text": "move the fridge next to the bottle and can"
+      }
+    ]
+  },
+  "move_can_from_cabinet_to_basket": {
+    "original": "move the can from the cabinet to the basket",
+    "synonyms": [
+      "relocate the can from the cabinet to the basket",
+      "shift the can from the cabinet to the basket",
+      "transfer the can from the cabinet to the basket",
+      "position the can from the cabinet to the basket",
+      "transport the can from the cabinet to the basket",
+      "move the aluminum can from the cabinet to the basket",
+      "move the metal can from the cabinet to the basket",
+      "move the soup can from the cabinet to the basket",
+      "move the container from the cabinet to the basket",
+      "move the tin from the cabinet to the basket",
+      "move the can from the cabinet into the basket",
+      "the can from the cabinet should be placed in the basket",
+      "move the can from the cabinet to the basket please",
+      "please move the can from the cabinet to the basket",
+      "move the can from the cupboard to the basket",
+      "move the can away from the cabinet to the basket",
+      "take the can from the cabinet and put it in the basket",
+      "the can needs to be moved from the cabinet to the basket",
+      "move the can out of the cabinet into the basket",
+      "move the can from storage to the basket"
+    ],
+    "perturbations": [
+      "It's getting late, move the can from the cabinet",
+      "I'm busy right now, move the can from the cabinet",
+      "Before the meeting, move the can from the cabinet",
+      "The kitchen is cold, move the can from the cabinet",
+      "It's almost dinner time, move the can from the cabinet",
+      "While I'm away, move the can from the cabinet",
+      "This evening, move the can from the cabinet",
+      "It's been a long day, move the can from the cabinet",
+      "Between tasks, move the can from the cabinet",
+      "When you get a chance, move the can from the cabinet",
+      "The fridge, cabinet, and counter have items, move the can from the cabinet",
+      "Among the bottles and cans, move the can from the cabinet",
+      "the can from the cabinet, not the other items, move it",
+      "Avoiding the boxes and jars, move the can from the cabinet",
+      "the can from the cabinet is the one, move it",
+      "Separate from the cans, move the can from the cabinet",
+      "Of all the containers here, move the can from the cabinet",
+      "The specific the can from the cabinet, move it",
+      "Ignoring the rest, move the can from the cabinet",
+      "Just the can from the cabinet, move it carefully",
+      "The cold storage box has it, move the can from the cabinet",
+      "The item in the metallic container, move it",
+      "The vessel for liquids, move it",
+      "What sits on the shelf, move it",
+      "The container that preserves food, move the can from the cabinet",
+      "The enclosed storage with doors, move the can from the cabinet",
+      "The receptacle for items, move the can from the cabinet",
+      "The device that keeps things cold, mentioned earlier, move the can from the cabinet",
+      "Whatever holds the consumables, move it",
+      "The place where we store things, move the can from the cabinet",
+      "I'm thirsty, move the can from the cabinet",
+      "We need it for dinner, move the can from the cabinet",
+      "To prepare the meal, move the can from the cabinet",
+      "For the recipe, move the can from the cabinet",
+      "I want to tidy up, move the can from the cabinet",
+      "We should organize things, move the can from the cabinet",
+      "To make space, move the can from the cabinet",
+      "For safekeeping, move the can from the cabinet",
+      "It's best to store it, move the can from the cabinet",
+      "We should keep it organized, move the can from the cabinet",
+      "Could you move the can from the cabinet",
+      "Would you please move the can from the cabinet",
+      "Could you possibly move the can from the cabinet",
+      "Would it be possible to move the can from the cabinet",
+      "I was wondering if you could move the can from the cabinet",
+      "It would be helpful if you moved the can from the cabinet",
+      "Do you think you could move the can from the cabinet",
+      "Would you mind moveing the can from the cabinet",
+      "Could we move the can from the cabinet together",
+      "I'd appreciate it if you moved the can from the cabinet"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "move the basket from the cabinet to the can"
+      },
+      {
+        "change_type": "b",
+        "text": "move the bottle from the cabinet to the basket"
+      },
+      {
+        "change_type": "b",
+        "text": "move the jar from the cabinet to the basket"
+      },
+      {
+        "change_type": "c",
+        "text": "move the can from the cabinet under the basket"
+      },
+      {
+        "change_type": "c",
+        "text": "move the can from the cabinet on the basket"
+      },
+      {
+        "change_type": "d",
+        "text": "do not move the can from the cabinet to the basket"
+      },
+      {
+        "change_type": "e",
+        "text": "move two cans from the cabinet to the basket"
+      },
+      {
+        "change_type": "f",
+        "text": "move the can from the cabinet to the shelf"
+      },
+      {
+        "change_type": "f",
+        "text": "move the can from the cabinet to the fridge"
+      },
+      {
+        "change_type": "b",
+        "text": "move the label from the cabinet to the basket"
+      }
+    ]
+  },
+  "move_milk_close_fridge": {
+    "original": "move the milk and close the fridge",
+    "synonyms": [
+      "relocate the milk and close the fridge",
+      "shift the milk and close the fridge",
+      "transfer the milk and close the fridge",
+      "position the milk and close the fridge",
+      "transport the milk and close the fridge",
+      "move the milk carton and close the fridge",
+      "move the milk jug and close the fridge",
+      "move the dairy milk and close the fridge",
+      "move the milk container and close the fridge",
+      "move the beverage milk and close the fridge",
+      "move the milk away and shut the fridge",
+      "the milk should be moved and the fridge closed",
+      "move the milk and close the fridge please",
+      "please move the milk and close the fridge",
+      "move the milk and shut the refrigerator",
+      "move the milk, then close the fridge",
+      "take the milk out and close the fridge",
+      "the milk needs to be moved and the fridge closed",
+      "move the milk then close the fridge door",
+      "move the milk out and close the fridge"
+    ],
+    "perturbations": [
+      "It's getting late, move the milk",
+      "I'm busy right now, move the milk",
+      "Before the meeting, move the milk",
+      "The kitchen is cold, move the milk",
+      "It's almost dinner time, move the milk",
+      "While I'm away, move the milk",
+      "This evening, move the milk",
+      "It's been a long day, move the milk",
+      "Between tasks, move the milk",
+      "When you get a chance, move the milk",
+      "The fridge, cabinet, and counter have items, move the milk",
+      "Among the bottles and cans, move the milk",
+      "the milk, not the other items, move it",
+      "Avoiding the boxes and jars, move the milk",
+      "the milk is the one, move it",
+      "Separate from the cans, move the milk",
+      "Of all the containers here, move the milk",
+      "The specific the milk, move it",
+      "Ignoring the rest, move the milk",
+      "Just the milk, move it carefully",
+      "The cold storage box has it, move the milk",
+      "The item in the metallic container, move it",
+      "The vessel for liquids, move it",
+      "What sits on the shelf, move it",
+      "The container that preserves food, move the milk",
+      "The enclosed storage with doors, move the milk",
+      "The receptacle for items, move the milk",
+      "The device that keeps things cold, mentioned earlier, move the milk",
+      "Whatever holds the consumables, move it",
+      "The place where we store things, move the milk",
+      "I'm thirsty, move the milk",
+      "We need it for dinner, move the milk",
+      "To prepare the meal, move the milk",
+      "For the recipe, move the milk",
+      "I want to tidy up, move the milk",
+      "We should organize things, move the milk",
+      "To make space, move the milk",
+      "For safekeeping, move the milk",
+      "It's best to store it, move the milk",
+      "We should keep it organized, move the milk",
+      "Could you move the milk",
+      "Would you please move the milk",
+      "Could you possibly move the milk",
+      "Would it be possible to move the milk",
+      "I was wondering if you could move the milk",
+      "It would be helpful if you moved the milk",
+      "Do you think you could move the milk",
+      "Would you mind moveing the milk",
+      "Could we move the milk together",
+      "I'd appreciate it if you moved the milk"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "move the fridge and close the milk"
+      },
+      {
+        "change_type": "b",
+        "text": "move the juice and close the fridge"
+      },
+      {
+        "change_type": "b",
+        "text": "move the butter and close the fridge"
+      },
+      {
+        "change_type": "d",
+        "text": "do not move the milk and close the fridge"
+      },
+      {
+        "change_type": "e",
+        "text": "move two milks and close the fridge"
+      },
+      {
+        "change_type": "c",
+        "text": "move the milk and open the fridge"
+      },
+      {
+        "change_type": "f",
+        "text": "move the milk bottle and close the fridge"
+      },
+      {
+        "change_type": "f",
+        "text": "move the milk carton and close the cabinet"
+      },
+      {
+        "change_type": "b",
+        "text": "move the cream and close the fridge"
+      },
+      {
+        "change_type": "d",
+        "text": "leave the milk and close the fridge"
+      }
+    ]
+  },
+  "pick_bottle_from_fridge": {
+    "original": "pick up the bottle from the fridge",
+    "synonyms": [
+      "grab the bottle from the fridge",
+      "grasp the bottle from the fridge",
+      "take the bottle from the fridge",
+      "lift the bottle from the fridge",
+      "retrieve the bottle from the fridge",
+      "pick up the plastic bottle from the fridge",
+      "pick up the drink bottle from the fridge",
+      "pick up the glass bottle from the fridge",
+      "pick up the container from the fridge",
+      "pick up the beverage bottle from the fridge",
+      "the bottle should be picked up from the fridge",
+      "pick up the bottle from the fridge please",
+      "please pick up the bottle from the fridge",
+      "pick up the bottle from the refrigerator",
+      "get the bottle from the fridge",
+      "take the bottle out of the fridge",
+      "the bottle needs to be picked up from the fridge",
+      "pick the bottle up from the fridge",
+      "pick up the bottle that is in the fridge",
+      "fetch the bottle from the fridge"
+    ],
+    "perturbations": [
+      "It's getting late, pick up the bottle from the fridge",
+      "I'm busy right now, pick up the bottle from the fridge",
+      "Before the meeting, pick up the bottle from the fridge",
+      "The kitchen is cold, pick up the bottle from the fridge",
+      "It's almost dinner time, pick up the bottle from the fridge",
+      "While I'm away, pick up the bottle from the fridge",
+      "This evening, pick up the bottle from the fridge",
+      "It's been a long day, pick up the bottle from the fridge",
+      "Between tasks, pick up the bottle from the fridge",
+      "When you get a chance, pick up the bottle from the fridge",
+      "The fridge, cabinet, and counter have items, pick up the bottle from the fridge",
+      "Among the bottles and cans, pick up the bottle from the fridge",
+      "the bottle from the fridge, not the other items, pick up it",
+      "Avoiding the boxes and jars, pick up the bottle from the fridge",
+      "the bottle from the fridge is the one, pick up it",
+      "Separate from the cans, pick up the bottle from the fridge",
+      "Of all the containers here, pick up the bottle from the fridge",
+      "The specific the bottle from the fridge, pick up it",
+      "Ignoring the rest, pick up the bottle from the fridge",
+      "Just the bottle from the fridge, pick up it carefully",
+      "The cold storage box has it, pick up the bottle from the fridge",
+      "The item in the metallic container, pick up it",
+      "The vessel for liquids, pick up it",
+      "What sits on the shelf, pick up it",
+      "The container that preserves food, pick up the bottle from the fridge",
+      "The enclosed storage with doors, pick up the bottle from the fridge",
+      "The receptacle for items, pick up the bottle from the fridge",
+      "The device that keeps things cold, mentioned earlier, pick up the bottle from the fridge",
+      "Whatever holds the consumables, pick up it",
+      "The place where we store things, pick up the bottle from the fridge",
+      "I'm thirsty, pick up the bottle from the fridge",
+      "We need it for dinner, pick up the bottle from the fridge",
+      "To prepare the meal, pick up the bottle from the fridge",
+      "For the recipe, pick up the bottle from the fridge",
+      "I want to tidy up, pick up the bottle from the fridge",
+      "We should organize things, pick up the bottle from the fridge",
+      "To make space, pick up the bottle from the fridge",
+      "For safekeeping, pick up the bottle from the fridge",
+      "It's best to store it, pick up the bottle from the fridge",
+      "We should keep it organized, pick up the bottle from the fridge",
+      "Could you pick up the bottle from the fridge",
+      "Would you please pick up the bottle from the fridge",
+      "Could you possibly pick up the bottle from the fridge",
+      "Would it be possible to pick up the bottle from the fridge",
+      "I was wondering if you could pick up the bottle from the fridge",
+      "It would be helpful if you pick upd the bottle from the fridge",
+      "Do you think you could pick up the bottle from the fridge",
+      "Would you mind pick uping the bottle from the fridge",
+      "Could we pick up the bottle from the fridge together",
+      "I'd appreciate it if you pick upd the bottle from the fridge"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "pick up the fridge from the bottle"
+      },
+      {
+        "change_type": "b",
+        "text": "pick up the can from the fridge"
+      },
+      {
+        "change_type": "b",
+        "text": "pick up the glass from the fridge"
+      },
+      {
+        "change_type": "c",
+        "text": "pick up the bottle from under the fridge"
+      },
+      {
+        "change_type": "c",
+        "text": "pick up the bottle on the fridge"
+      },
+      {
+        "change_type": "d",
+        "text": "do not pick up the bottle from the fridge"
+      },
+      {
+        "change_type": "e",
+        "text": "pick up two bottles from the fridge"
+      },
+      {
+        "change_type": "f",
+        "text": "pick up the bottle from the freezer"
+      },
+      {
+        "change_type": "f",
+        "text": "pick up the bottle from the cabinet"
+      },
+      {
+        "change_type": "b",
+        "text": "pick up the cork from the fridge"
+      }
+    ]
+  },
+  "pick_boxdrink_from_basket": {
+    "original": "pick up the box drink from the basket",
+    "synonyms": [
+      "grab the box drink from the basket",
+      "grasp the box drink from the basket",
+      "take the box drink from the basket",
+      "lift the box drink from the basket",
+      "retrieve the box drink from the basket",
+      "pick up the juice box from the basket",
+      "pick up the drink box from the basket",
+      "pick up the beverage box from the basket",
+      "pick up the boxed drink from the basket",
+      "pick up the carton drink from the basket",
+      "the box drink should be picked up from the basket",
+      "pick up the box drink from the basket please",
+      "please pick up the box drink from the basket",
+      "get the box drink from the basket",
+      "take the box drink out of the basket",
+      "the box drink needs to be picked up from the basket",
+      "pick the box drink up from the basket",
+      "pick up the drink box that is in the basket",
+      "fetch the box drink from the basket",
+      "obtain the box drink from the basket"
+    ],
+    "perturbations": [
+      "It's getting late, pick up the box drink from the basket",
+      "I'm busy right now, pick up the box drink from the basket",
+      "Before the meeting, pick up the box drink from the basket",
+      "The kitchen is cold, pick up the box drink from the basket",
+      "It's almost dinner time, pick up the box drink from the basket",
+      "While I'm away, pick up the box drink from the basket",
+      "This evening, pick up the box drink from the basket",
+      "It's been a long day, pick up the box drink from the basket",
+      "Between tasks, pick up the box drink from the basket",
+      "When you get a chance, pick up the box drink from the basket",
+      "The fridge, cabinet, and counter have items, pick up the box drink from the basket",
+      "Among the bottles and cans, pick up the box drink from the basket",
+      "the box drink from the basket, not the other items, pick up it",
+      "Avoiding the boxes and jars, pick up the box drink from the basket",
+      "the box drink from the basket is the one, pick up it",
+      "Separate from the cans, pick up the box drink from the basket",
+      "Of all the containers here, pick up the box drink from the basket",
+      "The specific the box drink from the basket, pick up it",
+      "Ignoring the rest, pick up the box drink from the basket",
+      "Just the box drink from the basket, pick up it carefully",
+      "The cold storage box has it, pick up the box drink from the basket",
+      "The item in the metallic container, pick up it",
+      "The vessel for liquids, pick up it",
+      "What sits on the shelf, pick up it",
+      "The container that preserves food, pick up the box drink from the basket",
+      "The enclosed storage with doors, pick up the box drink from the basket",
+      "The receptacle for items, pick up the box drink from the basket",
+      "The device that keeps things cold, mentioned earlier, pick up the box drink from the basket",
+      "Whatever holds the consumables, pick up it",
+      "The place where we store things, pick up the box drink from the basket",
+      "I'm thirsty, pick up the box drink from the basket",
+      "We need it for dinner, pick up the box drink from the basket",
+      "To prepare the meal, pick up the box drink from the basket",
+      "For the recipe, pick up the box drink from the basket",
+      "I want to tidy up, pick up the box drink from the basket",
+      "We should organize things, pick up the box drink from the basket",
+      "To make space, pick up the box drink from the basket",
+      "For safekeeping, pick up the box drink from the basket",
+      "It's best to store it, pick up the box drink from the basket",
+      "We should keep it organized, pick up the box drink from the basket",
+      "Could you pick up the box drink from the basket",
+      "Would you please pick up the box drink from the basket",
+      "Could you possibly pick up the box drink from the basket",
+      "Would it be possible to pick up the box drink from the basket",
+      "I was wondering if you could pick up the box drink from the basket",
+      "It would be helpful if you pick upd the box drink from the basket",
+      "Do you think you could pick up the box drink from the basket",
+      "Would you mind pick uping the box drink from the basket",
+      "Could we pick up the box drink from the basket together",
+      "I'd appreciate it if you pick upd the box drink from the basket"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "pick up the basket from the box drink"
+      },
+      {
+        "change_type": "b",
+        "text": "pick up the bottle from the basket"
+      },
+      {
+        "change_type": "b",
+        "text": "pick up the can from the basket"
+      },
+      {
+        "change_type": "c",
+        "text": "pick up the box drink under the basket"
+      },
+      {
+        "change_type": "c",
+        "text": "pick up the box drink on the basket"
+      },
+      {
+        "change_type": "d",
+        "text": "do not pick up the box drink from the basket"
+      },
+      {
+        "change_type": "e",
+        "text": "pick up two box drinks from the basket"
+      },
+      {
+        "change_type": "f",
+        "text": "pick up the box drink from the cabinet"
+      },
+      {
+        "change_type": "f",
+        "text": "pick up the box drink from the fridge"
+      },
+      {
+        "change_type": "b",
+        "text": "pick up the straw from the basket"
+      }
+    ]
+  },
+  "pick_can_from_basket": {
+    "original": "pick up the can from the basket",
+    "synonyms": [
+      "grab the can from the basket",
+      "grasp the can from the basket",
+      "take the can from the basket",
+      "lift the can from the basket",
+      "retrieve the can from the basket",
+      "pick up the aluminum can from the basket",
+      "pick up the metal can from the basket",
+      "pick up the soup can from the basket",
+      "pick up the container from the basket",
+      "pick up the tin from the basket",
+      "the can should be picked up from the basket",
+      "pick up the can from the basket please",
+      "please pick up the can from the basket",
+      "get the can from the basket",
+      "take the can out of the basket",
+      "the can needs to be picked up from the basket",
+      "pick the can up from the basket",
+      "pick up the can that is in the basket",
+      "fetch the can from the basket",
+      "obtain the can from the basket"
+    ],
+    "perturbations": [
+      "It's getting late, pick up the can from the basket",
+      "I'm busy right now, pick up the can from the basket",
+      "Before the meeting, pick up the can from the basket",
+      "The kitchen is cold, pick up the can from the basket",
+      "It's almost dinner time, pick up the can from the basket",
+      "While I'm away, pick up the can from the basket",
+      "This evening, pick up the can from the basket",
+      "It's been a long day, pick up the can from the basket",
+      "Between tasks, pick up the can from the basket",
+      "When you get a chance, pick up the can from the basket",
+      "The fridge, cabinet, and counter have items, pick up the can from the basket",
+      "Among the bottles and cans, pick up the can from the basket",
+      "the can from the basket, not the other items, pick up it",
+      "Avoiding the boxes and jars, pick up the can from the basket",
+      "the can from the basket is the one, pick up it",
+      "Separate from the cans, pick up the can from the basket",
+      "Of all the containers here, pick up the can from the basket",
+      "The specific the can from the basket, pick up it",
+      "Ignoring the rest, pick up the can from the basket",
+      "Just the can from the basket, pick up it carefully",
+      "The cold storage box has it, pick up the can from the basket",
+      "The item in the metallic container, pick up it",
+      "The vessel for liquids, pick up it",
+      "What sits on the shelf, pick up it",
+      "The container that preserves food, pick up the can from the basket",
+      "The enclosed storage with doors, pick up the can from the basket",
+      "The receptacle for items, pick up the can from the basket",
+      "The device that keeps things cold, mentioned earlier, pick up the can from the basket",
+      "Whatever holds the consumables, pick up it",
+      "The place where we store things, pick up the can from the basket",
+      "I'm thirsty, pick up the can from the basket",
+      "We need it for dinner, pick up the can from the basket",
+      "To prepare the meal, pick up the can from the basket",
+      "For the recipe, pick up the can from the basket",
+      "I want to tidy up, pick up the can from the basket",
+      "We should organize things, pick up the can from the basket",
+      "To make space, pick up the can from the basket",
+      "For safekeeping, pick up the can from the basket",
+      "It's best to store it, pick up the can from the basket",
+      "We should keep it organized, pick up the can from the basket",
+      "Could you pick up the can from the basket",
+      "Would you please pick up the can from the basket",
+      "Could you possibly pick up the can from the basket",
+      "Would it be possible to pick up the can from the basket",
+      "I was wondering if you could pick up the can from the basket",
+      "It would be helpful if you pick upd the can from the basket",
+      "Do you think you could pick up the can from the basket",
+      "Would you mind pick uping the can from the basket",
+      "Could we pick up the can from the basket together",
+      "I'd appreciate it if you pick upd the can from the basket"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "pick up the basket from the can"
+      },
+      {
+        "change_type": "b",
+        "text": "pick up the bottle from the basket"
+      },
+      {
+        "change_type": "b",
+        "text": "pick up the box drink from the basket"
+      },
+      {
+        "change_type": "c",
+        "text": "pick up the can under the basket"
+      },
+      {
+        "change_type": "c",
+        "text": "pick up the can on the basket"
+      },
+      {
+        "change_type": "d",
+        "text": "do not pick up the can from the basket"
+      },
+      {
+        "change_type": "e",
+        "text": "pick up two cans from the basket"
+      },
+      {
+        "change_type": "f",
+        "text": "pick up the can from the cabinet"
+      },
+      {
+        "change_type": "f",
+        "text": "pick up the can from the fridge"
+      },
+      {
+        "change_type": "b",
+        "text": "pick up the lid from the basket"
+      }
+    ]
+  },
+  "pick_can_from_cabinet": {
+    "original": "pick up the can from the cabinet",
+    "synonyms": [
+      "grab the can from the cabinet",
+      "grasp the can from the cabinet",
+      "take the can from the cabinet",
+      "lift the can from the cabinet",
+      "retrieve the can from the cabinet",
+      "pick up the aluminum can from the cabinet",
+      "pick up the metal can from the cabinet",
+      "pick up the soup can from the cabinet",
+      "pick up the container from the cabinet",
+      "pick up the tin from the cabinet",
+      "the can should be picked up from the cabinet",
+      "pick up the can from the cabinet please",
+      "please pick up the can from the cabinet",
+      "get the can from the cabinet",
+      "take the can out of the cabinet",
+      "the can needs to be picked up from the cabinet",
+      "pick the can up from the cabinet",
+      "pick up the can that is in the cabinet",
+      "fetch the can from the cabinet",
+      "pick up the can from the cupboard"
+    ],
+    "perturbations": [
+      "It's getting late, pick up the can from the cabinet",
+      "I'm busy right now, pick up the can from the cabinet",
+      "Before the meeting, pick up the can from the cabinet",
+      "The kitchen is cold, pick up the can from the cabinet",
+      "It's almost dinner time, pick up the can from the cabinet",
+      "While I'm away, pick up the can from the cabinet",
+      "This evening, pick up the can from the cabinet",
+      "It's been a long day, pick up the can from the cabinet",
+      "Between tasks, pick up the can from the cabinet",
+      "When you get a chance, pick up the can from the cabinet",
+      "The fridge, cabinet, and counter have items, pick up the can from the cabinet",
+      "Among the bottles and cans, pick up the can from the cabinet",
+      "the can from the cabinet, not the other items, pick up it",
+      "Avoiding the boxes and jars, pick up the can from the cabinet",
+      "the can from the cabinet is the one, pick up it",
+      "Separate from the cans, pick up the can from the cabinet",
+      "Of all the containers here, pick up the can from the cabinet",
+      "The specific the can from the cabinet, pick up it",
+      "Ignoring the rest, pick up the can from the cabinet",
+      "Just the can from the cabinet, pick up it carefully",
+      "The cold storage box has it, pick up the can from the cabinet",
+      "The item in the metallic container, pick up it",
+      "The vessel for liquids, pick up it",
+      "What sits on the shelf, pick up it",
+      "The container that preserves food, pick up the can from the cabinet",
+      "The enclosed storage with doors, pick up the can from the cabinet",
+      "The receptacle for items, pick up the can from the cabinet",
+      "The device that keeps things cold, mentioned earlier, pick up the can from the cabinet",
+      "Whatever holds the consumables, pick up it",
+      "The place where we store things, pick up the can from the cabinet",
+      "I'm thirsty, pick up the can from the cabinet",
+      "We need it for dinner, pick up the can from the cabinet",
+      "To prepare the meal, pick up the can from the cabinet",
+      "For the recipe, pick up the can from the cabinet",
+      "I want to tidy up, pick up the can from the cabinet",
+      "We should organize things, pick up the can from the cabinet",
+      "To make space, pick up the can from the cabinet",
+      "For safekeeping, pick up the can from the cabinet",
+      "It's best to store it, pick up the can from the cabinet",
+      "We should keep it organized, pick up the can from the cabinet",
+      "Could you pick up the can from the cabinet",
+      "Would you please pick up the can from the cabinet",
+      "Could you possibly pick up the can from the cabinet",
+      "Would it be possible to pick up the can from the cabinet",
+      "I was wondering if you could pick up the can from the cabinet",
+      "It would be helpful if you pick upd the can from the cabinet",
+      "Do you think you could pick up the can from the cabinet",
+      "Would you mind pick uping the can from the cabinet",
+      "Could we pick up the can from the cabinet together",
+      "I'd appreciate it if you pick upd the can from the cabinet"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "pick up the cabinet from the can"
+      },
+      {
+        "change_type": "b",
+        "text": "pick up the bottle from the cabinet"
+      },
+      {
+        "change_type": "b",
+        "text": "pick up the jar from the cabinet"
+      },
+      {
+        "change_type": "c",
+        "text": "pick up the can under the cabinet"
+      },
+      {
+        "change_type": "c",
+        "text": "pick up the can on the cabinet"
+      },
+      {
+        "change_type": "d",
+        "text": "do not pick up the can from the cabinet"
+      },
+      {
+        "change_type": "e",
+        "text": "pick up two cans from the cabinet"
+      },
+      {
+        "change_type": "f",
+        "text": "pick up the can from the basket"
+      },
+      {
+        "change_type": "f",
+        "text": "pick up the can from the fridge"
+      },
+      {
+        "change_type": "b",
+        "text": "pick up the label from the cabinet"
+      }
+    ]
+  },
+  "pick_milk_box_from_fridge": {
+    "original": "pick up the milk box from the fridge",
+    "synonyms": [
+      "grab the milk box from the fridge",
+      "grasp the milk box from the fridge",
+      "take the milk box from the fridge",
+      "lift the milk box from the fridge",
+      "retrieve the milk box from the fridge",
+      "pick up the milk carton from the fridge",
+      "pick up the dairy box from the fridge",
+      "pick up the boxed milk from the fridge",
+      "pick up the milk container from the fridge",
+      "pick up the beverage box from the fridge",
+      "the milk box should be picked up from the fridge",
+      "pick up the milk box from the fridge please",
+      "please pick up the milk box from the fridge",
+      "get the milk box from the fridge",
+      "take the milk box out of the fridge",
+      "the milk box needs to be picked up from the fridge",
+      "pick the milk box up from the fridge",
+      "pick up the milk box that is in the fridge",
+      "fetch the milk box from the fridge",
+      "obtain the milk box from the fridge"
+    ],
+    "perturbations": [
+      "It's getting late, pick up the milk box from the fridge",
+      "I'm busy right now, pick up the milk box from the fridge",
+      "Before the meeting, pick up the milk box from the fridge",
+      "The kitchen is cold, pick up the milk box from the fridge",
+      "It's almost dinner time, pick up the milk box from the fridge",
+      "While I'm away, pick up the milk box from the fridge",
+      "This evening, pick up the milk box from the fridge",
+      "It's been a long day, pick up the milk box from the fridge",
+      "Between tasks, pick up the milk box from the fridge",
+      "When you get a chance, pick up the milk box from the fridge",
+      "The fridge, cabinet, and counter have items, pick up the milk box from the fridge",
+      "Among the bottles and cans, pick up the milk box from the fridge",
+      "the milk box from the fridge, not the other items, pick up it",
+      "Avoiding the boxes and jars, pick up the milk box from the fridge",
+      "the milk box from the fridge is the one, pick up it",
+      "Separate from the cans, pick up the milk box from the fridge",
+      "Of all the containers here, pick up the milk box from the fridge",
+      "The specific the milk box from the fridge, pick up it",
+      "Ignoring the rest, pick up the milk box from the fridge",
+      "Just the milk box from the fridge, pick up it carefully",
+      "The cold storage box has it, pick up the milk box from the fridge",
+      "The item in the metallic container, pick up it",
+      "The vessel for liquids, pick up it",
+      "What sits on the shelf, pick up it",
+      "The container that preserves food, pick up the milk box from the fridge",
+      "The enclosed storage with doors, pick up the milk box from the fridge",
+      "The receptacle for items, pick up the milk box from the fridge",
+      "The device that keeps things cold, mentioned earlier, pick up the milk box from the fridge",
+      "Whatever holds the consumables, pick up it",
+      "The place where we store things, pick up the milk box from the fridge",
+      "I'm thirsty, pick up the milk box from the fridge",
+      "We need it for dinner, pick up the milk box from the fridge",
+      "To prepare the meal, pick up the milk box from the fridge",
+      "For the recipe, pick up the milk box from the fridge",
+      "I want to tidy up, pick up the milk box from the fridge",
+      "We should organize things, pick up the milk box from the fridge",
+      "To make space, pick up the milk box from the fridge",
+      "For safekeeping, pick up the milk box from the fridge",
+      "It's best to store it, pick up the milk box from the fridge",
+      "We should keep it organized, pick up the milk box from the fridge",
+      "Could you pick up the milk box from the fridge",
+      "Would you please pick up the milk box from the fridge",
+      "Could you possibly pick up the milk box from the fridge",
+      "Would it be possible to pick up the milk box from the fridge",
+      "I was wondering if you could pick up the milk box from the fridge",
+      "It would be helpful if you pick upd the milk box from the fridge",
+      "Do you think you could pick up the milk box from the fridge",
+      "Would you mind pick uping the milk box from the fridge",
+      "Could we pick up the milk box from the fridge together",
+      "I'd appreciate it if you pick upd the milk box from the fridge"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "pick up the fridge from the milk box"
+      },
+      {
+        "change_type": "b",
+        "text": "pick up the milk bottle from the fridge"
+      },
+      {
+        "change_type": "b",
+        "text": "pick up the butter from the fridge"
+      },
+      {
+        "change_type": "c",
+        "text": "pick up the milk box under the fridge"
+      },
+      {
+        "change_type": "c",
+        "text": "pick up the milk box on the fridge"
+      },
+      {
+        "change_type": "d",
+        "text": "do not pick up the milk box from the fridge"
+      },
+      {
+        "change_type": "e",
+        "text": "pick up two milk boxes from the fridge"
+      },
+      {
+        "change_type": "f",
+        "text": "pick up the milk box from the cabinet"
+      },
+      {
+        "change_type": "f",
+        "text": "pick up the milk box from the basket"
+      },
+      {
+        "change_type": "b",
+        "text": "pick up the milk straw from the fridge"
+      }
+    ]
+  },
+  "pick_sauce_can_from_cabinet": {
+    "original": "pick up the sauce can from the cabinet",
+    "synonyms": [
+      "grab the sauce can from the cabinet",
+      "grasp the sauce can from the cabinet",
+      "take the sauce can from the cabinet",
+      "lift the sauce can from the cabinet",
+      "retrieve the sauce can from the cabinet",
+      "pick up the tomato sauce can from the cabinet",
+      "pick up the condiment can from the cabinet",
+      "pick up the cooking sauce can from the cabinet",
+      "pick up the sauce container from the cabinet",
+      "pick up the sauce tin from the cabinet",
+      "the sauce can should be picked up from the cabinet",
+      "pick up the sauce can from the cabinet please",
+      "please pick up the sauce can from the cabinet",
+      "get the sauce can from the cabinet",
+      "take the sauce can out of the cabinet",
+      "the sauce can needs to be picked up from the cabinet",
+      "pick the sauce can up from the cabinet",
+      "pick up the sauce can that is in the cabinet",
+      "fetch the sauce can from the cabinet",
+      "pick up the sauce can from the cupboard"
+    ],
+    "perturbations": [
+      "It's getting late, pick up the sauce can from the cabinet",
+      "I'm busy right now, pick up the sauce can from the cabinet",
+      "Before the meeting, pick up the sauce can from the cabinet",
+      "The kitchen is cold, pick up the sauce can from the cabinet",
+      "It's almost dinner time, pick up the sauce can from the cabinet",
+      "While I'm away, pick up the sauce can from the cabinet",
+      "This evening, pick up the sauce can from the cabinet",
+      "It's been a long day, pick up the sauce can from the cabinet",
+      "Between tasks, pick up the sauce can from the cabinet",
+      "When you get a chance, pick up the sauce can from the cabinet",
+      "The fridge, cabinet, and counter have items, pick up the sauce can from the cabinet",
+      "Among the bottles and cans, pick up the sauce can from the cabinet",
+      "the sauce can from the cabinet, not the other items, pick up it",
+      "Avoiding the boxes and jars, pick up the sauce can from the cabinet",
+      "the sauce can from the cabinet is the one, pick up it",
+      "Separate from the cans, pick up the sauce can from the cabinet",
+      "Of all the containers here, pick up the sauce can from the cabinet",
+      "The specific the sauce can from the cabinet, pick up it",
+      "Ignoring the rest, pick up the sauce can from the cabinet",
+      "Just the sauce can from the cabinet, pick up it carefully",
+      "The cold storage box has it, pick up the sauce can from the cabinet",
+      "The item in the metallic container, pick up it",
+      "The vessel for liquids, pick up it",
+      "What sits on the shelf, pick up it",
+      "The container that preserves food, pick up the sauce can from the cabinet",
+      "The enclosed storage with doors, pick up the sauce can from the cabinet",
+      "The receptacle for items, pick up the sauce can from the cabinet",
+      "The device that keeps things cold, mentioned earlier, pick up the sauce can from the cabinet",
+      "Whatever holds the consumables, pick up it",
+      "The place where we store things, pick up the sauce can from the cabinet",
+      "I'm thirsty, pick up the sauce can from the cabinet",
+      "We need it for dinner, pick up the sauce can from the cabinet",
+      "To prepare the meal, pick up the sauce can from the cabinet",
+      "For the recipe, pick up the sauce can from the cabinet",
+      "I want to tidy up, pick up the sauce can from the cabinet",
+      "We should organize things, pick up the sauce can from the cabinet",
+      "To make space, pick up the sauce can from the cabinet",
+      "For safekeeping, pick up the sauce can from the cabinet",
+      "It's best to store it, pick up the sauce can from the cabinet",
+      "We should keep it organized, pick up the sauce can from the cabinet",
+      "Could you pick up the sauce can from the cabinet",
+      "Would you please pick up the sauce can from the cabinet",
+      "Could you possibly pick up the sauce can from the cabinet",
+      "Would it be possible to pick up the sauce can from the cabinet",
+      "I was wondering if you could pick up the sauce can from the cabinet",
+      "It would be helpful if you pick upd the sauce can from the cabinet",
+      "Do you think you could pick up the sauce can from the cabinet",
+      "Would you mind pick uping the sauce can from the cabinet",
+      "Could we pick up the sauce can from the cabinet together",
+      "I'd appreciate it if you pick upd the sauce can from the cabinet"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "pick up the cabinet from the sauce can"
+      },
+      {
+        "change_type": "b",
+        "text": "pick up the plain can from the cabinet"
+      },
+      {
+        "change_type": "b",
+        "text": "pick up the soup can from the cabinet"
+      },
+      {
+        "change_type": "c",
+        "text": "pick up the sauce can under the cabinet"
+      },
+      {
+        "change_type": "c",
+        "text": "pick up the sauce can on the cabinet"
+      },
+      {
+        "change_type": "d",
+        "text": "do not pick up the sauce can from the cabinet"
+      },
+      {
+        "change_type": "e",
+        "text": "pick up two sauce cans from the cabinet"
+      },
+      {
+        "change_type": "f",
+        "text": "pick up the sauce can from the basket"
+      },
+      {
+        "change_type": "f",
+        "text": "pick up the sauce can from the fridge"
+      },
+      {
+        "change_type": "b",
+        "text": "pick up the sauce label from the cabinet"
+      }
+    ]
+  },
+  "put_bottle_in_basket": {
+    "original": "put the bottle in the basket",
+    "synonyms": [
+      "place the bottle in the basket",
+      "set the bottle in the basket",
+      "lay the bottle in the basket",
+      "position the bottle in the basket",
+      "deposit the bottle in the basket",
+      "put the plastic bottle in the basket",
+      "put the drink bottle in the basket",
+      "put the glass bottle in the basket",
+      "put the container in the basket",
+      "put the beverage bottle in the basket",
+      "the bottle should be put in the basket",
+      "put the bottle in the basket please",
+      "please put the bottle in the basket",
+      "put the bottle into the basket",
+      "place the bottle inside the basket",
+      "the bottle needs to be put in the basket",
+      "put the bottle within the basket",
+      "insert the bottle in the basket",
+      "the bottle goes in the basket",
+      "set the bottle down in the basket"
+    ],
+    "perturbations": [
+      "It's getting late, put the bottle",
+      "I'm busy right now, put the bottle",
+      "Before the meeting, put the bottle",
+      "The kitchen is cold, put the bottle",
+      "It's almost dinner time, put the bottle",
+      "While I'm away, put the bottle",
+      "This evening, put the bottle",
+      "It's been a long day, put the bottle",
+      "Between tasks, put the bottle",
+      "When you get a chance, put the bottle",
+      "The fridge, cabinet, and counter have items, put the bottle",
+      "Among the bottles and cans, put the bottle",
+      "the bottle, not the other items, put it",
+      "Avoiding the boxes and jars, put the bottle",
+      "the bottle is the one, put it",
+      "Separate from the cans, put the bottle",
+      "Of all the containers here, put the bottle",
+      "The specific the bottle, put it",
+      "Ignoring the rest, put the bottle",
+      "Just the bottle, put it carefully",
+      "The cold storage box has it, put the bottle",
+      "The item in the metallic container, put it",
+      "The vessel for liquids, put it",
+      "What sits on the shelf, put it",
+      "The container that preserves food, put the bottle",
+      "The enclosed storage with doors, put the bottle",
+      "The receptacle for items, put the bottle",
+      "The device that keeps things cold, mentioned earlier, put the bottle",
+      "Whatever holds the consumables, put it",
+      "The place where we store things, put the bottle",
+      "I'm thirsty, put the bottle",
+      "We need it for dinner, put the bottle",
+      "To prepare the meal, put the bottle",
+      "For the recipe, put the bottle",
+      "I want to tidy up, put the bottle",
+      "We should organize things, put the bottle",
+      "To make space, put the bottle",
+      "For safekeeping, put the bottle",
+      "It's best to store it, put the bottle",
+      "We should keep it organized, put the bottle",
+      "Could you put the bottle",
+      "Would you please put the bottle",
+      "Could you possibly put the bottle",
+      "Would it be possible to put the bottle",
+      "I was wondering if you could put the bottle",
+      "It would be helpful if you putd the bottle",
+      "Do you think you could put the bottle",
+      "Would you mind puting the bottle",
+      "Could we put the bottle together",
+      "I'd appreciate it if you putd the bottle"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the basket in the bottle"
+      },
+      {
+        "change_type": "b",
+        "text": "put the can in the basket"
+      },
+      {
+        "change_type": "b",
+        "text": "put the glass in the basket"
+      },
+      {
+        "change_type": "c",
+        "text": "put the bottle under the basket"
+      },
+      {
+        "change_type": "c",
+        "text": "put the bottle on the basket"
+      },
+      {
+        "change_type": "d",
+        "text": "do not put the bottle in the basket"
+      },
+      {
+        "change_type": "e",
+        "text": "put two bottles in the basket"
+      },
+      {
+        "change_type": "f",
+        "text": "put the bottle in the cabinet"
+      },
+      {
+        "change_type": "f",
+        "text": "put the bottle in the fridge"
+      },
+      {
+        "change_type": "b",
+        "text": "put the cork in the basket"
+      }
+    ]
+  },
+  "put_bottle_in_fridge": {
+    "original": "put the bottle in the fridge",
+    "synonyms": [
+      "place the bottle in the fridge",
+      "set the bottle in the fridge",
+      "lay the bottle in the fridge",
+      "position the bottle in the fridge",
+      "deposit the bottle in the fridge",
+      "put the plastic bottle in the fridge",
+      "put the drink bottle in the fridge",
+      "put the glass bottle in the fridge",
+      "put the container in the fridge",
+      "put the beverage bottle in the fridge",
+      "the bottle should be put in the fridge",
+      "put the bottle in the fridge please",
+      "please put the bottle in the fridge",
+      "put the bottle into the fridge",
+      "place the bottle inside the fridge",
+      "the bottle needs to be put in the fridge",
+      "put the bottle in the refrigerator",
+      "insert the bottle in the fridge",
+      "the bottle goes in the fridge",
+      "set the bottle down in the fridge"
+    ],
+    "perturbations": [
+      "It's getting late, put the bottle",
+      "I'm busy right now, put the bottle",
+      "Before the meeting, put the bottle",
+      "The kitchen is cold, put the bottle",
+      "It's almost dinner time, put the bottle",
+      "While I'm away, put the bottle",
+      "This evening, put the bottle",
+      "It's been a long day, put the bottle",
+      "Between tasks, put the bottle",
+      "When you get a chance, put the bottle",
+      "The fridge, cabinet, and counter have items, put the bottle",
+      "Among the bottles and cans, put the bottle",
+      "the bottle, not the other items, put it",
+      "Avoiding the boxes and jars, put the bottle",
+      "the bottle is the one, put it",
+      "Separate from the cans, put the bottle",
+      "Of all the containers here, put the bottle",
+      "The specific the bottle, put it",
+      "Ignoring the rest, put the bottle",
+      "Just the bottle, put it carefully",
+      "The cold storage box has it, put the bottle",
+      "The item in the metallic container, put it",
+      "The vessel for liquids, put it",
+      "What sits on the shelf, put it",
+      "The container that preserves food, put the bottle",
+      "The enclosed storage with doors, put the bottle",
+      "The receptacle for items, put the bottle",
+      "The device that keeps things cold, mentioned earlier, put the bottle",
+      "Whatever holds the consumables, put it",
+      "The place where we store things, put the bottle",
+      "I'm thirsty, put the bottle",
+      "We need it for dinner, put the bottle",
+      "To prepare the meal, put the bottle",
+      "For the recipe, put the bottle",
+      "I want to tidy up, put the bottle",
+      "We should organize things, put the bottle",
+      "To make space, put the bottle",
+      "For safekeeping, put the bottle",
+      "It's best to store it, put the bottle",
+      "We should keep it organized, put the bottle",
+      "Could you put the bottle",
+      "Would you please put the bottle",
+      "Could you possibly put the bottle",
+      "Would it be possible to put the bottle",
+      "I was wondering if you could put the bottle",
+      "It would be helpful if you putd the bottle",
+      "Do you think you could put the bottle",
+      "Would you mind puting the bottle",
+      "Could we put the bottle together",
+      "I'd appreciate it if you putd the bottle"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the fridge in the bottle"
+      },
+      {
+        "change_type": "b",
+        "text": "put the can in the fridge"
+      },
+      {
+        "change_type": "b",
+        "text": "put the milk in the fridge"
+      },
+      {
+        "change_type": "c",
+        "text": "put the bottle under the fridge"
+      },
+      {
+        "change_type": "c",
+        "text": "put the bottle on the fridge"
+      },
+      {
+        "change_type": "d",
+        "text": "do not put the bottle in the fridge"
+      },
+      {
+        "change_type": "e",
+        "text": "put two bottles in the fridge"
+      },
+      {
+        "change_type": "f",
+        "text": "put the bottle in the freezer"
+      },
+      {
+        "change_type": "f",
+        "text": "put the bottle in the cabinet"
+      },
+      {
+        "change_type": "b",
+        "text": "put the label in the fridge"
+      }
+    ]
+  },
+  "put_can_close_cabinet": {
+    "original": "put the can away and close the cabinet",
+    "synonyms": [
+      "place the can away and close the cabinet",
+      "set the can away and close the cabinet",
+      "lay the can away and close the cabinet",
+      "position the can away and close the cabinet",
+      "deposit the can away and close the cabinet",
+      "put the aluminum can away and close the cabinet",
+      "put the metal can away and close the cabinet",
+      "put the soup can away and close the cabinet",
+      "put the container away and close the cabinet",
+      "put the tin away and close the cabinet",
+      "the can should be put away and the cabinet closed",
+      "put the can away and close the cabinet please",
+      "please put the can away and close the cabinet",
+      "put the can away and shut the cabinet",
+      "put the can away and seal the cabinet",
+      "the can needs to be put away and the cabinet closed",
+      "put the can away then close the cabinet",
+      "store the can and close the cabinet",
+      "put the can inside the cabinet and close it",
+      "place the can in storage and close the cabinet"
+    ],
+    "perturbations": [
+      "It's getting late, put the can away",
+      "I'm busy right now, put the can away",
+      "Before the meeting, put the can away",
+      "The kitchen is cold, put the can away",
+      "It's almost dinner time, put the can away",
+      "While I'm away, put the can away",
+      "This evening, put the can away",
+      "It's been a long day, put the can away",
+      "Between tasks, put the can away",
+      "When you get a chance, put the can away",
+      "The fridge, cabinet, and counter have items, put the can away",
+      "Among the bottles and cans, put the can away",
+      "the can away, not the other items, put it",
+      "Avoiding the boxes and jars, put the can away",
+      "the can away is the one, put it",
+      "Separate from the cans, put the can away",
+      "Of all the containers here, put the can away",
+      "The specific the can away, put it",
+      "Ignoring the rest, put the can away",
+      "Just the can away, put it carefully",
+      "The cold storage box has it, put the can away",
+      "The item in the metallic container, put it",
+      "The vessel for liquids, put it",
+      "What sits on the shelf, put it",
+      "The container that preserves food, put the can away",
+      "The enclosed storage with doors, put the can away",
+      "The receptacle for items, put the can away",
+      "The device that keeps things cold, mentioned earlier, put the can away",
+      "Whatever holds the consumables, put it",
+      "The place where we store things, put the can away",
+      "I'm thirsty, put the can away",
+      "We need it for dinner, put the can away",
+      "To prepare the meal, put the can away",
+      "For the recipe, put the can away",
+      "I want to tidy up, put the can away",
+      "We should organize things, put the can away",
+      "To make space, put the can away",
+      "For safekeeping, put the can away",
+      "It's best to store it, put the can away",
+      "We should keep it organized, put the can away",
+      "Could you put the can away",
+      "Would you please put the can away",
+      "Could you possibly put the can away",
+      "Would it be possible to put the can away",
+      "I was wondering if you could put the can away",
+      "It would be helpful if you putd the can away",
+      "Do you think you could put the can away",
+      "Would you mind puting the can away",
+      "Could we put the can away together",
+      "I'd appreciate it if you putd the can away"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the cabinet away and close the can"
+      },
+      {
+        "change_type": "b",
+        "text": "put the bottle away and close the cabinet"
+      },
+      {
+        "change_type": "b",
+        "text": "put the box away and close the cabinet"
+      },
+      {
+        "change_type": "d",
+        "text": "do not put the can away and close the cabinet"
+      },
+      {
+        "change_type": "d",
+        "text": "put the can away but do not close the cabinet"
+      },
+      {
+        "change_type": "c",
+        "text": "put the can away and open the cabinet"
+      },
+      {
+        "change_type": "e",
+        "text": "put two cans away and close the cabinet"
+      },
+      {
+        "change_type": "f",
+        "text": "put the can away and close the fridge"
+      },
+      {
+        "change_type": "f",
+        "text": "put the can away and lock the cabinet"
+      },
+      {
+        "change_type": "b",
+        "text": "put the label away and close the cabinet"
+      }
+    ]
+  },
+  "put_can_in_cabinet": {
+    "original": "put the can in the cabinet",
+    "synonyms": [
+      "place the can in the cabinet",
+      "set the can in the cabinet",
+      "lay the can in the cabinet",
+      "position the can in the cabinet",
+      "deposit the can in the cabinet",
+      "put the aluminum can in the cabinet",
+      "put the metal can in the cabinet",
+      "put the soup can in the cabinet",
+      "put the container in the cabinet",
+      "put the tin in the cabinet",
+      "the can should be put in the cabinet",
+      "put the can in the cabinet please",
+      "please put the can in the cabinet",
+      "put the can into the cabinet",
+      "place the can inside the cabinet",
+      "the can needs to be put in the cabinet",
+      "put the can in the cupboard",
+      "insert the can in the cabinet",
+      "the can goes in the cabinet",
+      "set the can down in the cabinet"
+    ],
+    "perturbations": [
+      "It's getting late, put the can",
+      "I'm busy right now, put the can",
+      "Before the meeting, put the can",
+      "The kitchen is cold, put the can",
+      "It's almost dinner time, put the can",
+      "While I'm away, put the can",
+      "This evening, put the can",
+      "It's been a long day, put the can",
+      "Between tasks, put the can",
+      "When you get a chance, put the can",
+      "The fridge, cabinet, and counter have items, put the can",
+      "Among the bottles and cans, put the can",
+      "the can, not the other items, put it",
+      "Avoiding the boxes and jars, put the can",
+      "the can is the one, put it",
+      "Separate from the cans, put the can",
+      "Of all the containers here, put the can",
+      "The specific the can, put it",
+      "Ignoring the rest, put the can",
+      "Just the can, put it carefully",
+      "The cold storage box has it, put the can",
+      "The item in the metallic container, put it",
+      "The vessel for liquids, put it",
+      "What sits on the shelf, put it",
+      "The container that preserves food, put the can",
+      "The enclosed storage with doors, put the can",
+      "The receptacle for items, put the can",
+      "The device that keeps things cold, mentioned earlier, put the can",
+      "Whatever holds the consumables, put it",
+      "The place where we store things, put the can",
+      "I'm thirsty, put the can",
+      "We need it for dinner, put the can",
+      "To prepare the meal, put the can",
+      "For the recipe, put the can",
+      "I want to tidy up, put the can",
+      "We should organize things, put the can",
+      "To make space, put the can",
+      "For safekeeping, put the can",
+      "It's best to store it, put the can",
+      "We should keep it organized, put the can",
+      "Could you put the can",
+      "Would you please put the can",
+      "Could you possibly put the can",
+      "Would it be possible to put the can",
+      "I was wondering if you could put the can",
+      "It would be helpful if you putd the can",
+      "Do you think you could put the can",
+      "Would you mind puting the can",
+      "Could we put the can together",
+      "I'd appreciate it if you putd the can"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the cabinet in the can"
+      },
+      {
+        "change_type": "b",
+        "text": "put the bottle in the cabinet"
+      },
+      {
+        "change_type": "b",
+        "text": "put the jar in the cabinet"
+      },
+      {
+        "change_type": "c",
+        "text": "put the can under the cabinet"
+      },
+      {
+        "change_type": "c",
+        "text": "put the can on the cabinet"
+      },
+      {
+        "change_type": "d",
+        "text": "do not put the can in the cabinet"
+      },
+      {
+        "change_type": "e",
+        "text": "put two cans in the cabinet"
+      },
+      {
+        "change_type": "f",
+        "text": "put the can in the basket"
+      },
+      {
+        "change_type": "f",
+        "text": "put the can in the fridge"
+      },
+      {
+        "change_type": "b",
+        "text": "put the label in the cabinet"
+      }
+    ]
+  },
+  "put_can_infront_of_microwave": {
+    "original": "put the can in front of the microwave",
+    "synonyms": [
+      "place the can in front of the microwave",
+      "set the can in front of the microwave",
+      "lay the can in front of the microwave",
+      "position the can in front of the microwave",
+      "deposit the can in front of the microwave",
+      "put the aluminum can in front of the microwave",
+      "put the metal can in front of the microwave",
+      "put the soup can in front of the microwave",
+      "put the container in front of the microwave",
+      "put the tin in front of the microwave",
+      "the can should be put in front of the microwave",
+      "put the can in front of the microwave please",
+      "please put the can in front of the microwave",
+      "put the can before the microwave",
+      "place the can ahead of the microwave",
+      "the can needs to be put in front of the microwave",
+      "put the can in front of the oven",
+      "insert the can in front of the microwave",
+      "the can goes in front of the microwave",
+      "set the can before the microwave"
+    ],
+    "perturbations": [
+      "It's getting late, put the can",
+      "I'm busy right now, put the can",
+      "Before the meeting, put the can",
+      "The kitchen is cold, put the can",
+      "It's almost dinner time, put the can",
+      "While I'm away, put the can",
+      "This evening, put the can",
+      "It's been a long day, put the can",
+      "Between tasks, put the can",
+      "When you get a chance, put the can",
+      "The fridge, cabinet, and counter have items, put the can",
+      "Among the bottles and cans, put the can",
+      "the can, not the other items, put it",
+      "Avoiding the boxes and jars, put the can",
+      "the can is the one, put it",
+      "Separate from the cans, put the can",
+      "Of all the containers here, put the can",
+      "The specific the can, put it",
+      "Ignoring the rest, put the can",
+      "Just the can, put it carefully",
+      "The cold storage box has it, put the can",
+      "The item in the metallic container, put it",
+      "The vessel for liquids, put it",
+      "What sits on the shelf, put it",
+      "The container that preserves food, put the can",
+      "The enclosed storage with doors, put the can",
+      "The receptacle for items, put the can",
+      "The device that keeps things cold, mentioned earlier, put the can",
+      "Whatever holds the consumables, put it",
+      "The place where we store things, put the can",
+      "I'm thirsty, put the can",
+      "We need it for dinner, put the can",
+      "To prepare the meal, put the can",
+      "For the recipe, put the can",
+      "I want to tidy up, put the can",
+      "We should organize things, put the can",
+      "To make space, put the can",
+      "For safekeeping, put the can",
+      "It's best to store it, put the can",
+      "We should keep it organized, put the can",
+      "Could you put the can",
+      "Would you please put the can",
+      "Could you possibly put the can",
+      "Would it be possible to put the can",
+      "I was wondering if you could put the can",
+      "It would be helpful if you putd the can",
+      "Do you think you could put the can",
+      "Would you mind puting the can",
+      "Could we put the can together",
+      "I'd appreciate it if you putd the can"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the microwave in front of the can"
+      },
+      {
+        "change_type": "b",
+        "text": "put the bottle in front of the microwave"
+      },
+      {
+        "change_type": "b",
+        "text": "put the box in front of the microwave"
+      },
+      {
+        "change_type": "c",
+        "text": "put the can behind the microwave"
+      },
+      {
+        "change_type": "c",
+        "text": "put the can on top of the microwave"
+      },
+      {
+        "change_type": "d",
+        "text": "do not put the can in front of the microwave"
+      },
+      {
+        "change_type": "e",
+        "text": "put two cans in front of the microwave"
+      },
+      {
+        "change_type": "f",
+        "text": "put the can in front of the stove"
+      },
+      {
+        "change_type": "f",
+        "text": "put the can in front of the fridge"
+      },
+      {
+        "change_type": "b",
+        "text": "put the label in front of the microwave"
+      }
+    ]
+  },
+  "put_can_next_to_basket": {
+    "original": "put the can next to the basket",
+    "synonyms": [
+      "place the can next to the basket",
+      "set the can next to the basket",
+      "lay the can next to the basket",
+      "position the can next to the basket",
+      "deposit the can next to the basket",
+      "put the aluminum can next to the basket",
+      "put the metal can next to the basket",
+      "put the soup can next to the basket",
+      "put the container next to the basket",
+      "put the tin next to the basket",
+      "the can should be put next to the basket",
+      "put the can next to the basket please",
+      "please put the can next to the basket",
+      "put the can beside the basket",
+      "place the can beside the basket",
+      "the can needs to be put next to the basket",
+      "put the can adjacent to the basket",
+      "insert the can next to the basket",
+      "the can goes next to the basket",
+      "set the can beside the basket"
+    ],
+    "perturbations": [
+      "It's getting late, put the can",
+      "I'm busy right now, put the can",
+      "Before the meeting, put the can",
+      "The kitchen is cold, put the can",
+      "It's almost dinner time, put the can",
+      "While I'm away, put the can",
+      "This evening, put the can",
+      "It's been a long day, put the can",
+      "Between tasks, put the can",
+      "When you get a chance, put the can",
+      "The fridge, cabinet, and counter have items, put the can",
+      "Among the bottles and cans, put the can",
+      "the can, not the other items, put it",
+      "Avoiding the boxes and jars, put the can",
+      "the can is the one, put it",
+      "Separate from the cans, put the can",
+      "Of all the containers here, put the can",
+      "The specific the can, put it",
+      "Ignoring the rest, put the can",
+      "Just the can, put it carefully",
+      "The cold storage box has it, put the can",
+      "The item in the metallic container, put it",
+      "The vessel for liquids, put it",
+      "What sits on the shelf, put it",
+      "The container that preserves food, put the can",
+      "The enclosed storage with doors, put the can",
+      "The receptacle for items, put the can",
+      "The device that keeps things cold, mentioned earlier, put the can",
+      "Whatever holds the consumables, put it",
+      "The place where we store things, put the can",
+      "I'm thirsty, put the can",
+      "We need it for dinner, put the can",
+      "To prepare the meal, put the can",
+      "For the recipe, put the can",
+      "I want to tidy up, put the can",
+      "We should organize things, put the can",
+      "To make space, put the can",
+      "For safekeeping, put the can",
+      "It's best to store it, put the can",
+      "We should keep it organized, put the can",
+      "Could you put the can",
+      "Would you please put the can",
+      "Could you possibly put the can",
+      "Would it be possible to put the can",
+      "I was wondering if you could put the can",
+      "It would be helpful if you putd the can",
+      "Do you think you could put the can",
+      "Would you mind puting the can",
+      "Could we put the can together",
+      "I'd appreciate it if you putd the can"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the basket next to the can"
+      },
+      {
+        "change_type": "b",
+        "text": "put the bottle next to the basket"
+      },
+      {
+        "change_type": "b",
+        "text": "put the jar next to the basket"
+      },
+      {
+        "change_type": "c",
+        "text": "put the can under the basket"
+      },
+      {
+        "change_type": "c",
+        "text": "put the can on the basket"
+      },
+      {
+        "change_type": "d",
+        "text": "do not put the can next to the basket"
+      },
+      {
+        "change_type": "e",
+        "text": "put two cans next to the basket"
+      },
+      {
+        "change_type": "f",
+        "text": "put the can in the basket"
+      },
+      {
+        "change_type": "f",
+        "text": "put the can in front of the basket"
+      },
+      {
+        "change_type": "b",
+        "text": "put the label next to the basket"
+      }
+    ]
+  },
+  "put_milk_box_in_fridge": {
+    "original": "put the milk box in the fridge",
+    "synonyms": [
+      "place the milk box in the fridge",
+      "set the milk box in the fridge",
+      "lay the milk box in the fridge",
+      "position the milk box in the fridge",
+      "deposit the milk box in the fridge",
+      "put the milk carton in the fridge",
+      "put the dairy box in the fridge",
+      "put the boxed milk in the fridge",
+      "put the milk container in the fridge",
+      "put the beverage box in the fridge",
+      "the milk box should be put in the fridge",
+      "put the milk box in the fridge please",
+      "please put the milk box in the fridge",
+      "put the milk box into the fridge",
+      "place the milk box inside the fridge",
+      "the milk box needs to be put in the fridge",
+      "put the milk box in the refrigerator",
+      "insert the milk box in the fridge",
+      "the milk box goes in the fridge",
+      "set the milk box down in the fridge"
+    ],
+    "perturbations": [
+      "It's getting late, put the milk box",
+      "I'm busy right now, put the milk box",
+      "Before the meeting, put the milk box",
+      "The kitchen is cold, put the milk box",
+      "It's almost dinner time, put the milk box",
+      "While I'm away, put the milk box",
+      "This evening, put the milk box",
+      "It's been a long day, put the milk box",
+      "Between tasks, put the milk box",
+      "When you get a chance, put the milk box",
+      "The fridge, cabinet, and counter have items, put the milk box",
+      "Among the bottles and cans, put the milk box",
+      "the milk box, not the other items, put it",
+      "Avoiding the boxes and jars, put the milk box",
+      "the milk box is the one, put it",
+      "Separate from the cans, put the milk box",
+      "Of all the containers here, put the milk box",
+      "The specific the milk box, put it",
+      "Ignoring the rest, put the milk box",
+      "Just the milk box, put it carefully",
+      "The cold storage box has it, put the milk box",
+      "The item in the metallic container, put it",
+      "The vessel for liquids, put it",
+      "What sits on the shelf, put it",
+      "The container that preserves food, put the milk box",
+      "The enclosed storage with doors, put the milk box",
+      "The receptacle for items, put the milk box",
+      "The device that keeps things cold, mentioned earlier, put the milk box",
+      "Whatever holds the consumables, put it",
+      "The place where we store things, put the milk box",
+      "I'm thirsty, put the milk box",
+      "We need it for dinner, put the milk box",
+      "To prepare the meal, put the milk box",
+      "For the recipe, put the milk box",
+      "I want to tidy up, put the milk box",
+      "We should organize things, put the milk box",
+      "To make space, put the milk box",
+      "For safekeeping, put the milk box",
+      "It's best to store it, put the milk box",
+      "We should keep it organized, put the milk box",
+      "Could you put the milk box",
+      "Would you please put the milk box",
+      "Could you possibly put the milk box",
+      "Would it be possible to put the milk box",
+      "I was wondering if you could put the milk box",
+      "It would be helpful if you putd the milk box",
+      "Do you think you could put the milk box",
+      "Would you mind puting the milk box",
+      "Could we put the milk box together",
+      "I'd appreciate it if you putd the milk box"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the fridge in the milk box"
+      },
+      {
+        "change_type": "b",
+        "text": "put the milk bottle in the fridge"
+      },
+      {
+        "change_type": "b",
+        "text": "put the butter in the fridge"
+      },
+      {
+        "change_type": "c",
+        "text": "put the milk box under the fridge"
+      },
+      {
+        "change_type": "c",
+        "text": "put the milk box on the fridge"
+      },
+      {
+        "change_type": "d",
+        "text": "do not put the milk box in the fridge"
+      },
+      {
+        "change_type": "e",
+        "text": "put two milk boxes in the fridge"
+      },
+      {
+        "change_type": "f",
+        "text": "put the milk box in the freezer"
+      },
+      {
+        "change_type": "f",
+        "text": "put the milk box in the cabinet"
+      },
+      {
+        "change_type": "b",
+        "text": "put the straw in the fridge"
+      }
+    ]
+  },
+  "put_sauce_can_in_basket": {
+    "original": "put the sauce can in the basket",
+    "synonyms": [
+      "place the sauce can in the basket",
+      "set the sauce can in the basket",
+      "lay the sauce can in the basket",
+      "position the sauce can in the basket",
+      "deposit the sauce can in the basket",
+      "put the tomato sauce can in the basket",
+      "put the condiment can in the basket",
+      "put the cooking sauce can in the basket",
+      "put the sauce container in the basket",
+      "put the sauce tin in the basket",
+      "the sauce can should be put in the basket",
+      "put the sauce can in the basket please",
+      "please put the sauce can in the basket",
+      "put the sauce can into the basket",
+      "place the sauce can inside the basket",
+      "the sauce can needs to be put in the basket",
+      "put the sauce can within the basket",
+      "insert the sauce can in the basket",
+      "the sauce can goes in the basket",
+      "set the sauce can down in the basket"
+    ],
+    "perturbations": [
+      "It's getting late, put the sauce can",
+      "I'm busy right now, put the sauce can",
+      "Before the meeting, put the sauce can",
+      "The kitchen is cold, put the sauce can",
+      "It's almost dinner time, put the sauce can",
+      "While I'm away, put the sauce can",
+      "This evening, put the sauce can",
+      "It's been a long day, put the sauce can",
+      "Between tasks, put the sauce can",
+      "When you get a chance, put the sauce can",
+      "The fridge, cabinet, and counter have items, put the sauce can",
+      "Among the bottles and cans, put the sauce can",
+      "the sauce can, not the other items, put it",
+      "Avoiding the boxes and jars, put the sauce can",
+      "the sauce can is the one, put it",
+      "Separate from the cans, put the sauce can",
+      "Of all the containers here, put the sauce can",
+      "The specific the sauce can, put it",
+      "Ignoring the rest, put the sauce can",
+      "Just the sauce can, put it carefully",
+      "The cold storage box has it, put the sauce can",
+      "The item in the metallic container, put it",
+      "The vessel for liquids, put it",
+      "What sits on the shelf, put it",
+      "The container that preserves food, put the sauce can",
+      "The enclosed storage with doors, put the sauce can",
+      "The receptacle for items, put the sauce can",
+      "The device that keeps things cold, mentioned earlier, put the sauce can",
+      "Whatever holds the consumables, put it",
+      "The place where we store things, put the sauce can",
+      "I'm thirsty, put the sauce can",
+      "We need it for dinner, put the sauce can",
+      "To prepare the meal, put the sauce can",
+      "For the recipe, put the sauce can",
+      "I want to tidy up, put the sauce can",
+      "We should organize things, put the sauce can",
+      "To make space, put the sauce can",
+      "For safekeeping, put the sauce can",
+      "It's best to store it, put the sauce can",
+      "We should keep it organized, put the sauce can",
+      "Could you put the sauce can",
+      "Would you please put the sauce can",
+      "Could you possibly put the sauce can",
+      "Would it be possible to put the sauce can",
+      "I was wondering if you could put the sauce can",
+      "It would be helpful if you putd the sauce can",
+      "Do you think you could put the sauce can",
+      "Would you mind puting the sauce can",
+      "Could we put the sauce can together",
+      "I'd appreciate it if you putd the sauce can"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the basket in the sauce can"
+      },
+      {
+        "change_type": "b",
+        "text": "put the plain can in the basket"
+      },
+      {
+        "change_type": "b",
+        "text": "put the jar in the basket"
+      },
+      {
+        "change_type": "c",
+        "text": "put the sauce can under the basket"
+      },
+      {
+        "change_type": "c",
+        "text": "put the sauce can on the basket"
+      },
+      {
+        "change_type": "d",
+        "text": "do not put the sauce can in the basket"
+      },
+      {
+        "change_type": "e",
+        "text": "put two sauce cans in the basket"
+      },
+      {
+        "change_type": "f",
+        "text": "put the sauce can in the cabinet"
+      },
+      {
+        "change_type": "f",
+        "text": "put the sauce can in the fridge"
+      },
+      {
+        "change_type": "b",
+        "text": "put the sauce label in the basket"
+      }
+    ]
+  },
+  "put_sauce_can_in_cabinet": {
+    "original": "put the sauce can in the cabinet",
+    "synonyms": [
+      "place the sauce can in the cabinet",
+      "set the sauce can in the cabinet",
+      "lay the sauce can in the cabinet",
+      "position the sauce can in the cabinet",
+      "deposit the sauce can in the cabinet",
+      "put the tomato sauce can in the cabinet",
+      "put the condiment can in the cabinet",
+      "put the cooking sauce can in the cabinet",
+      "put the sauce container in the cabinet",
+      "put the sauce tin in the cabinet",
+      "the sauce can should be put in the cabinet",
+      "put the sauce can in the cabinet please",
+      "please put the sauce can in the cabinet",
+      "put the sauce can into the cabinet",
+      "place the sauce can inside the cabinet",
+      "the sauce can needs to be put in the cabinet",
+      "put the sauce can in the cupboard",
+      "insert the sauce can in the cabinet",
+      "the sauce can goes in the cabinet",
+      "set the sauce can down in the cabinet"
+    ],
+    "perturbations": [
+      "It's getting late, put the sauce can",
+      "I'm busy right now, put the sauce can",
+      "Before the meeting, put the sauce can",
+      "The kitchen is cold, put the sauce can",
+      "It's almost dinner time, put the sauce can",
+      "While I'm away, put the sauce can",
+      "This evening, put the sauce can",
+      "It's been a long day, put the sauce can",
+      "Between tasks, put the sauce can",
+      "When you get a chance, put the sauce can",
+      "The fridge, cabinet, and counter have items, put the sauce can",
+      "Among the bottles and cans, put the sauce can",
+      "the sauce can, not the other items, put it",
+      "Avoiding the boxes and jars, put the sauce can",
+      "the sauce can is the one, put it",
+      "Separate from the cans, put the sauce can",
+      "Of all the containers here, put the sauce can",
+      "The specific the sauce can, put it",
+      "Ignoring the rest, put the sauce can",
+      "Just the sauce can, put it carefully",
+      "The cold storage box has it, put the sauce can",
+      "The item in the metallic container, put it",
+      "The vessel for liquids, put it",
+      "What sits on the shelf, put it",
+      "The container that preserves food, put the sauce can",
+      "The enclosed storage with doors, put the sauce can",
+      "The receptacle for items, put the sauce can",
+      "The device that keeps things cold, mentioned earlier, put the sauce can",
+      "Whatever holds the consumables, put it",
+      "The place where we store things, put the sauce can",
+      "I'm thirsty, put the sauce can",
+      "We need it for dinner, put the sauce can",
+      "To prepare the meal, put the sauce can",
+      "For the recipe, put the sauce can",
+      "I want to tidy up, put the sauce can",
+      "We should organize things, put the sauce can",
+      "To make space, put the sauce can",
+      "For safekeeping, put the sauce can",
+      "It's best to store it, put the sauce can",
+      "We should keep it organized, put the sauce can",
+      "Could you put the sauce can",
+      "Would you please put the sauce can",
+      "Could you possibly put the sauce can",
+      "Would it be possible to put the sauce can",
+      "I was wondering if you could put the sauce can",
+      "It would be helpful if you putd the sauce can",
+      "Do you think you could put the sauce can",
+      "Would you mind puting the sauce can",
+      "Could we put the sauce can together",
+      "I'd appreciate it if you putd the sauce can"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the cabinet in the sauce can"
+      },
+      {
+        "change_type": "b",
+        "text": "put the plain can in the cabinet"
+      },
+      {
+        "change_type": "b",
+        "text": "put the jar in the cabinet"
+      },
+      {
+        "change_type": "c",
+        "text": "put the sauce can under the cabinet"
+      },
+      {
+        "change_type": "c",
+        "text": "put the sauce can on the cabinet"
+      },
+      {
+        "change_type": "d",
+        "text": "do not put the sauce can in the cabinet"
+      },
+      {
+        "change_type": "e",
+        "text": "put two sauce cans in the cabinet"
+      },
+      {
+        "change_type": "f",
+        "text": "put the sauce can in the basket"
+      },
+      {
+        "change_type": "f",
+        "text": "put the sauce can in the fridge"
+      },
+      {
+        "change_type": "b",
+        "text": "put the sauce label in the cabinet"
+      }
+    ]
+  },
+  "switch_can_with_bottle_in_basket": {
+    "original": "swap the can with the bottle in the basket",
+    "synonyms": [
+      "exchange the can with the bottle in the basket",
+      "switch the can with the bottle in the basket",
+      "trade the can with the bottle in the basket",
+      "replace the can with the bottle in the basket",
+      "substitute the can with the bottle in the basket",
+      "swap the aluminum can with the bottle in the basket",
+      "swap the metal can with the plastic bottle in the basket",
+      "swap the soup can with the glass bottle in the basket",
+      "swap the can with the drink bottle in the basket",
+      "swap the container with the beverage bottle in the basket",
+      "the can and bottle should be swapped in the basket",
+      "swap the can with the bottle in the basket please",
+      "please swap the can with the bottle in the basket",
+      "exchange the can and bottle in the basket",
+      "place the bottle where the can is and vice versa in the basket",
+      "the can and bottle need to be swapped in the basket",
+      "swap the can with the bottle within the basket",
+      "interchange the can with the bottle in the basket",
+      "swap positions of the can and bottle in the basket",
+      "put the bottle where the can is in the basket"
+    ],
+    "perturbations": [
+      "It's getting late, swap the can with the bottle",
+      "I'm busy right now, swap the can with the bottle",
+      "Before the meeting, swap the can with the bottle",
+      "The kitchen is cold, swap the can with the bottle",
+      "It's almost dinner time, swap the can with the bottle",
+      "While I'm away, swap the can with the bottle",
+      "This evening, swap the can with the bottle",
+      "It's been a long day, swap the can with the bottle",
+      "Between tasks, swap the can with the bottle",
+      "When you get a chance, swap the can with the bottle",
+      "The fridge, cabinet, and counter have items, swap the can with the bottle",
+      "Among the bottles and cans, swap the can with the bottle",
+      "the can with the bottle, not the other items, swap it",
+      "Avoiding the boxes and jars, swap the can with the bottle",
+      "the can with the bottle is the one, swap it",
+      "Separate from the cans, swap the can with the bottle",
+      "Of all the containers here, swap the can with the bottle",
+      "The specific the can with the bottle, swap it",
+      "Ignoring the rest, swap the can with the bottle",
+      "Just the can with the bottle, swap it carefully",
+      "The cold storage box has it, swap the can with the bottle",
+      "The item in the metallic container, swap it",
+      "The vessel for liquids, swap it",
+      "What sits on the shelf, swap it",
+      "The container that preserves food, swap the can with the bottle",
+      "The enclosed storage with doors, swap the can with the bottle",
+      "The receptacle for items, swap the can with the bottle",
+      "The device that keeps things cold, mentioned earlier, swap the can with the bottle",
+      "Whatever holds the consumables, swap it",
+      "The place where we store things, swap the can with the bottle",
+      "I'm thirsty, swap the can with the bottle",
+      "We need it for dinner, swap the can with the bottle",
+      "To prepare the meal, swap the can with the bottle",
+      "For the recipe, swap the can with the bottle",
+      "I want to tidy up, swap the can with the bottle",
+      "We should organize things, swap the can with the bottle",
+      "To make space, swap the can with the bottle",
+      "For safekeeping, swap the can with the bottle",
+      "It's best to store it, swap the can with the bottle",
+      "We should keep it organized, swap the can with the bottle",
+      "Could you swap the can with the bottle",
+      "Would you please swap the can with the bottle",
+      "Could you possibly swap the can with the bottle",
+      "Would it be possible to swap the can with the bottle",
+      "I was wondering if you could swap the can with the bottle",
+      "It would be helpful if you swapd the can with the bottle",
+      "Do you think you could swap the can with the bottle",
+      "Would you mind swaping the can with the bottle",
+      "Could we swap the can with the bottle together",
+      "I'd appreciate it if you swapd the can with the bottle"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "swap the bottle with the can in the basket"
+      },
+      {
+        "change_type": "b",
+        "text": "swap the can with the milk in the basket"
+      },
+      {
+        "change_type": "b",
+        "text": "swap the can with the box drink in the basket"
+      },
+      {
+        "change_type": "c",
+        "text": "swap the can with the bottle under the basket"
+      },
+      {
+        "change_type": "c",
+        "text": "swap the can with the bottle on the basket"
+      },
+      {
+        "change_type": "d",
+        "text": "do not swap the can with the bottle in the basket"
+      },
+      {
+        "change_type": "e",
+        "text": "swap two cans with the bottle in the basket"
+      },
+      {
+        "change_type": "f",
+        "text": "swap the can with the bottle in the cabinet"
+      },
+      {
+        "change_type": "f",
+        "text": "swap the can with the bottle in the fridge"
+      },
+      {
+        "change_type": "b",
+        "text": "swap the label with the bottle in the basket"
+      }
+    ]
+  }
+}

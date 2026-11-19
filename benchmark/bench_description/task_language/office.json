@@ -1,0 +1,2382 @@
+{
+  "close_drawer": {
+    "original": "close the drawer",
+    "synonyms": [
+      "shut the drawer",
+      "seal the drawer",
+      "pull the drawer closed",
+      "secure the drawer",
+      "push the drawer shut",
+      "drawer, please close",
+      "close up the drawer",
+      "the drawer should be closed",
+      "see that the drawer is closed",
+      "shut that drawer",
+      "the drawer needs closing",
+      "secure drawer",
+      "drawer closure",
+      "push it closed",
+      "the drawer goes closed",
+      "make the drawer closed",
+      "drawer needs to be shut",
+      "close drawer now",
+      "drawer should close",
+      "shut it up"
+    ],
+    "perturbations": [
+      "close the drawer with the phone on the shelf",
+      "close the drawer and put the mouse on the pad",
+      "close the drawer, which has the stapler inside",
+      "close the drawer after organizing the table",
+      "close the drawer while the book is in the holder",
+      "close the drawer beside the open cabinet",
+      "close the drawer near the rubik's cube",
+      "close the drawer by the laptop",
+      "close the drawer under the shelf",
+      "close the drawer next to the file holder",
+      "close the drawer and organize the items",
+      "close the drawer and move the cube",
+      "close the drawer after putting the stapler away",
+      "close the drawer now that the phone is set",
+      "close the drawer with the mouse nearby",
+      "close the drawer, keeping the milk tea outside",
+      "close the drawer since the book is in the holder",
+      "close the drawer after the setup",
+      "close the drawer in between organizing",
+      "close the drawer as part of table organization",
+      "close that storage drawer",
+      "close the file drawer",
+      "close the desk drawer",
+      "close the side drawer",
+      "close the drawer situated on the desk",
+      "if the drawer is open, close it",
+      "when you finish, close the drawer",
+      "once the items are placed, close the drawer",
+      "after moving things, close the drawer",
+      "ensure the drawer is closed",
+      "make sure the drawer closes",
+      "you should close the drawer",
+      "the drawer must be closed",
+      "the drawer requires closing",
+      "you need to close the drawer",
+      "close the drawer for tidiness",
+      "close the drawer to finish",
+      "close the drawer to complete the task",
+      "close the drawer as the last step",
+      "close the drawer when done",
+      "close the drawer",
+      "close the drawer carefully",
+      "close the drawer now",
+      "close the drawer please",
+      "close the drawer to finish",
+      "close the drawer to complete",
+      "close the drawer for the task",
+      "close the drawer carefully now",
+      "close the drawer as instructed",
+      "close the drawer to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "open the drawer"
+      },
+      {
+        "change_type": "b",
+        "text": "close the cabinet"
+      },
+      {
+        "change_type": "c",
+        "text": "close the door"
+      },
+      {
+        "change_type": "d",
+        "text": "the drawer closes itself"
+      },
+      {
+        "change_type": "e",
+        "text": "close the drawer and open the cabinet"
+      },
+      {
+        "change_type": "f",
+        "text": "the drawer is already closed"
+      },
+      {
+        "change_type": "d",
+        "text": "keep the drawer open"
+      },
+      {
+        "change_type": "d",
+        "text": "do not close the drawer"
+      },
+      {
+        "change_type": "a",
+        "text": "open drawer wider"
+      },
+      {
+        "change_type": "e",
+        "text": "close only half the drawer"
+      }
+    ]
+  },
+  "move_items_around": {
+    "original": "move the mouse, rubik's cube, and stapler to their target positions",
+    "synonyms": [
+      "relocate the mouse, rubik's cube, and stapler to their destinations",
+      "place the mouse, rubik's cube, and stapler in their target locations",
+      "move the mouse, cube, and stapler to designated spots",
+      "reposition the mouse, rubik's cube, and stapler accordingly",
+      "shift the mouse, rubik's cube, and stapler to targets",
+      "arrange the mouse, rubik's cube, and stapler where they belong",
+      "move these three items to the right places",
+      "get the mouse, rubik's cube, and stapler to their positions",
+      "move the mouse, cube, and stapler into place",
+      "position the mouse, rubik's cube, and stapler correctly",
+      "the mouse, rubik's cube, and stapler should go to their spots",
+      "move the mouse, rubik's cube, and stapler around",
+      "rearrange the mouse, rubik's cube, and stapler",
+      "put the mouse, rubik's cube, and stapler where they go",
+      "move all three: mouse, rubik's cube, and stapler",
+      "adjust the positions of the mouse, rubik's cube, and stapler",
+      "move the mouse, rubik's cube, and stapler into alignment",
+      "position the mouse, cube, and stapler properly",
+      "move the mouse, rubik's cube, and stapler to setup",
+      "relocate these items: mouse, rubik's cube, stapler"
+    ],
+    "perturbations": [
+      "move the mouse, rubik's cube, and stapler to their target positions while the drawer is open",
+      "move the mouse, rubik's cube, and stapler to their target positions, keeping the book aside",
+      "move the mouse, rubik's cube, and stapler to their target positions with the phone in view",
+      "move the mouse, rubik's cube, and stapler to their target positions near the laptop",
+      "move the mouse, rubik's cube, and stapler to their target positions before closing the drawer",
+      "move the mouse, rubik's cube, and stapler to their target positions around the file holder",
+      "move the mouse, rubik's cube, and stapler to their target positions on the organized table",
+      "move the mouse, rubik's cube, and stapler to their target positions next to the milk tea",
+      "move the mouse, rubik's cube, and stapler to their target positions on the shelf area",
+      "move the mouse, rubik's cube, and stapler to their target positions with other items nearby",
+      "move these three items to where they should be",
+      "move the mouse, rubik's cube, and stapler into their proper places",
+      "arrange the mouse, rubik's cube, and stapler at their destinations",
+      "move the mouse, rubik's cube, and stapler to where they belong",
+      "position the mouse, rubik's cube, and stapler in their assigned spots",
+      "if the items are scattered, move the mouse, rubik's cube, and stapler to their targets",
+      "once you start, move the mouse, rubik's cube, and stapler to positions",
+      "as part of organization, move the mouse, rubik's cube, and stapler",
+      "move the mouse, rubik's cube, and stapler to set up the space",
+      "move the mouse, rubik's cube, and stapler to complete the arrangement",
+      "move these three objects to the correct positions",
+      "move the mouse, rubik's cube, and stapler into alignment",
+      "move the mouse, rubik's cube, and stapler to finalize setup",
+      "move the mouse, rubik's cube, and stapler as needed",
+      "move the mouse, rubik's cube, and stapler to their spots",
+      "reposition the mouse, rubik's cube, and stapler to targets",
+      "shift the mouse, rubik's cube, and stapler into place",
+      "move the mouse, rubik's cube, and stapler to assigned locations",
+      "move the mouse, rubik's cube, and stapler to designated areas",
+      "move the mouse, rubik's cube, and stapler to established positions",
+      "move the mouse, rubik's cube, and stapler to set locations",
+      "move the mouse, rubik's cube, and stapler to marked positions",
+      "move the mouse, rubik's cube, and stapler to their intended spots",
+      "move the mouse, rubik's cube, and stapler to where they need to be",
+      "move the mouse, rubik's cube, and stapler to final positions",
+      "move the mouse, rubik's cube, and stapler to correct spots",
+      "move the mouse, rubik's cube, and stapler to proper locations",
+      "move the mouse, rubik's cube, and stapler to the right places",
+      "move the mouse, rubik's cube, and stapler to set up properly",
+      "move the mouse, rubik's cube, and stapler to arrange correctly",
+      "move the mouse, rubik's cube, and stapler to their target positions",
+      "move the mouse, rubik's cube, and stapler to their target positions carefully",
+      "move the mouse, rubik's cube, and stapler to their target positions now",
+      "move the mouse, rubik's cube, and stapler to their target positions please",
+      "move the mouse, rubik's cube, and stapler to their target positions to finish",
+      "move the mouse, rubik's cube, and stapler to their target positions to complete",
+      "move the mouse, rubik's cube, and stapler to their target positions for the task",
+      "move the mouse, rubik's cube, and stapler to their target positions carefully now",
+      "move the mouse, rubik's cube, and stapler to their target positions as instructed",
+      "move the mouse, rubik's cube, and stapler to their target positions to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "move the mouse, rubik's cube, and stapler to wrong positions"
+      },
+      {
+        "change_type": "b",
+        "text": "move only the mouse and rubik's cube"
+      },
+      {
+        "change_type": "c",
+        "text": "move the mouse, rubik's cube, stapler, and book"
+      },
+      {
+        "change_type": "d",
+        "text": "the mouse, rubik's cube, and stapler are already in position"
+      },
+      {
+        "change_type": "e",
+        "text": "move the mouse and rubik's cube away from the stapler"
+      },
+      {
+        "change_type": "f",
+        "text": "move the mouse, rubik's cube, and stapler away from targets"
+      },
+      {
+        "change_type": "b",
+        "text": "move the mouse and stapler, not the cube"
+      },
+      {
+        "change_type": "a",
+        "text": "move items to random positions"
+      },
+      {
+        "change_type": "a",
+        "text": "move the stapler in the wrong direction"
+      },
+      {
+        "change_type": "d",
+        "text": "do not move the items"
+      }
+    ]
+  },
+  "open_drawer": {
+    "original": "open the drawer",
+    "synonyms": [
+      "pull open the drawer",
+      "unseal the drawer",
+      "access the drawer",
+      "reveal the drawer contents",
+      "unlock the drawer",
+      "drawer open please",
+      "open up the drawer",
+      "the drawer should be opened",
+      "see inside the drawer",
+      "pull the drawer open",
+      "the drawer needs opening",
+      "get the drawer open",
+      "drawer access",
+      "make the drawer open",
+      "the drawer goes open",
+      "drawer open now",
+      "drawer should open",
+      "open drawer",
+      "open that drawer",
+      "drawer opening"
+    ],
+    "perturbations": [
+      "open the drawer to access the stapler",
+      "open the drawer where the cube is stored",
+      "open the drawer and remove the items",
+      "open the drawer in preparation for organizing",
+      "open the drawer to place items inside",
+      "open the drawer next to the file holder",
+      "open the drawer by the table setup",
+      "open the drawer as part of table organization",
+      "open the drawer before moving things",
+      "open the drawer to begin the task",
+      "open that storage drawer",
+      "open the file drawer",
+      "open the desk drawer",
+      "open the side drawer",
+      "open the drawer on the desk",
+      "if the drawer is closed, open it",
+      "when you are ready, open the drawer",
+      "to start, open the drawer",
+      "first, open the drawer",
+      "begin by opening the drawer",
+      "open the drawer for access",
+      "open the drawer to reach items",
+      "open the drawer so you can see inside",
+      "open the drawer and look inside",
+      "open the drawer to get started",
+      "open the drawer to begin organizing",
+      "open the drawer as the first step",
+      "open the drawer to access storage",
+      "open the drawer and retrieve items",
+      "open the drawer carefully",
+      "you should open the drawer",
+      "the drawer must be opened",
+      "the drawer requires opening",
+      "you need to open the drawer",
+      "open the drawer for the task",
+      "open the drawer to complete steps",
+      "open the drawer when you start",
+      "open the drawer at the beginning",
+      "open the drawer to proceed",
+      "open the drawer to continue",
+      "open the drawer",
+      "open the drawer carefully",
+      "open the drawer now",
+      "open the drawer please",
+      "open the drawer to finish",
+      "open the drawer to complete",
+      "open the drawer for the task",
+      "open the drawer carefully now",
+      "open the drawer as instructed",
+      "open the drawer to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "close the drawer"
+      },
+      {
+        "change_type": "b",
+        "text": "open the cabinet"
+      },
+      {
+        "change_type": "c",
+        "text": "open the door"
+      },
+      {
+        "change_type": "d",
+        "text": "the drawer opens by itself"
+      },
+      {
+        "change_type": "e",
+        "text": "open the drawer and close it"
+      },
+      {
+        "change_type": "f",
+        "text": "the drawer is already open"
+      },
+      {
+        "change_type": "a",
+        "text": "keep the drawer closed"
+      },
+      {
+        "change_type": "b",
+        "text": "do not open the drawer"
+      },
+      {
+        "change_type": "d",
+        "text": "close drawer instead"
+      },
+      {
+        "change_type": "e",
+        "text": "open only the file holder"
+      }
+    ]
+  },
+  "organize_table": {
+    "original": "organize the items on the table",
+    "synonyms": [
+      "arrange the items on the table",
+      "sort the items on the table",
+      "tidy the items on the table",
+      "rearrange the items on the table",
+      "put the items on the table in order",
+      "the items on the table should be organized",
+      "organize what's on the table",
+      "get the table items in order",
+      "items on the table, organize them",
+      "arrange the table items properly",
+      "the table items need organizing",
+      "organize the things on the table",
+      "put the table in order",
+      "organize table contents",
+      "sort the table items",
+      "tidy the table",
+      "straighten the table items",
+      "put the table items away neatly",
+      "organize the desk surface",
+      "arrange the table properly"
+    ],
+    "perturbations": [
+      "organize the items on the table with the drawer closed",
+      "organize the items on the table around the laptop",
+      "organize the items on the table with the book in place",
+      "organize the items on the table near the file holder",
+      "organize the items on the table keeping the phone accessible",
+      "organize the items on the table with milk tea placed",
+      "organize the items on the table on the shelf area",
+      "organize the items on the table as part of setup",
+      "organize the items on the table before closing drawers",
+      "organize the items on the table to make space",
+      "arrange the table to be tidy",
+      "get the table sorted",
+      "put the table items in their places",
+      "organize the table surface",
+      "make the table organized",
+      "if the table is messy, organize it",
+      "once you begin, organize the table items",
+      "as part of the task, organize the table",
+      "organize the table to proceed",
+      "organize the table to set up properly",
+      "organize the items in an orderly fashion",
+      "organize the items in a neat arrangement",
+      "organize the items systematically",
+      "organize the items logically",
+      "organize the items by type",
+      "organize the items to clear space",
+      "organize the items for access",
+      "organize the items to prepare",
+      "organize the items to finalize setup",
+      "organize the items into a clean arrangement",
+      "you should organize the table",
+      "the table must be organized",
+      "the table requires organizing",
+      "you need to organize the table",
+      "organize the table for neatness",
+      "organize the table to complete setup",
+      "organize the table when starting",
+      "organize the table as you go",
+      "organize the table to maintain order",
+      "organize the table to finish",
+      "organize the items on the table",
+      "organize the items on the table carefully",
+      "organize the items on the table now",
+      "organize the items on the table please",
+      "organize the items on the table to finish",
+      "organize the items on the table to complete",
+      "organize the items on the table for the task",
+      "organize the items on the table carefully now",
+      "organize the items on the table as instructed",
+      "organize the items on the table to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "disorganize the items on the table"
+      },
+      {
+        "change_type": "b",
+        "text": "organize the items on the shelf"
+      },
+      {
+        "change_type": "c",
+        "text": "organize the items in the drawer"
+      },
+      {
+        "change_type": "d",
+        "text": "the items on the table are already organized"
+      },
+      {
+        "change_type": "e",
+        "text": "organize the items on the table and then scatter them"
+      },
+      {
+        "change_type": "f",
+        "text": "organize only the phone on the table"
+      },
+      {
+        "change_type": "a",
+        "text": "disorganize the table"
+      },
+      {
+        "change_type": "b",
+        "text": "leave the table as is"
+      },
+      {
+        "change_type": "d",
+        "text": "organize the table messily"
+      },
+      {
+        "change_type": "c",
+        "text": "do not organize the table"
+      }
+    ]
+  },
+  "put_book_in_fileholder": {
+    "original": "put the book in the file holder",
+    "synonyms": [
+      "place the book in the file holder",
+      "insert the book into the file holder",
+      "set the book in the file holder",
+      "store the book in the file holder",
+      "position the book in the file holder",
+      "the book should go in the file holder",
+      "put book in file holder",
+      "slide the book into the file holder",
+      "file the book in the holder",
+      "book to file holder",
+      "the book in the file holder",
+      "file holder for the book",
+      "the book needs to be in the file holder",
+      "get the book in the file holder",
+      "move the book to the file holder",
+      "the book goes into the file holder",
+      "place book into file holder",
+      "book placement in file holder",
+      "the book belongs in the file holder",
+      "secure the book in the file holder"
+    ],
+    "perturbations": [
+      "put the book in the file holder with the phone nearby",
+      "put the book in the file holder while the drawer is open",
+      "put the book in the file holder next to the mouse",
+      "put the book in the file holder on the organized table",
+      "put the book in the file holder as part of setup",
+      "put the book in the file holder near the stapler",
+      "put the book in the file holder with milk tea on the desk",
+      "put the book in the file holder by the rubik's cube",
+      "put the book in the file holder in the office space",
+      "put the book in the file holder to complete organization",
+      "file the book appropriately",
+      "put the book where it should go",
+      "put the book in its proper holder",
+      "put the book in the designated file holder",
+      "put the book in the office file holder",
+      "if you have the book, put it in the file holder",
+      "when you get to the book, put it in the file holder",
+      "as part of organizing, put the book in the file holder",
+      "put the book in the file holder to organize",
+      "put the book in the file holder to proceed",
+      "place the book into its file holder",
+      "place the book in file storage",
+      "place the book in the office holder",
+      "place the book where files go",
+      "place the book in the filing spot",
+      "slide the book into its holder",
+      "slide the book into file storage",
+      "insert the book into its holder",
+      "insert the book into file storage",
+      "secure the book in the holder",
+      "you should put the book in the file holder",
+      "the book must go in the file holder",
+      "the book requires placing in the file holder",
+      "you need to put the book in the file holder",
+      "put the book in the file holder for organization",
+      "put the book in the file holder to tidy up",
+      "put the book in the file holder when ready",
+      "put the book in the file holder to finalize",
+      "put the book in the file holder to complete",
+      "put the book in the file holder as a step",
+      "put the book in the file holder",
+      "put the book in the file holder carefully",
+      "put the book in the file holder now",
+      "put the book in the file holder please",
+      "put the book in the file holder to finish",
+      "put the book in the file holder to complete",
+      "put the book in the file holder for the task",
+      "put the book in the file holder carefully now",
+      "put the book in the file holder as instructed",
+      "put the book in the file holder to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "take the book out of the file holder"
+      },
+      {
+        "change_type": "b",
+        "text": "put the book on the shelf"
+      },
+      {
+        "change_type": "c",
+        "text": "put the book on the other book"
+      },
+      {
+        "change_type": "d",
+        "text": "the book is already in the file holder"
+      },
+      {
+        "change_type": "e",
+        "text": "put the book in the drawer"
+      },
+      {
+        "change_type": "f",
+        "text": "put the book next to the file holder"
+      },
+      {
+        "change_type": "a",
+        "text": "remove the book from the file holder"
+      },
+      {
+        "change_type": "c",
+        "text": "put the book next to the file holder"
+      },
+      {
+        "change_type": "d",
+        "text": "keep the book away from the file holder"
+      },
+      {
+        "change_type": "c",
+        "text": "put the book barely in the file holder"
+      }
+    ]
+  },
+  "put_book_on_book": {
+    "original": "put the book on the other book",
+    "synonyms": [
+      "place the book on the other book",
+      "set the book on the other book",
+      "lay the book on the other book",
+      "stack the book on the other book",
+      "position the book on the other book",
+      "the book should go on the other book",
+      "put one book on top of the other",
+      "book stacking",
+      "stack two books together",
+      "books, put one on the other",
+      "the book needs to go on the other book",
+      "get the book on the other book",
+      "move the book on top of the other book",
+      "the book goes on the other book",
+      "place one book atop the other",
+      "put the book onto the second book",
+      "set one book upon the other",
+      "lay one book over the other",
+      "the book belongs on the other book",
+      "secure the book on the other book"
+    ],
+    "perturbations": [
+      "put the book on the other book with the drawer closed",
+      "put the book on the other book near the file holder",
+      "put the book on the other book on the organized table",
+      "put the book on the other book while setting up",
+      "put the book on the other book with the phone visible",
+      "put the book on the other book by the stapler",
+      "put the book on the other book with milk tea nearby",
+      "put the book on the other book on the shelf area",
+      "put the book on the other book to complete organization",
+      "put the book on the other book as part of setup",
+      "stack the books together",
+      "put one book on top of another",
+      "put the book on its companion",
+      "put the book on the other one",
+      "put the book on top of the second book",
+      "if you have two books, put one on the other",
+      "when both books are ready, put one on the other",
+      "as part of organizing, put the book on the other book",
+      "put the book on the other book to tidy up",
+      "put the book on the other book to proceed",
+      "place one book on the other",
+      "place the book atop another",
+      "place the book on top of a book",
+      "place the book where the other book is",
+      "place the book in a stack",
+      "stack the two books",
+      "stack the books in a pile",
+      "put two books in a stack",
+      "arrange books in a stack",
+      "combine two books in a stack",
+      "you should put the book on the other book",
+      "the book must go on the other book",
+      "the book requires being on the other book",
+      "you need to put the book on the other book",
+      "put the book on the other book for organization",
+      "put the book on the other book to arrange",
+      "put the book on the other book when ready",
+      "put the book on the other book to finalize",
+      "put the book on the other book to complete",
+      "put the book on the other book as a step",
+      "put the book on the other book",
+      "put the book on the other book carefully",
+      "put the book on the other book now",
+      "put the book on the other book please",
+      "put the book on the other book to finish",
+      "put the book on the other book to complete",
+      "put the book on the other book for the task",
+      "put the book on the other book carefully now",
+      "put the book on the other book as instructed",
+      "put the book on the other book to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the book on the shelf"
+      },
+      {
+        "change_type": "b",
+        "text": "put the book in the file holder"
+      },
+      {
+        "change_type": "c",
+        "text": "put the book on the table"
+      },
+      {
+        "change_type": "d",
+        "text": "the books are already stacked"
+      },
+      {
+        "change_type": "e",
+        "text": "put the other book on this book"
+      },
+      {
+        "change_type": "f",
+        "text": "put the book next to the other book"
+      },
+      {
+        "change_type": "a",
+        "text": "remove the book from the other book"
+      },
+      {
+        "change_type": "c",
+        "text": "put the book under the other book"
+      },
+      {
+        "change_type": "d",
+        "text": "keep the books separated"
+      },
+      {
+        "change_type": "c",
+        "text": "put the book away from the other book"
+      }
+    ]
+  },
+  "put_milktea_next_to_laptop": {
+    "original": "put the milk tea next to the laptop",
+    "synonyms": [
+      "place the milk tea next to the laptop",
+      "set the milk tea next to the laptop",
+      "position the milk tea next to the laptop",
+      "move the milk tea next to the laptop",
+      "put the drink next to the laptop",
+      "the milk tea should be next to the laptop",
+      "milk tea goes next to the laptop",
+      "put tea next to the computer",
+      "position the beverage next to the laptop",
+      "the milk tea near the laptop",
+      "the milk tea needs to go next to the laptop",
+      "get the milk tea next to the laptop",
+      "place beverage by the laptop",
+      "the milk tea beside the laptop",
+      "put the drink beside the laptop",
+      "position the tea alongside the laptop",
+      "set the beverage by the laptop",
+      "put the milk tea where the laptop is",
+      "the milk tea belongs next to the laptop",
+      "secure the milk tea next to the laptop"
+    ],
+    "perturbations": [
+      "put the milk tea next to the laptop with the drawer closed",
+      "put the milk tea next to the laptop on the organized table",
+      "put the milk tea next to the laptop while setting up",
+      "put the milk tea next to the laptop near the book",
+      "put the milk tea next to the laptop with the phone visible",
+      "put the milk tea next to the laptop by the stapler",
+      "put the milk tea next to the laptop with the mouse nearby",
+      "put the milk tea next to the laptop on the shelf area",
+      "put the milk tea next to the laptop to complete setup",
+      "put the milk tea next to the laptop as part of organization",
+      "place the drink by the computer",
+      "put the beverage beside the laptop",
+      "put the milk tea where it belongs by the laptop",
+      "put the milk tea in its place next to the laptop",
+      "put the milk tea in the designated spot by the laptop",
+      "if the laptop is on the table, put the milk tea next to it",
+      "when you have the milk tea, put it next to the laptop",
+      "as part of organizing, put the milk tea next to the laptop",
+      "put the milk tea next to the laptop to tidy up",
+      "put the milk tea next to the laptop to proceed",
+      "place the milk tea beside the computer",
+      "place the milk tea by the laptop area",
+      "place the milk tea adjacent to the laptop",
+      "place the milk tea alongside the laptop",
+      "place the milk tea near the laptop",
+      "put the tea by the computer",
+      "put the tea beside the laptop",
+      "put the tea next to the computer",
+      "put the beverage by the laptop",
+      "position the beverage beside the laptop",
+      "you should put the milk tea next to the laptop",
+      "the milk tea must go next to the laptop",
+      "the milk tea requires being next to the laptop",
+      "you need to put the milk tea next to the laptop",
+      "put the milk tea next to the laptop for organization",
+      "put the milk tea next to the laptop to arrange",
+      "put the milk tea next to the laptop when ready",
+      "put the milk tea next to the laptop to finalize",
+      "put the milk tea next to the laptop to complete",
+      "put the milk tea next to the laptop as a step",
+      "put the milk tea next to the laptop",
+      "put the milk tea next to the laptop carefully",
+      "put the milk tea next to the laptop now",
+      "put the milk tea next to the laptop please",
+      "put the milk tea next to the laptop to finish",
+      "put the milk tea next to the laptop to complete",
+      "put the milk tea next to the laptop for the task",
+      "put the milk tea next to the laptop carefully now",
+      "put the milk tea next to the laptop as instructed",
+      "put the milk tea next to the laptop to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the milk tea away from the laptop"
+      },
+      {
+        "change_type": "b",
+        "text": "put the milk tea on the shelf"
+      },
+      {
+        "change_type": "c",
+        "text": "put the coffee next to the laptop"
+      },
+      {
+        "change_type": "d",
+        "text": "the milk tea is already next to the laptop"
+      },
+      {
+        "change_type": "e",
+        "text": "put the milk tea on the laptop"
+      },
+      {
+        "change_type": "f",
+        "text": "put the laptop next to the milk tea"
+      },
+      {
+        "change_type": "a",
+        "text": "remove the milk tea from next to the laptop"
+      },
+      {
+        "change_type": "c",
+        "text": "put the milk tea far from the laptop"
+      },
+      {
+        "change_type": "d",
+        "text": "keep the milk tea away from the laptop"
+      },
+      {
+        "change_type": "c",
+        "text": "put the milk tea on the laptop"
+      }
+    ]
+  },
+  "put_milktea_on_shelf": {
+    "original": "put the milk tea on the shelf",
+    "synonyms": [
+      "place the milk tea on the shelf",
+      "set the milk tea on the shelf",
+      "position the milk tea on the shelf",
+      "move the milk tea to the shelf",
+      "put the drink on the shelf",
+      "the milk tea should go on the shelf",
+      "milk tea on shelf",
+      "put the beverage on the shelf",
+      "shelf storage for milk tea",
+      "the milk tea needs to be on the shelf",
+      "get the milk tea on the shelf",
+      "place beverage on shelf",
+      "put the tea on the shelf",
+      "the milk tea belongs on the shelf",
+      "put the drink where the shelf is",
+      "position the beverage on the shelf",
+      "set the drink on the shelf",
+      "shelve the milk tea",
+      "store the milk tea on the shelf",
+      "secure the milk tea on the shelf"
+    ],
+    "perturbations": [
+      "put the milk tea on the shelf with the drawer organized",
+      "put the milk tea on the shelf while organizing the table",
+      "put the milk tea on the shelf near the laptop",
+      "put the milk tea on the shelf with the book in place",
+      "put the milk tea on the shelf by the phone",
+      "put the milk tea on the shelf next to other items",
+      "put the milk tea on the shelf as part of setup",
+      "put the milk tea on the shelf to complete organization",
+      "put the milk tea on the shelf with items arranged",
+      "put the milk tea on the shelf to tidy up",
+      "place the drink on shelf storage",
+      "put the beverage on the shelf unit",
+      "put the milk tea where it should be stored",
+      "put the milk tea in its place on the shelf",
+      "put the milk tea in the designated shelf spot",
+      "if you have the milk tea, put it on the shelf",
+      "when you are ready, put the milk tea on the shelf",
+      "as part of organizing, put the milk tea on the shelf",
+      "put the milk tea on the shelf to proceed",
+      "put the milk tea on the shelf to finalize",
+      "place the milk tea on shelf storage",
+      "place the milk tea on the shelf area",
+      "place the milk tea where shelves are",
+      "place the milk tea in shelf storage",
+      "place the milk tea for shelf placement",
+      "put the tea on the shelf",
+      "put the tea in storage on the shelf",
+      "put the beverage on the shelf",
+      "position the beverage on the shelf",
+      "store the beverage on the shelf",
+      "you should put the milk tea on the shelf",
+      "the milk tea must go on the shelf",
+      "the milk tea requires being on the shelf",
+      "you need to put the milk tea on the shelf",
+      "put the milk tea on the shelf for organization",
+      "put the milk tea on the shelf to arrange",
+      "put the milk tea on the shelf when ready",
+      "put the milk tea on the shelf to complete",
+      "put the milk tea on the shelf as a step",
+      "put the milk tea on the shelf for storage",
+      "put the milk tea on the shelf",
+      "put the milk tea on the shelf carefully",
+      "put the milk tea on the shelf now",
+      "put the milk tea on the shelf please",
+      "put the milk tea on the shelf to finish",
+      "put the milk tea on the shelf to complete",
+      "put the milk tea on the shelf for the task",
+      "put the milk tea on the shelf carefully now",
+      "put the milk tea on the shelf as instructed",
+      "put the milk tea on the shelf to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "take the milk tea off the shelf"
+      },
+      {
+        "change_type": "b",
+        "text": "put the milk tea next to the laptop"
+      },
+      {
+        "change_type": "c",
+        "text": "put the milk tea on the table"
+      },
+      {
+        "change_type": "d",
+        "text": "the milk tea is already on the shelf"
+      },
+      {
+        "change_type": "e",
+        "text": "put the milk tea in the drawer"
+      },
+      {
+        "change_type": "f",
+        "text": "put the shelf next to the milk tea"
+      },
+      {
+        "change_type": "a",
+        "text": "remove the milk tea from the shelf"
+      },
+      {
+        "change_type": "c",
+        "text": "put the milk tea below the shelf"
+      },
+      {
+        "change_type": "d",
+        "text": "keep the milk tea off the shelf"
+      },
+      {
+        "change_type": "c",
+        "text": "put the milk tea under the shelf"
+      }
+    ]
+  },
+  "put_mouse_next_to_stapler": {
+    "original": "put the mouse next to the stapler",
+    "synonyms": [
+      "place the mouse next to the stapler",
+      "set the mouse next to the stapler",
+      "position the mouse next to the stapler",
+      "move the mouse next to the stapler",
+      "put the mouse device next to the stapler",
+      "the mouse should be next to the stapler",
+      "mouse beside stapler",
+      "put the input device next to the stapler",
+      "position the computer mouse next to the stapler",
+      "the mouse needs to go next to the stapler",
+      "get the mouse next to the stapler",
+      "place the mouse by the stapler",
+      "the mouse beside the stapler",
+      "put mouse by stapler",
+      "position the device next to the stapler",
+      "put the mouse where the stapler is",
+      "the mouse belongs next to the stapler",
+      "secure the mouse next to the stapler",
+      "arrange the mouse next to the stapler",
+      "place device alongside stapler"
+    ],
+    "perturbations": [
+      "put the mouse next to the stapler with the drawer closed",
+      "put the mouse next to the stapler on the organized table",
+      "put the mouse next to the stapler while setting up",
+      "put the mouse next to the stapler near the book",
+      "put the mouse next to the stapler with the phone visible",
+      "put the mouse next to the stapler by the pad",
+      "put the mouse next to the stapler with milk tea nearby",
+      "put the mouse next to the stapler on the desk area",
+      "put the mouse next to the stapler to complete setup",
+      "put the mouse next to the stapler as part of organization",
+      "place the mouse beside the office device",
+      "put the computer mouse by the stapler",
+      "put the mouse in its place next to the stapler",
+      "put the mouse where it belongs by the stapler",
+      "put the mouse in the designated spot by the stapler",
+      "if the stapler is positioned, put the mouse next to it",
+      "when you have the mouse, put it next to the stapler",
+      "as part of organizing, put the mouse next to the stapler",
+      "put the mouse next to the stapler to tidy up",
+      "put the mouse next to the stapler to proceed",
+      "place the mouse beside the stapler device",
+      "place the mouse adjacent to the stapler",
+      "place the mouse alongside the stapler",
+      "place the mouse near the stapler",
+      "place the mouse by the office stapler",
+      "put the input device by the stapler",
+      "put the input device beside the stapler",
+      "put the input device next to the office equipment",
+      "position the input device by the stapler",
+      "arrange the input device next to the stapler",
+      "you should put the mouse next to the stapler",
+      "the mouse must go next to the stapler",
+      "the mouse requires being next to the stapler",
+      "you need to put the mouse next to the stapler",
+      "put the mouse next to the stapler for organization",
+      "put the mouse next to the stapler to arrange",
+      "put the mouse next to the stapler when ready",
+      "put the mouse next to the stapler to finalize",
+      "put the mouse next to the stapler to complete",
+      "put the mouse next to the stapler as a step",
+      "put the mouse next to the stapler",
+      "put the mouse next to the stapler carefully",
+      "put the mouse next to the stapler now",
+      "put the mouse next to the stapler please",
+      "put the mouse next to the stapler to finish",
+      "put the mouse next to the stapler to complete",
+      "put the mouse next to the stapler for the task",
+      "put the mouse next to the stapler carefully now",
+      "put the mouse next to the stapler as instructed",
+      "put the mouse next to the stapler to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the mouse away from the stapler"
+      },
+      {
+        "change_type": "b",
+        "text": "put the mouse on the pad"
+      },
+      {
+        "change_type": "c",
+        "text": "put the stapler next to the mouse"
+      },
+      {
+        "change_type": "d",
+        "text": "the mouse is already next to the stapler"
+      },
+      {
+        "change_type": "e",
+        "text": "put the mouse on the stapler"
+      },
+      {
+        "change_type": "f",
+        "text": "put the mouse in the drawer"
+      },
+      {
+        "change_type": "a",
+        "text": "remove the mouse from next to the stapler"
+      },
+      {
+        "change_type": "c",
+        "text": "put the mouse far from the stapler"
+      },
+      {
+        "change_type": "d",
+        "text": "keep the mouse away from the stapler"
+      },
+      {
+        "change_type": "c",
+        "text": "put the mouse on the stapler"
+      }
+    ]
+  },
+  "put_mouse_on_pad": {
+    "original": "put the mouse on the mouse pad",
+    "synonyms": [
+      "place the mouse on the mouse pad",
+      "set the mouse on the mouse pad",
+      "position the mouse on the mouse pad",
+      "move the mouse onto the mouse pad",
+      "put the mouse device on the pad",
+      "the mouse should go on the mouse pad",
+      "mouse on pad",
+      "put the input device on the pad",
+      "position the computer mouse on the pad",
+      "the mouse needs to be on the pad",
+      "get the mouse on the mouse pad",
+      "place the mouse on the pad surface",
+      "the mouse belongs on the mouse pad",
+      "put mouse on pad",
+      "position the device on the mouse pad",
+      "put the mouse where the pad is",
+      "secure the mouse on the mouse pad",
+      "arrange the mouse on the pad",
+      "place device on pad",
+      "move the mouse onto its pad"
+    ],
+    "perturbations": [
+      "put the mouse on the mouse pad with the drawer closed",
+      "put the mouse on the mouse pad on the organized table",
+      "put the mouse on the mouse pad while setting up",
+      "put the mouse on the mouse pad near the stapler",
+      "put the mouse on the mouse pad with the phone visible",
+      "put the mouse on the mouse pad by the book",
+      "put the mouse on the mouse pad with milk tea nearby",
+      "put the mouse on the mouse pad on the desk area",
+      "put the mouse on the mouse pad to complete setup",
+      "put the mouse on the mouse pad as part of organization",
+      "place the mouse on its pad surface",
+      "put the computer mouse on the pad",
+      "put the mouse in its place on the pad",
+      "put the mouse where it belongs on the pad",
+      "put the mouse in the designated spot on the pad",
+      "if the pad is ready, put the mouse on it",
+      "when you have the mouse, put it on the pad",
+      "as part of organizing, put the mouse on the pad",
+      "put the mouse on the mouse pad to tidy up",
+      "put the mouse on the mouse pad to proceed",
+      "place the mouse on the pad surface",
+      "place the mouse on the input pad",
+      "place the mouse where the pad is",
+      "place the mouse in the pad area",
+      "place the mouse for pad placement",
+      "put the input device on the pad",
+      "put the input device on the mouse pad",
+      "put the input device on the device pad",
+      "position the input device on the pad",
+      "arrange the input device on the pad",
+      "you should put the mouse on the mouse pad",
+      "the mouse must go on the mouse pad",
+      "the mouse requires being on the mouse pad",
+      "you need to put the mouse on the mouse pad",
+      "put the mouse on the mouse pad for organization",
+      "put the mouse on the mouse pad to arrange",
+      "put the mouse on the mouse pad when ready",
+      "put the mouse on the mouse pad to finalize",
+      "put the mouse on the mouse pad to complete",
+      "put the mouse on the mouse pad as a step",
+      "put the mouse on the mouse pad",
+      "put the mouse on the mouse pad carefully",
+      "put the mouse on the mouse pad now",
+      "put the mouse on the mouse pad please",
+      "put the mouse on the mouse pad to finish",
+      "put the mouse on the mouse pad to complete",
+      "put the mouse on the mouse pad for the task",
+      "put the mouse on the mouse pad carefully now",
+      "put the mouse on the mouse pad as instructed",
+      "put the mouse on the mouse pad to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "take the mouse off the pad"
+      },
+      {
+        "change_type": "b",
+        "text": "put the mouse next to the stapler"
+      },
+      {
+        "change_type": "c",
+        "text": "put the mouse on the table"
+      },
+      {
+        "change_type": "d",
+        "text": "the mouse is already on the pad"
+      },
+      {
+        "change_type": "e",
+        "text": "put the pad on the mouse"
+      },
+      {
+        "change_type": "f",
+        "text": "put the mouse in the drawer"
+      },
+      {
+        "change_type": "a",
+        "text": "remove the mouse from the pad"
+      },
+      {
+        "change_type": "c",
+        "text": "put the mouse next to the pad"
+      },
+      {
+        "change_type": "d",
+        "text": "keep the mouse off the pad"
+      },
+      {
+        "change_type": "c",
+        "text": "put the mouse under the pad"
+      }
+    ]
+  },
+  "put_phone_next_to_cube": {
+    "original": "put the phone next to the cube",
+    "synonyms": [
+      "place the phone next to the cube",
+      "set the phone next to the cube",
+      "position the phone next to the cube",
+      "move the phone next to the cube",
+      "put the phone device next to the cube",
+      "the phone should be next to the cube",
+      "phone beside cube",
+      "put the mobile next to the cube",
+      "position the device next to the rubik's cube",
+      "the phone needs to go next to the cube",
+      "get the phone next to the cube",
+      "place the phone by the cube",
+      "the phone beside the cube",
+      "put phone by cube",
+      "position the device next to the cube",
+      "put the phone where the cube is",
+      "the phone belongs next to the cube",
+      "secure the phone next to the cube",
+      "arrange the phone next to the cube",
+      "place device alongside cube"
+    ],
+    "perturbations": [
+      "put the phone next to the cube with the drawer closed",
+      "put the phone next to the cube on the organized table",
+      "put the phone next to the cube while setting up",
+      "put the phone next to the cube near the book",
+      "put the phone next to the cube with the mouse visible",
+      "put the phone next to the cube by the stapler",
+      "put the phone next to the cube with milk tea nearby",
+      "put the phone next to the cube on the desk area",
+      "put the phone next to the cube to complete setup",
+      "put the phone next to the cube as part of organization",
+      "place the phone beside the puzzle cube",
+      "put the mobile next to the cube",
+      "put the phone in its place next to the cube",
+      "put the phone where it belongs by the cube",
+      "put the phone in the designated spot by the cube",
+      "if the cube is positioned, put the phone next to it",
+      "when you have the phone, put it next to the cube",
+      "as part of organizing, put the phone next to the cube",
+      "put the phone next to the cube to tidy up",
+      "put the phone next to the cube to proceed",
+      "place the phone beside the rubik's cube",
+      "place the phone adjacent to the cube",
+      "place the phone alongside the cube",
+      "place the phone near the cube",
+      "place the phone by the puzzle cube",
+      "put the mobile device by the cube",
+      "put the mobile device beside the cube",
+      "put the mobile device next to the puzzle",
+      "position the mobile device by the cube",
+      "arrange the mobile device next to the cube",
+      "you should put the phone next to the cube",
+      "the phone must go next to the cube",
+      "the phone requires being next to the cube",
+      "you need to put the phone next to the cube",
+      "put the phone next to the cube for organization",
+      "put the phone next to the cube to arrange",
+      "put the phone next to the cube when ready",
+      "put the phone next to the cube to finalize",
+      "put the phone next to the cube to complete",
+      "put the phone next to the cube as a step",
+      "put the phone next to the cube",
+      "put the phone next to the cube carefully",
+      "put the phone next to the cube now",
+      "put the phone next to the cube please",
+      "put the phone next to the cube to finish",
+      "put the phone next to the cube to complete",
+      "put the phone next to the cube for the task",
+      "put the phone next to the cube carefully now",
+      "put the phone next to the cube as instructed",
+      "put the phone next to the cube to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the phone away from the cube"
+      },
+      {
+        "change_type": "b",
+        "text": "put the phone on the holder"
+      },
+      {
+        "change_type": "c",
+        "text": "put the cube next to the phone"
+      },
+      {
+        "change_type": "d",
+        "text": "the phone is already next to the cube"
+      },
+      {
+        "change_type": "e",
+        "text": "put the phone on the cube"
+      },
+      {
+        "change_type": "f",
+        "text": "put the phone in the drawer"
+      },
+      {
+        "change_type": "a",
+        "text": "remove the phone from next to the cube"
+      },
+      {
+        "change_type": "c",
+        "text": "put the phone far from the cube"
+      },
+      {
+        "change_type": "d",
+        "text": "keep the phone away from the cube"
+      },
+      {
+        "change_type": "c",
+        "text": "put the phone on the cube"
+      }
+    ]
+  },
+  "put_phone_on_holder": {
+    "original": "put the phone on the holder",
+    "synonyms": [
+      "place the phone on the holder",
+      "set the phone on the holder",
+      "position the phone on the holder",
+      "move the phone onto the holder",
+      "put the phone device on the holder",
+      "the phone should go on the holder",
+      "phone on holder",
+      "put the mobile on the holder",
+      "position the device on the phone holder",
+      "the phone needs to be on the holder",
+      "get the phone on the holder",
+      "place the phone on the support",
+      "the phone belongs on the holder",
+      "put phone on holder",
+      "position the device on the holder",
+      "put the phone where the holder is",
+      "secure the phone on the holder",
+      "arrange the phone on the holder",
+      "place device on holder",
+      "move the phone onto its holder"
+    ],
+    "perturbations": [
+      "put the phone on the holder with the drawer closed",
+      "put the phone on the holder on the organized table",
+      "put the phone on the holder while setting up",
+      "put the phone on the holder near the cube",
+      "put the phone on the holder with the mouse visible",
+      "put the phone on the holder by the stapler",
+      "put the phone on the holder with milk tea nearby",
+      "put the phone on the holder on the desk area",
+      "put the phone on the holder to complete setup",
+      "put the phone on the holder as part of organization",
+      "place the phone on its holder surface",
+      "put the mobile on the holder",
+      "put the phone in its place on the holder",
+      "put the phone where it belongs on the holder",
+      "put the phone in the designated spot on the holder",
+      "if the holder is ready, put the phone on it",
+      "when you have the phone, put it on the holder",
+      "as part of organizing, put the phone on the holder",
+      "put the phone on the holder to tidy up",
+      "put the phone on the holder to proceed",
+      "place the phone on the holder support",
+      "place the phone on the device holder",
+      "place the phone where the holder is",
+      "place the phone in the holder area",
+      "place the phone for holder placement",
+      "put the mobile device on the holder",
+      "put the mobile device on the phone holder",
+      "put the mobile device on the support",
+      "position the mobile device on the holder",
+      "arrange the mobile device on the holder",
+      "you should put the phone on the holder",
+      "the phone must go on the holder",
+      "the phone requires being on the holder",
+      "you need to put the phone on the holder",
+      "put the phone on the holder for organization",
+      "put the phone on the holder to arrange",
+      "put the phone on the holder when ready",
+      "put the phone on the holder to finalize",
+      "put the phone on the holder to complete",
+      "put the phone on the holder as a step",
+      "put the phone on the holder",
+      "put the phone on the holder carefully",
+      "put the phone on the holder now",
+      "put the phone on the holder please",
+      "put the phone on the holder to finish",
+      "put the phone on the holder to complete",
+      "put the phone on the holder for the task",
+      "put the phone on the holder carefully now",
+      "put the phone on the holder as instructed",
+      "put the phone on the holder to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "take the phone off the holder"
+      },
+      {
+        "change_type": "b",
+        "text": "put the phone next to the cube"
+      },
+      {
+        "change_type": "c",
+        "text": "put the phone on the table"
+      },
+      {
+        "change_type": "d",
+        "text": "the phone is already on the holder"
+      },
+      {
+        "change_type": "e",
+        "text": "put the holder on the phone"
+      },
+      {
+        "change_type": "f",
+        "text": "put the phone in the drawer"
+      },
+      {
+        "change_type": "a",
+        "text": "remove the phone from the holder"
+      },
+      {
+        "change_type": "c",
+        "text": "put the phone next to the holder"
+      },
+      {
+        "change_type": "d",
+        "text": "keep the phone off the holder"
+      },
+      {
+        "change_type": "c",
+        "text": "put the phone under the holder"
+      }
+    ]
+  },
+  "put_rubikscube_in_drawer": {
+    "original": "put the rubik's cube in the drawer",
+    "synonyms": [
+      "place the rubik's cube in the drawer",
+      "set the rubik's cube in the drawer",
+      "store the rubik's cube in the drawer",
+      "position the rubik's cube in the drawer",
+      "move the rubik's cube into the drawer",
+      "the rubik's cube should go in the drawer",
+      "cube in drawer",
+      "put the cube in the drawer",
+      "put the puzzle in the drawer",
+      "the rubik's cube needs to be in the drawer",
+      "get the rubik's cube in the drawer",
+      "place the cube in storage",
+      "the rubik's cube belongs in the drawer",
+      "put cube in drawer",
+      "position the puzzle in the drawer",
+      "put the rubik's cube where it goes",
+      "secure the rubik's cube in the drawer",
+      "arrange the rubik's cube in the drawer",
+      "put puzzle in storage",
+      "move the rubik's cube into storage"
+    ],
+    "perturbations": [
+      "put the rubik's cube in the drawer with the phone nearby",
+      "put the rubik's cube in the drawer while organizing",
+      "put the rubik's cube in the drawer next to the stapler",
+      "put the rubik's cube in the drawer on the organized table",
+      "put the rubik's cube in the drawer as part of setup",
+      "put the rubik's cube in the drawer near the mouse",
+      "put the rubik's cube in the drawer with the book in place",
+      "put the rubik's cube in the drawer with milk tea visible",
+      "put the rubik's cube in the drawer to complete organization",
+      "put the rubik's cube in the drawer to tidy up",
+      "place the cube in its drawer storage",
+      "put the puzzle in its drawer",
+      "put the rubik's cube in its proper place",
+      "put the cube where it should go",
+      "put the cube in the designated drawer",
+      "if you have the cube, put it in the drawer",
+      "when you are ready, put the rubik's cube in the drawer",
+      "as part of organizing, put the rubik's cube in the drawer",
+      "put the rubik's cube in the drawer to proceed",
+      "put the rubik's cube in the drawer to finalize",
+      "place the rubik's cube in drawer storage",
+      "place the rubik's cube in the drawer unit",
+      "place the rubik's cube where drawers are",
+      "place the rubik's cube in storage space",
+      "place the rubik's cube for drawer placement",
+      "put the cube in the storage drawer",
+      "put the cube in the office drawer",
+      "put the cube in the closed drawer",
+      "position the cube in the drawer",
+      "store the cube in the drawer",
+      "you should put the rubik's cube in the drawer",
+      "the rubik's cube must go in the drawer",
+      "the rubik's cube requires being in the drawer",
+      "you need to put the rubik's cube in the drawer",
+      "put the rubik's cube in the drawer for organization",
+      "put the rubik's cube in the drawer to arrange",
+      "put the rubik's cube in the drawer when ready",
+      "put the rubik's cube in the drawer to complete",
+      "put the rubik's cube in the drawer as a step",
+      "put the rubik's cube in the drawer for storage",
+      "put the rubik's cube in the drawer",
+      "put the rubik's cube in the drawer carefully",
+      "put the rubik's cube in the drawer now",
+      "put the rubik's cube in the drawer please",
+      "put the rubik's cube in the drawer to finish",
+      "put the rubik's cube in the drawer to complete",
+      "put the rubik's cube in the drawer for the task",
+      "put the rubik's cube in the drawer carefully now",
+      "put the rubik's cube in the drawer as instructed",
+      "put the rubik's cube in the drawer to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "take the rubik's cube out of the drawer"
+      },
+      {
+        "change_type": "b",
+        "text": "put the rubik's cube on the shelf"
+      },
+      {
+        "change_type": "c",
+        "text": "put the rubik's cube next to the milk tea"
+      },
+      {
+        "change_type": "d",
+        "text": "the rubik's cube is already in the drawer"
+      },
+      {
+        "change_type": "e",
+        "text": "put the rubik's cube on the table"
+      },
+      {
+        "change_type": "f",
+        "text": "put the drawer on the cube"
+      },
+      {
+        "change_type": "a",
+        "text": "remove the rubik's cube from the drawer"
+      },
+      {
+        "change_type": "c",
+        "text": "put the rubik's cube next to the drawer"
+      },
+      {
+        "change_type": "d",
+        "text": "keep the rubik's cube out of the drawer"
+      },
+      {
+        "change_type": "c",
+        "text": "put the rubik's cube under the drawer"
+      }
+    ]
+  },
+  "put_rubikscube_next_to_milktea": {
+    "original": "put the rubik's cube next to the milk tea",
+    "synonyms": [
+      "place the rubik's cube next to the milk tea",
+      "set the rubik's cube next to the milk tea",
+      "position the rubik's cube next to the milk tea",
+      "move the rubik's cube next to the milk tea",
+      "put the cube next to the milk tea",
+      "the rubik's cube should be next to the milk tea",
+      "cube beside milk tea",
+      "put the puzzle next to the beverage",
+      "position the rubik's cube by the milk tea",
+      "the rubik's cube needs to go next to the milk tea",
+      "get the rubik's cube next to the milk tea",
+      "place the cube by the milk tea",
+      "the rubik's cube beside the milk tea",
+      "put cube by tea",
+      "position the puzzle next to the milk tea",
+      "put the rubik's cube where the milk tea is",
+      "the rubik's cube belongs next to the milk tea",
+      "secure the rubik's cube next to the milk tea",
+      "arrange the rubik's cube next to the milk tea",
+      "place puzzle alongside beverage"
+    ],
+    "perturbations": [
+      "put the rubik's cube next to the milk tea with the drawer closed",
+      "put the rubik's cube next to the milk tea on the organized table",
+      "put the rubik's cube next to the milk tea while setting up",
+      "put the rubik's cube next to the milk tea near the book",
+      "put the rubik's cube next to the milk tea with the phone visible",
+      "put the rubik's cube next to the milk tea by the stapler",
+      "put the rubik's cube next to the milk tea with the mouse nearby",
+      "put the rubik's cube next to the milk tea on the desk area",
+      "put the rubik's cube next to the milk tea to complete setup",
+      "put the rubik's cube next to the milk tea as part of organization",
+      "place the cube beside the beverage",
+      "put the puzzle next to the drink",
+      "put the rubik's cube in its place next to the milk tea",
+      "put the cube where it belongs by the milk tea",
+      "put the cube in the designated spot by the milk tea",
+      "if the milk tea is positioned, put the cube next to it",
+      "when you have the cube, put it next to the milk tea",
+      "as part of organizing, put the rubik's cube next to the milk tea",
+      "put the rubik's cube next to the milk tea to tidy up",
+      "put the rubik's cube next to the milk tea to proceed",
+      "place the rubik's cube beside the beverage",
+      "place the rubik's cube adjacent to the milk tea",
+      "place the rubik's cube alongside the milk tea",
+      "place the rubik's cube near the milk tea",
+      "place the rubik's cube by the drink",
+      "put the puzzle device by the milk tea",
+      "put the puzzle device beside the milk tea",
+      "put the puzzle device next to the beverage",
+      "position the puzzle device by the milk tea",
+      "arrange the puzzle device next to the milk tea",
+      "you should put the rubik's cube next to the milk tea",
+      "the rubik's cube must go next to the milk tea",
+      "the rubik's cube requires being next to the milk tea",
+      "you need to put the rubik's cube next to the milk tea",
+      "put the rubik's cube next to the milk tea for organization",
+      "put the rubik's cube next to the milk tea to arrange",
+      "put the rubik's cube next to the milk tea when ready",
+      "put the rubik's cube next to the milk tea to finalize",
+      "put the rubik's cube next to the milk tea to complete",
+      "put the rubik's cube next to the milk tea as a step",
+      "put the rubik's cube next to the milk tea",
+      "put the rubik's cube next to the milk tea carefully",
+      "put the rubik's cube next to the milk tea now",
+      "put the rubik's cube next to the milk tea please",
+      "put the rubik's cube next to the milk tea to finish",
+      "put the rubik's cube next to the milk tea to complete",
+      "put the rubik's cube next to the milk tea for the task",
+      "put the rubik's cube next to the milk tea carefully now",
+      "put the rubik's cube next to the milk tea as instructed",
+      "put the rubik's cube next to the milk tea to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the rubik's cube away from the milk tea"
+      },
+      {
+        "change_type": "b",
+        "text": "put the rubik's cube in the drawer"
+      },
+      {
+        "change_type": "c",
+        "text": "put the milk tea next to the rubik's cube"
+      },
+      {
+        "change_type": "d",
+        "text": "the rubik's cube is already next to the milk tea"
+      },
+      {
+        "change_type": "e",
+        "text": "put the rubik's cube on the milk tea"
+      },
+      {
+        "change_type": "f",
+        "text": "put the rubik's cube on the shelf"
+      },
+      {
+        "change_type": "a",
+        "text": "remove the rubik's cube from next to the milk tea"
+      },
+      {
+        "change_type": "c",
+        "text": "put the rubik's cube far from the milk tea"
+      },
+      {
+        "change_type": "d",
+        "text": "keep the rubik's cube away from the milk tea"
+      },
+      {
+        "change_type": "c",
+        "text": "put the rubik's cube on the milk tea"
+      }
+    ]
+  },
+  "put_stapler_in_drawer": {
+    "original": "put the stapler in the drawer",
+    "synonyms": [
+      "place the stapler in the drawer",
+      "set the stapler in the drawer",
+      "store the stapler in the drawer",
+      "position the stapler in the drawer",
+      "move the stapler into the drawer",
+      "the stapler should go in the drawer",
+      "stapler in drawer",
+      "put the stapling device in the drawer",
+      "put the office tool in the drawer",
+      "the stapler needs to be in the drawer",
+      "get the stapler in the drawer",
+      "place the stapler in storage",
+      "the stapler belongs in the drawer",
+      "put stapler in drawer",
+      "position the fastening tool in the drawer",
+      "put the stapler where it goes",
+      "secure the stapler in the drawer",
+      "arrange the stapler in the drawer",
+      "put tool in storage",
+      "move the stapler into storage"
+    ],
+    "perturbations": [
+      "put the stapler in the drawer with the phone nearby",
+      "put the stapler in the drawer while organizing",
+      "put the stapler in the drawer next to the mouse",
+      "put the stapler in the drawer on the organized table",
+      "put the stapler in the drawer as part of setup",
+      "put the stapler in the drawer near the cube",
+      "put the stapler in the drawer with the book in place",
+      "put the stapler in the drawer with milk tea visible",
+      "put the stapler in the drawer to complete organization",
+      "put the stapler in the drawer to tidy up",
+      "place the stapler in its drawer storage",
+      "put the fastener in its drawer",
+      "put the stapler in its proper place",
+      "put the tool where it should go",
+      "put the stapler in the designated drawer",
+      "if you have the stapler, put it in the drawer",
+      "when you are ready, put the stapler in the drawer",
+      "as part of organizing, put the stapler in the drawer",
+      "put the stapler in the drawer to proceed",
+      "put the stapler in the drawer to finalize",
+      "place the stapler in drawer storage",
+      "place the stapler in the drawer unit",
+      "place the stapler where drawers are",
+      "place the stapler in storage space",
+      "place the stapler for drawer placement",
+      "put the tool in the storage drawer",
+      "put the tool in the office drawer",
+      "put the tool in the closed drawer",
+      "position the tool in the drawer",
+      "store the tool in the drawer",
+      "you should put the stapler in the drawer",
+      "the stapler must go in the drawer",
+      "the stapler requires being in the drawer",
+      "you need to put the stapler in the drawer",
+      "put the stapler in the drawer for organization",
+      "put the stapler in the drawer to arrange",
+      "put the stapler in the drawer when ready",
+      "put the stapler in the drawer to complete",
+      "put the stapler in the drawer as a step",
+      "put the stapler in the drawer for storage",
+      "put the stapler in the drawer",
+      "put the stapler in the drawer carefully",
+      "put the stapler in the drawer now",
+      "put the stapler in the drawer please",
+      "put the stapler in the drawer to finish",
+      "put the stapler in the drawer to complete",
+      "put the stapler in the drawer for the task",
+      "put the stapler in the drawer carefully now",
+      "put the stapler in the drawer as instructed",
+      "put the stapler in the drawer to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "take the stapler out of the drawer"
+      },
+      {
+        "change_type": "b",
+        "text": "put the stapler on the book"
+      },
+      {
+        "change_type": "c",
+        "text": "put the stapler next to the mouse"
+      },
+      {
+        "change_type": "d",
+        "text": "the stapler is already in the drawer"
+      },
+      {
+        "change_type": "e",
+        "text": "put the stapler on the table"
+      },
+      {
+        "change_type": "f",
+        "text": "put the drawer on the stapler"
+      },
+      {
+        "change_type": "a",
+        "text": "remove the stapler from the drawer"
+      },
+      {
+        "change_type": "c",
+        "text": "put the stapler next to the drawer"
+      },
+      {
+        "change_type": "d",
+        "text": "keep the stapler out of the drawer"
+      },
+      {
+        "change_type": "c",
+        "text": "put the stapler under the drawer"
+      }
+    ]
+  },
+  "put_stapler_next_to_mouse": {
+    "original": "put the stapler next to the mouse",
+    "synonyms": [
+      "place the stapler next to the mouse",
+      "set the stapler next to the mouse",
+      "position the stapler next to the mouse",
+      "move the stapler next to the mouse",
+      "put the stapler device next to the mouse",
+      "the stapler should be next to the mouse",
+      "stapler beside mouse",
+      "put the fastening tool next to the mouse",
+      "position the office stapler next to the mouse",
+      "the stapler needs to go next to the mouse",
+      "get the stapler next to the mouse",
+      "place the stapler by the mouse",
+      "the stapler beside the mouse",
+      "put stapler by mouse",
+      "position the tool next to the mouse",
+      "put the stapler where the mouse is",
+      "the stapler belongs next to the mouse",
+      "secure the stapler next to the mouse",
+      "arrange the stapler next to the mouse",
+      "place tool alongside mouse"
+    ],
+    "perturbations": [
+      "put the stapler next to the mouse with the drawer closed",
+      "put the stapler next to the mouse on the organized table",
+      "put the stapler next to the mouse while setting up",
+      "put the stapler next to the mouse near the book",
+      "put the stapler next to the mouse with the phone visible",
+      "put the stapler next to the mouse by the pad",
+      "put the stapler next to the mouse with milk tea nearby",
+      "put the stapler next to the mouse on the desk area",
+      "put the stapler next to the mouse to complete setup",
+      "put the stapler next to the mouse as part of organization",
+      "place the stapler beside the computer device",
+      "put the fastener next to the mouse",
+      "put the stapler in its place next to the mouse",
+      "put the stapler where it belongs by the mouse",
+      "put the stapler in the designated spot by the mouse",
+      "if the mouse is positioned, put the stapler next to it",
+      "when you have the stapler, put it next to the mouse",
+      "as part of organizing, put the stapler next to the mouse",
+      "put the stapler next to the mouse to tidy up",
+      "put the stapler next to the mouse to proceed",
+      "place the stapler beside the input device",
+      "place the stapler adjacent to the mouse",
+      "place the stapler alongside the mouse",
+      "place the stapler near the mouse",
+      "place the stapler by the computer mouse",
+      "put the fastening device by the mouse",
+      "put the fastening device beside the mouse",
+      "put the fastening device next to the input",
+      "position the fastening device by the mouse",
+      "arrange the fastening device next to the mouse",
+      "you should put the stapler next to the mouse",
+      "the stapler must go next to the mouse",
+      "the stapler requires being next to the mouse",
+      "you need to put the stapler next to the mouse",
+      "put the stapler next to the mouse for organization",
+      "put the stapler next to the mouse to arrange",
+      "put the stapler next to the mouse when ready",
+      "put the stapler next to the mouse to finalize",
+      "put the stapler next to the mouse to complete",
+      "put the stapler next to the mouse as a step",
+      "put the stapler next to the mouse",
+      "put the stapler next to the mouse carefully",
+      "put the stapler next to the mouse now",
+      "put the stapler next to the mouse please",
+      "put the stapler next to the mouse to finish",
+      "put the stapler next to the mouse to complete",
+      "put the stapler next to the mouse for the task",
+      "put the stapler next to the mouse carefully now",
+      "put the stapler next to the mouse as instructed",
+      "put the stapler next to the mouse to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the stapler away from the mouse"
+      },
+      {
+        "change_type": "b",
+        "text": "put the stapler in the drawer"
+      },
+      {
+        "change_type": "c",
+        "text": "put the mouse next to the stapler"
+      },
+      {
+        "change_type": "d",
+        "text": "the stapler is already next to the mouse"
+      },
+      {
+        "change_type": "e",
+        "text": "put the stapler on the mouse"
+      },
+      {
+        "change_type": "f",
+        "text": "put the stapler on the book"
+      },
+      {
+        "change_type": "a",
+        "text": "remove the stapler from next to the mouse"
+      },
+      {
+        "change_type": "c",
+        "text": "put the stapler far from the mouse"
+      },
+      {
+        "change_type": "d",
+        "text": "keep the stapler away from the mouse"
+      },
+      {
+        "change_type": "c",
+        "text": "put the stapler on the mouse"
+      }
+    ]
+  },
+  "put_stapler_on_book": {
+    "original": "put the stapler on the book",
+    "synonyms": [
+      "place the stapler on the book",
+      "set the stapler on the book",
+      "position the stapler on the book",
+      "move the stapler onto the book",
+      "put the stapler device on the book",
+      "the stapler should go on the book",
+      "stapler on book",
+      "put the fastening tool on the book",
+      "put the office tool on the book",
+      "the stapler needs to be on the book",
+      "get the stapler on the book",
+      "place the stapler on the page",
+      "the stapler belongs on the book",
+      "put stapler on book",
+      "position the tool on the book",
+      "put the stapler where the book is",
+      "secure the stapler on the book",
+      "arrange the stapler on the book",
+      "put tool on book",
+      "move the stapler onto its book"
+    ],
+    "perturbations": [
+      "put the stapler on the book with the drawer closed",
+      "put the stapler on the book on the organized table",
+      "put the stapler on the book while setting up",
+      "put the stapler on the book near the file holder",
+      "put the stapler on the book with the phone visible",
+      "put the stapler on the book by the mouse",
+      "put the stapler on the book with milk tea nearby",
+      "put the stapler on the book on the desk area",
+      "put the stapler on the book to complete setup",
+      "put the stapler on the book as part of organization",
+      "place the stapler on the pages",
+      "put the fastener on the book",
+      "put the stapler in its place on the book",
+      "put the stapler where it belongs on the book",
+      "put the stapler in the designated spot on the book",
+      "if the book is ready, put the stapler on it",
+      "when you have the stapler, put it on the book",
+      "as part of organizing, put the stapler on the book",
+      "put the stapler on the book to tidy up",
+      "put the stapler on the book to proceed",
+      "place the stapler on the paper item",
+      "place the stapler on the document",
+      "place the stapler where the book is",
+      "place the stapler in the book area",
+      "place the stapler for book placement",
+      "put the tool on the paper",
+      "put the tool on the document",
+      "put the tool on the written material",
+      "position the tool on the book",
+      "arrange the tool on the book",
+      "you should put the stapler on the book",
+      "the stapler must go on the book",
+      "the stapler requires being on the book",
+      "you need to put the stapler on the book",
+      "put the stapler on the book for organization",
+      "put the stapler on the book to arrange",
+      "put the stapler on the book when ready",
+      "put the stapler on the book to finalize",
+      "put the stapler on the book to complete",
+      "put the stapler on the book as a step",
+      "put the stapler on the book",
+      "put the stapler on the book carefully",
+      "put the stapler on the book now",
+      "put the stapler on the book please",
+      "put the stapler on the book to finish",
+      "put the stapler on the book to complete",
+      "put the stapler on the book for the task",
+      "put the stapler on the book carefully now",
+      "put the stapler on the book as instructed",
+      "put the stapler on the book to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "take the stapler off the book"
+      },
+      {
+        "change_type": "b",
+        "text": "put the stapler in the drawer"
+      },
+      {
+        "change_type": "c",
+        "text": "put the stapler next to the mouse"
+      },
+      {
+        "change_type": "d",
+        "text": "the stapler is already on the book"
+      },
+      {
+        "change_type": "e",
+        "text": "put the book on the stapler"
+      },
+      {
+        "change_type": "f",
+        "text": "put the stapler on the table"
+      },
+      {
+        "change_type": "a",
+        "text": "remove the stapler from the book"
+      },
+      {
+        "change_type": "c",
+        "text": "put the stapler next to the book"
+      },
+      {
+        "change_type": "d",
+        "text": "keep the stapler off the book"
+      },
+      {
+        "change_type": "c",
+        "text": "put the stapler under the book"
+      }
+    ]
+  },
+  "set_up_table": {
+    "original": "set up the table",
+    "synonyms": [
+      "arrange the table",
+      "prepare the table",
+      "organize the table",
+      "put the table in order",
+      "set the table",
+      "the table should be set up",
+      "set up desk surface",
+      "get the table ready",
+      "table setup",
+      "ready the table",
+      "configure the table",
+      "establish the table arrangement",
+      "lay out the table",
+      "assemble the table layout",
+      "position the table contents",
+      "make the table ready",
+      "prepare the desk",
+      "organize the desk",
+      "arrange the desk surface",
+      "put the desk in order"
+    ],
+    "perturbations": [
+      "set up the table with the drawer closed",
+      "set up the table while organizing items",
+      "set up the table with books in place",
+      "set up the table near the file holder",
+      "set up the table keeping the phone accessible",
+      "set up the table with milk tea positioned",
+      "set up the table on the shelf area",
+      "set up the table for work",
+      "set up the table before closing drawers",
+      "set up the table to make space",
+      "arrange the table for use",
+      "prepare the desk for work",
+      "get the table ready for work",
+      "put the table in working order",
+      "organize the table for use",
+      "if the table is messy, set it up",
+      "once you begin, set up the table",
+      "as part of the task, set up the table",
+      "set up the table to proceed",
+      "set up the table to start work",
+      "set up the table items in order",
+      "set up the table items in arrangement",
+      "set up the table items systematically",
+      "set up the table items logically",
+      "set up the table items by type",
+      "set up the table for access",
+      "set up the table to prepare",
+      "set up the table to finalize",
+      "set up the table into a clean arrangement",
+      "set up the table in an orderly fashion",
+      "you should set up the table",
+      "the table must be set up",
+      "the table requires setting up",
+      "you need to set up the table",
+      "set up the table for neatness",
+      "set up the table to complete setup",
+      "set up the table when starting",
+      "set up the table as you go",
+      "set up the table to maintain order",
+      "set up the table to finish",
+      "set up the table",
+      "set up the table carefully",
+      "set up the table now",
+      "set up the table please",
+      "set up the table to finish",
+      "set up the table to complete",
+      "set up the table for the task",
+      "set up the table carefully now",
+      "set up the table as instructed",
+      "set up the table to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "disrupt the table setup"
+      },
+      {
+        "change_type": "b",
+        "text": "set up the shelf"
+      },
+      {
+        "change_type": "c",
+        "text": "set up the drawer"
+      },
+      {
+        "change_type": "d",
+        "text": "the table is already set up"
+      },
+      {
+        "change_type": "e",
+        "text": "set up the table and then disorganize it"
+      },
+      {
+        "change_type": "f",
+        "text": "set up only the phone on the table"
+      },
+      {
+        "change_type": "a",
+        "text": "tear down the table"
+      },
+      {
+        "change_type": "c",
+        "text": "set up the table badly"
+      },
+      {
+        "change_type": "d",
+        "text": "leave the table unset"
+      },
+      {
+        "change_type": "c",
+        "text": "set up the table in disarray"
+      }
+    ]
+  },
+  "store_rubikscube_on_shelf": {
+    "original": "store the rubik's cube on the shelf",
+    "synonyms": [
+      "place the rubik's cube on the shelf",
+      "set the rubik's cube on the shelf",
+      "position the rubik's cube on the shelf",
+      "move the rubik's cube onto the shelf",
+      "put the rubik's cube on the shelf",
+      "the rubik's cube should go on the shelf",
+      "cube on shelf",
+      "put the puzzle on the shelf",
+      "put the rubik's cube in shelf storage",
+      "the rubik's cube needs to be on the shelf",
+      "get the rubik's cube on the shelf",
+      "place the cube in shelf storage",
+      "the rubik's cube belongs on the shelf",
+      "store cube on shelf",
+      "position the puzzle on the shelf",
+      "store the rubik's cube where the shelf is",
+      "keep the rubik's cube on the shelf",
+      "arrange the rubik's cube on the shelf",
+      "put puzzle on shelf",
+      "move the rubik's cube onto shelf storage"
+    ],
+    "perturbations": [
+      "store the rubik's cube on the shelf with the drawer organized",
+      "store the rubik's cube on the shelf while organizing the table",
+      "store the rubik's cube on the shelf near the laptop",
+      "store the rubik's cube on the shelf with the book in place",
+      "store the rubik's cube on the shelf by the phone",
+      "store the rubik's cube on the shelf next to the milk tea",
+      "store the rubik's cube on the shelf as part of setup",
+      "store the rubik's cube on the shelf to complete organization",
+      "store the rubik's cube on the shelf with items arranged",
+      "store the rubik's cube on the shelf to tidy up",
+      "place the cube in shelf storage",
+      "put the puzzle on shelf storage",
+      "store the rubik's cube where it should be",
+      "store the cube in its place on the shelf",
+      "store the cube in the designated shelf spot",
+      "if you have the cube, store it on the shelf",
+      "when you are ready, store the rubik's cube on the shelf",
+      "as part of organizing, store the rubik's cube on the shelf",
+      "store the rubik's cube on the shelf to proceed",
+      "store the rubik's cube on the shelf to finalize",
+      "place the rubik's cube in shelf storage",
+      "place the rubik's cube on the shelf area",
+      "place the rubik's cube where shelves are",
+      "place the rubik's cube in shelf space",
+      "place the rubik's cube for shelf placement",
+      "store the cube on the shelf",
+      "store the cube in the office shelf",
+      "store the cube in the organized shelf",
+      "position the cube on the shelf",
+      "keep the cube on the shelf",
+      "you should store the rubik's cube on the shelf",
+      "the rubik's cube must go on the shelf",
+      "the rubik's cube requires being on the shelf",
+      "you need to store the rubik's cube on the shelf",
+      "store the rubik's cube on the shelf for organization",
+      "store the rubik's cube on the shelf to arrange",
+      "store the rubik's cube on the shelf when ready",
+      "store the rubik's cube on the shelf to complete",
+      "store the rubik's cube on the shelf as a step",
+      "store the rubik's cube on the shelf for storage",
+      "store the rubik's cube on the shelf",
+      "store the rubik's cube on the shelf carefully",
+      "store the rubik's cube on the shelf now",
+      "store the rubik's cube on the shelf please",
+      "store the rubik's cube on the shelf to finish",
+      "store the rubik's cube on the shelf to complete",
+      "store the rubik's cube on the shelf for the task",
+      "store the rubik's cube on the shelf carefully now",
+      "store the rubik's cube on the shelf as instructed",
+      "store the rubik's cube on the shelf to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "take the rubik's cube off the shelf"
+      },
+      {
+        "change_type": "b",
+        "text": "put the rubik's cube in the drawer"
+      },
+      {
+        "change_type": "c",
+        "text": "put the rubik's cube next to the milk tea"
+      },
+      {
+        "change_type": "d",
+        "text": "the rubik's cube is already on the shelf"
+      },
+      {
+        "change_type": "e",
+        "text": "put the rubik's cube on the table"
+      },
+      {
+        "change_type": "f",
+        "text": "put the shelf on the cube"
+      },
+      {
+        "change_type": "a",
+        "text": "remove the rubik's cube from the shelf"
+      },
+      {
+        "change_type": "c",
+        "text": "put the rubik's cube below the shelf"
+      },
+      {
+        "change_type": "d",
+        "text": "keep the rubik's cube off the shelf"
+      },
+      {
+        "change_type": "c",
+        "text": "put the rubik's cube under the shelf"
+      }
+    ]
+  },
+  "store_stapler_in_drawer": {
+    "original": "store the stapler in the drawer",
+    "synonyms": [
+      "place the stapler in the drawer",
+      "set the stapler in the drawer",
+      "position the stapler in the drawer",
+      "move the stapler into the drawer",
+      "put the stapler in the drawer",
+      "the stapler should go in the drawer",
+      "stapler in drawer storage",
+      "put the fastening tool in the drawer",
+      "put the office tool in the drawer",
+      "the stapler needs to be in the drawer",
+      "get the stapler in the drawer",
+      "store the stapler in storage",
+      "the stapler belongs in the drawer",
+      "store stapler in drawer",
+      "position the tool in the drawer",
+      "store the stapler where the drawer is",
+      "keep the stapler in the drawer",
+      "arrange the stapler in the drawer",
+      "put tool in storage",
+      "move the stapler into drawer storage"
+    ],
+    "perturbations": [
+      "store the stapler in the drawer with the phone nearby",
+      "store the stapler in the drawer while organizing",
+      "store the stapler in the drawer next to the mouse",
+      "store the stapler in the drawer on the organized table",
+      "store the stapler in the drawer as part of setup",
+      "store the stapler in the drawer near the cube",
+      "store the stapler in the drawer with the book in place",
+      "store the stapler in the drawer with milk tea visible",
+      "store the stapler in the drawer to complete organization",
+      "store the stapler in the drawer to tidy up",
+      "place the stapler in drawer storage",
+      "put the fastener in its drawer",
+      "store the stapler in its proper place",
+      "store the tool where it should go",
+      "store the stapler in the designated drawer",
+      "if you have the stapler, store it in the drawer",
+      "when you are ready, store the stapler in the drawer",
+      "as part of organizing, store the stapler in the drawer",
+      "store the stapler in the drawer to proceed",
+      "store the stapler in the drawer to finalize",
+      "place the stapler in drawer storage space",
+      "place the stapler in the drawer unit",
+      "place the stapler where drawers are",
+      "place the stapler in storage space",
+      "place the stapler for drawer placement",
+      "store the tool in the storage drawer",
+      "store the tool in the office drawer",
+      "store the tool in the closed drawer",
+      "position the tool in the drawer",
+      "keep the tool in the drawer",
+      "you should store the stapler in the drawer",
+      "the stapler must go in the drawer",
+      "the stapler requires being in the drawer",
+      "you need to store the stapler in the drawer",
+      "store the stapler in the drawer for organization",
+      "store the stapler in the drawer to arrange",
+      "store the stapler in the drawer when ready",
+      "store the stapler in the drawer to complete",
+      "store the stapler in the drawer as a step",
+      "store the stapler in the drawer for storage",
+      "store the stapler in the drawer",
+      "store the stapler in the drawer carefully",
+      "store the stapler in the drawer now",
+      "store the stapler in the drawer please",
+      "store the stapler in the drawer to finish",
+      "store the stapler in the drawer to complete",
+      "store the stapler in the drawer for the task",
+      "store the stapler in the drawer carefully now",
+      "store the stapler in the drawer as instructed",
+      "store the stapler in the drawer to proceed"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "take the stapler out of the drawer"
+      },
+      {
+        "change_type": "b",
+        "text": "put the stapler on the book"
+      },
+      {
+        "change_type": "c",
+        "text": "put the stapler next to the mouse"
+      },
+      {
+        "change_type": "d",
+        "text": "the stapler is already in the drawer"
+      },
+      {
+        "change_type": "e",
+        "text": "put the stapler on the table"
+      },
+      {
+        "change_type": "f",
+        "text": "put the drawer on the stapler"
+      },
+      {
+        "change_type": "a",
+        "text": "remove the stapler from the drawer"
+      },
+      {
+        "change_type": "c",
+        "text": "put the stapler next to the drawer"
+      },
+      {
+        "change_type": "d",
+        "text": "keep the stapler out of the drawer"
+      },
+      {
+        "change_type": "c",
+        "text": "put the stapler under the drawer"
+      }
+    ]
+  }
+}

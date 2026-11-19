@@ -1,0 +1,53 @@
+# demo_heldout_d10.yml: held-out eval set for the 4 demo tasks (study scene), density 10.
+# Same tasks + observation modalities as the training demo_dataset, but with a
+# DISJOINT seed range (start_seed 100000) so the scenes/instructions are unseen at
+# training time, so it is a true held-out eval set. Output ->
+#   data/<task>/demo_heldout_d10/
+render_freq: 0
+episode_num: 3            # held-out episodes per task (lower for a faster eval)
+use_seed: false
+start_seed: 100000         # training used seeds 0..7 -> 100000+ guarantees held-out
+save_freq: 15
+video_fps: 30
+embodiment: [aloha-agilex]
+language_num: 100
+domain_randomization:
+  random_background: false
+  cluttered_table: True
+  clean_background_rate: 0
+  random_head_camera_dis: 0
+  random_table_height: 0
+  random_light: false
+  crazy_random_light_rate: 0
+  obstacle_density: 10
+  language_perturbation:
+    enabled: true          # same base instruction bank as training (seen distribution)
+    instruction_bank: benchmark/bench_task_config/instruction_bank.json
+camera:
+  head_camera_type: D435
+  wrist_camera_type: D435
+  demo_camera_type: D435
+  collect_head_camera: true
+  collect_wrist_camera: true
+data_type:                 # matches the training demo_dataset schema (policy-compatible)
+  rgb: true
+  third_view: false
+  depth: true
+  pointcloud: true         # demo set had it (DP3-style policies consume it)
+  observer: false
+  endpose: true
+  qpos: true
+  mesh_segmentation: false
+  actor_segmentation: true
+  actor_bbox: true
+  link_bbox: false
+  proximity: false
+  object_poses: false
+pcd_down_sample_num: 1024
+pcd_crop: true
+save_path: ./data
+clear_cache_freq: 1
+collect_data: true
+eval_video_log: true
+enable_collision_metrics: false   # eval data: no collision labels needed (lighter)
+planner_exclude_obstacles: false  # expert avoids clutter -> clean successful demos

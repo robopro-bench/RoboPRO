@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RoboPRO: Installation</title>
+<meta name="description" content="Full installation guide for the RoboPRO benchmark." />
+<link rel="stylesheet" href="style.css" />
+<style>
+  .install-section {
+    padding: 2.25rem 0 0.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .install-section:last-of-type { border-bottom: 0; }
+  .install-section h2 {
+    margin: 0 0 0.4rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+  .install-section .step-num {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.4rem;
+  }
+  .install-section p { max-width: 70ch; color: var(--ink-2); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <p class="eyebrow">Installation</p>
+    <h1 class="title">Install<span class="accent">.</span></h1>
+    <p class="tagline">Seven steps from a clean checkout to a first headless rollout.</p>
+    <div class="byline">
+      <span><a href="index.html">← Home</a></span>
+      <span><a href="https://github.com/robopro-bench/RoboPRO">Code ↗</a></span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="install-section">
+  <div class="container">
+    <p class="step-num">Step 1 · Clone</p>
+    <h2>Clone the repository with its submodules.</h2>
+<pre><code>git clone --recurse-submodules https://github.com/robopro-bench/RoboPRO.git
+cd RoboPRO</code></pre>
+    <p><code>policy/pi0/openpi</code> and <code>policy/pi05/openpi</code> are git submodules of <a href="https://github.com/Physical-Intelligence/openpi">openpi</a>, needed only for the &pi;0 / &pi;0.5 policies. If you cloned without <code>--recurse-submodules</code>, run <code>git submodule update --init policy/pi0/openpi policy/pi05/openpi</code>.</p>
+  </div>
+</section>
+
+<section class="install-section">
+  <div class="container">
+    <p class="step-num">Step 2 · System</p>
+    <h2>System packages.</h2>
+    <p>RoboPRO needs Vulkan, ffmpeg, <code>uv</code>, and the CUDA toolkit (<code>nvcc</code>) at the OS level:</p>
+<pre><code>sudo apt install libvulkan1 mesa-vulkan-drivers vulkan-tools ffmpeg
+vulkaninfo           # smoke test
+make check-prereqs   # checks uv, git, nvcc, ffmpeg</code></pre>
+    <p>An NVIDIA driver with CUDA 12.x is required (<code>torch==2.4.1</code> from PyPI targets CUDA 12.1).</p>
+  </div>
+</section>
+
+<section class="install-section">
+  <div class="container">
+    <p class="step-num">Step 3 · uv env</p>
+    <h2>Create the <code>.venv</code>.</h2>
+<pre><code>uv venv --python 3.10
+source .venv/bin/activate
+export PYTHONNOUSERSITE=1</code></pre>
+    <p>The <code>PYTHONNOUSERSITE</code> step matters: without it, a prior <code>~/.local/lib/python3.10/site-packages/sapien</code> (or torch) can be picked up ahead of the project's environment and break imports.</p>
+  </div>
+</section>
+
+<section class="install-section">
+  <div class="container">
+    <p class="step-num">Step 4 · Python deps</p>
+    <h2>Install Python deps and CuRobo.</h2>
+<pre><code>make bootstrap   # same as: bash scripts/install/bootstrap_uv.sh</code></pre>
+    <p><code>bootstrap_uv.sh</code> syncs <code>.venv</code> from the root <code>pyproject.toml</code> and <code>uv.lock</code>, patches <code>sapien/wrapper/urdf_loader.py</code> (utf-8 encoding) and <code>mplib/planner.py</code> (drops a too-strict collision check), then clones CuRobo v0.7.8 into <code>sim/envs/curobo/</code> and installs it editable. It re-pins <code>warp-lang==1.12.0</code> and <code>setuptools==69.5.1</code> at the end. CuRobo pulls in <code>scikit-image</code>, which upgrades <code>scipy</code> past the 1.10.1 pin; that is expected, so do not re-pin it afterwards.</p>
+    <p>The benchmark is pinned to <code>sapien==3.0.0b1</code>. Other SAPIEN versions change physics and rendering, so their success rates are not comparable. PyPI has no aarch64 wheel for it; on ARM machines build it from source with <a href="https://github.com/robopro-bench/RoboPRO/blob/main/docs/setup_sapien_aarch64.md">docs/setup_sapien_aarch64.md</a>.</p>
+  </div>
+</section>
+
+<section class="install-section">
+  <div class="container">
+    <p class="step-num">Step 5 · Assets</p>
+    <h2>Fetch the asset bundle (~15&nbsp;GB).</h2>
+<pre><code>make download-assets   # same as: python scripts/install/download_assets.py</code></pre>
+    <p>Pulls the HuggingFace asset bundle (repo id in <code>scripts/install/download_assets.py</code>) into repo-root <code>assets/</code> (objects, embodiments, background_texture, backgrounds). The bundle already includes <code>aloha-agilex/.../meshes/box2_Link.dae</code> (~206&nbsp;MB), so no separate fetch is needed. To keep the assets elsewhere, download with <code>make download-assets ASSETS_DEST=/path</code> and then run <code>make link-assets ASSETS_DEST=/path</code>.</p>
+    <p>Generate the local-path CuRobo configs from the shipped templates, and patch them so CuRobo can attach grasped objects (the shipped configs lack the <code>attached_object</code> link entries):</p>
+<pre><code>make configure-curobo-assets
+make patch-curobo-config   # same as: python scripts/install/patch_aloha_curobo.py</code></pre>
+  </div>
+</section>
+
+<section class="install-section">
+  <div class="container">
+    <p class="step-num">Step 6 · CuRobo cache check</p>
+    <h2>Check <code>clear_cache</code> (no edit needed on v0.7.8).</h2>
+    <p><code>WorldMeshCollision.clear_cache</code> must reset <code>_env_mesh_names</code> between episodes, or stale collision meshes leak across rollouts. CuRobo v0.7.8, the version the install pins, already does this upstream. Verify with:</p>
+<pre><code>sed -n '/def clear_cache/,/super().clear_cache()/p' \
+    sim/envs/curobo/src/curobo/geom/sdf/world_mesh.py</code></pre>
+    <p>Only if you pin a different CuRobo version whose <code>clear_cache</code> lacks that reset, replace the method with:</p>
+<pre><code>def clear_cache(self):
+    self._wp_mesh_cache = {}
+    if self._mesh_tensor_list is not None:
+        self._mesh_tensor_list[2][:] = 0
+    if self._env_n_mesh is not None:
+        self._env_n_mesh[:] = 0
+    if self._env_mesh_names is not None:
+        self._env_mesh_names = [
+            [None for _ in range(self.cache["mesh"])] for _ in range(self.n_envs)
+        ]
+    super().clear_cache()</code></pre>
+  </div>
+</section>
+
+<section class="install-section">
+  <div class="container">
+    <p class="step-num">Step 7 · Verify (headless)</p>
+    <h2>Run one rollout.</h2>
+<pre><code>cd sim
+source ../set_env.sh
+
+python script/bench_script/visualize_task_scene.py \
+    put_mouse_on_pad bench_demo_office_clean \
+    --bench-subdir office --rollout --no-render --seed 0 --save_data</code></pre>
+    <p>From the repo root, <code>make verify-rollout</code> runs the same rollout. On success you'll see <code>Success: True</code> and an MP4 at repo-root <code>data/video/episode_put_mouse_on_pad_0.mp4</code> (~176 frames at 320x240, ~6&nbsp;s). Drop <code>--no-render --save_data</code> to use the interactive SAPIEN viewer instead.</p>
+    <p>Data collection and policy evaluation are covered in the <a href="https://github.com/robopro-bench/RoboPRO#usage">README</a>.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container" style="display:flex; justify-content:space-between; width:100%;">
+    <span><a href="index.html">← Back to overview</a></span>
+    <span>RoboPRO · 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>

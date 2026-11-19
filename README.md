@@ -1,0 +1,382 @@
+# RoboPRO
+
+**RoboPRO: A Perturbation-Resilient and Obstacle-Aware Benchmark for Robotic Manipulation**
+
+RoboPRO is a bimanual manipulation benchmark for policy robustness. The simulation runtime (SAPIEN + CuRobo, Aloha-AgileX) is based on [RoboTwin 2.0](https://github.com/RoboTwin-Platform/RoboTwin); the 80 tasks, realistic scenes, metrics, and perturbation suite are ours.
+
+**Project page:** https://robopro-bench.github.io/RoboPRO/
+
+RoboPRO adds:
+- **Realistic scenes** across office, study, kitchen (small & large) domains
+- **Systematic perturbation suite** over Language, Vision, and Object axes for evaluating policy robustness
+- **Aloha-Agilex** bimanual embodiment with CuRobo motion planning
+
+## Layout
+
+| Path | Role |
+|---|---|
+| [`collect/`](collect/) | CuRobo demos, policy rollouts, grounding, trajectory replay, LeRobot convert |
+| [`eval/`](eval/) | Policy eval harness and fixed eval-seed lists |
+| [`benchmark/`](benchmark/) | Tasks, perturbation YAMLs, eval seeds, description JSON |
+| [`benchmark/task_description/`](benchmark/task_description/) | Offline LLM authoring for those JSON files |
+| [`sim/`](sim/) | SAPIEN + CuRobo runtime (modified RoboTwin 2.0) |
+| [`policy/`](policy/) | Policy glue; `pi0/openpi` and `pi05/openpi` are git submodules |
+
+## Installation
+
+System prereqs (one-time): `libvulkan1 mesa-vulkan-drivers vulkan-tools` (apt), `ffmpeg`, and an NVIDIA driver with CUDA 12.x. The uv path also needs `uv` and the CUDA toolkit (`nvcc`); `make check-prereqs` checks for them. Most steps below also have a `make` target, listed in [`entry_point.md`](entry_point.md).
+
+```bash
+git clone --recurse-submodules https://github.com/robopro-bench/RoboPRO.git
+cd RoboPRO
+```
+
+### OpenPI submodules (π0 / π0.5)
+
+`policy/pi0/openpi` and `policy/pi05/openpi` are git submodules of [openpi](https://github.com/Physical-Intelligence/openpi). They are not part of this repo's MIT tree. `--recurse-submodules` on clone is required for those policies.
+
+If you already cloned without it:
+
+```bash
+git submodule update --init policy/pi0/openpi policy/pi05/openpi
+```
+
+Then build the isolated policy venv from the submodule (not the glue dir):
+
+```bash
+cd policy/pi05/openpi && uv sync && cd -
+# same for π0 if you use it:
+# cd policy/pi0/openpi && uv sync && cd -
+```
+
+### 1. Choose an environment manager
+
+#### Option A. Conda env
+
+```bash
+conda create -n robopro python=3.10 -y
+# Keep the env isolated from ~/.local/lib site-packages (otherwise sapien/torch
+# may resolve there instead of in robopro):
+conda env config vars set -n robopro PYTHONNOUSERSITE=1
+conda activate robopro
+```
+
+#### Option B. uv env
+
+```bash
+uv venv --python 3.10
+source .venv/bin/activate
+# Keep the env isolated from ~/.local/lib site-packages:
+export PYTHONNOUSERSITE=1
+```
+
+### 2. Install Python dependencies
+
+#### Option A. Conda workflow
+
+```bash
+cd sim
+# Use `python -m pip`, not a bare `pip`: with a conda env active, `pip` can still
+# resolve to ~/.local/bin/pip, which may be broken or bound to another interpreter.
+python -m pip install -r script/requirements.txt
+python -m pip install setuptools==69.5.1       # provides pkg_resources for sapien
+python -m pip install "git+https://github.com/facebookresearch/pytorch3d.git@stable" --no-build-isolation
+SKIP_BASE_DEPS=1 bash script/_install.sh   # patches sapien urdf_loader + mplib planner, installs CuRobo
+cd ..
+```
+
+> **aarch64 (GB10 / DGX Spark):** PyPI has no aarch64 wheel for `sapien==3.0.0b1`, so `requirements.txt` will fail to resolve it. Build the SAPIEN wheel from source first with [docs/setup_sapien_aarch64.md](docs/setup_sapien_aarch64.md), then re-run the requirements install (pip will treat sapien as satisfied).
+
+> **SAPIEN version matters:** the benchmark is pinned to `sapien==3.0.0b1`. A different SAPIEN version can change physics and rendering behavior, which shifts evaluation results, so success rates from mismatched versions are not comparable. Verify with `python -c "import sapien; print(sapien.__version__)"` before collecting data or running evals.
+
+`script/_install.sh` also clones CuRobo v0.7.8 into `envs/curobo/` and pip-installs it editable, then re-pins `warp-lang==1.12.0` and `setuptools==69.5.1`. Installing CuRobo pulls in `scikit-image`, which **upgrades** `scipy` from the `requirements.txt` pin of 1.10.1 to 1.15.x. That is expected. The resulting env runs on the upgraded scipy, so do not re-pin 1.10.1 afterwards.
+
+#### Option B. uv workflow
+
+```bash
+bash scripts/install/bootstrap_uv.sh
+```
+
+This bootstraps `.venv` from the root `pyproject.toml` and `uv.lock`, then runs the post-install patches and clones CuRobo v0.7.8 into `sim/envs/curobo/` as an editable install. The uv path does not install `sim/script/requirements.txt` directly, so any dependency added there must also be mirrored in `pyproject.toml`. As with the conda path, CuRobo/`scikit-image` upgrade `scipy` past the 1.10.1 pin; that is expected.
+
+### 3. Assets (~15 GB)
+
+```bash
+python scripts/install/download_assets.py
+```
+
+This fetches the HuggingFace asset bundle (repo id in `scripts/install/download_assets.py`) into repo-root `assets/` (objects, embodiments, background_texture, backgrounds). The bundle already includes the large `aloha-agilex/.../meshes/box2_Link.dae` mesh, so no separate fetch is needed.
+
+Generate the local-path curobo configs from the shipped templates, and patch them so CuRobo can attach grasped objects (the shipped configs lack the `attached_object` link entries):
+
+```bash
+make configure-curobo-assets
+python scripts/install/patch_aloha_curobo.py
+```
+
+On the conda path, run `make configure-curobo-assets PYTHON=python` so make uses the active env instead of `.venv/bin/python`.
+
+### 4. CuRobo cache patch (not needed on v0.7.8)
+
+`WorldMeshCollision.clear_cache` in `sim/envs/curobo/src/curobo/geom/sdf/world_mesh.py`
+must reset `_env_mesh_names` between episodes, or stale collision meshes leak across
+rollouts. **CuRobo v0.7.8, the version `script/_install.sh` pins, already does this
+upstream**, so no edit is required; verify with:
+
+```bash
+sed -n '/def clear_cache/,/super().clear_cache()/p' \
+    sim/envs/curobo/src/curobo/geom/sdf/world_mesh.py
+```
+
+Expect to see `self._env_mesh_names` rebuilt as a list of `None` entries. If you pin a
+different CuRobo version whose `clear_cache` lacks that reset, patch it in:
+
+```python
+def clear_cache(self):
+    self._wp_mesh_cache = {}
+    if self._mesh_tensor_list is not None:
+        self._mesh_tensor_list[2][:] = 0
+    if self._env_n_mesh is not None:
+        self._env_n_mesh[:] = 0
+    if self._env_mesh_names is not None:
+        self._env_mesh_names = [
+            [None for _ in range(self.cache["mesh"])] for _ in range(self.n_envs)
+        ]
+    super().clear_cache()
+```
+
+### 5. Verify (headless rollout)
+
+```bash
+cd sim
+source ../set_env.sh
+python script/bench_script/visualize_task_scene.py \
+    put_mouse_on_pad bench_demo_office_clean \
+    --bench-subdir office --rollout --no-render --seed 0 --save_data
+```
+
+Expected on success: a `Success: True` line and an MP4 at repo-root `data/video/episode_put_mouse_on_pad_0.mp4` (~176 frames at 320x240). `make verify-rollout` runs the same rollout from the repo root.
+
+## Usage
+
+Collection and eval run from the repo root. Scene smoke tests still run from `sim/`.
+
+```bash
+source set_env.sh                  # exports WORKSPACE_ROOT, SIM_ROOT, BENCH_ROOT, ASSETS_ROOT, DATA_ROOT, POLICY_ROOT
+```
+
+### Collect demonstrations
+
+```bash
+bash collect/collect_data.sh <task_name> <task_config> <gpu_id>
+# Example:
+bash collect/collect_data.sh put_mouse_on_pad bench_demo_office_clean 0
+# Multi-GPU:
+bash collect/collect_data.sh put_mouse_on_pad bench_demo_office_clean 0,1
+```
+
+Episodes land in `data/<task_name>/<task_config>/` (YAML `save_path: ./data`). Output schema, grounding, replay, and notices: [`collect/README.md`](collect/README.md).
+
+### Convert HDF5 to LeRobot
+
+[`collect/lerobot_convert/`](collect/lerobot_convert/) turns a scene-organised RoboPRO dump (`<tier>/seedN/data/episode*.hdf5`) into a LeRobot v2.1 dataset (parquet + `countertop`/`left`/`right` videos, 1:1 at 30 fps). The task prompt is the HDF5 `task_name` looked up in `benchmark/bench_description/plain_instructions.json` (or `--task-text`). Details: [`collect/lerobot_convert/README.md`](collect/lerobot_convert/README.md).
+
+From the repo root (env with `cv2`, `av`, `h5py`, `pandas`, `numpy`):
+
+```bash
+PYTHONPATH=collect python -m lerobot_convert.convert_scenes \
+    --src /path/to/<task>_38scene_... \
+    --out /path/to/lerobot_out \
+    --limit 2 --overwrite
+```
+
+### Run inference (policy eval)
+
+From the repo root after `source set_env.sh`. Eval rolls a trained checkpoint out against a `(task, config)` pair and writes a per-rollout success log under `eval_result/`. Two modes depending on whether your policy fits in the same Python env as the simulator. Harness and eval-seed design: [`eval/README.md`](eval/README.md).
+
+**Pretrained checkpoints:**
+
+| Policy | Weights |
+|---|---|
+| pi05 | [mzxuan/robopro_jax_30000](https://huggingface.co/mzxuan/robopro_jax_30000/tree/main) |
+| X-VLA | [mzxuan/x-vla-robopro-100k](https://huggingface.co/mzxuan/x-vla-robopro-100k) |
+
+For pi05, symlink the downloaded `jax_30000/` dir to `policy/pi05/checkpoints/<train_config_name>/<model_name>/30000/`.
+
+**Args (shared by both modes):**
+
+| Arg | Meaning |
+|---|---|
+| `task_name` | Bench env class, e.g. `put_mouse_on_pad` (file at `benchmark/bench_envs/<scene>/<task>.py`) |
+| `task_config` | Perturbation YAML name, e.g. `bench_demo_office_clean` (in `benchmark/bench_task_config/`) |
+| `train_config_name` | Training config used to fine-tune the checkpoint |
+| `model_name` | Subdir name under `checkpoints/<train_config_name>/` |
+| `checkpoint_id` | Step number, e.g. `30000` |
+| `seed` | Scan-mode offset only. When an eval seed file is loaded, episode seeds come from that file, not this arg. |
+| `gpu_id` | CUDA device, or `<server_gpu>:<client_gpu>` for dual-env |
+
+**Mode A: single-process** (policy + sim share one Python env, e.g. when openpi is conda-installable alongside SAPIEN):
+
+```bash
+bash policy/pi05/eval.sh <task_name> <task_config> <train_config_name> <model_name> <checkpoint_id> <ckpt_setting> <seed> <gpu_id>
+# Example:
+bash policy/pi05/eval.sh put_mouse_on_pad bench_demo_office_clean my_office_train pi05_ckpt 30000 pi05_ckpt_30000 0 0
+```
+
+**Mode B: dual-env / dual-process** (recommended for pi05 since openpi+jax need an isolated uv venv at `policy/pi05/openpi/.venv/`).
+Create that venv once with:
+
+```bash
+git submodule update --init policy/pi05/openpi
+cd policy/pi05/openpi && uv sync && cd -
+```
+
+`openpi` and `openpi-client` are installed editable, so re-run `uv sync` if the submodule path ever moves
+(a stale editable path shows up as `ModuleNotFoundError: No module named 'openpi'` on the server side).
+The sim-side client uses the repo-root `.venv`; override with `SIM_PYTHON=/path/to/python` if yours lives elsewhere.
+
+```bash
+bash policy/pi05/eval_double_env.sh <task_name> <task_config> <train_config_name> <model_name> <checkpoint_id> <seed> <gpu_spec>
+# Example (single GPU):
+bash policy/pi05/eval_double_env.sh put_mouse_on_pad bench_demo_office_clean my_office_train pi05_ckpt 30000 0 0
+# Example (split: server on GPU 0, sim client on GPU 1):
+bash policy/pi05/eval_double_env.sh put_mouse_on_pad bench_demo_office_clean my_office_train pi05_ckpt 30000 0 0:1
+```
+
+The script spawns a `policy_model_server.py` in the pi05 venv and an `eval_policy_client.py` in the RoboPRO sim env, communicating over a free socket port.
+
+**Eval seeds.** Eval uses the fixed, expert-validated lists at `benchmark/eval_seeds/<task>/<config>.txt` (20 seeds for `*_clean`, 2 otherwise; integers start at 40000 so they do not overlap training). The **same seed id** on clean vs d6 to d15 places the **target at the same pose**; only clutter changes. Precollect with `python collect/precollect_eval_seeds.py <task> <config>`. Override with `--eval_seed_file PATH`, or scan live with `--use_eval_seeds false`. Cap with `--test_num N`. Details: [`eval/README.md`](eval/README.md).
+
+**Faster evaluation (optional).** Two opt-in settings cut the time per episode. Neither changes the scene a seed builds, the RNG streams, or the result. Leave them unset and eval behaves exactly as before.
+
+| Setting | Where | Effect |
+|---|---|---|
+| `ROBOTWIN_SKIP_CUROBO_WARMUP=1` | environment | Skips CuRobo's CUDA-graph warmup when the planner is built (~5 s per arm, ~10 s per process). The planner still works; it compiles on its first real plan instead. A policy eval never plans a motion, so it never pays that cost. |
+| `render_static_cameras: [countertop_camera]` | task config YAML, under `camera:` | Renders only the listed static cameras each step. The others are still built, so the scene is unchanged; they just take no pictures. Unset renders every camera. Wrist cameras stay under `collect_wrist_camera`. |
+
+List every static camera your policy reads in `render_static_cameras`. A camera left off the list still appears in the observation, but with no `rgb` image.
+
+**Direct Python invocation** (bypassing the shell wrappers):
+
+```bash
+python eval/eval_policy.py \
+    --config policy/pi05/deploy_policy.yml \
+    --overrides \
+    --task_name put_mouse_on_pad \
+    --task_config bench_demo_office_clean \
+    --train_config_name my_office_train \
+    --model_name pi05_ckpt \
+    --checkpoint_id 30000 \
+    --ckpt_setting "my_office_train_pi05_ckpt_30000" \
+    --policy_name pi05 \
+    --seed 0 \
+    --instruction_type seen
+```
+
+**Where results land:**
+
+```
+eval_result/<task_name>/<policy_name>/<task_config>/<ckpt_setting>/<timestamp>/
+    _result.txt        # timestamp, instruction type, seed list, success rate
+    _episodes.jsonl    # dual-env client only: per-episode success, collision, hard_success
+    *.mp4              # rollout videos (if eval_video_log is enabled)
+```
+
+### Batch eval on SLURM
+
+For sweeping many `(task, config)` pairs across nodes:
+
+```bash
+sbatch scripts/slurm/slurm_eval_bench.sh \
+    <task_name> <task_config> <train_config_name> <model_name> <checkpoint_id> <seed> <test_num>
+```
+
+Set `--chdir` and `--output` in the sbatch header to your local checkout (see comments at the top of `scripts/slurm/slurm_eval_bench.sh`). Pin a specific Python with `export PI05_PYTHON=/path/to/miniconda3/envs/pi05/bin/python`.
+
+## Perturbation configs
+
+Drop-in YAMLs under `benchmark/bench_task_config/`:
+
+| Config | What it perturbs |
+|---|---|
+| `bench_demo_<scene>_clean.yml` | Baseline (no perturbation), one per scene: `office`, `study`, `kitchens`, `kitchenl` |
+| `bench_demo_<scene>_d{6..15}.yml` | Same scenes with clutter at obstacle density 6 to 15 |
+| `bench_perturb_<scene>_<axis>_{clean,d6..d15}.yml` | Language, one axis at a time: `colloquial_polite`, `commonsense_indirect`, `distractor_context`, `multi_object_distraction`, `reasoning_chain` |
+| `bench_vision_<axis>_{clean,d6..d15}.yml` | Vision, one axis at a time: `lighting`, `blur`, `pixel_shift`, `combined` |
+| `bench_object_ood_<axis>_{clean,d6..d15}.yml` | Object OOD, one axis at a time: `appearance`, `unseen_obstacles`, `unseen_targets`, `combined` |
+| `bench_demo_language.yml` | Per-episode instruction sampled from `instruction_bank.json` |
+| `bench_demo_vision.yml` | Lighting (L1-L4) + blur (cycle 5 types) + per-frame pixel shake |
+| `bench_demo_vision_lighting.yml` | Lighting only |
+| `bench_demo_vision_blur.yml` | Blur only |
+| `bench_demo_vision_shake.yml` | Pixel shake only |
+| `bench_demo_object.yml` | Target texture swap + unseen obstacles + background_plus |
+| `bench_compositional_object_d{6,10,15}.yml` | OOD obstacles + OOD targets |
+| `bench_compositional_object_vision_d{6,10,15}.yml` | OOD objects + vision (lighting, blur, pixel shake) |
+| `bench_compositional_full_d{6,10,15}.yml` | All axes: OOD objects + vision + background randomization |
+
+See the YAMLs in `benchmark/bench_task_config/` for parameter-level details, and `docs/videos/` (`vision*.mp4`, `language.mp4`, `object.mp4`) for sample outputs.
+
+## Scenes and tasks
+
+| Scene | Tasks |
+|---|---|
+| Office (`office/`) | `put_mouse_on_pad`, `put_phone_on_holder`, `put_book_on_book`, `put_book_in_fileholder`, `put_milktea_on_shelf`, `put_stapler_in_drawer`, `open_drawer`, `close_drawer`, ... |
+| Study (`study/`) | `put_pen_in_pencup`, `put_cup_on_coaster`, `move_cups_into_box`, `empty_box`, ... |
+| Kitchen, small (`kitchens/`) | `place_bowl_in_dishrack_ks`, `put_plate_in_sink_ks`, `put_hamburger_in_microwave_ks`, `chain_heat_hamburger_ks`, ... |
+| Kitchen, large (`kitchenl/`) | `put_bottle_in_fridge`, `pick_milk_box_from_fridge`, `put_can_in_cabinet`, `put_sauce_can_in_basket`, ... |
+
+Each scene has 20 tasks. Full list in [`benchmark/TASKS.md`](benchmark/TASKS.md) and `benchmark/bench_envs/`. Episode schema and grounding: [`collect/README.md`](collect/README.md). Eval seeds: [`eval/README.md`](eval/README.md).
+
+## New tasks
+
+1. Write the task env under `benchmark/bench_envs/<scene>/<task>.py`.
+2. Add an entry to `benchmark/bench_task_config/_bench_eval_step_limit.yml`.
+3. Add a description template under `benchmark/bench_description/task_instructions/`.
+   Optional: fill `seen`/`unseen` variants with [`benchmark/task_description/`](benchmark/task_description/).
+
+Start from an analogous task in the same scene folder (`office/`, `study/`, `kitchens/`, `kitchenl/`).
+
+## Troubleshooting
+
+Common setup problems and where their fixes live:
+
+| Symptom | Fix |
+|---|---|
+| `pip install -r sim/script/requirements.txt` can't find a `sapien==3.0.0b1` wheel (aarch64 / ARM machines) | Build SAPIEN from source: [docs/setup_sapien_aarch64.md](docs/setup_sapien_aarch64.md) |
+| Eval success rates differ unexpectedly from reported numbers | Check `sapien.__version__`. It must be `3.0.0b1`; other versions change physics/rendering and skew results (Installation step 2) |
+| `ModuleNotFoundError: pkg_resources` when importing sapien | `pip install setuptools==69.5.1` (Installation step 2) |
+| CuRobo fails to attach grasped objects during planning | The shipped curobo configs lack the `attached_object` link entries. Run `python scripts/install/patch_aloha_curobo.py` (Installation step 3) |
+| CuRobo keeps stale collision meshes across episodes | Already fixed upstream in the pinned v0.7.8; only patch `world_mesh.py` if you changed CuRobo versions (Installation step 4) |
+
+## License
+
+This repository is released under the MIT license, Copyright 2025-2026 RoboPRO authors. See [`LICENSE`](LICENSE).
+
+The simulation runtime in [`sim/`](sim/) is a modified [RoboTwin 2.0](https://github.com/RoboTwin-Platform/RoboTwin) tree (MIT, Copyright 2025 Tianxing Chen; Copyright 2025-2026 RoboPRO authors). See [`sim/LICENSE`](sim/LICENSE).
+
+π0 / π0.5 library code comes from the [openpi](https://github.com/Physical-Intelligence/openpi) git submodule (Apache-2.0) and is not covered by this MIT grant. RoboPRO glue next to the submodule (`deploy_policy.py`, `pi_model.py`, `train.py`, etc.) is ours. Downloaded `assets/` and cloned CuRobo keep their own terms; see the appendix in [`LICENSE`](LICENSE).
+
+## Citation
+
+If you use RoboPRO, please cite our RSS 2026 Data-Centric Robotics Workshop paper *Data and Evaluation Protocols for Robust Robotic Manipulation*:
+
+```bibtex
+@inproceedings{li2026robopro,
+  title     = {Data and Evaluation Protocols for Robust Robotic Manipulation},
+  author    = {Li, Zhiyuan and Eret, Charles and Zhao, Xuan and Wu, Yangzheng and Rasouli, Amir},
+  booktitle = {Data-Centric Robotics Workshop at Robotics: Science and Systems (RSS)},
+  year      = {2026},
+  url       = {https://robopro-bench.github.io/RoboPRO/}
+}
+```
+
+The simulation runtime in `sim/` is based on RoboTwin 2.0. Please also cite:
+
+```bibtex
+@article{chen2025robotwin,
+  title={RoboTwin 2.0: A Scalable Data Generator and Benchmark with Strong Domain Randomization for Robust Bimanual Robotic Manipulation},
+  author={Chen, Tianxing and Chen, Zanxin and Chen, Baijun and Cai, Zijian and Liu, Yibin and others},
+  journal={arXiv preprint arXiv:2506.18088},
+  year={2025}
+}
+```

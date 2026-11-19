@@ -1,0 +1,61 @@
+# Compositional eval (OOD objects + vision perturbation, density: 15)
+render_freq: 0
+episode_num: 1
+use_seed: false
+save_freq: 15
+video_fps: 30
+embodiment: [aloha-agilex]
+language_num: 100
+domain_randomization:
+  random_background: false
+  cluttered_table: true
+  clean_background_rate: 0
+  random_head_camera_dis: 0
+  random_table_height: 0
+  random_light: true
+  crazy_random_light_rate: 0.3
+  obstacle_density: 15
+  language_perturbation:
+    enabled: true
+    instruction_bank: benchmark/bench_task_config/instruction_bank.json
+  object_perturbation:
+    unseen_obstacles: true
+    unseen_targets: true
+  vision_perturbation:
+    lighting:
+      enabled: true
+      color: true
+      direction: true
+      shadow: true
+      color_range: [0.4, 1.8]
+    blur:
+      enabled: true
+      severity: 2
+      strength: 0.2
+    pixel_shift:
+      enabled: true
+      max_shift: 5
+      strength: 0.1
+camera:
+  head_camera_type: D435
+  wrist_camera_type: D435
+  demo_camera_type: D435
+  collect_head_camera: true
+  collect_wrist_camera: true
+data_type:
+  rgb: true
+  third_view: false
+  depth: true
+  pointcloud: false
+  observer: false
+  endpose: true
+  qpos: true
+  mesh_segmentation: false
+  actor_segmentation: false
+pcd_down_sample_num: 1024
+pcd_crop: true
+save_path: ./data
+clear_cache_freq: 1
+collect_data: false
+eval_video_log: true
+enable_collision_metrics: true

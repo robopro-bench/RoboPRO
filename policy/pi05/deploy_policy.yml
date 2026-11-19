@@ -1,0 +1,18 @@
+# Basic experiment configuration (keep unchanged)
+policy_name: null
+task_name: null
+task_config: null
+ckpt_setting: null
+seed: null
+instruction_type: unseen
+
+# Add Parameters You Need
+train_config_name: pi05_aloha_full_base
+model_name: roboreal_all_80tasks
+checkpoint_id: 20000
+pi0_step: 50
+
+# Rollout collection parameters (used by collect_rollout_client.py)
+collect_num: 100
+collect_fixed_seed: false
+action_noise_var: 0

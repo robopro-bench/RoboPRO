@@ -1,0 +1,112 @@
+# ============================================================================
+# datagen_d8.yml: grounding data-gen config, an instance of datagen_template.yml
+#
+# Purpose: one working reference for collecting grounding data (per-object
+# masks + depth + role sidecar + per-frame contact/collision labels).
+# Copy, rename, and tune episode_num / obstacle_density / the collision block
+# at the bottom. Full dataset spec + label semantics: collect/README.md.
+#
+# Run (from repo root, after `source set_env.sh`):
+#   bash collect/collect_data.sh <task_name> <this_config_name> <gpu_id>  # single GPU
+#   bash collect/collect_data.sh <task_name> <this_config_name> 0,1       # multi-GPU
+# Forgot a modality? Episodes are replayable bit-exact (collect/README.md):
+#   python collect/replay_trajectory.py <task> <this_config_name> --replay-config replay_rich
+# ============================================================================
+
+render_freq: 0
+episode_num: 10             # episodes to KEEP per task (default 1 = quick review/smoke;
+                           # scale up e.g. 200 for training). seed-search banks this many.
+use_seed: false            # true = replay seeds from <save_dir>/seed.txt instead of searching
+                           #        (matched pairs: copy seed.txt from a finished twin run first)
+save_freq: 15
+video_fps: 30
+embodiment: [aloha-agilex]
+language_num: 100
+domain_randomization:
+  random_background: false
+  cluttered_table: True    # False + obstacle_density 0 = clean scenes
+  clean_background_rate: 0
+  random_head_camera_dis: 0
+  random_table_height: 0
+  random_light: false
+  crazy_random_light_rate: 0
+  obstacle_density: 8      # default d6 (light clutter, 6..15 is the benchmark range; 0 = clean)
+
+  language_perturbation:
+    enabled: true          # base-language diversity ONLY (instruction_bank.json).
+    instruction_bank: benchmark/bench_task_config/instruction_bank.json
+                           # The colloquial/vision/object-OOD banks are eval-only;
+                           # don't bake them into training data.
+camera:
+  head_camera_type: D435   # keep D435 everywhere = matched to eval cameras
+  wrist_camera_type: D435
+  demo_camera_type: D435
+  collect_head_camera: true
+  collect_wrist_camera: true
+data_type:
+  rgb: true
+  third_view: false
+  depth: true              # needed for the 3D lift (dense clouds rebuilt from depth + K/E)
+  pointcloud: false        # stock cloud is head-cam-only 1024 pts; rebuilt from depth instead
+  observer: false
+  endpose: true
+  qpos: true
+  mesh_segmentation: false # sub-part ids with no name map; not needed
+  actor_segmentation: true # per-object masks, saved as RAW uint16 ids (PNG in HDF5)
+  actor_bbox: true        # exact per-frame 3D boxes from the physics engine
+                           #   (pose + world AABB per rigid object, incl. occluded
+                           #   extents). Tiny (~KBs/ep) but CANNOT be derived after
+                           #   collection, so keep it on. Read back from
+                           #   the episode HDF5 (see collect/README.md); camera-only (visible-
+                           #   surface) boxes are always derivable without it.
+  link_bbox: true          # per-frame pose + world AABB for ARTICULATION LINKS
+                           #   (drawer/cabinet/fridge/microwave doors + interiors),
+                           #   a SEPARATE group from actor_bbox (which stays rigid-only).
+                           #   Lets offline masking resolve articulated-fixture bins +
+                           #   open/close door targets. Tiny (~KBs/ep); recommended ON.
+  proximity: true          # build the obstacle mesh cache + export per-episode
+                           # scene geometry (scene/episodeN/{scene.npz,objects.json})
+                           # so link/sphere proximity is computed OFFLINE from
+                           # per-frame qpos + robot FK (no per-step cost at collect)
+  object_poses: true       # per-frame poses of all non-robot actors
+                           # -> /object_poses [T,N,7] (x,y,z,qw,qx,qy,qz); column
+                           # ids in scene_info.object_pose_ids (name via actor_id_map).
+                           # lets you recompute collision/displacement offline.
+pcd_down_sample_num: 1024
+pcd_crop: true
+save_path: ./data
+clear_cache_freq: 1
+collect_data: true
+eval_video_log: true
+
+# ---------------------------------------------------------------------------
+# Collision detection & planner obstacle-awareness (DECOUPLED)
+#
+# enable_collision_metrics: builds the collision name-sets and runs per-substep
+#   PhysX contact checks. Required for (a) the per-timestep "contact"/"collision"
+#   uint8 arrays (+impulse +object pairs) written into each episode hdf5, aligned
+#   1:1 with saved frames: contact = robot touches something UNINTENDED, directly
+#   (link) or via the held target or an actuated body (drawer), excluding grasps, targets,
+#   destinations and wheels; collision = impulse-gated furniture hits +
+#   displacement-evidenced static hits (1cm/0.1rad from episode start), and
+#   (b) the episode-level collision metrics. See collect/README.md.
+#   With this off the per-timestep arrays still exist but are all zeros.
+#
+# planner_exclude_obstacles: decouples CuRobo clutter-awareness from the metrics:
+#     omitted/null -> legacy behavior (planner blind iff metrics on)
+#     false        -> planner SEES clutter  = collision-AWARE   (collisions rare-but-real)
+#     true         -> planner BLIND to clutter = collision-UNAWARE (frequent collisions,
+#                     negative/contrast data). Furniture & fixtures are always avoided.
+#
+#   Variant A  aware planner + detection:   enable_collision_metrics: true
+#                                           planner_exclude_obstacles: false
+#   Variant B  blind planner + detection:   enable_collision_metrics: true
+#                                           planner_exclude_obstacles: true
+#   Matched pairs: collect A, copy its seed.txt into B's run dir + use_seed: true.
+#
+# Each episode hdf5 records the regime in attrs: enable_collision_metrics,
+# planner_exclude_obstacles (-1 omitted / 0 aware / 1 blind),
+# planner_blind_to_obstacles (resolved value actually used).
+# ---------------------------------------------------------------------------
+enable_collision_metrics: true
+planner_exclude_obstacles: false

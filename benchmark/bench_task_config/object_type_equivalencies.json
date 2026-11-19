@@ -1,0 +1,255 @@
+{
+    "001_bottle": [
+        "029_olive-oil",
+        "049_shampoo",
+        "065_soy-sauce",
+        "066_vinegar",
+        "068_boxdrink",
+        "114_bottle"
+    ],
+    "003_plate": [
+        "008_tray",
+        "019_coaster",
+        "104_board"
+    ],
+    "010_pen": [
+        "032_screwdriver",
+        "058_markpen",
+        "093_brush-pen"
+    ],
+    "021_cup": [
+        "022_cup-with-liguid",
+        "039_mug",
+        "059_pencup",
+        "101_milk-tea"
+    ],
+    "033_fork": [
+        "034_knife",
+        "032_screwdriver"
+    ],
+    "023_tissue-box": [
+        "037_box",
+        "042_wooden_box",
+        "062_plastic_box"
+    ],
+    "053_teanet": [
+        "002_bowl"
+    ],
+    "064_msg": [
+        "071_can",
+        "080_pillbottle",
+        "095_glue",
+        "105_sauce-can",
+        "108_block"
+    ],
+    "075_bread": [
+        "054_baguette"
+    ],
+    "091_kettle": [
+        "009_kettle"
+    ],
+    "092_notebook": [
+        "043_book"
+    ],
+    "098_speaker": [
+        "055_small-speaker"
+    ],
+    "103_fruit": [
+        "035_apple"
+    ],
+    "109_hydrating-oil": [
+        "049_shampoo",
+        "118_tooth-paste"
+    ],
+    "076_breadbasket": [
+        "110_basket"
+    ],
+    "112_tea-box": [
+        "113_coffee-box"
+    ],
+    "029_olive-oil": [
+        "001_bottle",
+        "049_shampoo",
+        "065_soy-sauce",
+        "066_vinegar",
+        "068_boxdrink",
+        "114_bottle"
+    ],
+    "049_shampoo": [
+        "001_bottle",
+        "029_olive-oil",
+        "065_soy-sauce",
+        "066_vinegar",
+        "068_boxdrink",
+        "114_bottle",
+        "109_hydrating-oil",
+        "118_tooth-paste"
+    ],
+    "065_soy-sauce": [
+        "001_bottle",
+        "029_olive-oil",
+        "049_shampoo",
+        "066_vinegar",
+        "068_boxdrink",
+        "114_bottle"
+    ],
+    "066_vinegar": [
+        "001_bottle",
+        "029_olive-oil",
+        "049_shampoo",
+        "065_soy-sauce",
+        "068_boxdrink",
+        "114_bottle"
+    ],
+    "068_boxdrink": [
+        "001_bottle",
+        "029_olive-oil",
+        "049_shampoo",
+        "065_soy-sauce",
+        "066_vinegar",
+        "114_bottle"
+    ],
+    "114_bottle": [
+        "001_bottle",
+        "029_olive-oil",
+        "049_shampoo",
+        "065_soy-sauce",
+        "066_vinegar",
+        "068_boxdrink"
+    ],
+    "008_tray": [
+        "003_plate",
+        "019_coaster",
+        "104_board"
+    ],
+    "019_coaster": [
+        "003_plate",
+        "008_tray",
+        "104_board"
+    ],
+    "104_board": [
+        "003_plate",
+        "008_tray",
+        "019_coaster"
+    ],
+    "032_screwdriver": [
+        "010_pen",
+        "058_markpen",
+        "093_brush-pen",
+        "033_fork",
+        "034_knife"
+    ],
+    "058_markpen": [
+        "010_pen",
+        "032_screwdriver",
+        "093_brush-pen"
+    ],
+    "093_brush-pen": [
+        "010_pen",
+        "032_screwdriver",
+        "058_markpen"
+    ],
+    "022_cup-with-liguid": [
+        "021_cup",
+        "039_mug",
+        "059_pencup",
+        "101_milk-tea"
+    ],
+    "039_mug": [
+        "021_cup",
+        "022_cup-with-liguid",
+        "059_pencup",
+        "101_milk-tea"
+    ],
+    "059_pencup": [
+        "021_cup",
+        "022_cup-with-liguid",
+        "039_mug",
+        "101_milk-tea"
+    ],
+    "101_milk-tea": [
+        "021_cup",
+        "022_cup-with-liguid",
+        "039_mug",
+        "059_pencup"
+    ],
+    "034_knife": [
+        "033_fork",
+        "032_screwdriver"
+    ],
+    "037_box": [
+        "042_wooden_box",
+        "062_plastic_box"
+    ],
+    "042_wooden_box": [
+        "037_box",
+        "062_plastic_box"
+    ],
+    "062_plastic_box": [
+        "037_box",
+        "042_wooden_box"
+    ],
+    "002_bowl": [
+        "053_teanet"
+    ],
+    "071_can": [
+        "064_msg",
+        "080_pillbottle",
+        "095_glue",
+        "105_sauce-can",
+        "108_block"
+    ],
+    "080_pillbottle": [
+        "064_msg",
+        "071_can",
+        "095_glue",
+        "105_sauce-can",
+        "108_block"
+    ],
+    "095_glue": [
+        "064_msg",
+        "071_can",
+        "080_pillbottle",
+        "105_sauce-can",
+        "108_block"
+    ],
+    "105_sauce-can": [
+        "064_msg",
+        "071_can",
+        "080_pillbottle",
+        "095_glue",
+        "108_block"
+    ],
+    "108_block": [
+        "064_msg",
+        "071_can",
+        "080_pillbottle",
+        "095_glue",
+        "105_sauce-can"
+    ],
+    "054_baguette": [
+        "075_bread"
+    ],
+    "009_kettle": [
+        "091_kettle"
+    ],
+    "043_book": [
+        "092_notebook"
+    ],
+    "055_small-speaker": [
+        "098_speaker"
+    ],
+    "035_apple": [
+        "103_fruit"
+    ],
+    "118_tooth-paste": [
+        "109_hydrating-oil",
+        "049_shampoo"
+    ],
+    "110_basket": [
+        "076_breadbasket"
+    ],
+    "113_coffee-box": [
+        "112_tea-box"
+    ]
+}

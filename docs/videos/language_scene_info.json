@@ -1,0 +1,41 @@
+{
+    "episode_0": {
+        "cluttered_table_info": [],
+        "texture_info": {
+            "wall_texture": null,
+            "table_texture": null,
+            "floor_texture": null
+        },
+        "info": {},
+        "language_perturbation": {
+            "instruction": "Set the input device down onto the desk pad.",
+            "bank": "instruction_bank.json"
+        }
+    },
+    "episode_1": {
+        "cluttered_table_info": [],
+        "texture_info": {
+            "wall_texture": null,
+            "table_texture": null,
+            "floor_texture": null
+        },
+        "info": {},
+        "language_perturbation": {
+            "instruction": "Put the mouse onto the mouse pad.",
+            "bank": "instruction_bank.json"
+        }
+    },
+    "episode_2": {
+        "cluttered_table_info": [],
+        "texture_info": {
+            "wall_texture": null,
+            "table_texture": null,
+            "floor_texture": null
+        },
+        "info": {},
+        "language_perturbation": {
+            "instruction": "Transfer the mouse from its current spot onto the pad.",
+            "bank": "instruction_bank.json"
+        }
+    }
+}

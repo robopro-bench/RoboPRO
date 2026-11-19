@@ -1,0 +1,51 @@
+scene_0:
+  014_bookcase:
+    obj_type: actor
+    p: [0.3,0.23,0.74]
+    q: [90,0,0]
+    scale: [0.3,0.2,0.1]
+    model_id: 3
+  042_wooden_box:
+    obj_type: actor
+    p: [-0.40,-0.1,0.74]
+    q: [90,0,0]
+    scale: [0.11,0.07,0.2]
+    model_id: 0
+  table:
+    obj_type: table
+    length: 1.2
+    width: 0.7
+scene_1:
+  014_bookcase:
+    obj_type: actor
+    p: [-0.3,0.21,0.74]
+    q: [90,0,0]
+    scale: [0.3,0.2,0.1]
+    model_id: 3
+  042_wooden_box:
+    obj_type: actor
+    p: [0.45,-0.1,0.74]
+    q: [90,0,0]
+    scale: [0.11,0.07,0.2]
+    model_id: 0
+  table:
+    obj_type: table
+    length: 1.2
+    width: 0.7
+scene_2:
+  014_bookcase:
+    obj_type: actor
+    p: [0,0.21,0.74]
+    q: [90,0,0]
+    scale: [0.3,0.2,0.1]
+    model_id: 3
+  042_wooden_box:
+    obj_type: actor
+    p: [0.4,-0.1,0.74]
+    q: [90,0,0]
+    scale: [0.11,0.07,0.2]
+    model_id: 0
+  table:
+    obj_type: table
+    length: 1.2
+    width: 0.7

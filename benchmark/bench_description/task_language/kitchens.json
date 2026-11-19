@@ -1,0 +1,2382 @@
+{
+  "chain_apple_bin_bowl_rack_spoon_sink_ks": {
+    "original": "put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+    "synonyms": [
+      "place the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "set the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "lay the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "position the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "deposit the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "put the fruit in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "put the round fruit in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "put the produce in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "put the piece of fruit in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "put the the apple itself in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "put the apple in the trash can, the bowl in the dishrack, and the spoon in the sink",
+      "put the apple in the waste container, the bowl in the dishrack, and the spoon in the sink",
+      "put the apple in the garbage can, the bowl in the dishrack, and the spoon in the sink",
+      "put the apple in the disposal area, the bowl in the dishrack, and the spoon in the sink",
+      "put the apple in the the bin itself, the bowl in the dishrack, and the spoon in the sink",
+      "please put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "could you put the apple in the bin, the bowl in the dishrack, and the spoon in the sink?",
+      "put apple in bin, bowl in dishrack, and spoon in sink",
+      "put the apple in the bin, the bowl in the dishrack, and the spoon in the sink, please",
+      "put the apple in the bin, the bowl in the dishrack, and the spoon in the sink, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "I'm getting hungry, so put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "We're running behind schedule \u2014 put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "Dinner will be ready soon, so put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "The kitchen needs tidying up, but first put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "Since guests are arriving, put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "Before we start cooking, put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "I'm in a rush, so put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "The table is being set, meanwhile put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "Getting everything ready now: put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "I see a knife nearby, but put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "There are cutting boards and napkins around, yet put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "Various glasses are out, but specifically put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "Napkins and other utensils are scattered, though put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "Several containers are on the counter, however put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "There's a lot of clutter here, so put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "Ignoring all the other items, put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "Among the various kitchen supplies, put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "With everything else around, still put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "Past all the other objects, put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "put the round fruit in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "put the produce in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "put the apple in the bin, the container in the dishrack, and the spoon in the sink",
+      "put the apple in the bin, the vessel in the dishrack, and the spoon in the sink",
+      "put the apple in the bin, the bowl in the dishrack, and the flatware in the sink",
+      "put the apple in the bin, the bowl in the dishrack, and the silverware in the sink",
+      "put the apple in the waste container, the bowl in the dishrack, and the spoon in the sink",
+      "put the apple in the garbage can, the bowl in the dishrack, and the spoon in the sink",
+      "put the apple in the bin, the bowl in the dish drainer, and the spoon in the sink",
+      "put the apple in the bin, the bowl in the drying stand, and the spoon in the sink",
+      "I need to prepare the kitchen, so put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "Before we serve food, put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "As the first step in setup, put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "To get things ready for eating, put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "In preparation for the meal, put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "First things first: put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "To organize the workspace, put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "For proper cleanliness, put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "To complete the preparation, put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "As the initial task, put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "Could you put the apple in the bin, the bowl in the dishrack, and the spoon in the sink?",
+      "Um, can you put the apple in the bin, the bowl in the dishrack, and the spoon in the sink?",
+      "Would you mind put the apple in the bin, the bowl in the dishrack, and the spoon in the sink?",
+      "Could you please put the apple in the bin, the bowl in the dishrack, and the spoon in the sink?",
+      "Hey, put the apple in the bin, the bowl in the dishrack, and the spoon in the sink if you could?",
+      "I was wondering if you could put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "Do you think you could put the apple in the bin, the bowl in the dishrack, and the spoon in the sink?",
+      "Like, maybe put the apple in the bin, the bowl in the dishrack, and the spoon in the sink?",
+      "So, uh, put the apple in the bin, the bowl in the dishrack, and the spoon in the sink",
+      "Could you go ahead and put the apple in the bin, the bowl in the dishrack, and the spoon in the sink?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the apple on the bin, the bowl in the dishrack, and the spoon in the sink"
+      },
+      {
+        "change_type": "b",
+        "text": "put the orange in the bin, the bowl in the dishrack, and the spoon in the sink"
+      },
+      {
+        "change_type": "c",
+        "text": "put the apple under the bin, the bowl in the dishrack, and the spoon in the sink"
+      },
+      {
+        "change_type": "d",
+        "text": "do NOT put the apple in the bin, the bowl in the dishrack, and the spoon in the sink"
+      },
+      {
+        "change_type": "e",
+        "text": "put two apple in the bin, the bowl in the dishrack, and the spoon in the sink"
+      },
+      {
+        "change_type": "f",
+        "text": "put the apple in the bin, the bowl in the dishrack, and the spoon in the counter"
+      },
+      {
+        "change_type": "a",
+        "text": "put the apple in the bin, the bowl in the dishrack, and the spoon in the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "put the apple in the bin, the bowl in the dishrack, and the spoon in the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "put the apple in the bin, the bowl in the dishrack, and the spoon in the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "put the apple in the bin, the bowl in the dishrack, and the spoon in the sink"
+      }
+    ]
+  },
+  "chain_apple_sink_plate_bread_board_ks": {
+    "original": "put the apple from the sink on the plate and the bread on the board",
+    "synonyms": [
+      "place the apple from the sink on the plate and the bread on the board",
+      "set the apple from the sink on the plate and the bread on the board",
+      "lay the apple from the sink on the plate and the bread on the board",
+      "position the apple from the sink on the plate and the bread on the board",
+      "deposit the apple from the sink on the plate and the bread on the board",
+      "put the fruit from the sink on the plate and the bread on the board",
+      "put the round fruit from the sink on the plate and the bread on the board",
+      "put the produce from the sink on the plate and the bread on the board",
+      "put the piece of fruit from the sink on the plate and the bread on the board",
+      "put the the apple itself from the sink on the plate and the bread on the board",
+      "put the apple from the basin on the plate and the bread on the board",
+      "put the apple from the wash basin on the plate and the bread on the board",
+      "put the apple from the drainage basin on the plate and the bread on the board",
+      "put the apple from the washing area on the plate and the bread on the board",
+      "put the apple from the the sink itself on the plate and the bread on the board",
+      "please put the apple from the sink on the plate and the bread on the board",
+      "could you put the apple from the sink on the plate and the bread on the board?",
+      "put apple from sink on plate and bread on board",
+      "put the apple from the sink on the plate and the bread on the board, please",
+      "put the apple from the sink on the plate and the bread on the board, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 put the apple from the sink on the plate and the bread on the board",
+      "I'm getting hungry, so put the apple from the sink on the plate and the bread on the board",
+      "We're running behind schedule \u2014 put the apple from the sink on the plate and the bread on the board",
+      "Dinner will be ready soon, so put the apple from the sink on the plate and the bread on the board",
+      "The kitchen needs tidying up, but first put the apple from the sink on the plate and the bread on the board",
+      "Since guests are arriving, put the apple from the sink on the plate and the bread on the board",
+      "Before we start cooking, put the apple from the sink on the plate and the bread on the board",
+      "I'm in a rush, so put the apple from the sink on the plate and the bread on the board",
+      "The table is being set, meanwhile put the apple from the sink on the plate and the bread on the board",
+      "Getting everything ready now: put the apple from the sink on the plate and the bread on the board",
+      "I see a knife nearby, but put the apple from the sink on the plate and the bread on the board",
+      "There are cutting boards and napkins around, yet put the apple from the sink on the plate and the bread on the board",
+      "Various glasses are out, but specifically put the apple from the sink on the plate and the bread on the board",
+      "Napkins and other utensils are scattered, though put the apple from the sink on the plate and the bread on the board",
+      "Several containers are on the counter, however put the apple from the sink on the plate and the bread on the board",
+      "There's a lot of clutter here, so put the apple from the sink on the plate and the bread on the board",
+      "Ignoring all the other items, put the apple from the sink on the plate and the bread on the board",
+      "Among the various kitchen supplies, put the apple from the sink on the plate and the bread on the board",
+      "With everything else around, still put the apple from the sink on the plate and the bread on the board",
+      "Past all the other objects, put the apple from the sink on the plate and the bread on the board",
+      "put the round fruit from the sink on the plate and the bread on the board",
+      "put the produce from the sink on the plate and the bread on the board",
+      "put the apple from the sink on the ceramic dish and the bread on the board",
+      "put the apple from the sink on the dinnerware and the bread on the board",
+      "put the apple from the sink on the plate and the baked good on the board",
+      "put the apple from the sink on the plate and the slice on the board",
+      "put the apple from the wash basin on the plate and the bread on the board",
+      "put the apple from the drainage basin on the plate and the bread on the board",
+      "put the apple from the sink on the plate and the bread on the work surface",
+      "put the apple from the sink on the plate and the bread on the prep surface",
+      "I need to prepare the kitchen, so put the apple from the sink on the plate and the bread on the board",
+      "Before we serve food, put the apple from the sink on the plate and the bread on the board",
+      "As the first step in setup, put the apple from the sink on the plate and the bread on the board",
+      "To get things ready for eating, put the apple from the sink on the plate and the bread on the board",
+      "In preparation for the meal, put the apple from the sink on the plate and the bread on the board",
+      "First things first: put the apple from the sink on the plate and the bread on the board",
+      "To organize the workspace, put the apple from the sink on the plate and the bread on the board",
+      "For proper cleanliness, put the apple from the sink on the plate and the bread on the board",
+      "To complete the preparation, put the apple from the sink on the plate and the bread on the board",
+      "As the initial task, put the apple from the sink on the plate and the bread on the board",
+      "Could you put the apple from the sink on the plate and the bread on the board?",
+      "Um, can you put the apple from the sink on the plate and the bread on the board?",
+      "Would you mind put the apple from the sink on the plate and the bread on the board?",
+      "Could you please put the apple from the sink on the plate and the bread on the board?",
+      "Hey, put the apple from the sink on the plate and the bread on the board if you could?",
+      "I was wondering if you could put the apple from the sink on the plate and the bread on the board",
+      "Do you think you could put the apple from the sink on the plate and the bread on the board?",
+      "Like, maybe put the apple from the sink on the plate and the bread on the board?",
+      "So, uh, put the apple from the sink on the plate and the bread on the board",
+      "Could you go ahead and put the apple from the sink on the plate and the bread on the board?"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the apple from the sink in the plate and the bread on the board"
+      },
+      {
+        "change_type": "b",
+        "text": "put the orange from the sink on the plate and the bread on the board"
+      },
+      {
+        "change_type": "c",
+        "text": "put the apple from the sink under the plate and the bread on the board"
+      },
+      {
+        "change_type": "d",
+        "text": "do NOT put the apple from the sink on the plate and the bread on the board"
+      },
+      {
+        "change_type": "e",
+        "text": "put two apple from the sink on the plate and the bread on the board"
+      },
+      {
+        "change_type": "f",
+        "text": "put the apple from the counter on the plate and the bread on the board"
+      },
+      {
+        "change_type": "a",
+        "text": "put the apple from the sink on the plate and the bread on the board"
+      },
+      {
+        "change_type": "a",
+        "text": "put the apple from the sink on the plate and the bread on the board"
+      },
+      {
+        "change_type": "a",
+        "text": "put the apple from the sink on the plate and the bread on the board"
+      },
+      {
+        "change_type": "a",
+        "text": "put the apple from the sink on the plate and the bread on the board"
+      }
+    ]
+  },
+  "chain_bowl_rack_apple_sink_ks": {
+    "original": "move the bowl from the sink to the dishrack and the apple into the sink",
+    "synonyms": [
+      "transfer the bowl from the sink to the dishrack and the apple into the sink",
+      "relocate the bowl from the sink to the dishrack and the apple into the sink",
+      "shift the bowl from the sink to the dishrack and the apple into the sink",
+      "transport the bowl from the sink to the dishrack and the apple into the sink",
+      "convey the bowl from the sink to the dishrack and the apple into the sink",
+      "move the bowl from the sink to the dishrack and the fruit into the sink",
+      "move the bowl from the sink to the dishrack and the round fruit into the sink",
+      "move the bowl from the sink to the dishrack and the produce into the sink",
+      "move the bowl from the sink to the dishrack and the piece of fruit into the sink",
+      "move the bowl from the sink to the dishrack and the the apple itself into the sink",
+      "move the bowl from the sink to the drying rack and the apple into the sink",
+      "move the bowl from the sink to the dish drainer and the apple into the sink",
+      "move the bowl from the sink to the drying stand and the apple into the sink",
+      "move the bowl from the sink to the rack and the apple into the sink",
+      "move the bowl from the sink to the the dishrack itself and the apple into the sink",
+      "please move the bowl from the sink to the dishrack and the apple into the sink",
+      "could you move the bowl from the sink to the dishrack and the apple into the sink?",
+      "move bowl from sink to dishrack and apple into sink",
+      "move the bowl from the sink to the dishrack and the apple into the sink, please",
+      "move the bowl from the sink to the dishrack and the apple into the sink, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 move the bowl from the sink to the dishrack and the apple into the sink",
+      "I'm getting hungry, so move the bowl from the sink to the dishrack and the apple into the sink",
+      "We're running behind schedule \u2014 move the bowl from the sink to the dishrack and the apple into the sink",
+      "Dinner will be ready soon, so move the bowl from the sink to the dishrack and the apple into the sink",
+      "The kitchen needs tidying up, but first move the bowl from the sink to the dishrack and the apple into the sink",
+      "Since guests are arriving, move the bowl from the sink to the dishrack and the apple into the sink",
+      "Before we start cooking, move the bowl from the sink to the dishrack and the apple into the sink",
+      "I'm in a rush, so move the bowl from the sink to the dishrack and the apple into the sink",
+      "The table is being set, meanwhile move the bowl from the sink to the dishrack and the apple into the sink",
+      "Getting everything ready now: move the bowl from the sink to the dishrack and the apple into the sink",
+      "I see a knife nearby, but move the bowl from the sink to the dishrack and the apple into the sink",
+      "There are cutting boards and napkins around, yet move the bowl from the sink to the dishrack and the apple into the sink",
+      "Various glasses are out, but specifically move the bowl from the sink to the dishrack and the apple into the sink",
+      "Napkins and other utensils are scattered, though move the bowl from the sink to the dishrack and the apple into the sink",
+      "Several containers are on the counter, however move the bowl from the sink to the dishrack and the apple into the sink",
+      "There's a lot of clutter here, so move the bowl from the sink to the dishrack and the apple into the sink",
+      "Ignoring all the other items, move the bowl from the sink to the dishrack and the apple into the sink",
+      "Among the various kitchen supplies, move the bowl from the sink to the dishrack and the apple into the sink",
+      "With everything else around, still move the bowl from the sink to the dishrack and the apple into the sink",
+      "Past all the other objects, move the bowl from the sink to the dishrack and the apple into the sink",
+      "move the bowl from the sink to the dishrack and the round fruit into the sink",
+      "move the bowl from the sink to the dishrack and the produce into the sink",
+      "move the container from the sink to the dishrack and the apple into the sink",
+      "move the vessel from the sink to the dishrack and the apple into the sink",
+      "move the bowl from the sink to the dish drainer and the apple into the sink",
+      "move the bowl from the sink to the drying stand and the apple into the sink",
+      "move the bowl from the wash basin to the dishrack and the apple into the wash basin",
+      "move the bowl from the drainage basin to the dishrack and the apple into the drainage basin",
+      "I need to prepare the kitchen, so move the bowl from the sink to the dishrack and the apple into the sink",
+      "Before we serve food, move the bowl from the sink to the dishrack and the apple into the sink",
+      "As the first step in setup, move the bowl from the sink to the dishrack and the apple into the sink",
+      "To get things ready for eating, move the bowl from the sink to the dishrack and the apple into the sink",
+      "In preparation for the meal, move the bowl from the sink to the dishrack and the apple into the sink",
+      "First things first: move the bowl from the sink to the dishrack and the apple into the sink",
+      "To organize the workspace, move the bowl from the sink to the dishrack and the apple into the sink",
+      "For proper cleanliness, move the bowl from the sink to the dishrack and the apple into the sink",
+      "To complete the preparation, move the bowl from the sink to the dishrack and the apple into the sink",
+      "As the initial task, move the bowl from the sink to the dishrack and the apple into the sink",
+      "Could you move the bowl from the sink to the dishrack and the apple into the sink?",
+      "Um, can you move the bowl from the sink to the dishrack and the apple into the sink?",
+      "Would you mind move the bowl from the sink to the dishrack and the apple into the sink?",
+      "Could you please move the bowl from the sink to the dishrack and the apple into the sink?",
+      "Hey, move the bowl from the sink to the dishrack and the apple into the sink if you could?",
+      "I was wondering if you could move the bowl from the sink to the dishrack and the apple into the sink",
+      "Do you think you could move the bowl from the sink to the dishrack and the apple into the sink?",
+      "Like, maybe move the bowl from the sink to the dishrack and the apple into the sink?",
+      "So, uh, move the bowl from the sink to the dishrack and the apple into the sink",
+      "Could you go ahead and move the bowl from the sink to the dishrack and the apple into the sink?",
+      "move the bowl from the sink to the dishrack and the apple into the sink",
+      "move the bowl from the sink to the dishrack and the apple into the sink"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "move the bowl from the sink to the dishrack and the orange into the sink"
+      },
+      {
+        "change_type": "d",
+        "text": "do NOT move the bowl from the sink to the dishrack and the apple into the sink"
+      },
+      {
+        "change_type": "e",
+        "text": "move two bowl from the sink to the dishrack and the apple into the sink"
+      },
+      {
+        "change_type": "f",
+        "text": "move the bowl from the counter to the dishrack and the apple into the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "move the bowl from the sink to the dishrack and the apple into the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "move the bowl from the sink to the dishrack and the apple into the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "move the bowl from the sink to the dishrack and the apple into the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "move the bowl from the sink to the dishrack and the apple into the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "move the bowl from the sink to the dishrack and the apple into the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "move the bowl from the sink to the dishrack and the apple into the sink"
+      }
+    ]
+  },
+  "chain_heat_hamburger_ks": {
+    "original": "put the hamburger in the microwave and close the door",
+    "synonyms": [
+      "place the hamburger in the microwave and close the door",
+      "set the hamburger in the microwave and close the door",
+      "lay the hamburger in the microwave and close the door",
+      "position the hamburger in the microwave and close the door",
+      "deposit the hamburger in the microwave and close the door",
+      "put the burger in the microwave and close the door",
+      "put the meat sandwich in the microwave and close the door",
+      "put the patty in the microwave and close the door",
+      "put the the hamburger itself in the microwave and close the door",
+      "put the prepared meat in the microwave and close the door",
+      "put the hamburger in the microwave oven and close the door",
+      "put the hamburger in the heating appliance and close the door",
+      "put the hamburger in the warming device and close the door",
+      "put the hamburger in the oven and close the door",
+      "put the hamburger in the the microwave itself and close the door",
+      "please put the hamburger in the microwave and close the door",
+      "could you put the hamburger in the microwave and close the door?",
+      "put hamburger in microwave and close door",
+      "put the hamburger in the microwave and close the door, please",
+      "put the hamburger in the microwave and close the door, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 put the hamburger in the microwave and close the door",
+      "I'm getting hungry, so put the hamburger in the microwave and close the door",
+      "We're running behind schedule \u2014 put the hamburger in the microwave and close the door",
+      "Dinner will be ready soon, so put the hamburger in the microwave and close the door",
+      "The kitchen needs tidying up, but first put the hamburger in the microwave and close the door",
+      "Since guests are arriving, put the hamburger in the microwave and close the door",
+      "Before we start cooking, put the hamburger in the microwave and close the door",
+      "I'm in a rush, so put the hamburger in the microwave and close the door",
+      "The table is being set, meanwhile put the hamburger in the microwave and close the door",
+      "Getting everything ready now: put the hamburger in the microwave and close the door",
+      "I see a knife nearby, but put the hamburger in the microwave and close the door",
+      "There are cutting boards and napkins around, yet put the hamburger in the microwave and close the door",
+      "Various glasses are out, but specifically put the hamburger in the microwave and close the door",
+      "Napkins and other utensils are scattered, though put the hamburger in the microwave and close the door",
+      "Several containers are on the counter, however put the hamburger in the microwave and close the door",
+      "There's a lot of clutter here, so put the hamburger in the microwave and close the door",
+      "Ignoring all the other items, put the hamburger in the microwave and close the door",
+      "Among the various kitchen supplies, put the hamburger in the microwave and close the door",
+      "With everything else around, still put the hamburger in the microwave and close the door",
+      "Past all the other objects, put the hamburger in the microwave and close the door",
+      "put the meat sandwich in the microwave and close the door",
+      "put the patty in the microwave and close the door",
+      "put the hamburger in the heating appliance and close the door",
+      "put the hamburger in the warming device and close the door",
+      "put the hamburger in the microwave and close the entrance",
+      "put the hamburger in the microwave and close the panel",
+      "I need to prepare the kitchen, so put the hamburger in the microwave and close the door",
+      "Before we serve food, put the hamburger in the microwave and close the door",
+      "As the first step in setup, put the hamburger in the microwave and close the door",
+      "To get things ready for eating, put the hamburger in the microwave and close the door",
+      "In preparation for the meal, put the hamburger in the microwave and close the door",
+      "First things first: put the hamburger in the microwave and close the door",
+      "To organize the workspace, put the hamburger in the microwave and close the door",
+      "For proper cleanliness, put the hamburger in the microwave and close the door",
+      "To complete the preparation, put the hamburger in the microwave and close the door",
+      "As the initial task, put the hamburger in the microwave and close the door",
+      "Could you put the hamburger in the microwave and close the door?",
+      "Um, can you put the hamburger in the microwave and close the door?",
+      "Would you mind put the hamburger in the microwave and close the door?",
+      "Could you please put the hamburger in the microwave and close the door?",
+      "Hey, put the hamburger in the microwave and close the door if you could?",
+      "I was wondering if you could put the hamburger in the microwave and close the door",
+      "Do you think you could put the hamburger in the microwave and close the door?",
+      "Like, maybe put the hamburger in the microwave and close the door?",
+      "So, uh, put the hamburger in the microwave and close the door",
+      "Could you go ahead and put the hamburger in the microwave and close the door?",
+      "put the hamburger in the microwave and close the door",
+      "put the hamburger in the microwave and close the door",
+      "put the hamburger in the microwave and close the door",
+      "put the hamburger in the microwave and close the door"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the hamburger on the microwave and close the door"
+      },
+      {
+        "change_type": "b",
+        "text": "put the sandwich in the microwave and close the door"
+      },
+      {
+        "change_type": "c",
+        "text": "put the hamburger under the microwave and close the door"
+      },
+      {
+        "change_type": "d",
+        "text": "do NOT put the hamburger in the microwave and close the door"
+      },
+      {
+        "change_type": "e",
+        "text": "put two hamburger in the microwave and close the door"
+      },
+      {
+        "change_type": "f",
+        "text": "put the hamburger in the oven and close the door"
+      },
+      {
+        "change_type": "a",
+        "text": "put the hamburger in the microwave and close the door"
+      },
+      {
+        "change_type": "a",
+        "text": "put the hamburger in the microwave and close the door"
+      },
+      {
+        "change_type": "a",
+        "text": "put the hamburger in the microwave and close the door"
+      },
+      {
+        "change_type": "a",
+        "text": "put the hamburger in the microwave and close the door"
+      }
+    ]
+  },
+  "chain_serve_hamburger_ks": {
+    "original": "take the hamburger out of the microwave, place it on the bowl, and close the door",
+    "synonyms": [
+      "remove the hamburger out of the microwave, place it on the bowl, and close the door",
+      "pull the hamburger out of the microwave, place it on the bowl, and close the door",
+      "extract the hamburger out of the microwave, place it on the bowl, and close the door",
+      "retrieve the hamburger out of the microwave, place it on the bowl, and close the door",
+      "withdraw the hamburger out of the microwave, place it on the bowl, and close the door",
+      "take the hamburger out of the microwave, place it on the dish, and close the door",
+      "take the hamburger out of the microwave, place it on the container, and close the door",
+      "take the hamburger out of the microwave, place it on the vessel, and close the door",
+      "take the hamburger out of the microwave, place it on the ceramic dish, and close the door",
+      "take the hamburger out of the microwave, place it on the the bowl itself, and close the door",
+      "take the hamburger out of the microwave oven, place it on the bowl, and close the door",
+      "take the hamburger out of the heating appliance, place it on the bowl, and close the door",
+      "take the hamburger out of the warming device, place it on the bowl, and close the door",
+      "take the hamburger out of the oven, place it on the bowl, and close the door",
+      "take the hamburger out of the the microwave itself, place it on the bowl, and close the door",
+      "please take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "could you take the hamburger out of the microwave, place it on the bowl, and close the door?",
+      "take hamburger out of microwave, place it on bowl, and close door",
+      "take the hamburger out of the microwave, place it on the bowl, and close the door, please",
+      "take the hamburger out of the microwave, place it on the bowl, and close the door, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "I'm getting hungry, so take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "We're running behind schedule \u2014 take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "Dinner will be ready soon, so take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "The kitchen needs tidying up, but first take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "Since guests are arriving, take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "Before we start cooking, take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "I'm in a rush, so take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "The table is being set, meanwhile take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "Getting everything ready now: take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "I see a knife nearby, but take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "There are cutting boards and napkins around, yet take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "Various glasses are out, but specifically take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "Napkins and other utensils are scattered, though take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "Several containers are on the counter, however take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "There's a lot of clutter here, so take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "Ignoring all the other items, take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "Among the various kitchen supplies, take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "With everything else around, still take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "Past all the other objects, take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "take the hamburger out of the microwave, place it on the container, and close the door",
+      "take the hamburger out of the microwave, place it on the vessel, and close the door",
+      "take the meat sandwich out of the microwave, place it on the bowl, and close the door",
+      "take the patty out of the microwave, place it on the bowl, and close the door",
+      "take the hamburger out of the heating appliance, place it on the bowl, and close the door",
+      "take the hamburger out of the warming device, place it on the bowl, and close the door",
+      "take the hamburger out of the microwave, place it on the bowl, and close the entrance",
+      "take the hamburger out of the microwave, place it on the bowl, and close the panel",
+      "I need to prepare the kitchen, so take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "Before we serve food, take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "As the first step in setup, take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "To get things ready for eating, take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "In preparation for the meal, take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "First things first: take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "To organize the workspace, take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "For proper cleanliness, take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "To complete the preparation, take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "As the initial task, take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "Could you take the hamburger out of the microwave, place it on the bowl, and close the door?",
+      "Um, can you take the hamburger out of the microwave, place it on the bowl, and close the door?",
+      "Would you mind take the hamburger out of the microwave, place it on the bowl, and close the door?",
+      "Could you please take the hamburger out of the microwave, place it on the bowl, and close the door?",
+      "Hey, take the hamburger out of the microwave, place it on the bowl, and close the door if you could?",
+      "I was wondering if you could take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "Do you think you could take the hamburger out of the microwave, place it on the bowl, and close the door?",
+      "Like, maybe take the hamburger out of the microwave, place it on the bowl, and close the door?",
+      "So, uh, take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "Could you go ahead and take the hamburger out of the microwave, place it on the bowl, and close the door?",
+      "take the hamburger out of the microwave, place it on the bowl, and close the door",
+      "take the hamburger out of the microwave, place it on the bowl, and close the door"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "take the hamburger out of the microwave, place it in the bowl, and close the door"
+      },
+      {
+        "change_type": "b",
+        "text": "take the hamburger out of the microwave, place it on the cup, and close the door"
+      },
+      {
+        "change_type": "c",
+        "text": "take the hamburger out of the microwave, place it under the bowl, and close the door"
+      },
+      {
+        "change_type": "d",
+        "text": "do NOT take the hamburger out of the microwave, place it on the bowl, and close the door"
+      },
+      {
+        "change_type": "e",
+        "text": "take two hamburger out of the microwave, place it on the bowl, and close the door"
+      },
+      {
+        "change_type": "f",
+        "text": "take the hamburger out of the oven, place it on the bowl, and close the door"
+      },
+      {
+        "change_type": "a",
+        "text": "take the hamburger out of the microwave, place it on the bowl, and close the door"
+      },
+      {
+        "change_type": "a",
+        "text": "take the hamburger out of the microwave, place it on the bowl, and close the door"
+      },
+      {
+        "change_type": "a",
+        "text": "take the hamburger out of the microwave, place it on the bowl, and close the door"
+      },
+      {
+        "change_type": "a",
+        "text": "take the hamburger out of the microwave, place it on the bowl, and close the door"
+      }
+    ]
+  },
+  "close_microwave_ks": {
+    "original": "close the microwave door",
+    "synonyms": [
+      "shut the microwave door",
+      "seal the microwave door",
+      "lock the microwave door",
+      "secure the microwave door",
+      "fasten the microwave door",
+      "close the microwave oven door",
+      "close the heating appliance door",
+      "close the warming device door",
+      "close the oven door",
+      "close the the microwave itself door",
+      "please close the microwave door",
+      "could you close the microwave door?",
+      "close microwave door",
+      "close the microwave door, please",
+      "close the microwave door, please",
+      "close the microwave door, please",
+      "close the microwave door, please",
+      "close the microwave door, please",
+      "close the microwave door, please",
+      "close the microwave door, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 close the microwave door",
+      "I'm getting hungry, so close the microwave door",
+      "We're running behind schedule \u2014 close the microwave door",
+      "Dinner will be ready soon, so close the microwave door",
+      "The kitchen needs tidying up, but first close the microwave door",
+      "Since guests are arriving, close the microwave door",
+      "Before we start cooking, close the microwave door",
+      "I'm in a rush, so close the microwave door",
+      "The table is being set, meanwhile close the microwave door",
+      "Getting everything ready now: close the microwave door",
+      "I see a knife nearby, but close the microwave door",
+      "There are cutting boards and napkins around, yet close the microwave door",
+      "Various glasses are out, but specifically close the microwave door",
+      "Napkins and other utensils are scattered, though close the microwave door",
+      "Several containers are on the counter, however close the microwave door",
+      "There's a lot of clutter here, so close the microwave door",
+      "Ignoring all the other items, close the microwave door",
+      "Among the various kitchen supplies, close the microwave door",
+      "With everything else around, still close the microwave door",
+      "Past all the other objects, close the microwave door",
+      "close the heating appliance door",
+      "close the warming device door",
+      "I need to prepare the kitchen, so close the microwave door",
+      "Before we serve food, close the microwave door",
+      "As the first step in setup, close the microwave door",
+      "To get things ready for eating, close the microwave door",
+      "In preparation for the meal, close the microwave door",
+      "First things first: close the microwave door",
+      "To organize the workspace, close the microwave door",
+      "For proper cleanliness, close the microwave door",
+      "To complete the preparation, close the microwave door",
+      "As the initial task, close the microwave door",
+      "Could you close the microwave door?",
+      "Um, can you close the microwave door?",
+      "Would you mind close the microwave door?",
+      "Could you please close the microwave door?",
+      "Hey, close the microwave door if you could?",
+      "I was wondering if you could close the microwave door",
+      "Do you think you could close the microwave door?",
+      "Like, maybe close the microwave door?",
+      "So, uh, close the microwave door",
+      "Could you go ahead and close the microwave door?",
+      "close the microwave door",
+      "close the microwave door",
+      "close the microwave door",
+      "close the microwave door",
+      "close the microwave door",
+      "close the microwave door",
+      "close the microwave door",
+      "close the microwave door"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "d",
+        "text": "do NOT close the microwave door"
+      },
+      {
+        "change_type": "e",
+        "text": "close two microwave door"
+      },
+      {
+        "change_type": "f",
+        "text": "close the oven door"
+      },
+      {
+        "change_type": "a",
+        "text": "close the microwave door"
+      },
+      {
+        "change_type": "a",
+        "text": "close the microwave door"
+      },
+      {
+        "change_type": "a",
+        "text": "close the microwave door"
+      },
+      {
+        "change_type": "a",
+        "text": "close the microwave door"
+      },
+      {
+        "change_type": "a",
+        "text": "close the microwave door"
+      },
+      {
+        "change_type": "a",
+        "text": "close the microwave door"
+      },
+      {
+        "change_type": "a",
+        "text": "close the microwave door"
+      }
+    ]
+  },
+  "drop_apple_in_bin_ks": {
+    "original": "drop the apple in the bin",
+    "synonyms": [
+      "let fall into the apple in the bin",
+      "place gently the apple in the bin",
+      "set down the apple in the bin",
+      "lower the apple in the bin",
+      "put the apple in the bin",
+      "drop the fruit in the bin",
+      "drop the round fruit in the bin",
+      "drop the produce in the bin",
+      "drop the piece of fruit in the bin",
+      "drop the the apple itself in the bin",
+      "drop the apple in the trash can",
+      "drop the apple in the waste container",
+      "drop the apple in the garbage can",
+      "drop the apple in the disposal area",
+      "drop the apple in the the bin itself",
+      "please drop the apple in the bin",
+      "could you drop the apple in the bin?",
+      "drop apple in bin",
+      "drop the apple in the bin, please",
+      "drop the apple in the bin, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 drop the apple in the bin",
+      "I'm getting hungry, so drop the apple in the bin",
+      "We're running behind schedule \u2014 drop the apple in the bin",
+      "Dinner will be ready soon, so drop the apple in the bin",
+      "The kitchen needs tidying up, but first drop the apple in the bin",
+      "Since guests are arriving, drop the apple in the bin",
+      "Before we start cooking, drop the apple in the bin",
+      "I'm in a rush, so drop the apple in the bin",
+      "The table is being set, meanwhile drop the apple in the bin",
+      "Getting everything ready now: drop the apple in the bin",
+      "I see a knife nearby, but drop the apple in the bin",
+      "There are cutting boards and napkins around, yet drop the apple in the bin",
+      "Various glasses are out, but specifically drop the apple in the bin",
+      "Napkins and other utensils are scattered, though drop the apple in the bin",
+      "Several containers are on the counter, however drop the apple in the bin",
+      "There's a lot of clutter here, so drop the apple in the bin",
+      "Ignoring all the other items, drop the apple in the bin",
+      "Among the various kitchen supplies, drop the apple in the bin",
+      "With everything else around, still drop the apple in the bin",
+      "Past all the other objects, drop the apple in the bin",
+      "drop the round fruit in the bin",
+      "drop the produce in the bin",
+      "drop the apple in the waste container",
+      "drop the apple in the garbage can",
+      "I need to prepare the kitchen, so drop the apple in the bin",
+      "Before we serve food, drop the apple in the bin",
+      "As the first step in setup, drop the apple in the bin",
+      "To get things ready for eating, drop the apple in the bin",
+      "In preparation for the meal, drop the apple in the bin",
+      "First things first: drop the apple in the bin",
+      "To organize the workspace, drop the apple in the bin",
+      "For proper cleanliness, drop the apple in the bin",
+      "To complete the preparation, drop the apple in the bin",
+      "As the initial task, drop the apple in the bin",
+      "Could you drop the apple in the bin?",
+      "Um, can you drop the apple in the bin?",
+      "Would you mind drop the apple in the bin?",
+      "Could you please drop the apple in the bin?",
+      "Hey, drop the apple in the bin if you could?",
+      "I was wondering if you could drop the apple in the bin",
+      "Do you think you could drop the apple in the bin?",
+      "Like, maybe drop the apple in the bin?",
+      "So, uh, drop the apple in the bin",
+      "Could you go ahead and drop the apple in the bin?",
+      "drop the apple in the bin",
+      "drop the apple in the bin",
+      "drop the apple in the bin",
+      "drop the apple in the bin",
+      "drop the apple in the bin",
+      "drop the apple in the bin"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "drop the apple on the bin"
+      },
+      {
+        "change_type": "b",
+        "text": "drop the orange in the bin"
+      },
+      {
+        "change_type": "c",
+        "text": "drop the apple under the bin"
+      },
+      {
+        "change_type": "d",
+        "text": "do NOT drop the apple in the bin"
+      },
+      {
+        "change_type": "e",
+        "text": "drop two apple in the bin"
+      },
+      {
+        "change_type": "f",
+        "text": "drop the apple in the shelf"
+      },
+      {
+        "change_type": "a",
+        "text": "drop the apple in the bin"
+      },
+      {
+        "change_type": "a",
+        "text": "drop the apple in the bin"
+      },
+      {
+        "change_type": "a",
+        "text": "drop the apple in the bin"
+      },
+      {
+        "change_type": "a",
+        "text": "drop the apple in the bin"
+      }
+    ]
+  },
+  "move_hamburger_onto_plate_ks": {
+    "original": "move the hamburger onto the plate",
+    "synonyms": [
+      "transfer the hamburger onto the plate",
+      "relocate the hamburger onto the plate",
+      "shift the hamburger onto the plate",
+      "transport the hamburger onto the plate",
+      "convey the hamburger onto the plate",
+      "move the hamburger onto the dish",
+      "move the hamburger onto the ceramic dish",
+      "move the hamburger onto the dinnerware",
+      "move the hamburger onto the the plate itself",
+      "move the hamburger onto the serving plate",
+      "please move the hamburger onto the plate",
+      "could you move the hamburger onto the plate?",
+      "move hamburger onto plate",
+      "move the hamburger onto the plate, please",
+      "move the hamburger onto the plate, please",
+      "move the hamburger onto the plate, please",
+      "move the hamburger onto the plate, please",
+      "move the hamburger onto the plate, please",
+      "move the hamburger onto the plate, please",
+      "move the hamburger onto the plate, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 move the hamburger onto the plate",
+      "I'm getting hungry, so move the hamburger onto the plate",
+      "We're running behind schedule \u2014 move the hamburger onto the plate",
+      "Dinner will be ready soon, so move the hamburger onto the plate",
+      "The kitchen needs tidying up, but first move the hamburger onto the plate",
+      "Since guests are arriving, move the hamburger onto the plate",
+      "Before we start cooking, move the hamburger onto the plate",
+      "I'm in a rush, so move the hamburger onto the plate",
+      "The table is being set, meanwhile move the hamburger onto the plate",
+      "Getting everything ready now: move the hamburger onto the plate",
+      "I see a knife nearby, but move the hamburger onto the plate",
+      "There are cutting boards and napkins around, yet move the hamburger onto the plate",
+      "Various glasses are out, but specifically move the hamburger onto the plate",
+      "Napkins and other utensils are scattered, though move the hamburger onto the plate",
+      "Several containers are on the counter, however move the hamburger onto the plate",
+      "There's a lot of clutter here, so move the hamburger onto the plate",
+      "Ignoring all the other items, move the hamburger onto the plate",
+      "Among the various kitchen supplies, move the hamburger onto the plate",
+      "With everything else around, still move the hamburger onto the plate",
+      "Past all the other objects, move the hamburger onto the plate",
+      "move the hamburger onto the ceramic dish",
+      "move the hamburger onto the dinnerware",
+      "move the meat sandwich onto the plate",
+      "move the patty onto the plate",
+      "I need to prepare the kitchen, so move the hamburger onto the plate",
+      "Before we serve food, move the hamburger onto the plate",
+      "As the first step in setup, move the hamburger onto the plate",
+      "To get things ready for eating, move the hamburger onto the plate",
+      "In preparation for the meal, move the hamburger onto the plate",
+      "First things first: move the hamburger onto the plate",
+      "To organize the workspace, move the hamburger onto the plate",
+      "For proper cleanliness, move the hamburger onto the plate",
+      "To complete the preparation, move the hamburger onto the plate",
+      "As the initial task, move the hamburger onto the plate",
+      "Could you move the hamburger onto the plate?",
+      "Um, can you move the hamburger onto the plate?",
+      "Would you mind move the hamburger onto the plate?",
+      "Could you please move the hamburger onto the plate?",
+      "Hey, move the hamburger onto the plate if you could?",
+      "I was wondering if you could move the hamburger onto the plate",
+      "Do you think you could move the hamburger onto the plate?",
+      "Like, maybe move the hamburger onto the plate?",
+      "So, uh, move the hamburger onto the plate",
+      "Could you go ahead and move the hamburger onto the plate?",
+      "move the hamburger onto the plate",
+      "move the hamburger onto the plate",
+      "move the hamburger onto the plate",
+      "move the hamburger onto the plate",
+      "move the hamburger onto the plate",
+      "move the hamburger onto the plate"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "move the hamburger onto the tray"
+      },
+      {
+        "change_type": "d",
+        "text": "do NOT move the hamburger onto the plate"
+      },
+      {
+        "change_type": "e",
+        "text": "move two hamburger onto the plate"
+      },
+      {
+        "change_type": "a",
+        "text": "move the hamburger onto the plate"
+      },
+      {
+        "change_type": "a",
+        "text": "move the hamburger onto the plate"
+      },
+      {
+        "change_type": "a",
+        "text": "move the hamburger onto the plate"
+      },
+      {
+        "change_type": "a",
+        "text": "move the hamburger onto the plate"
+      },
+      {
+        "change_type": "a",
+        "text": "move the hamburger onto the plate"
+      },
+      {
+        "change_type": "a",
+        "text": "move the hamburger onto the plate"
+      },
+      {
+        "change_type": "a",
+        "text": "move the hamburger onto the plate"
+      }
+    ]
+  },
+  "pick_apple_from_bowl_ks": {
+    "original": "pick up the apple from the bowl",
+    "synonyms": [
+      "grab the apple from the bowl",
+      "grasp the apple from the bowl",
+      "take the apple from the bowl",
+      "lift the apple from the bowl",
+      "seize the apple from the bowl",
+      "pick up the fruit from the bowl",
+      "pick up the round fruit from the bowl",
+      "pick up the produce from the bowl",
+      "pick up the piece of fruit from the bowl",
+      "pick up the the apple itself from the bowl",
+      "please pick up the apple from the bowl",
+      "could you pick up the apple from the bowl?",
+      "pick up apple from bowl",
+      "pick up the apple from the bowl, please",
+      "pick up the apple from the bowl, please",
+      "pick up the apple from the bowl, please",
+      "pick up the apple from the bowl, please",
+      "pick up the apple from the bowl, please",
+      "pick up the apple from the bowl, please",
+      "pick up the apple from the bowl, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 pick up the apple from the bowl",
+      "I'm getting hungry, so pick up the apple from the bowl",
+      "We're running behind schedule \u2014 pick up the apple from the bowl",
+      "Dinner will be ready soon, so pick up the apple from the bowl",
+      "The kitchen needs tidying up, but first pick up the apple from the bowl",
+      "Since guests are arriving, pick up the apple from the bowl",
+      "Before we start cooking, pick up the apple from the bowl",
+      "I'm in a rush, so pick up the apple from the bowl",
+      "The table is being set, meanwhile pick up the apple from the bowl",
+      "Getting everything ready now: pick up the apple from the bowl",
+      "I see a knife nearby, but pick up the apple from the bowl",
+      "There are cutting boards and napkins around, yet pick up the apple from the bowl",
+      "Various glasses are out, but specifically pick up the apple from the bowl",
+      "Napkins and other utensils are scattered, though pick up the apple from the bowl",
+      "Several containers are on the counter, however pick up the apple from the bowl",
+      "There's a lot of clutter here, so pick up the apple from the bowl",
+      "Ignoring all the other items, pick up the apple from the bowl",
+      "Among the various kitchen supplies, pick up the apple from the bowl",
+      "With everything else around, still pick up the apple from the bowl",
+      "Past all the other objects, pick up the apple from the bowl",
+      "pick up the round fruit from the bowl",
+      "pick up the produce from the bowl",
+      "pick up the apple from the container",
+      "pick up the apple from the vessel",
+      "I need to prepare the kitchen, so pick up the apple from the bowl",
+      "Before we serve food, pick up the apple from the bowl",
+      "As the first step in setup, pick up the apple from the bowl",
+      "To get things ready for eating, pick up the apple from the bowl",
+      "In preparation for the meal, pick up the apple from the bowl",
+      "First things first: pick up the apple from the bowl",
+      "To organize the workspace, pick up the apple from the bowl",
+      "For proper cleanliness, pick up the apple from the bowl",
+      "To complete the preparation, pick up the apple from the bowl",
+      "As the initial task, pick up the apple from the bowl",
+      "Could you pick up the apple from the bowl?",
+      "Um, can you pick up the apple from the bowl?",
+      "Would you mind pick up the apple from the bowl?",
+      "Could you please pick up the apple from the bowl?",
+      "Hey, pick up the apple from the bowl if you could?",
+      "I was wondering if you could pick up the apple from the bowl",
+      "Do you think you could pick up the apple from the bowl?",
+      "Like, maybe pick up the apple from the bowl?",
+      "So, uh, pick up the apple from the bowl",
+      "Could you go ahead and pick up the apple from the bowl?",
+      "pick up the apple from the bowl",
+      "pick up the apple from the bowl",
+      "pick up the apple from the bowl",
+      "pick up the apple from the bowl",
+      "pick up the apple from the bowl",
+      "pick up the apple from the bowl"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "pick up the orange from the bowl"
+      },
+      {
+        "change_type": "d",
+        "text": "do NOT pick up the apple from the bowl"
+      },
+      {
+        "change_type": "e",
+        "text": "pick up two apple from the bowl"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the apple from the bowl"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the apple from the bowl"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the apple from the bowl"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the apple from the bowl"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the apple from the bowl"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the apple from the bowl"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the apple from the bowl"
+      }
+    ]
+  },
+  "pick_apple_from_sink_ks": {
+    "original": "pick up the apple from the sink",
+    "synonyms": [
+      "grab the apple from the sink",
+      "grasp the apple from the sink",
+      "take the apple from the sink",
+      "lift the apple from the sink",
+      "seize the apple from the sink",
+      "pick up the fruit from the sink",
+      "pick up the round fruit from the sink",
+      "pick up the produce from the sink",
+      "pick up the piece of fruit from the sink",
+      "pick up the the apple itself from the sink",
+      "pick up the apple from the basin",
+      "pick up the apple from the wash basin",
+      "pick up the apple from the drainage basin",
+      "pick up the apple from the washing area",
+      "pick up the apple from the the sink itself",
+      "please pick up the apple from the sink",
+      "could you pick up the apple from the sink?",
+      "pick up apple from sink",
+      "pick up the apple from the sink, please",
+      "pick up the apple from the sink, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 pick up the apple from the sink",
+      "I'm getting hungry, so pick up the apple from the sink",
+      "We're running behind schedule \u2014 pick up the apple from the sink",
+      "Dinner will be ready soon, so pick up the apple from the sink",
+      "The kitchen needs tidying up, but first pick up the apple from the sink",
+      "Since guests are arriving, pick up the apple from the sink",
+      "Before we start cooking, pick up the apple from the sink",
+      "I'm in a rush, so pick up the apple from the sink",
+      "The table is being set, meanwhile pick up the apple from the sink",
+      "Getting everything ready now: pick up the apple from the sink",
+      "I see a knife nearby, but pick up the apple from the sink",
+      "There are cutting boards and napkins around, yet pick up the apple from the sink",
+      "Various glasses are out, but specifically pick up the apple from the sink",
+      "Napkins and other utensils are scattered, though pick up the apple from the sink",
+      "Several containers are on the counter, however pick up the apple from the sink",
+      "There's a lot of clutter here, so pick up the apple from the sink",
+      "Ignoring all the other items, pick up the apple from the sink",
+      "Among the various kitchen supplies, pick up the apple from the sink",
+      "With everything else around, still pick up the apple from the sink",
+      "Past all the other objects, pick up the apple from the sink",
+      "pick up the round fruit from the sink",
+      "pick up the produce from the sink",
+      "pick up the apple from the wash basin",
+      "pick up the apple from the drainage basin",
+      "I need to prepare the kitchen, so pick up the apple from the sink",
+      "Before we serve food, pick up the apple from the sink",
+      "As the first step in setup, pick up the apple from the sink",
+      "To get things ready for eating, pick up the apple from the sink",
+      "In preparation for the meal, pick up the apple from the sink",
+      "First things first: pick up the apple from the sink",
+      "To organize the workspace, pick up the apple from the sink",
+      "For proper cleanliness, pick up the apple from the sink",
+      "To complete the preparation, pick up the apple from the sink",
+      "As the initial task, pick up the apple from the sink",
+      "Could you pick up the apple from the sink?",
+      "Um, can you pick up the apple from the sink?",
+      "Would you mind pick up the apple from the sink?",
+      "Could you please pick up the apple from the sink?",
+      "Hey, pick up the apple from the sink if you could?",
+      "I was wondering if you could pick up the apple from the sink",
+      "Do you think you could pick up the apple from the sink?",
+      "Like, maybe pick up the apple from the sink?",
+      "So, uh, pick up the apple from the sink",
+      "Could you go ahead and pick up the apple from the sink?",
+      "pick up the apple from the sink",
+      "pick up the apple from the sink",
+      "pick up the apple from the sink",
+      "pick up the apple from the sink",
+      "pick up the apple from the sink",
+      "pick up the apple from the sink"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "pick up the orange from the sink"
+      },
+      {
+        "change_type": "d",
+        "text": "do NOT pick up the apple from the sink"
+      },
+      {
+        "change_type": "e",
+        "text": "pick up two apple from the sink"
+      },
+      {
+        "change_type": "f",
+        "text": "pick up the apple from the counter"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the apple from the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the apple from the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the apple from the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the apple from the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the apple from the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the apple from the sink"
+      }
+    ]
+  },
+  "pick_fork_from_sink_ks": {
+    "original": "pick up the fork from the sink",
+    "synonyms": [
+      "grab the fork from the sink",
+      "grasp the fork from the sink",
+      "take the fork from the sink",
+      "lift the fork from the sink",
+      "seize the fork from the sink",
+      "pick up the utensil from the sink",
+      "pick up the flatware from the sink",
+      "pick up the silverware from the sink",
+      "pick up the eating utensil from the sink",
+      "pick up the the fork itself from the sink",
+      "pick up the fork from the basin",
+      "pick up the fork from the wash basin",
+      "pick up the fork from the drainage basin",
+      "pick up the fork from the washing area",
+      "pick up the fork from the the sink itself",
+      "please pick up the fork from the sink",
+      "could you pick up the fork from the sink?",
+      "pick up fork from sink",
+      "pick up the fork from the sink, please",
+      "pick up the fork from the sink, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 pick up the fork from the sink",
+      "I'm getting hungry, so pick up the fork from the sink",
+      "We're running behind schedule \u2014 pick up the fork from the sink",
+      "Dinner will be ready soon, so pick up the fork from the sink",
+      "The kitchen needs tidying up, but first pick up the fork from the sink",
+      "Since guests are arriving, pick up the fork from the sink",
+      "Before we start cooking, pick up the fork from the sink",
+      "I'm in a rush, so pick up the fork from the sink",
+      "The table is being set, meanwhile pick up the fork from the sink",
+      "Getting everything ready now: pick up the fork from the sink",
+      "I see a knife nearby, but pick up the fork from the sink",
+      "There are cutting boards and napkins around, yet pick up the fork from the sink",
+      "Various glasses are out, but specifically pick up the fork from the sink",
+      "Napkins and other utensils are scattered, though pick up the fork from the sink",
+      "Several containers are on the counter, however pick up the fork from the sink",
+      "There's a lot of clutter here, so pick up the fork from the sink",
+      "Ignoring all the other items, pick up the fork from the sink",
+      "Among the various kitchen supplies, pick up the fork from the sink",
+      "With everything else around, still pick up the fork from the sink",
+      "Past all the other objects, pick up the fork from the sink",
+      "pick up the flatware from the sink",
+      "pick up the silverware from the sink",
+      "pick up the fork from the wash basin",
+      "pick up the fork from the drainage basin",
+      "I need to prepare the kitchen, so pick up the fork from the sink",
+      "Before we serve food, pick up the fork from the sink",
+      "As the first step in setup, pick up the fork from the sink",
+      "To get things ready for eating, pick up the fork from the sink",
+      "In preparation for the meal, pick up the fork from the sink",
+      "First things first: pick up the fork from the sink",
+      "To organize the workspace, pick up the fork from the sink",
+      "For proper cleanliness, pick up the fork from the sink",
+      "To complete the preparation, pick up the fork from the sink",
+      "As the initial task, pick up the fork from the sink",
+      "Could you pick up the fork from the sink?",
+      "Um, can you pick up the fork from the sink?",
+      "Would you mind pick up the fork from the sink?",
+      "Could you please pick up the fork from the sink?",
+      "Hey, pick up the fork from the sink if you could?",
+      "I was wondering if you could pick up the fork from the sink",
+      "Do you think you could pick up the fork from the sink?",
+      "Like, maybe pick up the fork from the sink?",
+      "So, uh, pick up the fork from the sink",
+      "Could you go ahead and pick up the fork from the sink?",
+      "pick up the fork from the sink",
+      "pick up the fork from the sink",
+      "pick up the fork from the sink",
+      "pick up the fork from the sink",
+      "pick up the fork from the sink",
+      "pick up the fork from the sink"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "pick up the spoon from the sink"
+      },
+      {
+        "change_type": "d",
+        "text": "do NOT pick up the fork from the sink"
+      },
+      {
+        "change_type": "e",
+        "text": "pick up two fork from the sink"
+      },
+      {
+        "change_type": "f",
+        "text": "pick up the fork from the counter"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the fork from the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the fork from the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the fork from the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the fork from the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the fork from the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the fork from the sink"
+      }
+    ]
+  },
+  "pick_hamburger_from_microwave_ks": {
+    "original": "pick up the hamburger from the microwave",
+    "synonyms": [
+      "grab the hamburger from the microwave",
+      "grasp the hamburger from the microwave",
+      "take the hamburger from the microwave",
+      "lift the hamburger from the microwave",
+      "seize the hamburger from the microwave",
+      "pick up the burger from the microwave",
+      "pick up the meat sandwich from the microwave",
+      "pick up the patty from the microwave",
+      "pick up the the hamburger itself from the microwave",
+      "pick up the prepared meat from the microwave",
+      "pick up the hamburger from the microwave oven",
+      "pick up the hamburger from the heating appliance",
+      "pick up the hamburger from the warming device",
+      "pick up the hamburger from the oven",
+      "pick up the hamburger from the the microwave itself",
+      "please pick up the hamburger from the microwave",
+      "could you pick up the hamburger from the microwave?",
+      "pick up hamburger from microwave",
+      "pick up the hamburger from the microwave, please",
+      "pick up the hamburger from the microwave, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 pick up the hamburger from the microwave",
+      "I'm getting hungry, so pick up the hamburger from the microwave",
+      "We're running behind schedule \u2014 pick up the hamburger from the microwave",
+      "Dinner will be ready soon, so pick up the hamburger from the microwave",
+      "The kitchen needs tidying up, but first pick up the hamburger from the microwave",
+      "Since guests are arriving, pick up the hamburger from the microwave",
+      "Before we start cooking, pick up the hamburger from the microwave",
+      "I'm in a rush, so pick up the hamburger from the microwave",
+      "The table is being set, meanwhile pick up the hamburger from the microwave",
+      "Getting everything ready now: pick up the hamburger from the microwave",
+      "I see a knife nearby, but pick up the hamburger from the microwave",
+      "There are cutting boards and napkins around, yet pick up the hamburger from the microwave",
+      "Various glasses are out, but specifically pick up the hamburger from the microwave",
+      "Napkins and other utensils are scattered, though pick up the hamburger from the microwave",
+      "Several containers are on the counter, however pick up the hamburger from the microwave",
+      "There's a lot of clutter here, so pick up the hamburger from the microwave",
+      "Ignoring all the other items, pick up the hamburger from the microwave",
+      "Among the various kitchen supplies, pick up the hamburger from the microwave",
+      "With everything else around, still pick up the hamburger from the microwave",
+      "Past all the other objects, pick up the hamburger from the microwave",
+      "pick up the meat sandwich from the microwave",
+      "pick up the patty from the microwave",
+      "pick up the hamburger from the heating appliance",
+      "pick up the hamburger from the warming device",
+      "I need to prepare the kitchen, so pick up the hamburger from the microwave",
+      "Before we serve food, pick up the hamburger from the microwave",
+      "As the first step in setup, pick up the hamburger from the microwave",
+      "To get things ready for eating, pick up the hamburger from the microwave",
+      "In preparation for the meal, pick up the hamburger from the microwave",
+      "First things first: pick up the hamburger from the microwave",
+      "To organize the workspace, pick up the hamburger from the microwave",
+      "For proper cleanliness, pick up the hamburger from the microwave",
+      "To complete the preparation, pick up the hamburger from the microwave",
+      "As the initial task, pick up the hamburger from the microwave",
+      "Could you pick up the hamburger from the microwave?",
+      "Um, can you pick up the hamburger from the microwave?",
+      "Would you mind pick up the hamburger from the microwave?",
+      "Could you please pick up the hamburger from the microwave?",
+      "Hey, pick up the hamburger from the microwave if you could?",
+      "I was wondering if you could pick up the hamburger from the microwave",
+      "Do you think you could pick up the hamburger from the microwave?",
+      "Like, maybe pick up the hamburger from the microwave?",
+      "So, uh, pick up the hamburger from the microwave",
+      "Could you go ahead and pick up the hamburger from the microwave?",
+      "pick up the hamburger from the microwave",
+      "pick up the hamburger from the microwave",
+      "pick up the hamburger from the microwave",
+      "pick up the hamburger from the microwave",
+      "pick up the hamburger from the microwave",
+      "pick up the hamburger from the microwave"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "b",
+        "text": "pick up the sandwich from the microwave"
+      },
+      {
+        "change_type": "d",
+        "text": "do NOT pick up the hamburger from the microwave"
+      },
+      {
+        "change_type": "e",
+        "text": "pick up two hamburger from the microwave"
+      },
+      {
+        "change_type": "f",
+        "text": "pick up the hamburger from the oven"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the hamburger from the microwave"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the hamburger from the microwave"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the hamburger from the microwave"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the hamburger from the microwave"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the hamburger from the microwave"
+      },
+      {
+        "change_type": "a",
+        "text": "pick up the hamburger from the microwave"
+      }
+    ]
+  },
+  "place_bowl_in_dishrack_ks": {
+    "original": "place the bowl in the dishrack",
+    "synonyms": [
+      "set the bowl in the dishrack",
+      "put the bowl in the dishrack",
+      "lay the bowl in the dishrack",
+      "position the bowl in the dishrack",
+      "deposit the bowl in the dishrack",
+      "place the dish in the dishrack",
+      "place the container in the dishrack",
+      "place the vessel in the dishrack",
+      "place the ceramic dish in the dishrack",
+      "place the the bowl itself in the dishrack",
+      "place the bowl in the drying rack",
+      "place the bowl in the dish drainer",
+      "place the bowl in the drying stand",
+      "place the bowl in the rack",
+      "place the bowl in the the dishrack itself",
+      "please place the bowl in the dishrack",
+      "could you place the bowl in the dishrack?",
+      "place bowl in dishrack",
+      "place the bowl in the dishrack, please",
+      "place the bowl in the dishrack, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 place the bowl in the dishrack",
+      "I'm getting hungry, so place the bowl in the dishrack",
+      "We're running behind schedule \u2014 place the bowl in the dishrack",
+      "Dinner will be ready soon, so place the bowl in the dishrack",
+      "The kitchen needs tidying up, but first place the bowl in the dishrack",
+      "Since guests are arriving, place the bowl in the dishrack",
+      "Before we start cooking, place the bowl in the dishrack",
+      "I'm in a rush, so place the bowl in the dishrack",
+      "The table is being set, meanwhile place the bowl in the dishrack",
+      "Getting everything ready now: place the bowl in the dishrack",
+      "I see a knife nearby, but place the bowl in the dishrack",
+      "There are cutting boards and napkins around, yet place the bowl in the dishrack",
+      "Various glasses are out, but specifically place the bowl in the dishrack",
+      "Napkins and other utensils are scattered, though place the bowl in the dishrack",
+      "Several containers are on the counter, however place the bowl in the dishrack",
+      "There's a lot of clutter here, so place the bowl in the dishrack",
+      "Ignoring all the other items, place the bowl in the dishrack",
+      "Among the various kitchen supplies, place the bowl in the dishrack",
+      "With everything else around, still place the bowl in the dishrack",
+      "Past all the other objects, place the bowl in the dishrack",
+      "place the container in the dishrack",
+      "place the vessel in the dishrack",
+      "place the bowl in the dish drainer",
+      "place the bowl in the drying stand",
+      "I need to prepare the kitchen, so place the bowl in the dishrack",
+      "Before we serve food, place the bowl in the dishrack",
+      "As the first step in setup, place the bowl in the dishrack",
+      "To get things ready for eating, place the bowl in the dishrack",
+      "In preparation for the meal, place the bowl in the dishrack",
+      "First things first: place the bowl in the dishrack",
+      "To organize the workspace, place the bowl in the dishrack",
+      "For proper cleanliness, place the bowl in the dishrack",
+      "To complete the preparation, place the bowl in the dishrack",
+      "As the initial task, place the bowl in the dishrack",
+      "Could you place the bowl in the dishrack?",
+      "Um, can you place the bowl in the dishrack?",
+      "Would you mind place the bowl in the dishrack?",
+      "Could you please place the bowl in the dishrack?",
+      "Hey, place the bowl in the dishrack if you could?",
+      "I was wondering if you could place the bowl in the dishrack",
+      "Do you think you could place the bowl in the dishrack?",
+      "Like, maybe place the bowl in the dishrack?",
+      "So, uh, place the bowl in the dishrack",
+      "Could you go ahead and place the bowl in the dishrack?",
+      "place the bowl in the dishrack",
+      "place the bowl in the dishrack",
+      "place the bowl in the dishrack",
+      "place the bowl in the dishrack",
+      "place the bowl in the dishrack",
+      "place the bowl in the dishrack"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "place the bowl on the dishrack"
+      },
+      {
+        "change_type": "b",
+        "text": "place the cup in the dishrack"
+      },
+      {
+        "change_type": "c",
+        "text": "place the bowl under the dishrack"
+      },
+      {
+        "change_type": "d",
+        "text": "do NOT place the bowl in the dishrack"
+      },
+      {
+        "change_type": "e",
+        "text": "place two bowl in the dishrack"
+      },
+      {
+        "change_type": "f",
+        "text": "place the bowl in the cabinet"
+      },
+      {
+        "change_type": "a",
+        "text": "place the bowl in the dishrack"
+      },
+      {
+        "change_type": "a",
+        "text": "place the bowl in the dishrack"
+      },
+      {
+        "change_type": "a",
+        "text": "place the bowl in the dishrack"
+      },
+      {
+        "change_type": "a",
+        "text": "place the bowl in the dishrack"
+      }
+    ]
+  },
+  "put_bowl_in_sink_ks": {
+    "original": "put the bowl in the sink",
+    "synonyms": [
+      "place the bowl in the sink",
+      "set the bowl in the sink",
+      "lay the bowl in the sink",
+      "position the bowl in the sink",
+      "deposit the bowl in the sink",
+      "put the dish in the sink",
+      "put the container in the sink",
+      "put the vessel in the sink",
+      "put the ceramic dish in the sink",
+      "put the the bowl itself in the sink",
+      "put the bowl in the basin",
+      "put the bowl in the wash basin",
+      "put the bowl in the drainage basin",
+      "put the bowl in the washing area",
+      "put the bowl in the the sink itself",
+      "please put the bowl in the sink",
+      "could you put the bowl in the sink?",
+      "put bowl in sink",
+      "put the bowl in the sink, please",
+      "put the bowl in the sink, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 put the bowl in the sink",
+      "I'm getting hungry, so put the bowl in the sink",
+      "We're running behind schedule \u2014 put the bowl in the sink",
+      "Dinner will be ready soon, so put the bowl in the sink",
+      "The kitchen needs tidying up, but first put the bowl in the sink",
+      "Since guests are arriving, put the bowl in the sink",
+      "Before we start cooking, put the bowl in the sink",
+      "I'm in a rush, so put the bowl in the sink",
+      "The table is being set, meanwhile put the bowl in the sink",
+      "Getting everything ready now: put the bowl in the sink",
+      "I see a knife nearby, but put the bowl in the sink",
+      "There are cutting boards and napkins around, yet put the bowl in the sink",
+      "Various glasses are out, but specifically put the bowl in the sink",
+      "Napkins and other utensils are scattered, though put the bowl in the sink",
+      "Several containers are on the counter, however put the bowl in the sink",
+      "There's a lot of clutter here, so put the bowl in the sink",
+      "Ignoring all the other items, put the bowl in the sink",
+      "Among the various kitchen supplies, put the bowl in the sink",
+      "With everything else around, still put the bowl in the sink",
+      "Past all the other objects, put the bowl in the sink",
+      "put the container in the sink",
+      "put the vessel in the sink",
+      "put the bowl in the wash basin",
+      "put the bowl in the drainage basin",
+      "I need to prepare the kitchen, so put the bowl in the sink",
+      "Before we serve food, put the bowl in the sink",
+      "As the first step in setup, put the bowl in the sink",
+      "To get things ready for eating, put the bowl in the sink",
+      "In preparation for the meal, put the bowl in the sink",
+      "First things first: put the bowl in the sink",
+      "To organize the workspace, put the bowl in the sink",
+      "For proper cleanliness, put the bowl in the sink",
+      "To complete the preparation, put the bowl in the sink",
+      "As the initial task, put the bowl in the sink",
+      "Could you put the bowl in the sink?",
+      "Um, can you put the bowl in the sink?",
+      "Would you mind put the bowl in the sink?",
+      "Could you please put the bowl in the sink?",
+      "Hey, put the bowl in the sink if you could?",
+      "I was wondering if you could put the bowl in the sink",
+      "Do you think you could put the bowl in the sink?",
+      "Like, maybe put the bowl in the sink?",
+      "So, uh, put the bowl in the sink",
+      "Could you go ahead and put the bowl in the sink?",
+      "put the bowl in the sink",
+      "put the bowl in the sink",
+      "put the bowl in the sink",
+      "put the bowl in the sink",
+      "put the bowl in the sink",
+      "put the bowl in the sink"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the bowl on the sink"
+      },
+      {
+        "change_type": "b",
+        "text": "put the cup in the sink"
+      },
+      {
+        "change_type": "c",
+        "text": "put the bowl under the sink"
+      },
+      {
+        "change_type": "d",
+        "text": "do NOT put the bowl in the sink"
+      },
+      {
+        "change_type": "e",
+        "text": "put two bowl in the sink"
+      },
+      {
+        "change_type": "f",
+        "text": "put the bowl in the counter"
+      },
+      {
+        "change_type": "a",
+        "text": "put the bowl in the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "put the bowl in the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "put the bowl in the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "put the bowl in the sink"
+      }
+    ]
+  },
+  "put_bread_on_board_ks": {
+    "original": "put the bread on the board",
+    "synonyms": [
+      "place the bread on the board",
+      "set the bread on the board",
+      "lay the bread on the board",
+      "position the bread on the board",
+      "deposit the bread on the board",
+      "put the loaf on the board",
+      "put the baked good on the board",
+      "put the slice on the board",
+      "put the grain product on the board",
+      "put the the bread itself on the board",
+      "put the bread on the cutting board",
+      "put the bread on the work surface",
+      "put the bread on the prep surface",
+      "put the bread on the wooden surface",
+      "put the bread on the the board itself",
+      "please put the bread on the board",
+      "could you put the bread on the board?",
+      "put bread on board",
+      "put the bread on the board, please",
+      "put the bread on the board, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 put the bread on the board",
+      "I'm getting hungry, so put the bread on the board",
+      "We're running behind schedule \u2014 put the bread on the board",
+      "Dinner will be ready soon, so put the bread on the board",
+      "The kitchen needs tidying up, but first put the bread on the board",
+      "Since guests are arriving, put the bread on the board",
+      "Before we start cooking, put the bread on the board",
+      "I'm in a rush, so put the bread on the board",
+      "The table is being set, meanwhile put the bread on the board",
+      "Getting everything ready now: put the bread on the board",
+      "I see a knife nearby, but put the bread on the board",
+      "There are cutting boards and napkins around, yet put the bread on the board",
+      "Various glasses are out, but specifically put the bread on the board",
+      "Napkins and other utensils are scattered, though put the bread on the board",
+      "Several containers are on the counter, however put the bread on the board",
+      "There's a lot of clutter here, so put the bread on the board",
+      "Ignoring all the other items, put the bread on the board",
+      "Among the various kitchen supplies, put the bread on the board",
+      "With everything else around, still put the bread on the board",
+      "Past all the other objects, put the bread on the board",
+      "put the baked good on the board",
+      "put the slice on the board",
+      "put the bread on the work surface",
+      "put the bread on the prep surface",
+      "I need to prepare the kitchen, so put the bread on the board",
+      "Before we serve food, put the bread on the board",
+      "As the first step in setup, put the bread on the board",
+      "To get things ready for eating, put the bread on the board",
+      "In preparation for the meal, put the bread on the board",
+      "First things first: put the bread on the board",
+      "To organize the workspace, put the bread on the board",
+      "For proper cleanliness, put the bread on the board",
+      "To complete the preparation, put the bread on the board",
+      "As the initial task, put the bread on the board",
+      "Could you put the bread on the board?",
+      "Um, can you put the bread on the board?",
+      "Would you mind put the bread on the board?",
+      "Could you please put the bread on the board?",
+      "Hey, put the bread on the board if you could?",
+      "I was wondering if you could put the bread on the board",
+      "Do you think you could put the bread on the board?",
+      "Like, maybe put the bread on the board?",
+      "So, uh, put the bread on the board",
+      "Could you go ahead and put the bread on the board?",
+      "put the bread on the board",
+      "put the bread on the board",
+      "put the bread on the board",
+      "put the bread on the board",
+      "put the bread on the board",
+      "put the bread on the board"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the bread in the board"
+      },
+      {
+        "change_type": "b",
+        "text": "put the bun on the board"
+      },
+      {
+        "change_type": "c",
+        "text": "put the bread under the board"
+      },
+      {
+        "change_type": "d",
+        "text": "do NOT put the bread on the board"
+      },
+      {
+        "change_type": "e",
+        "text": "put two bread on the board"
+      },
+      {
+        "change_type": "f",
+        "text": "put the bread on the table"
+      },
+      {
+        "change_type": "a",
+        "text": "put the bread on the board"
+      },
+      {
+        "change_type": "a",
+        "text": "put the bread on the board"
+      },
+      {
+        "change_type": "a",
+        "text": "put the bread on the board"
+      },
+      {
+        "change_type": "a",
+        "text": "put the bread on the board"
+      }
+    ]
+  },
+  "put_hamburger_in_microwave_ks": {
+    "original": "put the hamburger in the microwave",
+    "synonyms": [
+      "place the hamburger in the microwave",
+      "set the hamburger in the microwave",
+      "lay the hamburger in the microwave",
+      "position the hamburger in the microwave",
+      "deposit the hamburger in the microwave",
+      "put the burger in the microwave",
+      "put the meat sandwich in the microwave",
+      "put the patty in the microwave",
+      "put the the hamburger itself in the microwave",
+      "put the prepared meat in the microwave",
+      "put the hamburger in the microwave oven",
+      "put the hamburger in the heating appliance",
+      "put the hamburger in the warming device",
+      "put the hamburger in the oven",
+      "put the hamburger in the the microwave itself",
+      "please put the hamburger in the microwave",
+      "could you put the hamburger in the microwave?",
+      "put hamburger in microwave",
+      "put the hamburger in the microwave, please",
+      "put the hamburger in the microwave, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 put the hamburger in the microwave",
+      "I'm getting hungry, so put the hamburger in the microwave",
+      "We're running behind schedule \u2014 put the hamburger in the microwave",
+      "Dinner will be ready soon, so put the hamburger in the microwave",
+      "The kitchen needs tidying up, but first put the hamburger in the microwave",
+      "Since guests are arriving, put the hamburger in the microwave",
+      "Before we start cooking, put the hamburger in the microwave",
+      "I'm in a rush, so put the hamburger in the microwave",
+      "The table is being set, meanwhile put the hamburger in the microwave",
+      "Getting everything ready now: put the hamburger in the microwave",
+      "I see a knife nearby, but put the hamburger in the microwave",
+      "There are cutting boards and napkins around, yet put the hamburger in the microwave",
+      "Various glasses are out, but specifically put the hamburger in the microwave",
+      "Napkins and other utensils are scattered, though put the hamburger in the microwave",
+      "Several containers are on the counter, however put the hamburger in the microwave",
+      "There's a lot of clutter here, so put the hamburger in the microwave",
+      "Ignoring all the other items, put the hamburger in the microwave",
+      "Among the various kitchen supplies, put the hamburger in the microwave",
+      "With everything else around, still put the hamburger in the microwave",
+      "Past all the other objects, put the hamburger in the microwave",
+      "put the meat sandwich in the microwave",
+      "put the patty in the microwave",
+      "put the hamburger in the heating appliance",
+      "put the hamburger in the warming device",
+      "I need to prepare the kitchen, so put the hamburger in the microwave",
+      "Before we serve food, put the hamburger in the microwave",
+      "As the first step in setup, put the hamburger in the microwave",
+      "To get things ready for eating, put the hamburger in the microwave",
+      "In preparation for the meal, put the hamburger in the microwave",
+      "First things first: put the hamburger in the microwave",
+      "To organize the workspace, put the hamburger in the microwave",
+      "For proper cleanliness, put the hamburger in the microwave",
+      "To complete the preparation, put the hamburger in the microwave",
+      "As the initial task, put the hamburger in the microwave",
+      "Could you put the hamburger in the microwave?",
+      "Um, can you put the hamburger in the microwave?",
+      "Would you mind put the hamburger in the microwave?",
+      "Could you please put the hamburger in the microwave?",
+      "Hey, put the hamburger in the microwave if you could?",
+      "I was wondering if you could put the hamburger in the microwave",
+      "Do you think you could put the hamburger in the microwave?",
+      "Like, maybe put the hamburger in the microwave?",
+      "So, uh, put the hamburger in the microwave",
+      "Could you go ahead and put the hamburger in the microwave?",
+      "put the hamburger in the microwave",
+      "put the hamburger in the microwave",
+      "put the hamburger in the microwave",
+      "put the hamburger in the microwave",
+      "put the hamburger in the microwave",
+      "put the hamburger in the microwave"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the hamburger on the microwave"
+      },
+      {
+        "change_type": "b",
+        "text": "put the sandwich in the microwave"
+      },
+      {
+        "change_type": "c",
+        "text": "put the hamburger under the microwave"
+      },
+      {
+        "change_type": "d",
+        "text": "do NOT put the hamburger in the microwave"
+      },
+      {
+        "change_type": "e",
+        "text": "put two hamburger in the microwave"
+      },
+      {
+        "change_type": "f",
+        "text": "put the hamburger in the oven"
+      },
+      {
+        "change_type": "a",
+        "text": "put the hamburger in the microwave"
+      },
+      {
+        "change_type": "a",
+        "text": "put the hamburger in the microwave"
+      },
+      {
+        "change_type": "a",
+        "text": "put the hamburger in the microwave"
+      },
+      {
+        "change_type": "a",
+        "text": "put the hamburger in the microwave"
+      }
+    ]
+  },
+  "put_plate_in_sink_ks": {
+    "original": "put the plate in the sink",
+    "synonyms": [
+      "place the plate in the sink",
+      "set the plate in the sink",
+      "lay the plate in the sink",
+      "position the plate in the sink",
+      "deposit the plate in the sink",
+      "put the dish in the sink",
+      "put the ceramic dish in the sink",
+      "put the dinnerware in the sink",
+      "put the the plate itself in the sink",
+      "put the serving plate in the sink",
+      "put the plate in the basin",
+      "put the plate in the wash basin",
+      "put the plate in the drainage basin",
+      "put the plate in the washing area",
+      "put the plate in the the sink itself",
+      "please put the plate in the sink",
+      "could you put the plate in the sink?",
+      "put plate in sink",
+      "put the plate in the sink, please",
+      "put the plate in the sink, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 put the plate in the sink",
+      "I'm getting hungry, so put the plate in the sink",
+      "We're running behind schedule \u2014 put the plate in the sink",
+      "Dinner will be ready soon, so put the plate in the sink",
+      "The kitchen needs tidying up, but first put the plate in the sink",
+      "Since guests are arriving, put the plate in the sink",
+      "Before we start cooking, put the plate in the sink",
+      "I'm in a rush, so put the plate in the sink",
+      "The table is being set, meanwhile put the plate in the sink",
+      "Getting everything ready now: put the plate in the sink",
+      "I see a knife nearby, but put the plate in the sink",
+      "There are cutting boards and napkins around, yet put the plate in the sink",
+      "Various glasses are out, but specifically put the plate in the sink",
+      "Napkins and other utensils are scattered, though put the plate in the sink",
+      "Several containers are on the counter, however put the plate in the sink",
+      "There's a lot of clutter here, so put the plate in the sink",
+      "Ignoring all the other items, put the plate in the sink",
+      "Among the various kitchen supplies, put the plate in the sink",
+      "With everything else around, still put the plate in the sink",
+      "Past all the other objects, put the plate in the sink",
+      "put the ceramic dish in the sink",
+      "put the dinnerware in the sink",
+      "put the plate in the wash basin",
+      "put the plate in the drainage basin",
+      "I need to prepare the kitchen, so put the plate in the sink",
+      "Before we serve food, put the plate in the sink",
+      "As the first step in setup, put the plate in the sink",
+      "To get things ready for eating, put the plate in the sink",
+      "In preparation for the meal, put the plate in the sink",
+      "First things first: put the plate in the sink",
+      "To organize the workspace, put the plate in the sink",
+      "For proper cleanliness, put the plate in the sink",
+      "To complete the preparation, put the plate in the sink",
+      "As the initial task, put the plate in the sink",
+      "Could you put the plate in the sink?",
+      "Um, can you put the plate in the sink?",
+      "Would you mind put the plate in the sink?",
+      "Could you please put the plate in the sink?",
+      "Hey, put the plate in the sink if you could?",
+      "I was wondering if you could put the plate in the sink",
+      "Do you think you could put the plate in the sink?",
+      "Like, maybe put the plate in the sink?",
+      "So, uh, put the plate in the sink",
+      "Could you go ahead and put the plate in the sink?",
+      "put the plate in the sink",
+      "put the plate in the sink",
+      "put the plate in the sink",
+      "put the plate in the sink",
+      "put the plate in the sink",
+      "put the plate in the sink"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the plate on the sink"
+      },
+      {
+        "change_type": "b",
+        "text": "put the tray in the sink"
+      },
+      {
+        "change_type": "c",
+        "text": "put the plate under the sink"
+      },
+      {
+        "change_type": "d",
+        "text": "do NOT put the plate in the sink"
+      },
+      {
+        "change_type": "e",
+        "text": "put two plate in the sink"
+      },
+      {
+        "change_type": "f",
+        "text": "put the plate in the counter"
+      },
+      {
+        "change_type": "a",
+        "text": "put the plate in the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "put the plate in the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "put the plate in the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "put the plate in the sink"
+      }
+    ]
+  },
+  "put_spoon_in_dishrack_ks": {
+    "original": "put the spoon in the dishrack",
+    "synonyms": [
+      "place the spoon in the dishrack",
+      "set the spoon in the dishrack",
+      "lay the spoon in the dishrack",
+      "position the spoon in the dishrack",
+      "deposit the spoon in the dishrack",
+      "put the utensil in the dishrack",
+      "put the flatware in the dishrack",
+      "put the silverware in the dishrack",
+      "put the eating utensil in the dishrack",
+      "put the the spoon itself in the dishrack",
+      "put the spoon in the drying rack",
+      "put the spoon in the dish drainer",
+      "put the spoon in the drying stand",
+      "put the spoon in the rack",
+      "put the spoon in the the dishrack itself",
+      "please put the spoon in the dishrack",
+      "could you put the spoon in the dishrack?",
+      "put spoon in dishrack",
+      "put the spoon in the dishrack, please",
+      "put the spoon in the dishrack, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 put the spoon in the dishrack",
+      "I'm getting hungry, so put the spoon in the dishrack",
+      "We're running behind schedule \u2014 put the spoon in the dishrack",
+      "Dinner will be ready soon, so put the spoon in the dishrack",
+      "The kitchen needs tidying up, but first put the spoon in the dishrack",
+      "Since guests are arriving, put the spoon in the dishrack",
+      "Before we start cooking, put the spoon in the dishrack",
+      "I'm in a rush, so put the spoon in the dishrack",
+      "The table is being set, meanwhile put the spoon in the dishrack",
+      "Getting everything ready now: put the spoon in the dishrack",
+      "I see a knife nearby, but put the spoon in the dishrack",
+      "There are cutting boards and napkins around, yet put the spoon in the dishrack",
+      "Various glasses are out, but specifically put the spoon in the dishrack",
+      "Napkins and other utensils are scattered, though put the spoon in the dishrack",
+      "Several containers are on the counter, however put the spoon in the dishrack",
+      "There's a lot of clutter here, so put the spoon in the dishrack",
+      "Ignoring all the other items, put the spoon in the dishrack",
+      "Among the various kitchen supplies, put the spoon in the dishrack",
+      "With everything else around, still put the spoon in the dishrack",
+      "Past all the other objects, put the spoon in the dishrack",
+      "put the flatware in the dishrack",
+      "put the silverware in the dishrack",
+      "put the spoon in the dish drainer",
+      "put the spoon in the drying stand",
+      "I need to prepare the kitchen, so put the spoon in the dishrack",
+      "Before we serve food, put the spoon in the dishrack",
+      "As the first step in setup, put the spoon in the dishrack",
+      "To get things ready for eating, put the spoon in the dishrack",
+      "In preparation for the meal, put the spoon in the dishrack",
+      "First things first: put the spoon in the dishrack",
+      "To organize the workspace, put the spoon in the dishrack",
+      "For proper cleanliness, put the spoon in the dishrack",
+      "To complete the preparation, put the spoon in the dishrack",
+      "As the initial task, put the spoon in the dishrack",
+      "Could you put the spoon in the dishrack?",
+      "Um, can you put the spoon in the dishrack?",
+      "Would you mind put the spoon in the dishrack?",
+      "Could you please put the spoon in the dishrack?",
+      "Hey, put the spoon in the dishrack if you could?",
+      "I was wondering if you could put the spoon in the dishrack",
+      "Do you think you could put the spoon in the dishrack?",
+      "Like, maybe put the spoon in the dishrack?",
+      "So, uh, put the spoon in the dishrack",
+      "Could you go ahead and put the spoon in the dishrack?",
+      "put the spoon in the dishrack",
+      "put the spoon in the dishrack",
+      "put the spoon in the dishrack",
+      "put the spoon in the dishrack",
+      "put the spoon in the dishrack",
+      "put the spoon in the dishrack"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the spoon on the dishrack"
+      },
+      {
+        "change_type": "b",
+        "text": "put the fork in the dishrack"
+      },
+      {
+        "change_type": "c",
+        "text": "put the spoon under the dishrack"
+      },
+      {
+        "change_type": "d",
+        "text": "do NOT put the spoon in the dishrack"
+      },
+      {
+        "change_type": "e",
+        "text": "put two spoon in the dishrack"
+      },
+      {
+        "change_type": "f",
+        "text": "put the spoon in the cabinet"
+      },
+      {
+        "change_type": "a",
+        "text": "put the spoon in the dishrack"
+      },
+      {
+        "change_type": "a",
+        "text": "put the spoon in the dishrack"
+      },
+      {
+        "change_type": "a",
+        "text": "put the spoon in the dishrack"
+      },
+      {
+        "change_type": "a",
+        "text": "put the spoon in the dishrack"
+      }
+    ]
+  },
+  "put_spoon_in_sink_ks": {
+    "original": "put the spoon in the sink",
+    "synonyms": [
+      "place the spoon in the sink",
+      "set the spoon in the sink",
+      "lay the spoon in the sink",
+      "position the spoon in the sink",
+      "deposit the spoon in the sink",
+      "put the utensil in the sink",
+      "put the flatware in the sink",
+      "put the silverware in the sink",
+      "put the eating utensil in the sink",
+      "put the the spoon itself in the sink",
+      "put the spoon in the basin",
+      "put the spoon in the wash basin",
+      "put the spoon in the drainage basin",
+      "put the spoon in the washing area",
+      "put the spoon in the the sink itself",
+      "please put the spoon in the sink",
+      "could you put the spoon in the sink?",
+      "put spoon in sink",
+      "put the spoon in the sink, please",
+      "put the spoon in the sink, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 put the spoon in the sink",
+      "I'm getting hungry, so put the spoon in the sink",
+      "We're running behind schedule \u2014 put the spoon in the sink",
+      "Dinner will be ready soon, so put the spoon in the sink",
+      "The kitchen needs tidying up, but first put the spoon in the sink",
+      "Since guests are arriving, put the spoon in the sink",
+      "Before we start cooking, put the spoon in the sink",
+      "I'm in a rush, so put the spoon in the sink",
+      "The table is being set, meanwhile put the spoon in the sink",
+      "Getting everything ready now: put the spoon in the sink",
+      "I see a knife nearby, but put the spoon in the sink",
+      "There are cutting boards and napkins around, yet put the spoon in the sink",
+      "Various glasses are out, but specifically put the spoon in the sink",
+      "Napkins and other utensils are scattered, though put the spoon in the sink",
+      "Several containers are on the counter, however put the spoon in the sink",
+      "There's a lot of clutter here, so put the spoon in the sink",
+      "Ignoring all the other items, put the spoon in the sink",
+      "Among the various kitchen supplies, put the spoon in the sink",
+      "With everything else around, still put the spoon in the sink",
+      "Past all the other objects, put the spoon in the sink",
+      "put the flatware in the sink",
+      "put the silverware in the sink",
+      "put the spoon in the wash basin",
+      "put the spoon in the drainage basin",
+      "I need to prepare the kitchen, so put the spoon in the sink",
+      "Before we serve food, put the spoon in the sink",
+      "As the first step in setup, put the spoon in the sink",
+      "To get things ready for eating, put the spoon in the sink",
+      "In preparation for the meal, put the spoon in the sink",
+      "First things first: put the spoon in the sink",
+      "To organize the workspace, put the spoon in the sink",
+      "For proper cleanliness, put the spoon in the sink",
+      "To complete the preparation, put the spoon in the sink",
+      "As the initial task, put the spoon in the sink",
+      "Could you put the spoon in the sink?",
+      "Um, can you put the spoon in the sink?",
+      "Would you mind put the spoon in the sink?",
+      "Could you please put the spoon in the sink?",
+      "Hey, put the spoon in the sink if you could?",
+      "I was wondering if you could put the spoon in the sink",
+      "Do you think you could put the spoon in the sink?",
+      "Like, maybe put the spoon in the sink?",
+      "So, uh, put the spoon in the sink",
+      "Could you go ahead and put the spoon in the sink?",
+      "put the spoon in the sink",
+      "put the spoon in the sink",
+      "put the spoon in the sink",
+      "put the spoon in the sink",
+      "put the spoon in the sink",
+      "put the spoon in the sink"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the spoon on the sink"
+      },
+      {
+        "change_type": "b",
+        "text": "put the fork in the sink"
+      },
+      {
+        "change_type": "c",
+        "text": "put the spoon under the sink"
+      },
+      {
+        "change_type": "d",
+        "text": "do NOT put the spoon in the sink"
+      },
+      {
+        "change_type": "e",
+        "text": "put two spoon in the sink"
+      },
+      {
+        "change_type": "f",
+        "text": "put the spoon in the counter"
+      },
+      {
+        "change_type": "a",
+        "text": "put the spoon in the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "put the spoon in the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "put the spoon in the sink"
+      },
+      {
+        "change_type": "a",
+        "text": "put the spoon in the sink"
+      }
+    ]
+  },
+  "put_spoon_on_plate_ks": {
+    "original": "put the spoon on the plate",
+    "synonyms": [
+      "place the spoon on the plate",
+      "set the spoon on the plate",
+      "lay the spoon on the plate",
+      "position the spoon on the plate",
+      "deposit the spoon on the plate",
+      "put the utensil on the plate",
+      "put the flatware on the plate",
+      "put the silverware on the plate",
+      "put the eating utensil on the plate",
+      "put the the spoon itself on the plate",
+      "please put the spoon on the plate",
+      "could you put the spoon on the plate?",
+      "put spoon on plate",
+      "put the spoon on the plate, please",
+      "put the spoon on the plate, please",
+      "put the spoon on the plate, please",
+      "put the spoon on the plate, please",
+      "put the spoon on the plate, please",
+      "put the spoon on the plate, please",
+      "put the spoon on the plate, please"
+    ],
+    "perturbations": [
+      "It's almost time for lunch \u2014 put the spoon on the plate",
+      "I'm getting hungry, so put the spoon on the plate",
+      "We're running behind schedule \u2014 put the spoon on the plate",
+      "Dinner will be ready soon, so put the spoon on the plate",
+      "The kitchen needs tidying up, but first put the spoon on the plate",
+      "Since guests are arriving, put the spoon on the plate",
+      "Before we start cooking, put the spoon on the plate",
+      "I'm in a rush, so put the spoon on the plate",
+      "The table is being set, meanwhile put the spoon on the plate",
+      "Getting everything ready now: put the spoon on the plate",
+      "I see a knife nearby, but put the spoon on the plate",
+      "There are cutting boards and napkins around, yet put the spoon on the plate",
+      "Various glasses are out, but specifically put the spoon on the plate",
+      "Napkins and other utensils are scattered, though put the spoon on the plate",
+      "Several containers are on the counter, however put the spoon on the plate",
+      "There's a lot of clutter here, so put the spoon on the plate",
+      "Ignoring all the other items, put the spoon on the plate",
+      "Among the various kitchen supplies, put the spoon on the plate",
+      "With everything else around, still put the spoon on the plate",
+      "Past all the other objects, put the spoon on the plate",
+      "put the flatware on the plate",
+      "put the silverware on the plate",
+      "put the spoon on the ceramic dish",
+      "put the spoon on the dinnerware",
+      "I need to prepare the kitchen, so put the spoon on the plate",
+      "Before we serve food, put the spoon on the plate",
+      "As the first step in setup, put the spoon on the plate",
+      "To get things ready for eating, put the spoon on the plate",
+      "In preparation for the meal, put the spoon on the plate",
+      "First things first: put the spoon on the plate",
+      "To organize the workspace, put the spoon on the plate",
+      "For proper cleanliness, put the spoon on the plate",
+      "To complete the preparation, put the spoon on the plate",
+      "As the initial task, put the spoon on the plate",
+      "Could you put the spoon on the plate?",
+      "Um, can you put the spoon on the plate?",
+      "Would you mind put the spoon on the plate?",
+      "Could you please put the spoon on the plate?",
+      "Hey, put the spoon on the plate if you could?",
+      "I was wondering if you could put the spoon on the plate",
+      "Do you think you could put the spoon on the plate?",
+      "Like, maybe put the spoon on the plate?",
+      "So, uh, put the spoon on the plate",
+      "Could you go ahead and put the spoon on the plate?",
+      "put the spoon on the plate",
+      "put the spoon on the plate",
+      "put the spoon on the plate",
+      "put the spoon on the plate",
+      "put the spoon on the plate",
+      "put the spoon on the plate"
+    ],
+    "hard_negatives": [
+      {
+        "change_type": "a",
+        "text": "put the spoon in the plate"
+      },
+      {
+        "change_type": "b",
+        "text": "put the fork on the plate"
+      },
+      {
+        "change_type": "c",
+        "text": "put the spoon under the plate"
+      },
+      {
+        "change_type": "d",
+        "text": "do NOT put the spoon on the plate"
+      },
+      {
+        "change_type": "e",
+        "text": "put two spoon on the plate"
+      },
+      {
+        "change_type": "a",
+        "text": "put the spoon on the plate"
+      },
+      {
+        "change_type": "a",
+        "text": "put the spoon on the plate"
+      },
+      {
+        "change_type": "a",
+        "text": "put the spoon on the plate"
+      },
+      {
+        "change_type": "a",
+        "text": "put the spoon on the plate"
+      },
+      {
+        "change_type": "a",
+        "text": "put the spoon on the plate"
+      }
+    ]
+  }
+}
